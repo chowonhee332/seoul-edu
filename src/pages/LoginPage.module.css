@@ -1,0 +1,207 @@
+.page {
+  display: flex;
+  flex-direction: column;
+  min-height: 100vh;
+}
+
+.body {
+  flex: 1;
+  display: flex;
+}
+
+/* Left banner */
+.banner {
+  flex: 1;
+  background: linear-gradient(135deg, #1a3a6b 0%, #1a75ff 100%);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 60px 80px;
+  min-height: 0;
+}
+
+.bannerContent {
+  color: var(--color-text-inverse);
+}
+
+.bannerTitle {
+  font-size: 32px;
+  font-weight: 700;
+  line-height: 1.4;
+  letter-spacing: -0.5px;
+  margin-bottom: var(--spacing-16);
+}
+
+.bannerDesc {
+  font-size: 16px;
+  line-height: 1.65;
+  opacity: 0.85;
+}
+
+/* Right form area */
+.formArea {
+  width: 480px;
+  flex-shrink: 0;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 60px 48px;
+  background: var(--color-white);
+}
+
+.formCard {
+  width: 100%;
+}
+
+.formTitle {
+  font-size: 24px;
+  font-weight: 700;
+  color: var(--color-text-default);
+  letter-spacing: -0.4px;
+  margin-bottom: 32px;
+}
+
+.form {
+  display: flex;
+  flex-direction: column;
+  gap: var(--spacing-16);
+}
+
+.field {
+  display: flex;
+  flex-direction: column;
+  gap: var(--spacing-8);
+}
+
+.label {
+  font-size: 13px;
+  font-weight: 600;
+  color: var(--color-text-neutral);
+}
+
+.input {
+  height: 48px;
+  border: 1px solid var(--color-border-default);
+  border-radius: var(--radius-8);
+  padding: 0 var(--spacing-16);
+  font-size: 14px;
+  color: var(--color-text-default);
+  font-family: inherit;
+  outline: none;
+  transition: border-color 0.15s;
+}
+
+.input::placeholder {
+  color: var(--color-text-alternative);
+}
+
+.input:focus {
+  border-color: var(--color-primary-border);
+}
+
+.captchaRow {
+  display: flex;
+  gap: var(--spacing-8);
+}
+
+.captchaBox {
+  width: 120px;
+  height: 48px;
+  border: 1px solid var(--color-border-default);
+  border-radius: var(--radius-8);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background: var(--color-primary-bg);
+  flex-shrink: 0;
+}
+
+.captchaText {
+  font-size: 18px;
+  font-weight: 700;
+  letter-spacing: 4px;
+  color: var(--color-text-default);
+  font-family: monospace;
+  user-select: none;
+}
+
+.captchaInput {
+  flex: 1;
+  height: 48px;
+  border: 1px solid var(--color-border-default);
+  border-radius: var(--radius-8);
+  padding: 0 var(--spacing-16);
+  font-size: 14px;
+  color: var(--color-text-default);
+  font-family: inherit;
+  outline: none;
+  transition: border-color 0.15s;
+}
+
+.captchaInput::placeholder {
+  color: var(--color-text-alternative);
+}
+
+.captchaInput:focus {
+  border-color: var(--color-primary-border);
+}
+
+.saveRow {
+  display: flex;
+  align-items: center;
+}
+
+.checkLabel {
+  display: flex;
+  align-items: center;
+  gap: var(--spacing-8);
+  font-size: 13px;
+  color: var(--color-text-neutral);
+  cursor: pointer;
+  user-select: none;
+}
+
+.checkbox {
+  width: 16px;
+  height: 16px;
+  accent-color: var(--color-primary-default);
+  cursor: pointer;
+}
+
+.submitBtn {
+  height: 52px;
+  background: var(--color-primary-default);
+  color: var(--color-white);
+  font-size: 15px;
+  font-weight: 600;
+  border-radius: var(--radius-8);
+  margin-top: var(--spacing-4);
+  transition: opacity 0.15s;
+}
+
+.submitBtn:hover {
+  opacity: 0.85;
+}
+
+.footer {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: var(--spacing-12);
+  margin-top: 24px;
+}
+
+.footerLink {
+  font-size: 13px;
+  color: var(--color-text-alternative);
+}
+
+.footerLink:hover {
+  color: var(--color-primary-default);
+}
+
+.footerDivider {
+  width: 1px;
+  height: 12px;
+  background: var(--color-border-default);
+}
