@@ -1,0 +1,47 @@
+:root {
+  /* Primary */
+  --color-primary-default: #1a75ff;
+  --color-primary-bg: #f0f1f6;
+  --color-primary-neutral: #f6f8fc;
+  --color-primary-border: #1a75ff;
+
+  /* Neutral - Text */
+  --color-text-default: #171719;
+  --color-text-neutral: rgba(46, 47, 51, 0.88);
+  --color-text-alternative: rgba(55, 56, 60, 0.61);
+  --color-text-inverse: #f7f7f8;
+
+  /* Neutral - Icon */
+  --color-icon-default: #171719;
+  --color-icon-neutral: rgba(46, 47, 51, 0.88);
+  --color-icon-inverse: #f7f7f8;
+
+  /* Neutral - Border */
+  --color-border-default: rgba(112, 115, 124, 0.35);
+  --color-border-alternative: rgba(112, 115, 124, 0.16);
+
+  /* Status */
+  --color-status-negative: #ff4242;
+
+  /* Common */
+  --color-white: #ffffff;
+
+  /* Spacing */
+  --spacing-none: 0px;
+  --spacing-2: 2px;
+  --spacing-4: 4px;
+  --spacing-8: 8px;
+  --spacing-12: 12px;
+  --spacing-16: 16px;
+
+  /* Border Radius */
+  --radius-none: 0px;
+  --radius-4: 4px;
+  --radius-8: 8px;
+  --radius-12: 12px;
+  --radius-20: 20px;
+  --radius-32: 32px;
+
+  /* Shadow */
+  --shadow-s3: 0 8px 20px -4px rgba(0, 0, 0, 0.10);
+}
