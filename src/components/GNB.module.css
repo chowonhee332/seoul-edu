@@ -4,94 +4,88 @@
   justify-content: space-between;
   width: 100%;
   height: 72px;
-  padding: 0 40px;
+  padding: 0 48px;
   position: relative;
   z-index: 100;
-}
-
-.dark {
-  background: transparent;
-  color: var(--color-text-inverse);
 }
 
 .light {
   background: var(--color-white);
   color: var(--color-text-default);
-  border-bottom: 1px solid var(--color-border-default);
+  border-bottom: 1px solid var(--color-border-alternative);
+  box-shadow: var(--shadow-s3);
+}
+
+.dark {
+  background: transparent;
+  color: var(--color-text-inverse);
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
 }
 
 .logo {
   display: flex;
   align-items: center;
-  gap: var(--spacing-8);
   flex-shrink: 0;
 }
 
-.logoIcon {
-  width: 32px;
-  height: 32px;
-  object-fit: contain;
-}
-
-.logoText {
-  height: 20px;
+.logoImg {
+  height: 34px;
   object-fit: contain;
 }
 
 .menu {
+  position: absolute;
+  left: 50%;
+  top: 50%;
+  transform: translate(-50%, -50%);
   display: flex;
   align-items: center;
-  gap: 0;
+  gap: 32px;
 }
 
 .menuItem {
-  padding: 0 24px;
-  height: 72px;
-  display: flex;
-  align-items: center;
-  font-size: 15px;
-  font-weight: 500;
-  letter-spacing: -0.2px;
+  padding: 8px 12px;
+  font-size: 16px;
+  font-weight: 400;
+  line-height: 1.5;
+  letter-spacing: -0.16px;
   white-space: nowrap;
-  transition: opacity 0.15s;
-  position: relative;
+  border-radius: var(--radius-8);
+  color: inherit;
+  transition: background 0.15s;
 }
 
 .menuItem:hover {
-  opacity: 0.7;
+  background: rgba(0, 0, 0, 0.05);
 }
 
-.menuItem.active::after {
-  content: '';
-  position: absolute;
-  bottom: 0;
-  left: 24px;
-  right: 24px;
-  height: 2px;
-  background: currentColor;
+.dark .menuItem:hover {
+  background: rgba(255, 255, 255, 0.1);
+}
+
+.menuItem.active {
+  font-weight: 600;
 }
 
 .actions {
   display: flex;
   align-items: center;
-  gap: var(--spacing-8);
+  gap: 16px;
+  flex-shrink: 0;
 }
 
 .iconBtn {
   display: flex;
   align-items: center;
   justify-content: center;
-  width: 40px;
-  height: 40px;
-  border-radius: var(--radius-8);
+  width: 24px;
+  height: 24px;
   color: inherit;
-  transition: background 0.15s;
 }
 
-.iconBtn:hover {
-  background: rgba(255, 255, 255, 0.15);
-}
-
-.light .iconBtn:hover {
-  background: rgba(0, 0, 0, 0.06);
+.iconInvert {
+  filter: invert(1) brightness(2);
 }
