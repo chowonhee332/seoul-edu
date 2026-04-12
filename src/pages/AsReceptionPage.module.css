@@ -1,0 +1,620 @@
+.page {
+  padding-top: 68px;
+  display: flex;
+  flex-direction: column;
+  min-height: 100vh;
+  background: #f0f4f9;
+}
+
+/* Breadcrumb */
+.breadcrumbBar {}
+
+.breadcrumb {
+  padding: 32px 48px 0;
+}
+
+.breadcrumbInner {
+  max-width: 1000px;
+  margin: 0 auto;
+  display: flex;
+  align-items: center;
+  gap: 4px;
+  font-size: 14px;
+  color: var(--color-text-default);
+}
+
+.breadcrumbLink {
+  display: flex;
+  align-items: center;
+  gap: 4px;
+  color: rgba(55,56,60,0.61);
+  text-decoration: none;
+}
+
+.breadcrumbLinkText {
+  font-size: 14px;
+  line-height: 1.5;
+  letter-spacing: -0.07px;
+  color: rgba(55,56,60,0.61);
+}
+
+.breadcrumbHome {
+  display: flex;
+  align-items: center;
+  color: var(--color-text-default);
+}
+
+.breadcrumbCurrent {
+  font-size: 14px;
+  line-height: 1.5;
+  letter-spacing: -0.07px;
+  color: var(--color-text-default);
+}
+
+/* Body */
+.body {
+  flex: 1;
+  padding: 8px 48px 40px; /* Radius 노출을 위해 하단 여백 복구 */
+  display: flex;
+  flex-direction: column;
+}
+
+.inner {
+  max-width: 1000px;
+  width: 100%;
+  margin: 0 auto;
+  display: flex;
+  flex-direction: column;
+  gap: 0;
+  flex: 1; /* 부모 공간 가득 채우기 */
+}
+
+/* Page title */
+.title {
+  font-size: 36px;
+  font-weight: 700;
+  line-height: 1.2;
+  letter-spacing: -0.72px;
+  color: #171719;
+  margin-top: 4px;
+  margin-bottom: 36px; /* 최종 요청사항: 타이틀 간격 36px */
+}
+
+/* Step indicator card */
+.stepCard {
+  background: var(--color-white);
+  border-radius: 20px;
+  padding: 28px 28px;
+  margin-bottom: 12px; /* 섹션 간 간격 12px 요청 적용 */
+}
+
+.stepList {
+  display: grid;
+  grid-template-columns: 100px 1fr 100px 1fr 100px 1fr 100px;
+  align-items: start;
+}
+
+.stepItem {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 8px;
+}
+
+.stepLine {
+  height: 40px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.stepLine::after {
+  content: '';
+  display: block;
+  width: 100%;
+  height: 1px;
+  background: rgba(112,115,124,0.2);
+}
+
+.stepCircle {
+  width: 40px;
+  height: 40px;
+  border-radius: 999px;
+  background: #f6f8fc;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 14px;
+  font-weight: 400;
+  line-height: 1.5;
+  letter-spacing: -0.07px;
+  color: rgba(55,56,60,0.28);
+  flex-shrink: 0;
+}
+
+.stepCircle.stepActive {
+  background: var(--color-primary-default);
+  color: var(--color-white);
+}
+
+.stepLabel {
+  font-size: 14px;
+  font-weight: 400;
+  line-height: 1.5;
+  letter-spacing: -0.07px;
+  color: #a0a0a1; /* 피그마에 맞춰 비활성 색상 조정 */
+  text-align: center;
+  white-space: nowrap;
+}
+
+.stepLabel.stepLabelActive,
+.stepLabel.stepLabelDone {
+  color: #171719; /* 활성 및 완료된 텍스트 색상 */
+  font-weight: 500;
+}
+
+/* Form card */
+.formCard {
+  background: var(--color-white);
+  border-radius: 20px; /* 모든 모서리 20px 복구 */
+  padding: 48px 32px 48px; 
+  display: flex;
+  flex-direction: column;
+  gap: 0;
+  flex: 1;
+  margin-bottom: 0;
+}
+
+.formInner {
+  width: 100%;
+  max-width: 500px; /* 요청하신 대로 500px로 조정 */
+  margin: 0 auto;
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+}
+
+.formTitle {
+  font-size: 24px;
+  font-weight: 700;
+  line-height: 1.4;
+  letter-spacing: -0.24px;
+  color: #171719;
+  margin-bottom: 24px;
+  text-align: left;
+}
+
+/* Fields */
+.fields {
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+  margin-bottom: 8px;
+}
+
+.field {
+  display: flex;
+  flex-direction: column;
+  gap: 0;
+}
+
+.labelRow {
+  display: flex;
+  align-items: center;
+  gap: 4px;
+  margin-bottom: 8px; /* 입력창과의 간격 */
+}
+
+.labelRowCompact {
+  display: flex;
+  align-items: center;
+  gap: 4px;
+  margin-bottom: 8px;
+}
+
+.label {
+  font-size: 14px;
+  font-weight: 500;
+  line-height: 1.5;
+  letter-spacing: -0.07px;
+  color: rgba(46,47,51,0.88);
+}
+
+.dot {
+  width: 5px;
+  height: 5px;
+  border-radius: 50%;
+  background: var(--color-status-negative);
+  flex-shrink: 0;
+}
+
+.input {
+  height: 40px;
+  border: 1px solid rgba(112,115,124,0.16);
+  border-radius: var(--radius-4);
+  padding: 0 12px 0 16px;
+  font-size: 14px;
+  font-family: inherit;
+  color: var(--color-text-default);
+  background: var(--color-white);
+  outline: none;
+  transition: border-color 0.15s;
+  width: 100%;
+  box-sizing: border-box;
+}
+
+.input::placeholder {
+  color: #989ba2;
+}
+
+.input:focus {
+  border-color: var(--color-primary-default);
+  background: #fcfdfe;
+}
+
+.addressRow {
+  display: flex;
+  gap: 8px;
+  margin-bottom: 4px;
+}
+
+.addressRow .input {
+  flex: 1;
+  min-width: 0;
+}
+
+.addressSearchBtn {
+  height: 40px;
+  width: 80px;
+  flex-shrink: 0;
+  background: rgba(112,115,124,0.08);
+  border-radius: var(--radius-4);
+  font-size: 16px;
+  font-family: inherit;
+  color: var(--color-text-default);
+  cursor: pointer;
+  transition: background 0.15s;
+  white-space: nowrap;
+}
+
+.addressSearchBtn:hover {
+  background: rgba(112,115,124,0.15);
+}
+
+/* Privacy notice */
+.privacyNotice {
+  display: flex;
+  flex-direction: column;
+  gap: 0;
+  font-size: 12px;
+  line-height: 1.3;
+  color: rgba(55,56,60,0.61);
+  margin-top: 4px;
+}
+
+.bullet {
+  color: rgba(55,56,60,0.61);
+}
+
+/* Input with timer */
+.inputTimerWrap {
+  position: relative;
+  flex: 1;
+  min-width: 0;
+}
+
+.inputTimerWrap .input {
+  width: 100%;
+  padding-right: 60px;
+}
+
+.inputTimer {
+  position: absolute;
+  right: 12px;
+  top: 50%;
+  transform: translateY(-50%);
+  font-size: 14px;
+  color: var(--color-primary-default);
+  font-variant-numeric: tabular-nums;
+  pointer-events: none;
+}
+
+/* Input with inline button */
+.inputWithBtn {
+  display: flex;
+  gap: 8px;
+  align-items: center;
+}
+
+.inputWithBtn .input {
+  flex: 1;
+  min-width: 0;
+}
+
+.codeRow {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  margin-top: 4px;
+}
+
+.codeRow .input {
+  flex: 1;
+  min-width: 0;
+}
+
+.timer {
+  font-size: 14px;
+  color: var(--color-primary-default);
+  font-variant-numeric: tabular-nums;
+  white-space: nowrap;
+  flex-shrink: 0;
+}
+
+.btnVerify {
+  height: 40px;
+  padding: 0 16px;
+  border-radius: var(--radius-4);
+  background: rgba(112,115,124,0.08);
+  font-size: 14px;
+  font-family: inherit;
+  color: var(--color-text-default);
+  cursor: pointer;
+  white-space: nowrap;
+  flex-shrink: 0;
+  transition: background 0.15s;
+}
+
+.btnVerify:hover {
+  background: rgba(112,115,124,0.16);
+}
+
+.btnVerify:disabled,
+.btnVerifyDisabled {
+  opacity: 0.4;
+  cursor: not-allowed;
+}
+
+.btnResend {
+  height: 40px;
+  padding: 0 12px;
+  border-radius: var(--radius-4);
+  background: rgba(112,115,124,0.08);
+  font-size: 14px;
+  font-family: inherit;
+  color: var(--color-text-default);
+  cursor: pointer;
+  white-space: nowrap;
+  flex-shrink: 0;
+  transition: background 0.15s;
+}
+
+.btnResend:hover {
+  background: rgba(112,115,124,0.16);
+}
+
+.btnConfirm {
+  height: 40px;
+  padding: 0 16px;
+  border-radius: var(--radius-4);
+  background: var(--color-primary-default);
+  color: var(--color-white);
+  font-size: 14px;
+  font-family: inherit;
+  cursor: pointer;
+  white-space: nowrap;
+  flex-shrink: 0;
+  transition: opacity 0.15s;
+}
+
+.btnConfirm:hover {
+  opacity: 0.85;
+}
+
+/* Consent row */
+.consentRow {
+  display: flex;
+  align-items: center;
+  justify-content: space-between; /* 양 끝 정렬 */
+  gap: 8px;
+  margin-top: 32px;
+  padding: 16px 20px;
+  background: #f6f8fc; /* 연한 그레이 배경색 추가 */
+  border-radius: 12px;
+}
+
+.consentLeft {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+}
+
+.checkbox {
+  width: 18px;
+  height: 18px;
+  cursor: pointer;
+  accent-color: var(--color-primary-default);
+  flex-shrink: 0;
+}
+
+.consentLabel {
+  font-size: 14px;
+  line-height: 1.5;
+  color: var(--color-text-default);
+  cursor: pointer;
+}
+
+.btnTextLink {
+  font-size: 14px;
+  color: #2e2f33; /* 텍스트 색상을 다크 그레이로 변경 */
+  background: none;
+  font-family: inherit;
+  cursor: pointer;
+  padding: 0;
+  display: flex;
+  align-items: center;
+  gap: 2px;
+  text-decoration: none;
+}
+
+/* Completion step */
+.completionBox {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 16px;
+  padding: 48px 0;
+  text-align: center;
+}
+
+.completionIcon {
+  flex-shrink: 0;
+}
+
+.completionTitle {
+  font-size: 24px;
+  font-weight: 700;
+  color: var(--color-text-default);
+  letter-spacing: -0.24px;
+}
+
+.completionDesc {
+  font-size: 15px;
+  line-height: 1.6;
+  color: rgba(55,56,60,0.61);
+}
+
+/* Placeholder for step 3 */
+.placeholderBox {
+  min-height: 200px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background: rgba(112,115,124,0.05);
+  border-radius: 12px;
+  margin-top: 16px;
+}
+
+.placeholderText {
+  font-size: 15px;
+  color: rgba(55,56,60,0.4);
+}
+
+/* Actions */
+.actions {
+  display: flex;
+  align-items: center;
+  justify-content: flex-end;
+  margin-top: auto;
+  width: 100%;
+}
+
+.actionsRow {
+  justify-content: space-between;
+}
+
+.btnPrev {
+  height: 40px;
+  padding: 0 48px;
+  border-radius: 8px;
+  background: rgba(112,115,124,0.08);
+  color: var(--color-text-default);
+  font-size: 16px;
+  font-weight: 400;
+  font-family: inherit;
+  cursor: pointer;
+  transition: background 0.15s;
+  letter-spacing: -0.16px;
+}
+
+.btnPrev:hover {
+  background: rgba(112,115,124,0.16);
+}
+
+.btnNext {
+  height: 40px;
+  padding: 0 48px;
+  border-radius: 8px;
+  background: var(--color-primary-default);
+  color: var(--color-white);
+  font-size: 16px;
+  font-weight: 400;
+  font-family: inherit;
+  cursor: pointer;
+  transition: opacity 0.15s;
+  letter-spacing: -0.16px;
+}
+
+.btnNext:hover {
+  opacity: 0.85;
+}
+
+/* Step done */
+.stepCircle.stepDone {
+  background: var(--color-primary-default);
+  color: var(--color-white);
+}
+
+/* ── Responsive ── */
+@media (max-width: 1280px) {
+  .breadcrumb {
+    padding: 13px 48px;
+  }
+
+  .body {
+    padding: 0 48px 80px;
+  }
+}
+
+@media (max-width: 768px) {
+  .breadcrumb {
+    padding: 13px 24px;
+  }
+
+  .body {
+    padding: 0 24px 60px;
+  }
+
+  .formInner {
+    padding: 0 24px;
+  }
+
+  .actions {
+    padding: 0 24px;
+  }
+
+  .consentRow {
+    padding: 0 24px;
+  }
+
+  .stepList {
+    grid-template-columns: repeat(4, 1fr);
+  }
+
+  .stepLine {
+    display: none;
+  }
+}
+
+@media (max-width: 375px) {
+  .breadcrumb {
+    padding: 12px 16px;
+  }
+
+  .body {
+    padding: 0 16px 48px;
+  }
+
+  .formInner {
+    padding: 0;
+  }
+
+  .actions {
+    padding: 0;
+    justify-content: stretch;
+  }
+
+  .btnNext {
+    width: 100%;
+  }
+}

@@ -1,0 +1,336 @@
+import { useState } from 'react'
+import { Link } from 'react-router-dom'
+import { motion, AnimatePresence } from 'framer-motion'
+import GNB from '../components/GNB'
+import Footer from '../components/Footer'
+import TransitionLayout from '../components/TransitionLayout'
+import styles from './AsHistoryPage.module.css'
+
+const PERIOD_TABS = ['1주일', '1개월', '3개월', '6개월']
+
+const SAMPLE_ROWS = [
+  {
+    no: 3,
+    category: 'SW > 부팅/초기화/백업 > APP/SW 일반',
+    content: '방문 전에 전화 상담 받고 싶어서 신청합니다. 연락...',
+    date: '2026.04.10',
+    status: '정상',
+  },
+  {
+    no: 2,
+    category: 'SW > 부팅/초기화/백업 > APP/SW 일반',
+    content: '방문 전에 전화 상담 받고 싶어서 신청합니다. 연락...',
+    date: '2026.04.10',
+    status: '정상',
+  },
+  {
+    no: 1,
+    category: 'SW > 부팅/초기화/백업 > APP/SW 일반',
+    content: '방문 전에 전화 상담 받고 싶어서 신청합니다. 연락...',
+    date: '2026.04.10',
+    status: '정상',
+  },
+]
+
+// 애니메이션 변수
+const stepVariants = {
+  initial: { opacity: 0, y: 10 },
+  animate: { opacity: 1, y: 0 },
+  exit: { opacity: 0, y: -10 },
+}
+
+const tableContainerVariants = {
+  hidden: { opacity: 0 },
+  visible: {
+    opacity: 1,
+    transition: { staggerChildren: 0.05 }
+  }
+}
+
+const rowVariants = {
+  hidden: { opacity: 0, y: 5 },
+  visible: { opacity: 1, y: 0 }
+}
+
+export default function AsHistoryPage() {
+  const [step, setStep] = useState(0)
+  const [name, setName] = useState('')
+  const [phone, setPhone] = useState('')
+  const [code, setCode] = useState('')
+  const [consent, setConsent] = useState(false)
+  const [activePeriod, setActivePeriod] = useState(2)
+  const [startDate, setStartDate] = useState('')
+  const [endDate, setEndDate] = useState('')
+
+  const handleNext = () => {
+    setStep(1)
+  }
+
+  return (
+    <TransitionLayout>
+      <div className={styles.page}>
+        <GNB variant="light" />
+
+        {/* 브레드크럼 */}
+        <div className={styles.breadcrumb}>
+          <div className={styles.breadcrumbInner}>
+            <Link to="/" className={styles.breadcrumbHome}>
+              <svg width="16" height="16" viewBox="0 0 16 16" fill="none">
+                <path d="M2 6.5L8 2l6 4.5V14H10v-3H6v3H2V6.5z" fill="#171719"/>
+              </svg>
+            </Link>
+            <svg width="12" height="12" viewBox="0 0 12 12" fill="none">
+              <path d="M4 3l3 3-3 3" stroke="#a0a0a1" strokeWidth="1.2" strokeLinecap="round"/>
+            </svg>
+            <span className={styles.breadcrumbCurrent}>AS 접수 조회·변경</span>
+          </div>
+        </div>
+
+        <div className={styles.body}>
+          <div className={styles.inner}>
+            <motion.h1 
+              className={styles.title}
+              initial={{ opacity: 0, x: -20 }}
+              animate={{ opacity: 1, x: 0 }}
+            >
+              {step === 0 ? 'AS 접수 조회 · 변경' : 'A/S 접수 조회 · 변경'}
+            </motion.h1>
+
+            <AnimatePresence mode="wait">
+              {step === 0 ? (
+                /* ── Step 0: Identity verification ── */
+                <motion.div 
+                  key="step0"
+                  className={styles.formCard}
+                  variants={stepVariants}
+                  initial="initial"
+                  animate="animate"
+                  exit="exit"
+                  transition={{ duration: 0.3 }}
+                >
+                  <h2 className={styles.formTitle}>접수자 정보를 입력해주세요.</h2>
+
+                  <div className={styles.fields}>
+                    {/* 이름 */}
+                    <div className={styles.field}>
+                      <label className={styles.label}>이름</label>
+                      <input
+                        type="text"
+                        className={styles.input}
+                        placeholder="이름을 입력해주세요."
+                        value={name}
+                        onChange={(e) => setName(e.target.value)}
+                      />
+                    </div>
+
+                    {/* 휴대폰 */}
+                    <div className={styles.field}>
+                      <label className={styles.label}>휴대폰</label>
+                      <div className={styles.inputWithBtn}>
+                        <input
+                          type="tel"
+                          className={styles.input}
+                          placeholder="'-'를 제외하고 숫자 입력"
+                          value={phone}
+                          onChange={(e) => setPhone(e.target.value)}
+                        />
+                        <motion.button 
+                          type="button" 
+                          className={styles.btnVerify}
+                          whileTap={{ scale: 0.95 }}
+                        >
+                          인증 받기
+                        </motion.button>
+                      </div>
+                      <div className={styles.codeRow}>
+                        <div className={styles.inputTimerWrap}>
+                          <input
+                            type="text"
+                            className={styles.input}
+                            placeholder="123456"
+                            value={code}
+                            onChange={(e) => setCode(e.target.value)}
+                          />
+                          <span className={styles.inputTimer}>00:00</span>
+                        </div>
+                        <motion.button 
+                          type="button" 
+                          className={styles.btnConfirm}
+                          whileTap={{ scale: 0.95 }}
+                        >
+                          확인
+                        </motion.button>
+                      </div>
+                    </div>
+                  </div>
+
+                  {/* 동의 */}
+                  <div className={styles.consentRow}>
+                    <input
+                      type="checkbox"
+                      id="consent"
+                      className={styles.checkbox}
+                      checked={consent}
+                      onChange={(e) => setConsent(e.target.checked)}
+                    />
+                    <label htmlFor="consent" className={styles.consentLabel}>
+                      개인정보 수집/이용 동의
+                    </label>
+                    <motion.button type="button" className={styles.btnTextLink} whileHover={{ x: 3 }}>
+                      전문보기 &gt;
+                    </motion.button>
+                  </div>
+
+                  {/* 다음 버튼 */}
+                  <div className={styles.actions}>
+                    <motion.button 
+                      type="button" 
+                      className={styles.btnNext} 
+                      onClick={handleNext}
+                      whileHover={{ scale: 1.02 }}
+                      whileTap={{ scale: 0.98 }}
+                    >
+                      다음
+                    </motion.button>
+                  </div>
+                </motion.div>
+              ) : (
+                /* ── Step 1: Results ── */
+                <motion.div 
+                  key="step1"
+                  variants={stepVariants}
+                  initial="initial"
+                  animate="animate"
+                  exit="exit"
+                  transition={{ duration: 0.3 }}
+                >
+                  {/* 검색 필터 카드 */}
+                  <motion.div className={styles.filterCard} whileHover={{ scale: 1.005 }}>
+                    <label className={styles.filterLabel}>조회기간</label>
+                    <div className={styles.periodTabs}>
+                      {PERIOD_TABS.map((tab, i) => (
+                        <motion.button
+                          key={tab}
+                          type="button"
+                          className={`${styles.periodTab} ${i === activePeriod ? styles.periodTabActive : ''}`}
+                          onClick={() => setActivePeriod(i)}
+                          whileTap={{ scale: 0.95 }}
+                        >
+                          {tab}
+                        </motion.button>
+                      ))}
+                    </div>
+                    <input
+                      type="date"
+                      className={styles.dateInput}
+                      value={startDate}
+                      onChange={(e) => setStartDate(e.target.value)}
+                      placeholder="YYYY / MM / DD"
+                    />
+                    <span className={styles.dateSep}>-</span>
+                    <input
+                      type="date"
+                      className={styles.dateInput}
+                      value={endDate}
+                      onChange={(e) => setEndDate(e.target.value)}
+                      placeholder="YYYY / MM / DD"
+                    />
+                    <motion.button 
+                      type="button" 
+                      className={styles.btnSearch}
+                      whileTap={{ scale: 0.95 }}
+                      whileHover={{ opacity: 0.9 }}
+                    >
+                      조회
+                    </motion.button>
+                  </motion.div>
+
+                  {/* A/S 접수 내역 섹션 */}
+                  <h2 className={styles.sectionTitle}>A/S 접수 내역</h2>
+
+                  {/* 결과 테이블 */}
+                  <div className={styles.tableCard}>
+                    <div className={styles.tableHeader}>
+                      <span className={styles.totalCount}>총 {SAMPLE_ROWS.length}건</span>
+                      <motion.div className={styles.sortSelect} whileHover={{ x: 3 }}>
+                        <span>이름순</span>
+                        <svg width="16" height="16" viewBox="0 0 16 16" fill="none">
+                          <path d="M4 6l4 4 4-4" stroke="#70737c" strokeWidth="1.4" strokeLinecap="round" strokeLinejoin="round"/>
+                        </svg>
+                      </motion.div>
+                    </div>
+
+                    <table className={styles.table}>
+                      <thead>
+                        <tr>
+                          <th className={styles.th}>No.</th>
+                          <th className={styles.th}>문의구분</th>
+                          <th className={styles.th}>문의내용</th>
+                          <th className={styles.th}>신청일</th>
+                          <th className={styles.th}>처리현황</th>
+                        </tr>
+                      </thead>
+                      <motion.tbody
+                        variants={tableContainerVariants}
+                        initial="hidden"
+                        animate="visible"
+                      >
+                        {SAMPLE_ROWS.map((row) => (
+                          <motion.tr key={row.no} className={styles.tr} variants={rowVariants} whileHover={{ backgroundColor: '#fbfcfd' }}>
+                            <td className={styles.td}>{row.no}</td>
+                            <td className={styles.td}>{row.category}</td>
+                            <td className={`${styles.td} ${styles.tdContent}`}>{row.content}</td>
+                            <td className={styles.td}>{row.date}</td>
+                            <td className={styles.td}>
+                              <span className={styles.statusBadge}>{row.status}</span>
+                            </td>
+                          </motion.tr>
+                        ))}
+                      </motion.tbody>
+                    </table>
+
+                    {/* 페이지네이션 */}
+                    <div className={styles.pagination}>
+                      <motion.button className={styles.pageBtn} aria-label="첫 페이지" whileTap={{ scale: 0.9 }}>
+                        <svg width="16" height="16" viewBox="0 0 16 16" fill="none">
+                          <path d="M9 4L5 8l4 4M12 4L8 8l4 4" stroke="currentColor" strokeWidth="1.2" strokeLinecap="round" strokeLinejoin="round"/>
+                        </svg>
+                      </motion.button>
+                      <motion.button className={styles.pageBtn} aria-label="이전 페이지" whileTap={{ scale: 0.9 }}>
+                        <svg width="16" height="16" viewBox="0 0 16 16" fill="none">
+                          <path d="M9 4L5 8l4 4" stroke="currentColor" strokeWidth="1.2" strokeLinecap="round" strokeLinejoin="round"/>
+                        </svg>
+                      </motion.button>
+                      {[1,2,3,4,5,6,7].map((p) => (
+                        <motion.button 
+                          key={p} 
+                          className={`${styles.pageNumBtn} ${p === 1 ? styles.pageActive : ''}`}
+                          whileHover={{ backgroundColor: '#f4f6fa' }}
+                          whileTap={{ scale: 0.9 }}
+                        >
+                          {p}
+                        </motion.button>
+                      ))}
+                      <motion.button className={styles.pageBtn} aria-label="다음 페이지" whileTap={{ scale: 0.9 }}>
+                        <svg width="16" height="16" viewBox="0 0 16 16" fill="none">
+                          <path d="M7 4l4 4-4 4" stroke="currentColor" strokeWidth="1.2" strokeLinecap="round" strokeLinejoin="round"/>
+                        </svg>
+                      </motion.button>
+                      <motion.button className={styles.pageBtn} aria-label="마지막 페이지" whileTap={{ scale: 0.9 }}>
+                        <svg width="16" height="16" viewBox="0 0 16 16" fill="none">
+                          <path d="M4 4l4 4-4 4M7 4l4 4-4 4" stroke="currentColor" strokeWidth="1.2" strokeLinecap="round" strokeLinejoin="round"/>
+                        </svg>
+                      </motion.button>
+                    </div>
+                  </div>
+                </motion.div>
+              )}
+            </AnimatePresence>
+          </div>
+        </div>
+
+        <Footer />
+      </div>
+    </TransitionLayout>
+  )
+}

@@ -1,9 +1,9 @@
 :root {
   /* Primary */
-  --color-primary-default: #1a75ff;
-  --color-primary-bg: #f0f1f6;
-  --color-primary-neutral: #f6f8fc;
-  --color-primary-border: #1a75ff;
+  --color-primary-default: #1A75FF;
+  --color-primary-bg: #f0f4ff;
+  --color-primary-neutral: #f5f8ff;
+  --color-primary-border: #1A75FF;
 
   /* Neutral - Text */
   --color-text-default: #171719;
@@ -33,15 +33,24 @@
   --spacing-8: 8px;
   --spacing-12: 12px;
   --spacing-16: 16px;
+  --spacing-20: 20px;
+  --spacing-24: 24px;
+  --spacing-32: 32px;
+  --spacing-40: 40px;
+  --spacing-48: 48px;
+  --spacing-60: 60px;
 
   /* Border Radius */
   --radius-none: 0px;
   --radius-4: 4px;
   --radius-8: 8px;
   --radius-12: 12px;
+  --radius-16: 16px;
   --radius-20: 20px;
   --radius-32: 32px;
+  --radius-full: 999px;
 
   /* Shadow */
+  --shadow-card: 10px 20px 30px 0px rgba(0, 0, 0, 0.02);
   --shadow-s3: 0 8px 20px -4px rgba(0, 0, 0, 0.10);
 }

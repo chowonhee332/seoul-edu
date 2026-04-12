@@ -1,32 +1,13 @@
 .footer {
-  background: #eff2f8;
   width: 100%;
-  padding: 52px 48px;
+  padding: 46px max(48px, calc(50% - 492px));
 }
 
 .inner {
-  max-width: 960px;
-  margin: 0 auto;
-  display: flex;
-  gap: 32px;
-  align-items: flex-end;
-}
-
-.logo {
   display: flex;
   align-items: center;
-  flex-shrink: 0;
-}
-
-.logoImg {
-  height: 39px;
-  object-fit: contain;
-}
-
-.info {
-  display: flex;
-  flex-direction: column;
-  gap: 8px;
+  justify-content: center; /* 가로 중앙 정렬 */
+  gap: 40px;
 }
 
 .links {
@@ -40,8 +21,9 @@
   font-weight: 400;
   line-height: 1.4;
   letter-spacing: -0.065px;
-  color: rgba(55,56,60,0.61);
+  color: rgba(55, 56, 60, 0.61);
   white-space: nowrap;
+  text-decoration: none;
 }
 
 .link:hover {
@@ -51,8 +33,7 @@
 .divider {
   width: 0;
   height: 11px;
-  border-left: 1px solid rgba(112,115,124,0.35);
-  transform: rotate(90deg);
+  border-left: 1px solid rgba(112, 115, 124, 0.35);
 }
 
 .copyright {
@@ -60,6 +41,6 @@
   font-weight: 400;
   line-height: 1.4;
   letter-spacing: -0.065px;
-  color: rgba(46,47,51,0.88);
+  color: #2e2f33;
   white-space: nowrap;
 }

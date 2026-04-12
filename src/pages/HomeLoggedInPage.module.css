@@ -1,0 +1,823 @@
+.page {
+  display: flex;
+  flex-direction: column;
+  min-height: 100vh;
+  background: #f0f4f9;
+}
+
+/* ── Hero ── */
+.hero {
+  position: relative;
+  width: 100%;
+  height: 360px;
+  overflow: hidden;
+  background: #111;
+}
+
+.heroBg {
+  position: absolute;
+  inset: 0;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+
+.heroOverlay {
+  position: absolute;
+  inset: 0;
+  background: linear-gradient(to bottom, rgba(0,0,0,0.55), rgba(0,0,0,0.1));
+  pointer-events: none;
+}
+
+/* Hero text — positioned from top within max-width container */
+.heroText {
+  position: absolute;
+  top: 153px;
+  left: max(48px, calc(50% - 492px));
+  z-index: 10;
+  display: flex;
+  flex-direction: column;
+  gap: 4px;
+}
+
+.heroName {
+  font-size: 36px;
+  font-weight: 700;
+  line-height: 1.3;
+  letter-spacing: -0.36px;
+  color: #fff;
+  margin: 0;
+}
+
+.heroSubtitle {
+  font-size: 36px;
+  font-weight: 400;
+  line-height: 1.3;
+  letter-spacing: -0.36px;
+  color: rgba(255, 255, 255, 0.9);
+  margin: 0;
+}
+
+/* ── Quick service bar (floating card overlapping hero bottom) ── */
+.quickBar {
+  position: relative;
+  z-index: 10;
+  display: flex;
+  justify-content: center;
+  padding: 0 48px;
+  margin-top: -48px;
+}
+
+.quickBarInner {
+  display: flex;
+  align-items: stretch;
+  width: 100%;
+  max-width: 1000px;
+  height: 80px;
+  background: var(--color-white);
+  border-radius: 20px;
+  padding: 0 20px;
+  overflow: hidden;
+}
+
+.quickService {
+  flex: 1;
+  display: flex;
+  align-items: center;
+  gap: 8px; /* 12px -> 8px 조정 */
+  padding: 0 20px;
+  text-decoration: none;
+  transition: background 0.15s;
+}
+
+.quickService:hover .quickServiceIconWrap img {
+  filter: brightness(0);
+}
+
+.quickServiceDivider {
+  position: relative;
+}
+
+.quickServiceDivider::after {
+  content: '';
+  position: absolute;
+  right: 0;
+  top: 50%;
+  transform: translateY(-50%);
+  width: 1px;
+  height: 32px;
+  background: rgba(112, 115, 124, 0.2);
+}
+
+.quickServiceIconWrap {
+  width: 44px;
+  height: 44px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-shrink: 0;
+}
+
+.quickServiceIconWrap img {
+  transition: filter 0.15s;
+}
+
+.quickServiceContent {
+  flex: 1;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 8px;
+}
+
+.quickServiceArrow {
+  opacity: 0;
+  transition: opacity 0.15s;
+  display: flex;
+  align-items: center;
+}
+
+.quickService:hover .quickServiceArrow {
+  opacity: 1;
+}
+
+.quickServiceLabel {
+  font-size: 16px;
+  font-weight: 600;
+  line-height: 1.5;
+  letter-spacing: -0.16px;
+  color: var(--color-text-default);
+  white-space: nowrap;
+}
+
+/* ── Main content ── */
+.main {
+  flex: 1;
+  padding: 40px max(48px, calc(50% - 500px)) 60px;
+}
+
+.inner {
+  display: flex;
+  flex-direction: column;
+  gap: 40px;
+}
+
+/* ── Section ── */
+.section {
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+}
+
+.sectionHeader {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 12px;
+}
+
+.sectionTitle {
+  font-size: 20px;
+  font-weight: 600;
+  line-height: 1.4;
+  letter-spacing: -0.2px;
+  color: var(--color-text-default);
+}
+
+.infoHint {
+  font-size: 13px;
+  font-weight: 400;
+  line-height: 1.4;
+  letter-spacing: -0.065px;
+  color: var(--color-text-alternative);
+}
+
+.activityHeader {
+  display: flex;
+  align-items: center;
+  gap: 6px;
+}
+
+.activityTitle {
+  font-size: 20px;
+  font-weight: 600;
+  line-height: 1.4;
+  letter-spacing: -0.2px;
+  color: var(--color-text-default);
+}
+
+.activityPeriod {
+  font-size: 12px;
+  font-weight: 400;
+  line-height: 1.4;
+  letter-spacing: -0.06px;
+  color: var(--color-text-alternative);
+}
+
+.moreBtn {
+  display: flex;
+  align-items: center;
+  gap: 2px;
+  font-size: 14px;
+  color: var(--color-text-default);
+  text-decoration: none;
+  height: 32px;
+  padding: 4px 12px;
+  border-radius: var(--radius-8);
+}
+
+.moreBtn:hover {
+  background: var(--color-border-alternative);
+}
+
+/* ── 최근활동 outer card (school row + AS card) ── */
+.asCardOuter {
+  background: var(--color-white);
+  border-radius: 20px;
+  box-shadow: 10px 20px 30px 0 rgba(0, 0, 0, 0.02);
+  padding: 12px;
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+}
+
+/* School info row */
+.asSchoolRow {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  padding: 8px 12px;
+  border-radius: 12px;
+}
+
+.asSchoolIcon {
+  flex-shrink: 0;
+}
+
+.asSchoolName {
+  font-size: 18px;
+  font-weight: 600;
+  line-height: 1.5;
+  letter-spacing: -0.18px;
+  color: var(--color-text-default);
+}
+
+.asSchoolDivider {
+  width: 1px;
+  height: 14px;
+  background: var(--color-border-default);
+  flex-shrink: 0;
+}
+
+.asSchoolClass {
+  font-size: 16px;
+  font-weight: 500;
+  line-height: 1.5;
+  letter-spacing: -0.16px;
+  color: var(--color-text-default);
+}
+
+/* ── AS 예약 카드 ── */
+.asCard {
+  display: flex;
+  gap: 12px;
+  height: 140px;
+}
+
+.asCardLeft {
+  background: linear-gradient(to left, #609fff, #1a75ff);
+  border-radius: var(--radius-16);
+  padding: 16px 20px;
+  width: 240px;
+  flex-shrink: 0;
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
+  justify-content: space-between;
+  text-decoration: none;
+  transition: opacity 0.15s;
+}
+
+.asCardLeft:hover {
+  opacity: 0.92;
+}
+
+.asCardTopRow {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+
+.asCardLabel {
+  font-size: 16px;
+  font-weight: 400;
+  color: rgba(255, 255, 255, 0.8);
+  line-height: 1.5;
+  letter-spacing: -0.08px;
+}
+
+.asCardCount {
+  display: flex;
+  align-items: baseline;
+  gap: 4px;
+}
+
+.asCardNum {
+  font-size: 44px;
+  font-weight: 500;
+  color: #fff;
+  line-height: 1;
+  letter-spacing: -0.44px;
+}
+
+.asCardUnit {
+  font-size: 18px;
+  font-weight: 400;
+  color: rgba(255, 255, 255, 0.8);
+  line-height: 1.5;
+  letter-spacing: -0.18px;
+}
+
+/* 오른쪽 상태 영역 */
+.asStatusArea {
+  flex: 1;
+  background: #f6f8fc;
+  border-radius: 20px;
+  display: flex;
+  align-items: stretch;
+  padding: 0 8px;
+  overflow: hidden;
+}
+
+.asStatusCol {
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  justify-content: space-between;
+  gap: 20px;
+  padding: 16px 12px;
+  text-decoration: none;
+  border-radius: 20px;
+  transition: background 0.15s;
+}
+
+.asStatusCol:hover {
+  background: #eef2fa;
+}
+
+.asStatusColDivider {
+  border-right: 1px solid var(--color-border-alternative);
+}
+
+.asStatusLabelRow {
+  display: flex;
+  align-items: center;
+  gap: 4px;
+}
+
+.asStatusLabel {
+  font-size: 14px;
+  font-weight: 400;
+  color: var(--color-text-alternative);
+  line-height: 1.5;
+  letter-spacing: -0.07px;
+}
+
+.asStatusCount {
+  display: flex;
+  align-items: baseline;
+  gap: 3px;
+}
+
+.asStatusNum {
+  font-size: 44px;
+  font-weight: 500;
+  line-height: 1.1;
+  letter-spacing: -0.44px;
+  color: var(--color-text-default);
+}
+
+.asStatusUnit {
+  font-size: 14px;
+  font-weight: 400;
+  color: var(--color-text-alternative);
+  line-height: 1.5;
+  letter-spacing: -0.14px;
+}
+
+/* ── 보유 제품 칩 ── */
+.chipRow {
+  display: flex;
+  gap: 8px;
+  flex-wrap: wrap;
+}
+
+.chip {
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  height: 38px;
+  padding: 0 14px;
+  border-radius: var(--radius-full);
+  background: var(--color-white);
+  border: none;
+  cursor: pointer;
+  transition: all 0.15s;
+}
+
+.chipActive {
+  background: var(--color-primary-default);
+  border-color: var(--color-primary-default);
+}
+
+.chipName {
+  font-size: 16px;
+  font-weight: 500;
+  color: var(--color-text-default);
+  white-space: nowrap;
+  line-height: 1.5;
+  letter-spacing: -0.16px;
+}
+
+.chipActive .chipName {
+  color: #fff;
+}
+
+.chipBadge {
+  min-width: 24px;
+  height: 24px;
+  padding: 0 6px;
+  border-radius: var(--radius-full);
+  background: rgba(0, 105, 186, 0.1);
+  color: var(--color-primary-default);
+  font-size: 14px;
+  font-weight: 500;
+  line-height: 1.5;
+  letter-spacing: -0.07px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.chipBadgeActive {
+  background: rgba(255, 255, 255, 0.25);
+  color: #fff;
+}
+
+/* ── 스스로 해결 통합 카드 (검색 + 목록) ── */
+.selfHelpCard {
+  background: var(--color-white);
+  border-radius: var(--radius-16);
+  box-shadow: 10px 20px 30px 0 rgba(0, 0, 0, 0.02);
+  display: flex;
+  flex-direction: column;
+}
+
+.searchArea {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 16px;
+  padding: 28px;
+}
+
+.searchCardTitle {
+  font-size: 20px;
+  font-weight: 400;
+  line-height: 1.4;
+  color: var(--color-text-default);
+  letter-spacing: -0.2px;
+  display: flex;
+  align-items: center;
+  gap: 4px;
+  flex-wrap: wrap;
+  justify-content: center;
+  margin: 0;
+}
+
+.searchCardProduct {
+  font-weight: 700;
+  color: var(--color-primary-default);
+}
+
+.searchCardQuestion {
+  font-weight: 400;
+  color: var(--color-text-default);
+}
+
+.searchInputWrap {
+  width: 100%;
+  max-width: 500px;
+  height: 48px;
+  background: var(--color-primary-neutral);
+  border-radius: var(--radius-full);
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  padding: 0 20px;
+}
+
+.searchInput {
+  flex: 1;
+  border: none;
+  outline: none;
+  background: transparent;
+  font-size: 18px;
+  color: var(--color-text-default);
+  font-family: inherit;
+}
+
+.searchInput::placeholder {
+  color: #a0a0a1;
+  font-size: 18px;
+  font-weight: 400;
+}
+
+.selfHelpList {
+  display: flex;
+  flex-direction: column;
+  border-top: 1px solid var(--color-border-alternative);
+  padding: 0 28px 28px;
+}
+
+/* ── 공지사항 카드 ── */
+.card {
+  background: var(--color-white);
+  border-radius: var(--radius-16);
+  box-shadow: 10px 20px 30px 0 rgba(0, 0, 0, 0.02);
+  padding: 24px 32px;
+}
+
+.listRow {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 12px 0;
+  border-bottom: 1px solid var(--color-border-alternative);
+  gap: 12px;
+}
+
+.listRow:last-child {
+  border-bottom: none;
+}
+
+.listRowLeft {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  flex: 1;
+  min-width: 0;
+}
+
+.tag {
+  font-size: 13px;
+  font-weight: 500;
+  line-height: 1.5;
+  letter-spacing: -0.13px;
+  padding: 3px 7px;
+  border-radius: 4px;
+  white-space: nowrap;
+  flex-shrink: 0;
+}
+
+.listTitle {
+  font-size: 16px;
+  font-weight: 500;
+  line-height: 1.5;
+  letter-spacing: -0.16px;
+  color: var(--color-text-default);
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+}
+
+.listMeta {
+  display: flex;
+  align-items: center;
+  gap: 16px;
+  flex-shrink: 0;
+}
+
+.metaItem {
+  display: flex;
+  align-items: center;
+  gap: 6px;
+  font-size: 13px;
+  line-height: 1.4;
+  letter-spacing: -0.065px;
+  color: rgba(46,47,51,0.88);
+  white-space: nowrap;
+}
+
+.metaDivider {
+  width: 0;
+  height: 9px;
+  border-left: 1px solid var(--color-border-default);
+}
+
+.noticeRow {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 20px;
+  padding: 12px 0;
+  border-bottom: 1px solid var(--color-border-alternative);
+}
+
+.noticeRow:last-child {
+  border-bottom: none;
+}
+
+.noticeTitle {
+  display: flex;
+  align-items: center;
+  gap: 4px;
+  flex: 1;
+  min-width: 0;
+}
+
+.noticeTitleText {
+  font-size: 16px;
+  line-height: 1.4;
+  letter-spacing: -0.08px;
+  color: var(--color-text-default);
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+}
+
+.badge {
+  background: var(--color-status-negative);
+  color: var(--color-text-inverse);
+  font-size: 11px;
+  font-weight: 600;
+  line-height: 1.3;
+  width: 16px;
+  height: 16px;
+  border-radius: 20px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-shrink: 0;
+}
+
+.noticeDate {
+  font-size: 16px;
+  line-height: 1.4;
+  letter-spacing: -0.08px;
+  color: rgba(46,47,51,0.88);
+  white-space: nowrap;
+  flex-shrink: 0;
+}
+
+/* ── FAB ── */
+.fab {
+  position: fixed;
+  bottom: 40px;
+  right: 48px;
+  width: 60px;
+  height: 60px;
+  border-radius: 50%;
+  background: #ffffff;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  cursor: pointer;
+  box-shadow: 0px 8px 20px -4px rgba(0, 0, 0, 0.1);
+  transition: box-shadow 0.15s;
+  z-index: 50;
+  border: none;
+}
+
+.fab:hover {
+  box-shadow: 0px 12px 24px -4px rgba(0, 0, 0, 0.15);
+}
+
+/* ── Tablet (≤ 768px) ── */
+@media (max-width: 768px) {
+  .hero {
+    height: 300px;
+  }
+
+  .heroText {
+    top: 100px;
+    left: 24px;
+  }
+
+  .heroName {
+    font-size: 28px;
+  }
+
+  .heroSubtitle {
+    font-size: 28px;
+  }
+
+  .quickBar {
+    padding: 0 24px;
+    margin-top: -36px;
+  }
+
+  .quickBarInner {
+    height: 72px;
+    border-radius: 20px;
+  }
+
+  .quickService {
+    padding: 0 12px;
+    gap: 8px;
+  }
+
+  .quickServiceLabel {
+    font-size: 14px;
+  }
+
+  .main {
+    padding: 24px 24px 48px;
+  }
+
+  .asCardOuter {
+    padding: 16px;
+  }
+
+  .asCard {
+    height: auto;
+    flex-direction: column;
+  }
+
+  .asCardLeft {
+    width: 100%;
+    height: 110px;
+    padding: 16px 20px;
+  }
+
+  .asStatusArea {
+    height: 100px;
+    border-radius: 12px;
+  }
+
+  .asCardNum {
+    font-size: 36px;
+  }
+
+  .asStatusNum {
+    font-size: 32px;
+  }
+
+  .sectionTitle {
+    font-size: 17px;
+  }
+
+  .fab {
+    bottom: 24px;
+    right: 24px;
+    width: 52px;
+    height: 52px;
+  }
+}
+
+/* ── Mobile (≤ 480px) ── */
+@media (max-width: 480px) {
+  .quickBar {
+    padding: 0 16px;
+    margin-top: -28px;
+  }
+
+  .quickBarInner {
+    height: auto;
+    flex-wrap: wrap;
+    border-radius: 16px;
+  }
+
+  .quickService {
+    flex: 0 0 50%;
+    height: 56px;
+    padding: 0 16px;
+    box-sizing: border-box;
+  }
+
+  .quickServiceDivider {
+    border-right: none;
+    border-bottom: 1px solid var(--color-border-alternative);
+  }
+
+  .main {
+    padding: 20px 16px 40px;
+  }
+
+  .card {
+    padding: 16px 20px;
+  }
+
+  .listMeta {
+    display: none;
+  }
+
+  .asCardNum {
+    font-size: 28px;
+  }
+
+  .asStatusNum {
+    font-size: 28px;
+  }
+}
