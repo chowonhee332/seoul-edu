@@ -1,6 +1,7 @@
 import { useState } from 'react'
 import { Link } from 'react-router-dom'
 import { motion } from 'framer-motion'
+import { MdHome, MdChevronRight, MdChevronLeft, MdFirstPage, MdLastPage, MdCheck } from 'react-icons/md'
 import GNB from '../components/GNB'
 import Footer from '../components/Footer'
 import TransitionLayout from '../components/TransitionLayout'
@@ -25,13 +26,6 @@ const VIDEOS = [
 
 const PAGES = [1, 2, 3, 4, 5, 6, 7]
 
-function ChevronRight({ size = 16 }: { size?: number }) {
-  return (
-    <svg width={size} height={size} viewBox="0 0 16 16" fill="none">
-      <path d="M6 4l4 4-4 4" stroke="currentColor" strokeWidth="1.2" strokeLinecap="round" strokeLinejoin="round"/>
-    </svg>
-  )
-}
 
 // 애니메이션 변수
 const containerVariants = {
@@ -77,17 +71,9 @@ export default function VideoGuidePage() {
         <div className={styles.breadcrumb}>
           <div className={styles.breadcrumbInner}>
             <Link to="/" className={styles.breadcrumbHome}>
-              <svg width="16" height="16" viewBox="0 0 16 16" fill="none">
-                <path d="M2 6.5L8 2l6 4.5V14H10v-3H6v3H2V6.5z" fill="#171719"/>
-              </svg>
+              <MdHome size={16} color="#171719" />
             </Link>
-            <svg width="12" height="12" viewBox="0 0 12 12" fill="none">
-              <path d="M4 3l3 3-3 3" stroke="#a0a0a1" strokeWidth="1.2" strokeLinecap="round"/>
-            </svg>
-            <span className={styles.breadcrumbSub}>고객지원</span>
-            <svg width="12" height="12" viewBox="0 0 12 12" fill="none">
-              <path d="M4 3l3 3-3 3" stroke="#a0a0a1" strokeWidth="1.2" strokeLinecap="round"/>
-            </svg>
+            <MdChevronRight size={12} color="#a0a0a1" />
             <span className={styles.breadcrumbText}>동영상 가이드</span>
           </div>
         </div>
@@ -103,7 +89,7 @@ export default function VideoGuidePage() {
             <motion.h1 className={styles.title} variants={itemVariants}>동영상 가이드</motion.h1>
 
             {/* 카테고리 카드 */}
-            <motion.div className={styles.categoryCard} variants={itemVariants} whileHover={{ scale: 1.005 }}>
+            <motion.div className={styles.categoryCard} variants={itemVariants}>
               {CATEGORIES.map((cat, i) => (
                 <div key={cat.id} className={styles.categoryItem}>
                   <motion.button
@@ -121,7 +107,7 @@ export default function VideoGuidePage() {
             </motion.div>
 
             {/* 테이블 카드 */}
-            <motion.div className={styles.tableCard} variants={itemVariants} whileHover={{ scale: 1.002 }}>
+            <motion.div className={styles.tableCard} variants={itemVariants}>
               {/* 툴바 */}
               <div className={styles.tableToolbar}>
                 <span className={styles.totalCount}>총 20건</span>
@@ -137,11 +123,7 @@ export default function VideoGuidePage() {
                       role="checkbox"
                       aria-checked={allChecked}
                     >
-                      {allChecked && (
-                        <svg width="10" height="8" viewBox="0 0 10 8" fill="none">
-                          <path d="M1 4l3 3 5-6" stroke="white" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round"/>
-                        </svg>
-                      )}
+                      {allChecked && <MdCheck size={10} color="white" />}
                     </span>
                   </div>
                   <div className={styles.noCell}>No.</div>
@@ -155,7 +137,7 @@ export default function VideoGuidePage() {
 
                 <motion.div variants={containerVariants} initial="hidden" animate="visible">
                   {VIDEOS.map((video) => (
-                    <motion.div key={video.id} className={styles.tableRow} variants={itemVariants} whileHover={{ backgroundColor: '#fbfcfd' }}>
+                    <motion.div key={video.id} className={styles.tableRow} variants={itemVariants}>
                       <div className={styles.checkCell}>
                         <span
                           className={`${styles.checkBox} ${checked.includes(video.id) ? styles.checked : ''}`}
@@ -163,11 +145,7 @@ export default function VideoGuidePage() {
                           role="checkbox"
                           aria-checked={checked.includes(video.id)}
                         >
-                          {checked.includes(video.id) && (
-                            <svg width="10" height="8" viewBox="0 0 10 8" fill="none">
-                              <path d="M1 4l3 3 5-6" stroke="white" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round"/>
-                            </svg>
-                          )}
+                          {checked.includes(video.id) && <MdCheck size={10} color="white" />}
                         </span>
                       </div>
                       <div className={styles.noCell}>{video.no}</div>
@@ -181,7 +159,7 @@ export default function VideoGuidePage() {
                       <div className={styles.actionCell}>
                         <motion.button className={styles.detailBtn} whileHover={{ x: 3 }}>
                           상세보기
-                          <ChevronRight size={14} />
+                          <MdChevronRight size={14} />
                         </motion.button>
                       </div>
                     </motion.div>
@@ -197,9 +175,7 @@ export default function VideoGuidePage() {
                   aria-label="첫 페이지"
                   whileTap={{ scale: 0.9 }}
                 >
-                  <svg width="16" height="16" viewBox="0 0 16 16" fill="none">
-                    <path d="M9 4L5 8l4 4M12 4L8 8l4 4" stroke="currentColor" strokeWidth="1.2" strokeLinecap="round" strokeLinejoin="round"/>
-                  </svg>
+                  <MdFirstPage size={16} />
                 </motion.button>
                 <motion.button
                   className={styles.pageBtn}
@@ -207,9 +183,7 @@ export default function VideoGuidePage() {
                   aria-label="이전 페이지"
                   whileTap={{ scale: 0.9 }}
                 >
-                  <svg width="16" height="16" viewBox="0 0 16 16" fill="none">
-                    <path d="M9 4L5 8l4 4" stroke="currentColor" strokeWidth="1.2" strokeLinecap="round" strokeLinejoin="round"/>
-                  </svg>
+                  <MdChevronLeft size={16} />
                 </motion.button>
                 {PAGES.map((p) => (
                   <motion.button
@@ -228,9 +202,7 @@ export default function VideoGuidePage() {
                   aria-label="다음 페이지"
                   whileTap={{ scale: 0.9 }}
                 >
-                  <svg width="16" height="16" viewBox="0 0 16 16" fill="none">
-                    <path d="M7 4l4 4-4 4" stroke="currentColor" strokeWidth="1.2" strokeLinecap="round" strokeLinejoin="round"/>
-                  </svg>
+                  <MdChevronRight size={16} />
                 </motion.button>
                 <motion.button
                   className={styles.pageBtn}
@@ -238,17 +210,15 @@ export default function VideoGuidePage() {
                   aria-label="마지막 페이지"
                   whileTap={{ scale: 0.9 }}
                 >
-                  <svg width="16" height="16" viewBox="0 0 16 16" fill="none">
-                    <path d="M4 4l4 4-4 4M7 4l4 4-4 4" stroke="currentColor" strokeWidth="1.2" strokeLinecap="round" strokeLinejoin="round"/>
-                  </svg>
+                  <MdLastPage size={16} />
                 </motion.button>
               </div>
             </motion.div>
           </motion.div>
         </div>
-      </div>
 
-      <Footer />
+        <Footer />
+      </div>
     </TransitionLayout>
   )
 }

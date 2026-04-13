@@ -16,9 +16,13 @@
 
 .heroBg {
   position: absolute;
-  inset: 0;
-  width: 100%;
-  height: 100%;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  min-width: 100%;
+  min-height: 100%;
+  width: auto;
+  height: auto;
   object-fit: cover;
 }
 
@@ -70,10 +74,10 @@
 
 .quickBarInner {
   display: flex;
-  align-items: stretch;
-  width: 100%;
-  max-width: 1000px;
-  height: 80px;
+  align-items: center;
+  justify-content: center;
+  width: 1000px;
+  height: 88px;
   background: var(--color-white);
   border-radius: 20px;
   padding: 0 20px;
@@ -84,7 +88,7 @@
   flex: 1;
   display: flex;
   align-items: center;
-  gap: 8px; /* 12px -> 8px 조정 */
+  gap: 12px;
   padding: 0 20px;
   text-decoration: none;
   transition: background 0.15s;
@@ -110,11 +114,11 @@
 }
 
 .quickServiceIconWrap {
-  width: 44px;
-  height: 44px;
   display: flex;
   align-items: center;
   justify-content: center;
+  width: 36px;
+  height: 36px;
   flex-shrink: 0;
 }
 
@@ -174,6 +178,7 @@
   align-items: center;
   justify-content: space-between;
   gap: 12px;
+  padding: 0 12px;
 }
 
 .sectionTitle {
@@ -252,6 +257,7 @@
 
 .asSchoolIcon {
   flex-shrink: 0;
+  object-fit: contain;
 }
 
 .asSchoolName {
@@ -302,6 +308,15 @@
   opacity: 0.92;
 }
 
+.asCardLeft .asCardHoverArrow {
+  opacity: 0;
+  transition: opacity 0.15s;
+}
+
+.asCardLeft:hover .asCardHoverArrow {
+  opacity: 1;
+}
+
 .asCardTopRow {
   display: flex;
   align-items: center;
@@ -342,7 +357,7 @@
 .asStatusArea {
   flex: 1;
   background: #f6f8fc;
-  border-radius: 20px;
+  border-radius: 16px;
   display: flex;
   align-items: stretch;
   padding: 0 8px;
@@ -356,32 +371,50 @@
   align-items: flex-start;
   justify-content: space-between;
   gap: 20px;
-  padding: 16px 12px;
+  padding: 16px 20px;
   text-decoration: none;
   border-radius: 20px;
   transition: background 0.15s;
 }
 
-.asStatusCol:hover {
-  background: #eef2fa;
+.hoverArrow {
+  opacity: 0;
+  transition: opacity 0.15s;
+  flex-shrink: 0;
+}
+
+.asStatusCol:hover .hoverArrow {
+  opacity: 1;
 }
 
 .asStatusColDivider {
-  border-right: 1px solid var(--color-border-alternative);
+  position: relative;
+}
+
+.asStatusColDivider::after {
+  content: '';
+  position: absolute;
+  right: 0;
+  top: 50%;
+  transform: translateY(-50%);
+  width: 1px;
+  height: 95px;
+  background: var(--color-border-alternative);
 }
 
 .asStatusLabelRow {
   display: flex;
   align-items: center;
-  gap: 4px;
+  justify-content: space-between;
+  width: 100%;
 }
 
 .asStatusLabel {
-  font-size: 14px;
+  font-size: 16px;
   font-weight: 400;
-  color: var(--color-text-alternative);
+  color: var(--color-text-default);
   line-height: 1.5;
-  letter-spacing: -0.07px;
+  letter-spacing: -0.08px;
 }
 
 .asStatusCount {
@@ -401,7 +434,7 @@
 .asStatusUnit {
   font-size: 14px;
   font-weight: 400;
-  color: var(--color-text-alternative);
+  color: rgba(46,47,51,0.88);
   line-height: 1.5;
   letter-spacing: -0.14px;
 }
@@ -417,7 +450,7 @@
   display: inline-flex;
   align-items: center;
   gap: 6px;
-  height: 38px;
+  height: 36px;
   padding: 0 14px;
   border-radius: var(--radius-full);
   background: var(--color-white);
@@ -447,14 +480,14 @@
 .chipBadge {
   min-width: 24px;
   height: 24px;
-  padding: 0 6px;
+  padding: 0 8px;
   border-radius: var(--radius-full);
   background: rgba(0, 105, 186, 0.1);
   color: var(--color-primary-default);
-  font-size: 14px;
-  font-weight: 500;
+  font-size: 16px;
+  font-weight: 600;
   line-height: 1.5;
-  letter-spacing: -0.07px;
+  letter-spacing: -0.08px;
   display: flex;
   align-items: center;
   justify-content: center;
@@ -472,6 +505,7 @@
   box-shadow: 10px 20px 30px 0 rgba(0, 0, 0, 0.02);
   display: flex;
   flex-direction: column;
+  margin-top: -16px;
 }
 
 .searchArea {
@@ -479,7 +513,7 @@
   flex-direction: column;
   align-items: center;
   gap: 16px;
-  padding: 28px;
+  padding: 44px 28px;
 }
 
 .searchCardTitle {
@@ -510,8 +544,8 @@
   width: 100%;
   max-width: 500px;
   height: 48px;
-  background: var(--color-primary-neutral);
-  border-radius: var(--radius-full);
+  background: #f6f8fc;
+  border-radius: 100px;
   display: flex;
   align-items: center;
   gap: 8px;
@@ -523,21 +557,18 @@
   border: none;
   outline: none;
   background: transparent;
-  font-size: 18px;
-  color: var(--color-text-default);
+  font-size: 15px;
+  color: rgba(46,47,51,0.5);
   font-family: inherit;
 }
 
 .searchInput::placeholder {
-  color: #a0a0a1;
-  font-size: 18px;
-  font-weight: 400;
+  color: rgba(46,47,51,0.5);
 }
 
 .selfHelpList {
   display: flex;
   flex-direction: column;
-  border-top: 1px solid var(--color-border-alternative);
   padding: 0 28px 28px;
 }
 
@@ -553,9 +584,14 @@
   display: flex;
   align-items: center;
   justify-content: space-between;
-  padding: 12px 0;
-  border-bottom: 1px solid var(--color-border-alternative);
+  padding: 14px 0;
+  border-bottom: 1px solid rgba(112,115,124,0.12);
   gap: 12px;
+}
+
+.listRow:hover {
+  background: rgba(244, 246, 250, 0.7);
+  transition: background 0.15s;
 }
 
 .listRow:last-child {
@@ -565,27 +601,25 @@
 .listRowLeft {
   display: flex;
   align-items: center;
-  gap: 12px;
+  gap: 10px;
   flex: 1;
   min-width: 0;
 }
 
 .tag {
-  font-size: 13px;
+  font-size: 12px;
   font-weight: 500;
-  line-height: 1.5;
-  letter-spacing: -0.13px;
-  padding: 3px 7px;
+  line-height: 1.4;
+  padding: 3px 8px;
   border-radius: 4px;
   white-space: nowrap;
   flex-shrink: 0;
 }
 
 .listTitle {
-  font-size: 16px;
-  font-weight: 500;
+  font-size: 15px;
+  font-weight: 400;
   line-height: 1.5;
-  letter-spacing: -0.16px;
   color: var(--color-text-default);
   overflow: hidden;
   text-overflow: ellipsis;
@@ -595,18 +629,17 @@
 .listMeta {
   display: flex;
   align-items: center;
-  gap: 16px;
+  gap: 12px;
   flex-shrink: 0;
 }
 
 .metaItem {
   display: flex;
   align-items: center;
-  gap: 6px;
+  gap: 5px;
   font-size: 13px;
   line-height: 1.4;
-  letter-spacing: -0.065px;
-  color: rgba(46,47,51,0.88);
+  color: rgba(46,47,51,0.7);
   white-space: nowrap;
 }
 
@@ -620,9 +653,14 @@
   display: flex;
   align-items: center;
   justify-content: space-between;
-  gap: 20px;
-  padding: 12px 0;
-  border-bottom: 1px solid var(--color-border-alternative);
+  gap: 16px;
+  padding: 14px 0;
+  border-bottom: 1px solid rgba(112,115,124,0.12);
+}
+
+.noticeRow:hover {
+  background: rgba(244, 246, 250, 0.7);
+  transition: background 0.15s;
 }
 
 .noticeRow:last-child {
@@ -638,9 +676,8 @@
 }
 
 .noticeTitleText {
-  font-size: 16px;
-  line-height: 1.4;
-  letter-spacing: -0.08px;
+  font-size: 15px;
+  line-height: 1.5;
   color: var(--color-text-default);
   overflow: hidden;
   text-overflow: ellipsis;
@@ -663,10 +700,9 @@
 }
 
 .noticeDate {
-  font-size: 16px;
+  font-size: 13px;
   line-height: 1.4;
-  letter-spacing: -0.08px;
-  color: rgba(46,47,51,0.88);
+  color: rgba(46,47,51,0.7);
   white-space: nowrap;
   flex-shrink: 0;
 }

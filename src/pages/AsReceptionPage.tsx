@@ -1,6 +1,7 @@
 import { useState, useRef, useEffect } from 'react'
 import { Link, useNavigate } from 'react-router-dom'
 import { motion, AnimatePresence } from 'framer-motion'
+import { MdHome, MdChevronRight, MdCheck } from 'react-icons/md'
 import GNB from '../components/GNB'
 import Footer from '../components/Footer'
 import TransitionLayout from '../components/TransitionLayout'
@@ -8,13 +9,6 @@ import styles from './AsReceptionPage.module.css'
 
 const STEPS = ['접수자 정보', '학교정보 입력', '제품/증상 선택', '접수 완료']
 
-function ChevronRightSmall() {
-  return (
-    <svg width="16" height="16" viewBox="0 0 16 16" fill="none">
-      <path d="M6 4l4 4-4 4" stroke="currentColor" strokeWidth="1.2" strokeLinecap="round" strokeLinejoin="round"/>
-    </svg>
-  )
-}
 
 // 애니메이션 변수
 const stepVariants = {
@@ -158,7 +152,7 @@ export default function AsReceptionPage() {
         </div>
         <motion.button type="button" className={styles.btnTextLink} whileHover={{ x: 3 }}>
           전문보기
-          <ChevronRightSmall />
+          <MdChevronRight size={16} />
         </motion.button>
       </div>
     </motion.div>
@@ -219,13 +213,9 @@ export default function AsReceptionPage() {
         <div className={styles.breadcrumb}>
           <div className={styles.breadcrumbInner}>
             <Link to="/" className={styles.breadcrumbHome}>
-              <svg width="16" height="16" viewBox="0 0 16 16" fill="none">
-                <path d="M2 6.5L8 2l6 4.5V14H10v-3H6v3H2V6.5z" fill="#171719"/>
-              </svg>
+              <MdHome size={16} color="#171719" />
             </Link>
-            <svg width="12" height="12" viewBox="0 0 12 12" fill="none">
-              <path d="M4 3l3 3-3 3" stroke="#a0a0a1" strokeWidth="1.2" strokeLinecap="round"/>
-            </svg>
+            <MdChevronRight size={12} color="#a0a0a1" />
             <span className={styles.breadcrumbCurrent}>AS 접수하기</span>
           </div>
         </div>
@@ -244,9 +234,7 @@ export default function AsReceptionPage() {
                       animate={i === currentStep ? { scale: [1, 1.1, 1] } : {}}
                     >
                       {i < currentStep ? (
-                        <svg width="20" height="20" viewBox="0 0 20 20" fill="none">
-                          <path d="M4 10L8 14L16 6" stroke="white" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"/>
-                        </svg>
+                        <MdCheck size={20} color="white" />
                       ) : String(i + 1).padStart(2, '0')}
                     </motion.div>
                     <span className={`${styles.stepLabel} ${i === currentStep ? styles.stepLabelActive : ''} ${i < currentStep ? styles.stepLabelDone : ''}`}>

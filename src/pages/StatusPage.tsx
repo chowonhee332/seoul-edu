@@ -1,12 +1,12 @@
 import { useState } from 'react'
 import { Link } from 'react-router-dom'
 import { motion } from 'framer-motion'
+import { MdHome, MdChevronRight, MdChevronLeft, MdKeyboardArrowDown, MdFirstPage, MdLastPage, MdCheck, MdSearch, MdAccessTime, MdArrowForward, MdDownload, MdArrowUpward, MdSchool } from 'react-icons/md'
 import GNB from '../components/GNB'
 import Footer from '../components/Footer'
 import TransitionLayout from '../components/TransitionLayout'
 import styles from './StatusPage.module.css'
 
-const icoSchool = 'https://www.figma.com/api/mcp/asset/611eed75-0da3-417c-b884-acdd3ed773ad'
 
 const SUMMARY = [
   { model: '태블릿 (iOS/Android)', total: 125, normal: 122, broken: 2, lost: 1 },
@@ -24,21 +24,6 @@ const DEVICES = [
 
 const PAGES = [1, 2, 3, 4, 5, 6, 7]
 
-function ChevronDown({ size = 16 }: { size?: number }) {
-  return (
-    <svg width={size} height={size} viewBox="0 0 16 16" fill="none">
-      <path d="M4 6l4 4 4-4" stroke="currentColor" strokeWidth="1.2" strokeLinecap="round" strokeLinejoin="round"/>
-    </svg>
-  )
-}
-
-function ChevronRight({ size = 16 }: { size?: number }) {
-  return (
-    <svg width={size} height={size} viewBox="0 0 16 16" fill="none">
-      <path d="M6 4l4 4-4 4" stroke="currentColor" strokeWidth="1.2" strokeLinecap="round" strokeLinejoin="round"/>
-    </svg>
-  )
-}
 
 // 애니메이션 변수
 const containerVariants = {
@@ -83,13 +68,9 @@ export default function StatusPage() {
         <div className={styles.breadcrumb}>
           <div className={styles.breadcrumbInner}>
             <Link to="/" className={styles.breadcrumbHome}>
-              <svg width="16" height="16" viewBox="0 0 16 16" fill="none">
-                <path d="M2 6.5L8 2l6 4.5V14H10v-3H6v3H2V6.5z" fill="#171719"/>
-              </svg>
+              <MdHome size={16} color="#171719" />
             </Link>
-            <svg width="12" height="12" viewBox="0 0 12 12" fill="none">
-              <path d="M4 3l3 3-3 3" stroke="#a0a0a1" strokeWidth="1.2" strokeLinecap="round"/>
-            </svg>
+            <MdChevronRight size={12} color="#a0a0a1" />
             <span className={styles.breadcrumbText}>스마트 기기 현황</span>
           </div>
         </div>
@@ -105,14 +86,13 @@ export default function StatusPage() {
             <motion.h1 className={styles.title} variants={itemVariants}>스마트 기기 현황</motion.h1>
 
             {/* 기기 요약 카드 */}
-            <motion.div 
+            <motion.div
               className={styles.summaryCard}
               variants={itemVariants}
-              whileHover={{ scale: 1.01 }}
             >
               {/* 학교/학급 정보 */}
               <div className={styles.schoolRow}>
-                <img src={icoSchool} alt="" width={24} height={24} className={styles.schoolIcon} />
+                <MdSchool size={24} color="#3d3f45" className={styles.schoolIcon} />
                 <span className={styles.schoolName}>가락고등학교</span>
                 <div className={styles.schoolDivider} />
                 <span className={styles.schoolClass}>2학년 1반</span>
@@ -144,24 +124,17 @@ export default function StatusPage() {
               <div className={styles.sectionTop}>
                 <h2 className={styles.sectionTitle}>보유제품</h2>
                 <div className={styles.actionBtns}>
-                  <motion.button className={styles.btnGhost} whileHover={{ backgroundColor: '#f4f6fa' }} whileTap={{ scale: 0.95 }}>
+                  <motion.button className={styles.btnGhost} whileTap={{ scale: 0.95 }}>
                     임의모델 분실신고
-                    <svg width="14" height="14" viewBox="0 0 16 16" fill="none">
-                      <circle cx="8" cy="8" r="6" stroke="currentColor" strokeWidth="1.2"/>
-                      <path d="M8 5v3l2 2" stroke="currentColor" strokeWidth="1.2" strokeLinecap="round"/>
-                    </svg>
+                    <MdAccessTime size={14} />
                   </motion.button>
-                  <motion.button className={styles.btnGhost} whileHover={{ backgroundColor: '#f4f6fa' }} whileTap={{ scale: 0.95 }}>
+                  <motion.button className={styles.btnGhost} whileTap={{ scale: 0.95 }}>
                     단말 일괄변경
-                    <svg width="14" height="14" viewBox="0 0 16 16" fill="none">
-                      <path d="M3 8h10M10 5l3 3-3 3" stroke="currentColor" strokeWidth="1.2" strokeLinecap="round" strokeLinejoin="round"/>
-                    </svg>
+                    <MdArrowForward size={14} />
                   </motion.button>
-                  <motion.button className={styles.btnGhost} whileHover={{ backgroundColor: '#f4f6fa' }} whileTap={{ scale: 0.95 }}>
+                  <motion.button className={styles.btnGhost} whileTap={{ scale: 0.95 }}>
                     엑셀 다운
-                    <svg width="14" height="14" viewBox="0 0 16 16" fill="none">
-                      <path d="M8 2v8m-3-3l3 3 3-3M4 13h8" stroke="currentColor" strokeWidth="1.2" strokeLinecap="round"/>
-                    </svg>
+                    <MdDownload size={14} />
                   </motion.button>
                   <motion.button className={styles.btnPrimary} whileHover={{ opacity: 0.9 }} whileTap={{ scale: 0.95 }}>AS 접수</motion.button>
                   <motion.button className={styles.btnPrimary} whileHover={{ opacity: 0.9 }} whileTap={{ scale: 0.95 }}>분실신고</motion.button>
@@ -170,7 +143,7 @@ export default function StatusPage() {
               </div>
 
               {/* 테이블 카드 */}
-              <motion.div className={styles.tableCard} whileHover={{ scale: 1.005 }} transition={{ duration: 0.3 }}>
+              <div className={styles.tableCard}>
                 {/* 툴바 */}
                 <div className={styles.tableToolbar}>
                   <span className={styles.totalCount}>총 20건</span>
@@ -178,7 +151,7 @@ export default function StatusPage() {
                     <div className={styles.searchBox}>
                       <button className={styles.searchDropdown}>
                         관리번호
-                        <ChevronDown size={14} />
+                        <MdKeyboardArrowDown size={14} />
                       </button>
                       <input
                         type="text"
@@ -186,15 +159,12 @@ export default function StatusPage() {
                         placeholder="검색어를 입력해주세요."
                       />
                       <motion.button className={styles.searchBtn} aria-label="검색" whileTap={{ scale: 0.9 }}>
-                        <svg width="16" height="16" viewBox="0 0 16 16" fill="none">
-                          <circle cx="7" cy="7" r="4.5" stroke="#171719" strokeWidth="1.2"/>
-                          <path d="M10.5 10.5l2.5 2.5" stroke="#171719" strokeWidth="1.2" strokeLinecap="round"/>
-                        </svg>
+                        <MdSearch size={16} color="#171719" />
                       </motion.button>
                     </div>
                     <button className={styles.sortBtn}>
                       이름순
-                      <ChevronDown size={14} />
+                      <MdKeyboardArrowDown size={14} />
                     </button>
                   </div>
                 </div>
@@ -209,11 +179,7 @@ export default function StatusPage() {
                         role="checkbox"
                         aria-checked={allChecked}
                       >
-                        {allChecked && (
-                          <svg width="10" height="8" viewBox="0 0 10 8" fill="none">
-                            <path d="M1 4l3 3 5-6" stroke="white" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round"/>
-                          </svg>
-                        )}
+                        {allChecked && <MdCheck size={10} color="white" />}
                       </span>
                     </div>
                     <div className={styles.noCell}>No.</div>
@@ -227,7 +193,7 @@ export default function StatusPage() {
 
                   <motion.div variants={containerVariants} initial="hidden" animate="visible">
                     {DEVICES.map((device) => (
-                      <motion.div key={device.id} className={styles.tableRow} variants={itemVariants} whileHover={{ backgroundColor: '#fbfcfd' }}>
+                      <motion.div key={device.id} className={styles.tableRow} variants={itemVariants}>
                         <div className={styles.checkCell}>
                           <span
                             className={`${styles.checkBox} ${checked.includes(device.id) ? styles.checked : ''}`}
@@ -235,11 +201,7 @@ export default function StatusPage() {
                             role="checkbox"
                             aria-checked={checked.includes(device.id)}
                           >
-                            {checked.includes(device.id) && (
-                              <svg width="10" height="8" viewBox="0 0 10 8" fill="none">
-                                <path d="M1 4l3 3 5-6" stroke="white" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round"/>
-                              </svg>
-                            )}
+                            {checked.includes(device.id) && <MdCheck size={10} color="white" />}
                           </span>
                         </div>
                         <div className={styles.noCell}>{device.no}</div>
@@ -255,7 +217,7 @@ export default function StatusPage() {
                         <div className={styles.actionCell}>
                           <motion.button className={styles.detailBtn} whileHover={{ x: 3 }}>
                             상세보기
-                            <ChevronRight size={14} />
+                            <MdChevronRight size={14} />
                           </motion.button>
                         </div>
                       </motion.div>
@@ -271,9 +233,7 @@ export default function StatusPage() {
                     aria-label="첫 페이지"
                     whileTap={{ scale: 0.9 }}
                   >
-                    <svg width="16" height="16" viewBox="0 0 16 16" fill="none">
-                      <path d="M9 4L5 8l4 4M12 4L8 8l4 4" stroke="currentColor" strokeWidth="1.2" strokeLinecap="round" strokeLinejoin="round"/>
-                    </svg>
+                    <MdFirstPage size={16} />
                   </motion.button>
                   <motion.button
                     className={styles.pageBtn}
@@ -281,9 +241,7 @@ export default function StatusPage() {
                     aria-label="이전 페이지"
                     whileTap={{ scale: 0.9 }}
                   >
-                    <svg width="16" height="16" viewBox="0 0 16 16" fill="none">
-                      <path d="M9 4L5 8l4 4" stroke="currentColor" strokeWidth="1.2" strokeLinecap="round" strokeLinejoin="round"/>
-                    </svg>
+                    <MdChevronLeft size={16} />
                   </motion.button>
                   {PAGES.map((p) => (
                     <motion.button
@@ -302,9 +260,7 @@ export default function StatusPage() {
                     aria-label="다음 페이지"
                     whileTap={{ scale: 0.9 }}
                   >
-                    <svg width="16" height="16" viewBox="0 0 16 16" fill="none">
-                      <path d="M7 4l4 4-4 4" stroke="currentColor" strokeWidth="1.2" strokeLinecap="round" strokeLinejoin="round"/>
-                    </svg>
+                    <MdChevronRight size={16} />
                   </motion.button>
                   <motion.button
                     className={styles.pageBtn}
@@ -312,12 +268,10 @@ export default function StatusPage() {
                     aria-label="마지막 페이지"
                     whileTap={{ scale: 0.9 }}
                   >
-                    <svg width="16" height="16" viewBox="0 0 16 16" fill="none">
-                      <path d="M4 4l4 4-4 4M7 4l4 4-4 4" stroke="currentColor" strokeWidth="1.2" strokeLinecap="round" strokeLinejoin="round"/>
-                    </svg>
+                    <MdLastPage size={16} />
                   </motion.button>
                 </div>
-              </motion.div>
+              </div>
             </motion.div>
           </motion.div>
         </div>
@@ -333,9 +287,7 @@ export default function StatusPage() {
           initial={{ opacity: 0, y: 20 }}
           animate={{ opacity: 1, y: 0 }}
         >
-          <svg width="24" height="24" viewBox="0 0 24 24" fill="none">
-            <path d="M12 19V5M5 12l7-7 7 7" stroke="#171719" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round"/>
-          </svg>
+          <MdArrowUpward size={24} color="#171719" />
         </motion.button>
       </div>
     </TransitionLayout>

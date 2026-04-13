@@ -1,6 +1,7 @@
 import { useState } from 'react'
 import { Link } from 'react-router-dom'
 import { motion, AnimatePresence } from 'framer-motion'
+import { MdHome, MdChevronRight, MdChevronLeft, MdKeyboardArrowDown, MdFirstPage, MdLastPage } from 'react-icons/md'
 import GNB from '../components/GNB'
 import Footer from '../components/Footer'
 import TransitionLayout from '../components/TransitionLayout'
@@ -75,13 +76,9 @@ export default function AsHistoryPage() {
         <div className={styles.breadcrumb}>
           <div className={styles.breadcrumbInner}>
             <Link to="/" className={styles.breadcrumbHome}>
-              <svg width="16" height="16" viewBox="0 0 16 16" fill="none">
-                <path d="M2 6.5L8 2l6 4.5V14H10v-3H6v3H2V6.5z" fill="#171719"/>
-              </svg>
+              <MdHome size={16} color="#171719" />
             </Link>
-            <svg width="12" height="12" viewBox="0 0 12 12" fill="none">
-              <path d="M4 3l3 3-3 3" stroke="#a0a0a1" strokeWidth="1.2" strokeLinecap="round"/>
-            </svg>
+            <MdChevronRight size={12} color="#a0a0a1" />
             <span className={styles.breadcrumbCurrent}>AS 접수 조회·변경</span>
           </div>
         </div>
@@ -205,7 +202,7 @@ export default function AsHistoryPage() {
                   transition={{ duration: 0.3 }}
                 >
                   {/* 검색 필터 카드 */}
-                  <motion.div className={styles.filterCard} whileHover={{ scale: 1.005 }}>
+                  <div className={styles.filterCard}>
                     <label className={styles.filterLabel}>조회기간</label>
                     <div className={styles.periodTabs}>
                       {PERIOD_TABS.map((tab, i) => (
@@ -243,7 +240,7 @@ export default function AsHistoryPage() {
                     >
                       조회
                     </motion.button>
-                  </motion.div>
+                  </div>
 
                   {/* A/S 접수 내역 섹션 */}
                   <h2 className={styles.sectionTitle}>A/S 접수 내역</h2>
@@ -252,12 +249,10 @@ export default function AsHistoryPage() {
                   <div className={styles.tableCard}>
                     <div className={styles.tableHeader}>
                       <span className={styles.totalCount}>총 {SAMPLE_ROWS.length}건</span>
-                      <motion.div className={styles.sortSelect} whileHover={{ x: 3 }}>
+                      <div className={styles.sortSelect}>
                         <span>이름순</span>
-                        <svg width="16" height="16" viewBox="0 0 16 16" fill="none">
-                          <path d="M4 6l4 4 4-4" stroke="#70737c" strokeWidth="1.4" strokeLinecap="round" strokeLinejoin="round"/>
-                        </svg>
-                      </motion.div>
+                        <MdKeyboardArrowDown size={16} color="#70737c" />
+                      </div>
                     </div>
 
                     <table className={styles.table}>
@@ -292,14 +287,10 @@ export default function AsHistoryPage() {
                     {/* 페이지네이션 */}
                     <div className={styles.pagination}>
                       <motion.button className={styles.pageBtn} aria-label="첫 페이지" whileTap={{ scale: 0.9 }}>
-                        <svg width="16" height="16" viewBox="0 0 16 16" fill="none">
-                          <path d="M9 4L5 8l4 4M12 4L8 8l4 4" stroke="currentColor" strokeWidth="1.2" strokeLinecap="round" strokeLinejoin="round"/>
-                        </svg>
+                        <MdFirstPage size={16} />
                       </motion.button>
                       <motion.button className={styles.pageBtn} aria-label="이전 페이지" whileTap={{ scale: 0.9 }}>
-                        <svg width="16" height="16" viewBox="0 0 16 16" fill="none">
-                          <path d="M9 4L5 8l4 4" stroke="currentColor" strokeWidth="1.2" strokeLinecap="round" strokeLinejoin="round"/>
-                        </svg>
+                        <MdChevronLeft size={16} />
                       </motion.button>
                       {[1,2,3,4,5,6,7].map((p) => (
                         <motion.button 
@@ -312,14 +303,10 @@ export default function AsHistoryPage() {
                         </motion.button>
                       ))}
                       <motion.button className={styles.pageBtn} aria-label="다음 페이지" whileTap={{ scale: 0.9 }}>
-                        <svg width="16" height="16" viewBox="0 0 16 16" fill="none">
-                          <path d="M7 4l4 4-4 4" stroke="currentColor" strokeWidth="1.2" strokeLinecap="round" strokeLinejoin="round"/>
-                        </svg>
+                        <MdChevronRight size={16} />
                       </motion.button>
                       <motion.button className={styles.pageBtn} aria-label="마지막 페이지" whileTap={{ scale: 0.9 }}>
-                        <svg width="16" height="16" viewBox="0 0 16 16" fill="none">
-                          <path d="M4 4l4 4-4 4M7 4l4 4-4 4" stroke="currentColor" strokeWidth="1.2" strokeLinecap="round" strokeLinejoin="round"/>
-                        </svg>
+                        <MdLastPage size={16} />
                       </motion.button>
                     </div>
                   </div>

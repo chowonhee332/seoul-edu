@@ -71,10 +71,10 @@
 
 /* Page title */
 .title {
-  font-size: 36px;
+  font-size: 32px;
   font-weight: 700;
   line-height: 1.2;
-  letter-spacing: -0.72px;
+  letter-spacing: -0.64px;
   color: #171719;
   margin-top: 4px;
   margin-bottom: 36px; /* 최종 요청사항: 타이틀 간격 36px */

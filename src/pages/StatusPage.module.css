@@ -53,10 +53,10 @@
 }
 
 .title {
-  font-size: 36px;
+  font-size: 32px;
   font-weight: 700;
   line-height: 1.2;
-  letter-spacing: -0.72px;
+  letter-spacing: -0.64px;
   color: #171719;
   margin-top: 4px; /* 브레드크럼과 가깝게 배치 */
   margin-bottom: 36px; /* 최종 요청사항: 타이틀 아래 간격을 36으로 */
@@ -83,6 +83,7 @@
 
 .schoolIcon {
   flex-shrink: 0;
+  object-fit: contain;
 }
 
 .schoolName {
@@ -178,6 +179,7 @@
   display: flex;
   align-items: center;
   justify-content: space-between;
+  padding: 0 12px;
 }
 
 .sectionTitle {
@@ -198,7 +200,7 @@
   display: flex;
   align-items: center;
   gap: 4px;
-  background: #f6f8fc;
+  background: transparent;
   color: var(--color-text-default);
   font-size: 14px;
   font-family: inherit;
@@ -206,7 +208,7 @@
   line-height: 1.4;
   letter-spacing: -0.07px;
   padding: 4px 8px;
-  border-radius: 8px;
+  border-radius: 6px;
   cursor: pointer;
   border: none;
   transition: background 0.15s;
@@ -214,19 +216,19 @@
 }
 
 .btnGhost:hover {
-  background: #eaecf2;
+  background: rgba(112, 115, 124, 0.08);
 }
 
 .btnPrimary {
-  background: #3186ff;
+  background: #1a75ff;
   color: white;
   font-size: 14px;
   font-family: inherit;
   font-weight: 400;
   line-height: 1.4;
   letter-spacing: -0.07px;
-  padding: 4px 8px;
-  border-radius: 8px;
+  padding: 4px 12px;
+  border-radius: 6px;
   cursor: pointer;
   border: none;
   transition: opacity 0.15s;
@@ -241,7 +243,7 @@
 .tableCard {
   background: var(--color-white);
   border-radius: 20px; /* 모든 모서리 20px 복구 */
-  padding: 24px 28px 48px; 
+  padding: 28px;
   display: flex;
   flex-direction: column;
   gap: 16px;
@@ -276,36 +278,35 @@
   border: 1px solid rgba(112,115,124,0.22);
   border-radius: 6px;
   overflow: hidden;
-  height: 36px;
+  height: 32px;
 }
 
 .searchDropdown {
   display: flex;
   align-items: center;
-  gap: 4px;
+  gap: 2px;
   padding: 0 10px;
-  font-size: 13px;
+  font-size: 12px;
   font-family: inherit;
   color: var(--color-text-default);
-  background: #f4f6fa;
+  background: transparent;
+  border: none;
   border-right: 1px solid rgba(112,115,124,0.22);
   cursor: pointer;
   white-space: nowrap;
   height: 100%;
-  border: none;
-  border-right: 1px solid rgba(112,115,124,0.22);
 }
 
 .searchInput {
   flex: 1;
   border: none;
   outline: none;
-  padding: 0 12px;
-  font-size: 14px;
+  padding: 0 10px;
+  font-size: 12px;
   font-family: inherit;
   color: #171719;
   background: transparent;
-  min-width: 200px;
+  min-width: 160px;
 }
 
 .searchInput::placeholder {
@@ -316,13 +317,13 @@
   display: flex;
   align-items: center;
   justify-content: center;
-  width: 36px;
+  width: 32px;
   height: 100%;
   background: none;
   border: none;
+  border-left: 1px solid rgba(112,115,124,0.22);
   cursor: pointer;
   color: var(--color-text-default);
-  border-left: 1px solid rgba(112,115,124,0.22);
   flex-shrink: 0;
 }
 
@@ -333,8 +334,8 @@
   border: 1px solid rgba(112,115,124,0.22);
   border-radius: 6px;
   padding: 0 10px;
-  height: 36px;
-  font-size: 13px;
+  height: 32px;
+  font-size: 12px;
   font-family: inherit;
   color: var(--color-text-default);
   background: var(--color-white);
@@ -359,6 +360,11 @@
   display: flex;
   align-items: center;
   border-bottom: 1px solid #e0e4eb;
+}
+
+.tableRow:hover {
+  background: rgba(244, 246, 250, 0.7);
+  transition: background 0.15s;
 }
 
 .tableRow:last-child {

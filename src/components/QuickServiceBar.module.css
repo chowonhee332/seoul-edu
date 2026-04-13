@@ -1,0 +1,82 @@
+.quickBar {
+  position: relative;
+  z-index: 10;
+  display: flex;
+  justify-content: center;
+  padding: 0 48px;
+  margin-top: -48px;
+}
+
+.quickBarInner {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 1000px;
+  height: 88px;
+  background: var(--color-white);
+  border-radius: 20px;
+  padding: 0 20px;
+  overflow: hidden;
+}
+
+.quickService {
+  flex: 1;
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  padding: 0 20px;
+  text-decoration: none;
+  transition: background 0.15s;
+}
+
+.quickServiceDivider {
+  position: relative;
+}
+
+.quickServiceDivider::after {
+  content: '';
+  position: absolute;
+  right: 0;
+  top: 50%;
+  transform: translateY(-50%);
+  width: 1px;
+  height: 32px;
+  background: rgba(112, 115, 124, 0.2);
+}
+
+.quickServiceIconWrap {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 36px;
+  height: 36px;
+  flex-shrink: 0;
+}
+
+.quickServiceContent {
+  flex: 1;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 8px;
+}
+
+.quickServiceArrow {
+  opacity: 0;
+  transition: opacity 0.15s;
+  display: flex;
+  align-items: center;
+}
+
+.quickService:hover .quickServiceArrow {
+  opacity: 1;
+}
+
+.quickServiceLabel {
+  font-size: 16px;
+  font-weight: 600;
+  line-height: 1.5;
+  letter-spacing: -0.16px;
+  color: var(--color-text-default);
+  white-space: nowrap;
+}

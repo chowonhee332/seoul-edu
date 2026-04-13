@@ -60,10 +60,10 @@
 }
 
 .title {
-  font-size: 36px;
+  font-size: 32px;
   font-weight: 700;
   line-height: 1.2;
-  letter-spacing: -0.72px;
+  letter-spacing: -0.64px;
   color: #171719;
   margin-top: 4px;
   margin-bottom: 36px; /* 최종 요청사항: 타이틀 간격 36px */
@@ -140,7 +140,7 @@
 .tableCard {
   background: var(--color-white);
   border-radius: 20px; /* 모든 모서리 20px 복구 */
-  padding: 24px 28px 48px; 
+  padding: 28px;
   display: flex;
   flex-direction: column;
   gap: 28px;
@@ -251,6 +251,11 @@
   display: flex;
   align-items: center;
   border-bottom: 1px solid #e0e4eb;
+}
+
+.tableRow:hover {
+  background: rgba(244, 246, 250, 0.7);
+  transition: background 0.15s;
 }
 
 .tableRow:last-child {

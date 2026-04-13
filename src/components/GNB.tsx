@@ -1,6 +1,7 @@
 import { useEffect, useState } from 'react'
 import { Link, useLocation } from 'react-router-dom'
 import { motion, AnimatePresence } from 'framer-motion'
+import { MdSearch, MdPerson, MdArrowForward } from 'react-icons/md'
 import styles from './GNB.module.css'
 
 const logoDarkUrl = '/resources/logo_seoul_dark.png'
@@ -45,24 +46,6 @@ const MENUS = [
 
 type GNBVariant = 'dark' | 'light'
 
-function SearchIcon({ invert }: { invert?: boolean }) {
-  return (
-    <svg width="24" height="24" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
-      <circle cx="11" cy="11" r="6.5" stroke={invert ? 'white' : '#171719'} strokeWidth="1.5"/>
-      <path d="M16 16L20 20" stroke={invert ? 'white' : '#171719'} strokeWidth="1.5" strokeLinecap="round"/>
-    </svg>
-  )
-}
-
-function ProfileIcon({ invert }: { invert?: boolean }) {
-  const color = invert ? 'white' : '#171719'
-  return (
-    <svg width="24" height="24" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
-      <circle cx="12" cy="8" r="3.5" stroke={color} strokeWidth="1.5"/>
-      <path d="M4 20c0-4.418 3.582-8 8-8s8 3.582 8 8" stroke={color} strokeWidth="1.5" strokeLinecap="round"/>
-    </svg>
-  )
-}
 
 export default function GNB({ variant = 'light' }: { variant?: GNBVariant }) {
   const location = useLocation()
@@ -116,9 +99,7 @@ export default function GNB({ variant = 'light' }: { variant?: GNBVariant }) {
                         <motion.span whileHover={{ x: 4 }} transition={{ type: 'spring', stiffness: 300, damping: 20 }}>
                           {child.label}
                         </motion.span>
-                        <svg width="18" height="18" viewBox="0 0 18 18" fill="none">
-                          <path d="M5 9h8M10 6l3 3-3 3" stroke="currentColor" strokeWidth="1.3" strokeLinecap="round" strokeLinejoin="round"/>
-                        </svg>
+                        <MdArrowForward size={18} />
                       </Link>
                     ))}
                   </motion.div>
@@ -131,10 +112,10 @@ export default function GNB({ variant = 'light' }: { variant?: GNBVariant }) {
 
       <div className={styles.actions}>
         <button className={styles.iconBtn} aria-label="검색">
-          <SearchIcon invert={!showLight} />
+          <MdSearch size={24} color={!showLight ? 'white' : '#171719'} />
         </button>
         <Link to="/login" className={styles.iconBtn} aria-label="프로필">
-          <ProfileIcon invert={!showLight} />
+          <MdPerson size={24} color={!showLight ? 'white' : '#171719'} />
         </Link>
       </div>
     </header>

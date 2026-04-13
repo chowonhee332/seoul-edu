@@ -1,23 +1,14 @@
 import { useState } from 'react'
 import { Link } from 'react-router-dom'
 import { motion } from 'framer-motion'
+import { MdNorthEast, MdChevronRight, MdAccessTime, MdVisibility, MdSearch, MdArrowUpward, MdSchool } from 'react-icons/md'
 import GNB from '../components/GNB'
+import QuickServiceBar from '../components/QuickServiceBar'
 import Footer from '../components/Footer'
 import TransitionLayout from '../components/TransitionLayout'
 import styles from './HomeLoggedInPage.module.css'
 
-// Quick service bar icons (refreshed from Figma)
-const icoConsulting = 'https://www.figma.com/api/mcp/asset/f5a4640a-61c8-45ff-8be1-0e2328f10f3f'
-const icoAsReception = 'https://www.figma.com/api/mcp/asset/ead1167b-af56-49e8-b9a8-82692978216f'
-const icoTablet = 'https://www.figma.com/api/mcp/asset/2dc71935-de13-4d9a-8004-0192d1c73f10'
-const icoSchool = 'https://www.figma.com/api/mcp/asset/611eed75-0da3-417c-b884-acdd3ed773ad'
 
-const QUICK_SERVICES = [
-  { label: 'AS 접수', icon: icoConsulting, iconBg: '#eff4ff', path: '/as-reception' },
-  { label: 'AS조회 변경', icon: icoAsReception, iconBg: null, path: '/as-lookup' },
-  { label: '단말 현황', icon: icoTablet, iconBg: null, path: '/status' },
-  { label: '서비스 센터안내', icon: icoAsReception, iconBg: null, path: '/service-center' },
-]
 
 const AS_STATUSES = [
   { label: '접수완료', count: 6, hasArrow: false },
@@ -47,21 +38,6 @@ const NOTICES = [
   { id: 4, title: '[업데이트] 새로운 기능 추가 안내 (7월 1일 배포 예정)', date: '2024. 06. 25', isNew: true },
 ]
 
-function ArrowUpRight({ color = 'rgba(255,255,255,0.7)' }: { color?: string }) {
-  return (
-    <svg width="20" height="20" viewBox="0 0 20 20" fill="none">
-      <path d="M5 15L15 5M15 5H7M15 5v8" stroke={color} strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round"/>
-    </svg>
-  )
-}
-
-function ChevronRight({ color = 'currentColor' }: { color?: string }) {
-  return (
-    <svg width="16" height="16" viewBox="0 0 16 16" fill="none">
-      <path d="M6 4l4 4-4 4" stroke={color} strokeWidth="1.2" strokeLinecap="round" strokeLinejoin="round"/>
-    </svg>
-  )
-}
 
 // 애니메이션 변수
 const containerVariants = {
@@ -110,33 +86,8 @@ export default function HomeLoggedInPage() {
           </motion.div>
         </div>
 
-        {/* 퀵 서비스 바 (히어로 아래 흰색 바) */}
-        <motion.div 
-          className={styles.quickBar}
-          initial={{ opacity: 0, y: 20 }}
-          animate={{ opacity: 1, y: 0 }}
-          transition={{ duration: 0.5, delay: 0.4 }}
-        >
-          <div className={styles.quickBarInner}>
-            {QUICK_SERVICES.map((item, idx) => (
-              <Link
-                key={item.label}
-                to={item.path}
-                className={`${styles.quickService} ${idx < QUICK_SERVICES.length - 1 ? styles.quickServiceDivider : ''}`}
-              >
-                <motion.div className={styles.quickServiceIconWrap} whileHover={{ rotate: [0, -10, 10, 0] }}>
-                  <img src={item.icon} alt="" width={24} height={24} />
-                </motion.div>
-                <div className={styles.quickServiceContent}>
-                  <span className={styles.quickServiceLabel}>{item.label}</span>
-                  <span className={styles.quickServiceArrow}>
-                    <ArrowUpRight color="rgba(23,23,25,1)" />
-                  </span>
-                </div>
-              </Link>
-            ))}
-          </div>
-        </motion.div>
+        {/* 퀵 서비스 바 */}
+        <QuickServiceBar />
 
         {/* 메인 콘텐츠 */}
         <div className={styles.main}>
@@ -159,7 +110,7 @@ export default function HomeLoggedInPage() {
               <div className={styles.asCardOuter}>
                 {/* 학교 정보 행 */}
                 <div className={styles.asSchoolRow}>
-                  <img src={icoSchool} alt="" width={24} height={24} className={styles.asSchoolIcon} />
+                  <MdSchool size={24} color="#3d3f45" className={styles.asSchoolIcon} />
                   <span className={styles.asSchoolName}>가락고등학교</span>
                   <div className={styles.asSchoolDivider} />
                   <span className={styles.asSchoolClass}>2학년 1반</span>
@@ -168,18 +119,16 @@ export default function HomeLoggedInPage() {
                 {/* AS 카드 */}
                 <div className={styles.asCard}>
                   {/* 왼쪽: 그라디언트 블루 */}
-                  <motion.div whileHover={{ scale: 1.02 }} className={styles.asCardLeftWrapper}>
-                    <Link to="/as-history" className={styles.asCardLeft}>
-                      <div className={styles.asCardTopRow}>
-                        <span className={styles.asCardLabel}>A/S 예약</span>
-                        <ArrowUpRight color="rgba(255,255,255,0.7)" />
-                      </div>
-                      <div className={styles.asCardCount}>
-                        <span className={styles.asCardNum}>27</span>
-                        <span className={styles.asCardUnit}>건</span>
-                      </div>
-                    </Link>
-                  </motion.div>
+                  <Link to="/as-history" className={styles.asCardLeft}>
+                    <div className={styles.asCardTopRow}>
+                      <span className={styles.asCardLabel}>A/S 예약</span>
+                      <MdNorthEast color="rgba(255,255,255,0.9)" className={styles.asCardHoverArrow} />
+                    </div>
+                    <div className={styles.asCardCount}>
+                      <span className={styles.asCardNum}>27</span>
+                      <span className={styles.asCardUnit}>건</span>
+                    </div>
+                  </Link>
 
                   {/* 오른쪽: 상태 컬럼들 */}
                   <div className={styles.asStatusArea}>
@@ -189,16 +138,14 @@ export default function HomeLoggedInPage() {
                         to="/as-history"
                         className={`${styles.asStatusCol} ${idx < AS_STATUSES.length - 1 ? styles.asStatusColDivider : ''}`}
                       >
-                        <motion.div className={styles.asStatusColInner} whileHover={{ y: -5 }}>
                           <div className={styles.asStatusLabelRow}>
                             <span className={styles.asStatusLabel}>{status.label}</span>
-                            {status.hasArrow && <ArrowUpRight color="#171719" />}
+                            <MdNorthEast size={16} color="#171719" className={styles.hoverArrow} />
                           </div>
                           <div className={styles.asStatusCount}>
                             <span className={styles.asStatusNum}>{status.count}</span>
                             <span className={styles.asStatusUnit}>건</span>
                           </div>
-                        </motion.div>
                       </Link>
                     ))}
                   </div>
@@ -210,7 +157,6 @@ export default function HomeLoggedInPage() {
             <motion.div className={styles.section} variants={itemVariants}>
               <div className={styles.sectionHeader}>
                 <h2 className={styles.sectionTitle}>보유 제품</h2>
-                <span className={styles.infoHint}>학급에서 가장 많이 보유한 제품순으로 노출됩니다.</span>
               </div>
               <div className={styles.chipRow}>
                 {PRODUCTS.map((product) => (
@@ -218,7 +164,6 @@ export default function HomeLoggedInPage() {
                     key={product.id}
                     className={`${styles.chip} ${selectedProduct === product.id ? styles.chipActive : ''}`}
                     onClick={() => setSelectedProduct(product.id)}
-                    whileHover={{ y: -2 }}
                     whileTap={{ scale: 0.95 }}
                   >
                     <span className={styles.chipName}>{product.name}</span>
@@ -243,15 +188,12 @@ export default function HomeLoggedInPage() {
                     className={styles.searchInput}
                     placeholder="검색어를 입력해주세요"
                   />
-                  <svg width="24" height="24" viewBox="0 0 24 24" fill="none">
-                    <circle cx="11" cy="11" r="6.5" stroke="#a0a0a1" strokeWidth="1.5"/>
-                    <path d="M16 16L20 20" stroke="#a0a0a1" strokeWidth="1.5" strokeLinecap="round"/>
-                  </svg>
+                  <MdSearch size={24} color="#a0a0a1" />
                 </div>
               </div>
               <div className={styles.selfHelpList}>
                 {SELF_HELP_ITEMS.map((item) => (
-                  <motion.div key={item.id} className={styles.listRow} whileHover={{ x: 5, backgroundColor: '#fbfcfd' }}>
+                  <motion.div key={item.id} className={styles.listRow} >
                     <div className={styles.listRowLeft}>
                       <span
                         className={styles.tag}
@@ -263,17 +205,12 @@ export default function HomeLoggedInPage() {
                     </div>
                     <div className={styles.listMeta}>
                       <span className={styles.metaItem}>
-                        <svg width="16" height="16" viewBox="0 0 16 16" fill="none">
-                          <path d="M8 2a6 6 0 100 12A6 6 0 008 2zm0 2v4l2.5 2.5" stroke="rgba(46,47,51,0.88)" strokeWidth="1.2" strokeLinecap="round"/>
-                        </svg>
+                        <MdAccessTime size={16} color="rgba(46,47,51,0.88)" />
                         {item.date}
                       </span>
                       <span className={styles.metaDivider} />
                       <span className={styles.metaItem}>
-                        <svg width="16" height="16" viewBox="0 0 16 16" fill="none">
-                          <path d="M1 8s2.5-5 7-5 7 5 7 5-2.5 5-7 5-7-5-7-5z" stroke="rgba(46,47,51,0.88)" strokeWidth="1.2"/>
-                          <circle cx="8" cy="8" r="2" stroke="rgba(46,47,51,0.88)" strokeWidth="1.2"/>
-                        </svg>
+                        <MdVisibility size={16} color="rgba(46,47,51,0.88)" />
                         {item.views}
                       </span>
                     </div>
@@ -288,12 +225,12 @@ export default function HomeLoggedInPage() {
                 <h2 className={styles.sectionTitle}>공지사항</h2>
                 <Link to="/notice" className={styles.moreBtn}>
                   전체보기
-                  <ChevronRight />
+                  <MdChevronRight />
                 </Link>
               </div>
               <div className={styles.card}>
                 {NOTICES.map((item) => (
-                  <motion.div key={item.id} className={styles.noticeRow} whileHover={{ x: 5, backgroundColor: '#fbfcfd' }}>
+                  <motion.div key={item.id} className={styles.noticeRow} >
                     <div className={styles.noticeTitle}>
                       <span className={styles.noticeTitleText}>{item.title}</span>
                       <motion.span 
@@ -322,9 +259,7 @@ export default function HomeLoggedInPage() {
           whileHover={{ y: -5, boxShadow: '0 8px 24px rgba(0,0,0,0.15)' }}
           whileTap={{ scale: 0.9 }}
         >
-          <svg width="24" height="24" viewBox="0 0 24 24" fill="none">
-            <path d="M12 19V5M5 12l7-7 7 7" stroke="#171719" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round"/>
-          </svg>
+          <MdArrowUpward size={24} color="#171719" />
         </motion.button>
       </div>
     </TransitionLayout>
