@@ -176,14 +176,7 @@ export default function HomePage() {
                     <div className={styles.noticeLeft}>
                       <span className={styles.noticeTitleText}>{item.title}</span>
                       {item.isNew && (
-                        <motion.span 
-                          className={styles.badge}
-                          initial={{ scale: 0 }}
-                          animate={{ scale: 1 }}
-                          transition={{ delay: 0.5 }}
-                        >
-                          N
-                        </motion.span>
+                        <span className={styles.badge}>N</span>
                       )}
                     </div>
                     <div className={styles.noticeMeta}>

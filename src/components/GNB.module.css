@@ -92,7 +92,7 @@
   top: 100%;
   left: 50%;
   transform: translateX(-50%);
-  padding: 12px 8px;
+  padding: 4px;
   min-width: 180px;
   z-index: 200;
 }
@@ -116,7 +116,7 @@
   align-items: center;
   justify-content: space-between;
   gap: 8px;
-  padding: 8px 12px; /* 상하 8px, 좌우 12px로 밸런스 조정 */
+  padding: 8px 12px;
   border-radius: 8px;
   font-size: 14px;
   font-weight: 400;

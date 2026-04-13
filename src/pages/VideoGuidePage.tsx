@@ -5,6 +5,7 @@ import { MdHome, MdChevronRight, MdChevronLeft, MdFirstPage, MdLastPage, MdCheck
 import GNB from '../components/GNB'
 import Footer from '../components/Footer'
 import TransitionLayout from '../components/TransitionLayout'
+import Breadcrumb from '../components/Breadcrumb'
 import styles from './VideoGuidePage.module.css'
 
 const laptopIcon = 'https://www.figma.com/api/mcp/asset/a846f534-4240-4403-b3eb-c4640ba35fbc'
@@ -67,16 +68,7 @@ export default function VideoGuidePage() {
       <div className={styles.page}>
         <GNB variant="light" />
 
-        {/* 브레드크럼 */}
-        <div className={styles.breadcrumb}>
-          <div className={styles.breadcrumbInner}>
-            <Link to="/" className={styles.breadcrumbHome}>
-              <MdHome size={16} color="#171719" />
-            </Link>
-            <MdChevronRight size={12} color="#a0a0a1" />
-            <span className={styles.breadcrumbText}>동영상 가이드</span>
-          </div>
-        </div>
+        <Breadcrumb currentLabel="동영상 가이드" />
 
         {/* 본문 */}
         <div className={styles.body}>

@@ -6,37 +6,7 @@
   background: #f0f4f9;
 }
 
-/* Breadcrumb */
-.breadcrumbBar {}
-
-.breadcrumb {
-  padding: 32px 48px 0;
-}
-
-.breadcrumbInner {
-  max-width: 1000px;
-  margin: 0 auto;
-  display: flex;
-  align-items: center;
-  gap: 4px;
-  font-size: 14px;
-  color: var(--color-text-default);
-}
-
-.breadcrumbLink {
-  display: flex;
-  align-items: center;
-  gap: 4px;
-  color: rgba(55,56,60,0.61);
-  text-decoration: none;
-}
-
-.breadcrumbLinkText {
-  font-size: 14px;
-  line-height: 1.5;
-  letter-spacing: -0.07px;
-  color: rgba(55,56,60,0.61);
-}
+/* Breadcrumb (Removed - handled by common component) */
 
 .breadcrumbHome {
   display: flex;
@@ -84,48 +54,61 @@
 .stepCard {
   background: var(--color-white);
   border-radius: 20px;
-  padding: 28px 28px;
+  padding: 20px 28px; /* 상하 패딩 20px로 조정 */
   margin-bottom: 12px; /* 섹션 간 간격 12px 요청 적용 */
 }
 
 .stepList {
-  display: grid;
-  grid-template-columns: 100px 1fr 100px 1fr 100px 1fr 100px;
-  align-items: start;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 0;
+  width: 100%;
 }
 
 .stepItem {
   display: flex;
-  flex-direction: column;
+  flex-direction: row; /* 세로에서 가로로 변경 */
   align-items: center;
-  gap: 8px;
+  gap: 12px;
+  flex-shrink: 0;
 }
 
 .stepLine {
-  height: 40px;
+  flex: 1;
+  max-width: 80px;
+  height: 2px; /* 사이 라인 두께 3px -> 2px로 조정 */
+  background: #F6F8FC; /* 기본 라인 색상 */
+  margin: 0 20px;
+  border-radius: 99px; /* 선이 두꺼워져서 둥글게 처리 */
+  transition: background 0.3s ease;
+}
+
+.stepLineDone {
+  background: var(--color-primary-default); /* 지나갔을 때 파란색 */
+}
+
+.completionIcon {
+  width: 48px;
+  height: 48px;
+  border-radius: 50%;
+  background: #e8f0fe; /* 원래의 블루 배경색으로 복구 */
   display: flex;
   align-items: center;
   justify-content: center;
-}
-
-.stepLine::after {
-  content: '';
-  display: block;
-  width: 100%;
-  height: 1px;
-  background: rgba(112,115,124,0.2);
+  margin-bottom: 24px;
 }
 
 .stepCircle {
-  width: 40px;
-  height: 40px;
+  width: 36px;
+  height: 36px;
   border-radius: 999px;
-  background: #f6f8fc;
+  background: #f6f8fc; /* 원래의 그레이 배경색으로 복구 */
   display: flex;
   align-items: center;
   justify-content: center;
   font-size: 14px;
-  font-weight: 400;
+  font-weight: 600; /* 숫자 두께 600으로 변경 */
   line-height: 1.5;
   letter-spacing: -0.07px;
   color: rgba(55,56,60,0.28);
@@ -138,7 +121,7 @@
 }
 
 .stepLabel {
-  font-size: 14px;
+  font-size: 15px; /* 텍스트 사이즈 14 -> 15 상향 조정 */
   font-weight: 400;
   line-height: 1.5;
   letter-spacing: -0.07px;
@@ -157,7 +140,7 @@
 .formCard {
   background: var(--color-white);
   border-radius: 20px; /* 모든 모서리 20px 복구 */
-  padding: 48px 32px 48px; 
+  padding: 28px; /* 상하좌우 패딩 28px로 조정 */
   display: flex;
   flex-direction: column;
   gap: 0;
@@ -167,11 +150,12 @@
 
 .formInner {
   width: 100%;
-  max-width: 500px; /* 요청하신 대로 500px로 조정 */
+  max-width: 440px; /* 구글 권장 스타일인 440px로 조정 */
   margin: 0 auto;
   display: flex;
   flex-direction: column;
   gap: 12px;
+  flex: 1; /* 카드 전체 높이를 채우도록 설정 */
 }
 
 .formTitle {
@@ -353,7 +337,8 @@
 
 .btnVerify {
   height: 40px;
-  padding: 0 16px;
+  width: 88px; /* 버튼 너비 88px 고정 */
+  padding: 0;
   border-radius: var(--radius-4);
   background: rgba(112,115,124,0.08);
   font-size: 14px;
@@ -395,7 +380,8 @@
 
 .btnConfirm {
   height: 40px;
-  padding: 0 16px;
+  width: 88px; /* 버튼 너비 88px 고정 */
+  padding: 0;
   border-radius: var(--radius-4);
   background: var(--color-primary-default);
   color: var(--color-white);
@@ -462,8 +448,9 @@
   display: flex;
   flex-direction: column;
   align-items: center;
+  justify-content: center; /* 수직 중앙 정렬 추가 */
   gap: 16px;
-  padding: 48px 0;
+  flex: 1; /* 부모 공간을 가득 채워 중앙 배치 가능하게 함 */
   text-align: center;
 }
 
@@ -505,12 +492,13 @@
   display: flex;
   align-items: center;
   justify-content: flex-end;
+  gap: 8px; /* 버튼 사이 간격 추가 */
   margin-top: auto;
   width: 100%;
 }
 
 .actionsRow {
-  justify-content: space-between;
+  /* 버튼이 나란히 붙도록 justify-content 제거 */
 }
 
 .btnPrev {
@@ -562,7 +550,7 @@
   }
 
   .body {
-    padding: 0 48px 80px;
+    padding: 0 48px 0; /* 하단 패딩 0으로 수정 */
   }
 }
 
@@ -572,7 +560,7 @@
   }
 
   .body {
-    padding: 0 24px 60px;
+    padding: 0 24px 0; /* 하단 패딩 0으로 수정 */
   }
 
   .formInner {
@@ -588,7 +576,8 @@
   }
 
   .stepList {
-    grid-template-columns: repeat(4, 1fr);
+    flex-wrap: wrap;
+    gap: 16px 0;
   }
 
   .stepLine {
@@ -602,7 +591,7 @@
   }
 
   .body {
-    padding: 0 16px 48px;
+    padding: 0 16px 0; /* 하단 패딩 0으로 수정 */
   }
 
   .formInner {

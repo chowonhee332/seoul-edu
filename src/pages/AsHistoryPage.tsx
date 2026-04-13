@@ -5,6 +5,7 @@ import { MdHome, MdChevronRight, MdChevronLeft, MdKeyboardArrowDown, MdFirstPage
 import GNB from '../components/GNB'
 import Footer from '../components/Footer'
 import TransitionLayout from '../components/TransitionLayout'
+import Breadcrumb from '../components/Breadcrumb'
 import styles from './AsHistoryPage.module.css'
 
 const PERIOD_TABS = ['1주일', '1개월', '3개월', '6개월']
@@ -72,16 +73,7 @@ export default function AsHistoryPage() {
       <div className={styles.page}>
         <GNB variant="light" />
 
-        {/* 브레드크럼 */}
-        <div className={styles.breadcrumb}>
-          <div className={styles.breadcrumbInner}>
-            <Link to="/" className={styles.breadcrumbHome}>
-              <MdHome size={16} color="#171719" />
-            </Link>
-            <MdChevronRight size={12} color="#a0a0a1" />
-            <span className={styles.breadcrumbCurrent}>AS 접수 조회·변경</span>
-          </div>
-        </div>
+        <Breadcrumb currentLabel="AS 접수 조회·변경" />
 
         <div className={styles.body}>
           <div className={styles.inner}>
@@ -105,87 +97,95 @@ export default function AsHistoryPage() {
                   exit="exit"
                   transition={{ duration: 0.3 }}
                 >
-                  <h2 className={styles.formTitle}>접수자 정보를 입력해주세요.</h2>
+                  <div className={styles.formInner}>
+                    <h2 className={styles.formTitle}>접수자 정보를 입력해주세요.</h2>
 
-                  <div className={styles.fields}>
-                    {/* 이름 */}
-                    <div className={styles.field}>
-                      <label className={styles.label}>이름</label>
-                      <input
-                        type="text"
-                        className={styles.input}
-                        placeholder="이름을 입력해주세요."
-                        value={name}
-                        onChange={(e) => setName(e.target.value)}
-                      />
-                    </div>
-
-                    {/* 휴대폰 */}
-                    <div className={styles.field}>
-                      <label className={styles.label}>휴대폰</label>
-                      <div className={styles.inputWithBtn}>
+                    <div className={styles.fields}>
+                      {/* 이름 */}
+                      <div className={styles.field}>
+                        <label className={styles.label}>이름</label>
                         <input
-                          type="tel"
+                          type="text"
                           className={styles.input}
-                          placeholder="'-'를 제외하고 숫자 입력"
-                          value={phone}
-                          onChange={(e) => setPhone(e.target.value)}
+                          placeholder="이름을 입력해주세요."
+                          value={name}
+                          onChange={(e) => setName(e.target.value)}
                         />
-                        <motion.button 
-                          type="button" 
-                          className={styles.btnVerify}
-                          whileTap={{ scale: 0.95 }}
-                        >
-                          인증 받기
-                        </motion.button>
                       </div>
-                      <div className={styles.codeRow}>
-                        <div className={styles.inputTimerWrap}>
+
+                      {/* 휴대폰 */}
+                      <div className={styles.field}>
+                        <label className={styles.label}>휴대폰</label>
+                        <div className={styles.inputWithBtn}>
                           <input
-                            type="text"
+                            type="tel"
                             className={styles.input}
-                            placeholder="123456"
-                            value={code}
-                            onChange={(e) => setCode(e.target.value)}
+                            placeholder="'-'를 제외하고 숫자 입력"
+                            value={phone}
+                            onChange={(e) => setPhone(e.target.value)}
                           />
-                          <span className={styles.inputTimer}>00:00</span>
+                          <motion.button 
+                            type="button" 
+                            className={styles.btnVerify}
+                            whileTap={{ scale: 0.95 }}
+                          >
+                            인증 받기
+                          </motion.button>
                         </div>
-                        <motion.button 
-                          type="button" 
-                          className={styles.btnConfirm}
-                          whileTap={{ scale: 0.95 }}
-                        >
-                          확인
-                        </motion.button>
+                        <div className={styles.codeRow}>
+                          <div className={styles.inputTimerWrap}>
+                            <input
+                              type="text"
+                              className={styles.input}
+                              placeholder="123456"
+                              value={code}
+                              onChange={(e) => setCode(e.target.value)}
+                            />
+                            <span className={styles.inputTimer}>00:00</span>
+                          </div>
+                          <motion.button 
+                            type="button" 
+                            className={styles.btnConfirm}
+                            whileTap={{ scale: 0.95 }}
+                          >
+                            확인
+                          </motion.button>
+                        </div>
                       </div>
+                    </div>
+
+                    {/* 동의 */}
+                    <div className={styles.consentRow}>
+                      <div className={styles.consentLeft}>
+                        <input
+                          type="checkbox"
+                          id="consent"
+                          className={styles.checkbox}
+                          checked={consent}
+                          onChange={(e) => setConsent(e.target.checked)}
+                        />
+                        <label htmlFor="consent" className={styles.consentLabel}>
+                          개인정보 수집/이용 동의
+                        </label>
+                      </div>
+                      <motion.button 
+                        type="button" 
+                        className={styles.btnTextLink} 
+                        whileHover={{ x: 3 }}
+                      >
+                        전문보기 <MdChevronRight size={18} />
+                      </motion.button>
                     </div>
                   </div>
 
-                  {/* 동의 */}
-                  <div className={styles.consentRow}>
-                    <input
-                      type="checkbox"
-                      id="consent"
-                      className={styles.checkbox}
-                      checked={consent}
-                      onChange={(e) => setConsent(e.target.checked)}
-                    />
-                    <label htmlFor="consent" className={styles.consentLabel}>
-                      개인정보 수집/이용 동의
-                    </label>
-                    <motion.button type="button" className={styles.btnTextLink} whileHover={{ x: 3 }}>
-                      전문보기 &gt;
-                    </motion.button>
-                  </div>
-
-                  {/* 다음 버튼 */}
+                  {/* 다음 버튼: formInner 밖으로 이동하여 카드 우측 끝 정렬 */}
                   <div className={styles.actions}>
                     <motion.button 
                       type="button" 
-                      className={styles.btnNext} 
-                      onClick={handleNext}
+                      className={styles.btnNext}
                       whileHover={{ scale: 1.02 }}
                       whileTap={{ scale: 0.98 }}
+                      onClick={() => setStep(1)}
                     >
                       다음
                     </motion.button>
@@ -195,6 +195,7 @@ export default function AsHistoryPage() {
                 /* ── Step 1: Results ── */
                 <motion.div 
                   key="step1"
+                  className={styles.resultsSection}
                   variants={stepVariants}
                   initial="initial"
                   animate="animate"

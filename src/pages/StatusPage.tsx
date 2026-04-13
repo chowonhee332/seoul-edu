@@ -5,6 +5,7 @@ import { MdHome, MdChevronRight, MdChevronLeft, MdKeyboardArrowDown, MdFirstPage
 import GNB from '../components/GNB'
 import Footer from '../components/Footer'
 import TransitionLayout from '../components/TransitionLayout'
+import Breadcrumb from '../components/Breadcrumb'
 import styles from './StatusPage.module.css'
 
 
@@ -64,16 +65,7 @@ export default function StatusPage() {
       <div className={styles.page}>
         <GNB variant="light" />
 
-        {/* 브레드크럼 */}
-        <div className={styles.breadcrumb}>
-          <div className={styles.breadcrumbInner}>
-            <Link to="/" className={styles.breadcrumbHome}>
-              <MdHome size={16} color="#171719" />
-            </Link>
-            <MdChevronRight size={12} color="#a0a0a1" />
-            <span className={styles.breadcrumbText}>스마트 기기 현황</span>
-          </div>
-        </div>
+        <Breadcrumb currentLabel="스마트기기 현황" />
 
         {/* 본문 */}
         <div className={styles.body}>

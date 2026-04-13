@@ -6,33 +6,7 @@
   background: #f0f4f9;
 }
 
-/* Breadcrumb */
-.breadcrumb {
-  padding: 32px 48px 0;
-}
-
-.breadcrumbInner {
-  max-width: 1000px;
-  margin: 0 auto;
-  display: flex;
-  align-items: center;
-  gap: 4px;
-  font-size: 14px;
-  color: var(--color-text-default);
-}
-
-.breadcrumbHome {
-  display: flex;
-  align-items: center;
-  color: var(--color-text-default);
-}
-
-.breadcrumbCurrent {
-  font-size: 14px;
-  line-height: 1.5;
-  letter-spacing: -0.07px;
-  color: var(--color-text-default);
-}
+/* Breadcrumb (Removed - handled by common component) */
 
 /* Body */
 .body {
@@ -67,12 +41,21 @@
 .formCard {
   background: var(--color-white);
   border-radius: 20px; /* 모든 모서리 20px 복구 */
-  padding: 48px 32px;
+  padding: 28px; /* 통일된 패딩 28px */
   display: flex;
   flex-direction: column;
   gap: 0;
   flex: 1; /* 가득 채우기 */
   margin-bottom: 0;
+}
+
+.formInner {
+  width: 100%;
+  max-width: 440px; /* 구글 권장 스타일인 440px로 통일 */
+  margin: 0 auto;
+  display: flex;
+  flex-direction: column;
+  flex: 1; /* 카드 전체 높이를 채우도록 설정 */
 }
 
 .formTitle {
@@ -82,14 +65,12 @@
   letter-spacing: -0.2px;
   color: var(--color-text-default);
   margin-bottom: 20px;
-  padding: 0 230px;
 }
 
 .fields {
   display: flex;
   flex-direction: column;
   gap: 12px;
-  padding: 0 230px;
   margin-bottom: 8px;
 }
 
@@ -178,7 +159,8 @@
 
 .btnVerify {
   height: 40px;
-  padding: 0 16px;
+  width: 88px; /* 버튼 너비 88px 고정 */
+  padding: 0;
   border-radius: var(--radius-4);
   background: rgba(112,115,124,0.08);
   font-size: 14px;
@@ -197,7 +179,8 @@
 
 .btnConfirm {
   height: 40px;
-  padding: 0 16px;
+  width: 88px; /* 버튼 너비 88px 고정 */
+  padding: 0;
   border-radius: var(--radius-4);
   background: var(--color-primary-default);
   color: var(--color-white);
@@ -217,9 +200,18 @@
 .consentRow {
   display: flex;
   align-items: center;
+  justify-content: space-between; /* 양 끝 정렬 */
   gap: 8px;
-  padding: 0 230px;
-  margin-top: 16px;
+  margin-top: 32px;
+  padding: 16px 20px;
+  background: #f6f8fc; /* 연한 그레이 배경색 추가 */
+  border-radius: 12px;
+}
+
+.consentLeft {
+  display: flex;
+  align-items: center;
+  gap: 8px;
 }
 
 .checkbox {
@@ -238,14 +230,16 @@
 }
 
 .btnTextLink {
-  font-size: 13px;
-  color: var(--color-primary-default);
+  font-size: 14px;
+  color: #2e2f33; /* 텍스트 색상을 다크 그레이로 변경 */
   background: none;
   font-family: inherit;
   cursor: pointer;
   padding: 0;
-  text-decoration: underline;
-  white-space: nowrap;
+  display: flex;
+  align-items: center;
+  gap: 2px;
+  text-decoration: none;
   border: none;
 }
 
@@ -253,7 +247,6 @@
   display: flex;
   align-items: center;
   justify-content: flex-end;
-  padding: 0 230px;
   margin-top: auto; /* 하단 끝으로 밀어넣기 */
   padding-top: 32px; /* 최소 간격 확보 */
 }
@@ -277,16 +270,22 @@
   opacity: 0.85;
 }
 
+.resultsSection {
+  display: flex;
+  flex-direction: column;
+  flex: 1; /* 대지 가득 채우기 */
+}
+
 /* ── Step 1: Filter card (single row) ── */
 .filterCard {
   background: var(--color-white);
   border-radius: 20px;
-  padding: 28px;
+  padding: 20px 28px; /* 상하 20px, 좌우 28px로 조정 */
   display: flex;
   align-items: center;
   gap: 12px;
   flex-wrap: wrap;
-  margin-bottom: 48px; /* 섹션 간 여백 48px 복구 */
+  margin-bottom: 32px; /* 섹션 간 여백 48px -> 32px로 조정 */
 }
 
 .filterLabel {
@@ -370,6 +369,7 @@
   flex-shrink: 0;
   transition: opacity 0.15s;
   border: none;
+  margin-left: auto; /* 우측 끝으로 밀어내기 */
 }
 
 .btnSearch:hover {
@@ -383,7 +383,8 @@
   line-height: 1.4;
   letter-spacing: -0.2px;
   color: var(--color-text-default);
-  margin: 0;
+  margin-top: 0; /* 상단 마진 0으로 조정 */
+  margin-bottom: 20px; /* 타이틀과 하단 박스 사이 간격 20px 적용 */
 }
 
 /* Table card */
@@ -542,7 +543,7 @@
   }
 
   .body {
-    padding: 0 24px 60px;
+    padding: 0 24px 0; /* 하단 패딩 0으로 수정 */
   }
 
   .formTitle,
@@ -582,7 +583,7 @@
   }
 
   .body {
-    padding: 0 16px 48px;
+    padding: 0 16px 0; /* 하단 패딩 0으로 수정 */
   }
 
   .formCard {

@@ -6,33 +6,7 @@
   background: #f0f4f9;
 }
 
-/* Breadcrumb */
-.breadcrumb {
-  padding: 32px 48px 0;
-}
-
-.breadcrumbInner {
-  max-width: 1000px;
-  margin: 0 auto;
-  display: flex;
-  align-items: center;
-  gap: 4px;
-  font-size: 14px;
-  color: var(--color-text-default);
-}
-
-.breadcrumbHome {
-  display: flex;
-  align-items: center;
-  color: var(--color-text-default);
-}
-
-.breadcrumbText {
-  font-size: 14px;
-  line-height: 1.5;
-  letter-spacing: -0.07px;
-  color: var(--color-text-default);
-}
+/* Breadcrumb (Removed - handled by common component) */
 
 /* Body */
 .body {
@@ -70,7 +44,7 @@
   display: flex;
   flex-direction: column;
   gap: 0;
-  margin-bottom: 48px; /* 섹션 간 간격을 다시 48px로 유지 */
+  margin-bottom: 32px; /* 섹션 간 간격 48px -> 32px로 조정 */
 }
 
 /* School row */

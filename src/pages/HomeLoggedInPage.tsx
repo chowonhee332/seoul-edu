@@ -233,13 +233,9 @@ export default function HomeLoggedInPage() {
                   <motion.div key={item.id} className={styles.noticeRow} >
                     <div className={styles.noticeTitle}>
                       <span className={styles.noticeTitleText}>{item.title}</span>
-                      <motion.span 
-                        className={styles.badge}
-                        animate={item.isNew ? { scale: [1, 1.2, 1] } : {}}
-                        transition={{ repeat: Infinity, duration: 2 }}
-                      >
+                      <span className={styles.badge}>
                         {item.isNew ? 'N' : 'Y'}
-                      </motion.span>
+                      </span>
                     </div>
                     <span className={styles.noticeDate}>{item.date}</span>
                   </motion.div>

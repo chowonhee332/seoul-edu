@@ -6,40 +6,7 @@
   background: #f0f4f9;
 }
 
-/* Breadcrumb */
-.breadcrumb {
-  padding: 32px 48px 0;
-}
-
-.breadcrumbInner {
-  max-width: 1000px;
-  margin: 0 auto;
-  display: flex;
-  align-items: center;
-  gap: 4px;
-  font-size: 14px;
-  color: var(--color-text-default);
-}
-
-.breadcrumbHome {
-  display: flex;
-  align-items: center;
-  color: var(--color-text-default);
-}
-
-.breadcrumbSub {
-  font-size: 14px;
-  line-height: 1.5;
-  letter-spacing: -0.07px;
-  color: rgba(46,47,51,0.5);
-}
-
-.breadcrumbText {
-  font-size: 14px;
-  line-height: 1.5;
-  letter-spacing: -0.07px;
-  color: var(--color-text-default);
-}
+/* Breadcrumb (Removed - handled by common component) */
 
 /* Body */
 .body {
@@ -143,7 +110,7 @@
   padding: 28px;
   display: flex;
   flex-direction: column;
-  gap: 28px;
+  gap: 12px;
   flex: 1;
 }
 
@@ -385,6 +352,7 @@
   justify-content: center;
   gap: 4px;
   padding: 8px 0 0;
+  margin-top: auto; /* 하단 고정 */
 }
 
 .pageBtn {

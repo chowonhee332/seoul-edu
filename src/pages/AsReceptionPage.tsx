@@ -5,6 +5,8 @@ import { MdHome, MdChevronRight, MdCheck } from 'react-icons/md'
 import GNB from '../components/GNB'
 import Footer from '../components/Footer'
 import TransitionLayout from '../components/TransitionLayout'
+import Confetti from '../components/Confetti'
+import Breadcrumb from '../components/Breadcrumb'
 import styles from './AsReceptionPage.module.css'
 
 const STEPS = ['접수자 정보', '학교정보 입력', '제품/증상 선택', '접수 완료']
@@ -179,11 +181,23 @@ export default function AsReceptionPage() {
   const renderStep4 = () => (
     <motion.div key="step4" className={styles.formInner} variants={stepVariants} initial="initial" animate="animate" exit="exit">
       <div className={styles.completionBox}>
-        <motion.div className={styles.completionIcon} initial={{ scale: 0 }} animate={{ scale: 1, rotate: [0, 10, 0] }} transition={{ duration: 0.5 }}>
-          <svg width="64" height="64" viewBox="0 0 64 64" fill="none">
-            <circle cx="32" cy="32" r="32" fill="#E8F0FE"/>
-            <path d="M20 32L28 40L44 24" stroke="#1A73E8" strokeWidth="3" strokeLinecap="round" strokeLinejoin="round"/>
-          </svg>
+        <Confetti count={60} />
+        <motion.div 
+          className={styles.completionIcon}
+          initial={{ scale: 0, rotate: -20 }}
+          animate={{ 
+            scale: [0, 1.4, 1],
+            rotate: [0, 10, 0],
+          }}
+          transition={{ 
+            duration: 0.6,
+            times: [0, 0.7, 1],
+            type: "spring",
+            stiffness: 260,
+            damping: 20 
+          }}
+        >
+          <MdCheck size={28} color="#1a75ff" />
         </motion.div>
         <h2 className={styles.completionTitle}>접수가 완료되었습니다.</h2>
         <p className={styles.completionDesc}>
@@ -209,16 +223,7 @@ export default function AsReceptionPage() {
       <div className={styles.page}>
         <GNB variant="light" />
 
-        {/* 브레드크럼 */}
-        <div className={styles.breadcrumb}>
-          <div className={styles.breadcrumbInner}>
-            <Link to="/" className={styles.breadcrumbHome}>
-              <MdHome size={16} color="#171719" />
-            </Link>
-            <MdChevronRight size={12} color="#a0a0a1" />
-            <span className={styles.breadcrumbCurrent}>AS 접수하기</span>
-          </div>
-        </div>
+        <Breadcrumb currentLabel="AS 접수하기" />
 
         <div className={styles.body}>
           <div className={styles.inner}>
@@ -241,7 +246,12 @@ export default function AsReceptionPage() {
                       {label}
                     </span>
                   </div>,
-                  i < STEPS.length - 1 && <div key={`line-${i}`} className={styles.stepLine} />,
+                  i < STEPS.length - 1 && (
+                    <div 
+                      key={`line-${i}`} 
+                      className={`${styles.stepLine} ${i < currentStep ? styles.stepLineDone : ''}`} 
+                    />
+                  ),
                 ])}
               </div>
             </motion.div>
