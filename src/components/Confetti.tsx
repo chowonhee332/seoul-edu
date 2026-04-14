@@ -32,8 +32,8 @@ const ConfettiPiece = ({ delay, color, angle, distance }: ConfettiPieceProps) =>
       }}
       style={{
         position: 'absolute',
-        width: Math.random() * 5 + 2,
-        height: Math.random() * 5 + 2,
+        width: Math.random() * 6 + 4,
+        height: Math.random() * 6 + 4,
         backgroundColor: color,
         borderRadius: '50%',
         zIndex: 100,
@@ -43,14 +43,14 @@ const ConfettiPiece = ({ delay, color, angle, distance }: ConfettiPieceProps) =>
   )
 }
 
-export default function Confetti({ count = 100 }) {
+export default function Confetti({ count = 200 }) {
   const pieces = useMemo(() => {
     return Array.from({ length: count }).map((_, i) => ({
       id: i,
       delay: Math.random() * 0.2,
       color: COLORS[Math.floor(Math.random() * COLORS.length)],
       angle: Math.random() * 360,
-      distance: 100 + Math.random() * 150,
+      distance: 150 + Math.random() * 250,
     }))
   }, [count])
 
