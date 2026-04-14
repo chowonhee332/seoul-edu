@@ -136,7 +136,7 @@
   top: 100%;
   left: 50%;
   transform: translateX(-50%);
-  padding: 4px;
+  padding: 8px 4px 4px;
   min-width: 172px;
   z-index: 200;
 }
@@ -145,7 +145,7 @@
   content: '';
   display: block;
   position: absolute;
-  top: 0;
+  top: 8px;
   left: 0;
   right: 0;
   bottom: 0;
