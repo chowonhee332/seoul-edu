@@ -81,15 +81,6 @@ export default function GNB({ variant = 'light' }: { variant?: GNBVariant }) {
     <>
       <header className={`${styles.gnb} ${isDark ? styles.dark : styles.light} ${scrolled ? styles.scrolled : ''}`}>
         <div className={styles.leftSection}>
-          {/* 모바일 햄버거 버튼 */}
-          <button 
-            className={styles.menuToggleButton} 
-            onClick={() => setIsDrawerOpen(true)}
-            aria-label="메뉴 열기"
-          >
-            <MdMenu size={24} color={!showLight ? 'white' : '#171719'} />
-          </button>
-
           <Link to="/" className={styles.logo}>
             <img src={showLight ? logoLightUrl : logoDarkUrl} alt="서울특별시교육청" className={styles.logoImg} />
           </Link>
@@ -144,6 +135,15 @@ export default function GNB({ variant = 'light' }: { variant?: GNBVariant }) {
           <Link to="/login" className={styles.iconBtn} aria-label="프로필">
             <MdPerson size={24} color={!showLight ? 'white' : '#171719'} />
           </Link>
+          
+          {/* 모바일 햄버거 버튼 - 우측 배치 */}
+          <button 
+            className={styles.menuToggleButton} 
+            onClick={() => setIsDrawerOpen(true)}
+            aria-label="메뉴 열기"
+          >
+            <MdMenu size={24} color={!showLight ? 'white' : '#171719'} />
+          </button>
         </div>
       </header>
 
@@ -160,9 +160,9 @@ export default function GNB({ variant = 'light' }: { variant?: GNBVariant }) {
             />
             <motion.div 
               className={styles.drawer}
-              initial={{ x: '-100%' }}
+              initial={{ x: '100%' }}
               animate={{ x: 0 }}
-              exit={{ x: '-100%' }}
+              exit={{ x: '100%' }}
               transition={{ type: 'spring', damping: 25, stiffness: 200 }}
             >
               <div className={styles.drawerHeader}>
