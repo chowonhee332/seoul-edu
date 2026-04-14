@@ -14,23 +14,26 @@ const PERIOD_TABS = ['1주일', '1개월', '3개월', '6개월']
 const SAMPLE_ROWS = [
   {
     no: 3,
-    category: 'SW > 부팅/초기화/백업 > APP/SW 일반',
-    content: '방문 전에 전화 상담 받고 싶어서 신청합니다. 연락...',
     date: '2026.04.10',
+    productName: '갤럭시 탭 S9 FE',
+    serialNumber: 'R3CWX1234567A',
+    symptom: 'SW > 부팅/초기화/백업 > APP/SW 일반',
     status: '정상',
   },
   {
     no: 2,
-    category: 'SW > 부팅/초기화/백업 > APP/SW 일반',
-    content: '방문 전에 전화 상담 받고 싶어서 신청합니다. 연락...',
     date: '2026.04.10',
+    productName: '갤럭시 탭 S9 FE',
+    serialNumber: 'R3CWX1234567A',
+    symptom: 'SW > 부팅/초기화/백업 > APP/SW 일반',
     status: '정상',
   },
   {
     no: 1,
-    category: 'SW > 부팅/초기화/백업 > APP/SW 일반',
-    content: '방문 전에 전화 상담 받고 싶어서 신청합니다. 연락...',
     date: '2026.04.10',
+    productName: '갤럭시 탭 S9 FE',
+    serialNumber: 'R3CWX1234567A',
+    symptom: 'SW > 부팅/초기화/백업 > APP/SW 일반',
     status: '정상',
   },
 ]
@@ -257,9 +260,10 @@ export default function AsHistoryPage() {
                       <thead>
                         <tr>
                           <th className={styles.th}>No.</th>
-                          <th className={styles.th}>문의구분</th>
-                          <th className={styles.th}>문의내용</th>
-                          <th className={styles.th}>신청일</th>
+                          <th className={styles.th}>접수일</th>
+                          <th className={styles.th}>제품명</th>
+                          <th className={styles.th}>일련번호</th>
+                          <th className={styles.th}>증상</th>
                           <th className={styles.th}>처리현황</th>
                         </tr>
                       </thead>
@@ -271,9 +275,10 @@ export default function AsHistoryPage() {
                         {SAMPLE_ROWS.map((row) => (
                           <motion.tr key={row.no} className={styles.tr} variants={rowVariants} whileHover={{ backgroundColor: '#fbfcfd' }}>
                             <td className={styles.td}>{row.no}</td>
-                            <td className={styles.td}>{row.category}</td>
-                            <td className={`${styles.td} ${styles.tdContent}`}>{row.content}</td>
                             <td className={styles.td}>{row.date}</td>
+                            <td className={styles.td}>{row.productName}</td>
+                            <td className={styles.td}>{row.serialNumber}</td>
+                            <td className={`${styles.td} ${styles.flex1}`}>{row.symptom}</td>
                             <td className={styles.td}>
                               <span className={styles.statusBadge}>{row.status}</span>
                             </td>
