@@ -182,7 +182,7 @@ export default function AsReceptionPage() {
   const renderStep4 = () => (
     <motion.div key="step4" className={styles.formInner} variants={stepVariants} initial="initial" animate="animate" exit="exit">
       <div className={styles.completionBox}>
-        <Confetti count={400} />
+        <Confetti count={300} />
         <motion.div 
           className={styles.completionIcon}
           initial={{ scale: 0, rotate: -20 }}

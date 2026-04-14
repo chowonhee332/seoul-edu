@@ -10,7 +10,7 @@ const COLORS = [
   '#1B5E20', // 다크 그린
 ]
 
-export default function Confetti({ count = 400 }: { count?: number }) {
+export default function Confetti({ count = 300 }: { count?: number }) {
   useEffect(() => {
     const timer = setTimeout(() => {
       confetti({
@@ -24,7 +24,7 @@ export default function Confetti({ count = 400 }: { count?: number }) {
         gravity: 0.8, // 사방으로 더 잘 퍼지게 중력 소폭 완화
         ticks: 100,
       })
-    }, 500)
+    }, 200) // 200ms 지연 후 실행 (거의 바로 터지도록 단축)
 
     return () => clearTimeout(timer)
   }, [count])
