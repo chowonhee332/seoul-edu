@@ -1,5 +1,5 @@
-import { motion } from 'framer-motion'
-import { useMemo } from 'react'
+import { useEffect } from 'react'
+import confetti from 'canvas-confetti'
 
 const COLORS = [
   '#1A75FF', // 메인 블루
@@ -10,62 +10,22 @@ const COLORS = [
   '#1B5E20', // 다크 그린
 ]
 
-interface ConfettiPieceProps {
-  delay: number
-  color: string
-  angle: number
-  distance: number
-}
+export default function Confetti({ count = 200 }: { count?: number }) {
+  useEffect(() => {
+    confetti({
+      particleCount: count,
+      spread: 60, // 확산 범위를 좁게 조절 (기존 70 -> 60)
+      origin: { y: 0.6 }, // 화면 중앙 약간 아래에서 폭발
+      colors: COLORS,
+      shapes: ['circle'], // 원형 조각만 사용
+      scalar: 0.7, // 크기를 조금 더 작고 귀엽게 조정
+      gravity: 1.1, // 중력 효과를 주어 자연스럽게 낙하
+      drift: 0,
+      ticks: 200, // 지속 시간 조절
+    })
+  }, [])
 
-const ConfettiPiece = ({ delay, color, angle, distance }: ConfettiPieceProps) => {
-  const radian = (angle * Math.PI) / 180
-  const x = Math.cos(radian) * distance
-  const y = Math.sin(radian) * distance
-
-  return (
-    <motion.div
-      initial={{ x: 0, y: 0, scale: 0, opacity: 1, rotate: 0 }}
-      animate={{
-        x: [0, x, x + (Math.random() - 0.5) * 20],
-        y: [0, y, y + 150 + Math.random() * 100], // 폭발 후 아래로 떨어짐
-        scale: [0, 1, 0.5, 0],
-        opacity: [1, 1, 0.8, 0],
-        rotate: [0, Math.random() * 360, Math.random() * 720],
-      }}
-      transition={{
-        duration: 2.5 + Math.random() * 1,
-        delay: delay,
-        ease: [0.23, 1, 0.32, 1], // 초기 폭발은 빠르게, 이후 부드럽게
-      }}
-      style={{
-        position: 'absolute',
-        width: Math.random() * 6 + 4,
-        height: Math.random() * 6 + 4,
-        backgroundColor: color,
-        borderRadius: '50%',
-        zIndex: 100,
-        pointerEvents: 'none',
-      }}
-    />
-  )
-}
-
-export default function Confetti({ count = 200 }) {
-  const pieces = useMemo(() => {
-    return Array.from({ length: count }).map((_, i) => ({
-      id: i,
-      delay: Math.random() * 0.2,
-      color: COLORS[Math.floor(Math.random() * COLORS.length)],
-      angle: Math.random() * 360,
-      distance: 80 + Math.random() * 120,
-    }))
-  }, [count])
-
-  return (
-    <div style={{ position: 'absolute', inset: 0, display: 'flex', alignItems: 'center', justifyContent: 'center', pointerEvents: 'none', overflow: 'visible' }}>
-      {pieces.map((p) => (
-        <ConfettiPiece key={p.id} {...p} />
-      ))}
-    </div>
-  )
+  // canvas-confetti는 기본적으로 body에 canvas를 생성하여 동작하므로
+  // 컴포넌트 자체는 렌더링할 요소를 반환하지 않아도 됩니다.
+  return null
 }
