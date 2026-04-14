@@ -12,30 +12,15 @@ import styles from './AsHistoryPage.module.css'
 const PERIOD_TABS = ['1주일', '1개월', '3개월', '6개월']
 
 const SAMPLE_ROWS = [
-  {
-    no: 3,
-    date: '2026.04.10',
-    productName: '갤럭시 탭 S9 FE',
-    serialNumber: 'R3CWX1234567A',
-    symptom: '화면 불량 (줄 생김 현상)',
-    status: '정상',
-  },
-  {
-    no: 2,
-    date: '2026.04.10',
-    productName: '갤럭시 탭 S9 FE',
-    serialNumber: 'R3CWX1234567A',
-    symptom: '화면 안나옴 (전원 불량 의심)',
-    status: '정상',
-  },
-  {
-    no: 1,
-    date: '2026.04.10',
-    productName: '갤럭시 탭 S9 FE',
-    serialNumber: 'R3CWX1234567A',
-    symptom: '충전 불량 (충전기 인식 안됨)',
-    status: '정상',
-  },
+  { no: 9, date: '2026.04.14', productName: '갤럭시 탭 S9 FE', serialNumber: 'R3CWX1234567A', symptom: '화면 불량 (줄 생김 현상)', status: '정상' },
+  { no: 8, date: '2026.04.13', productName: '갤럭시 탭 S9 FE', serialNumber: 'R3CWX1234567A', symptom: '화면 안나옴 (전원 불량 의심)', status: '정상' },
+  { no: 7, date: '2026.04.12', productName: '갤럭시 탭 S9 FE', serialNumber: 'R3CWX1234567A', symptom: '충전 불량 (충전기 인식 안됨)', status: '정상' },
+  { no: 6, date: '2026.04.11', productName: '갤럭시 탭 S9 FE', serialNumber: 'R3CWX1234567A', symptom: '소리 안들림 (스피커 불량)', status: '정상' },
+  { no: 5, date: '2026.04.10', productName: '갤럭시 탭 S9 FE', serialNumber: 'R3CWX1234567A', symptom: '와이파이 연결 안됨', status: '정상' },
+  { no: 4, date: '2026.04.09', productName: '갤럭시 탭 S9 FE', serialNumber: 'R3CWX1234567A', symptom: '발열 심함', status: '정상' },
+  { no: 3, date: '2026.04.08', productName: '갤럭시 탭 S9 FE', serialNumber: 'R3CWX1234567A', symptom: '기기 속도 저하', status: '정상' },
+  { no: 2, date: '2026.04.07', productName: '갤럭시 탭 S9 FE', serialNumber: 'R3CWX1234567A', symptom: '카메라 인식 불량', status: '정상' },
+  { no: 1, date: '2026.04.06', productName: '갤럭시 탭 S9 FE', serialNumber: 'R3CWX1234567A', symptom: '배터리 광탈 현상', status: '정상' },
 ]
 
 // 애니메이션 변수
