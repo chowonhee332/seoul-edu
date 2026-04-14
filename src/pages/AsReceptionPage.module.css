@@ -90,8 +90,8 @@
 }
 
 .stepCircle {
-  width: 36px;
-  height: 36px;
+  width: 34px;
+  height: 34px;
   border-radius: 999px;
   background: #f6f8fc; /* 원래의 그레이 배경색으로 복구 */
   display: flex;
