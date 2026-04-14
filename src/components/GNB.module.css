@@ -136,7 +136,7 @@
   top: 100%;
   left: 50%;
   transform: translateX(-50%);
-  padding: 8px 4px 4px;
+  padding: 16px 4px 12px;
   min-width: 172px;
   z-index: 200;
 }
