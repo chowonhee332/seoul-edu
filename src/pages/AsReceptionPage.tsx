@@ -237,7 +237,6 @@ export default function AsReceptionPage() {
                   <div key={`step-${i}`} className={styles.stepItem}>
                     <motion.div 
                       className={`${styles.stepCircle} ${i === currentStep ? styles.stepActive : ''} ${i < currentStep ? styles.stepDone : ''}`}
-                      animate={i === currentStep ? { scale: [1, 1.1, 1] } : {}}
                     >
                       {i < currentStep ? (
                         <MdCheck size={20} color="white" />
