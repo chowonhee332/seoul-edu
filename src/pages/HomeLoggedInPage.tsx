@@ -28,16 +28,16 @@ const SELF_HELP_ITEMS = [
   // 아이패드 Air (ID: 1)
   { id: 1, productId: 1, type: '동영상', typeColor: '#1a75ff', title: 'iPad Air 5세대 메모리를 분리하거나 장착할 수 있나요?', date: '2024.06.19.', views: '4,602' },
   { id: 2, productId: 1, type: '동영상', typeColor: '#1a75ff', title: 'iPad Air(5세대)는 방수 기능이 있나요?', date: '2024.06.20.', views: '3,781' },
-  { id: 3, productId: 1, type: '다운로드', typeColor: '#ff761a', title: 'iPad Air 배터리 소모가 너무 빨라요. 수명이 얼마나 되나요?', date: '2024.06.21.', views: '5,012' },
-  { id: 4, productId: 1, type: '다운로드', typeColor: '#ff761a', title: 'iPad Air에서 지원하는 최대 해상도는 무엇인가요?', date: '2024.06.22.', views: '2,450' },
+  { id: 3, productId: 1, type: '다운로드', typeColor: '#0da160', title: 'iPad Air 배터리 소모가 너무 빨라요. 수명이 얼마나 되나요?', date: '2024.06.21.', views: '5,012' },
+  { id: 4, productId: 1, type: '다운로드', typeColor: '#0da160', title: 'iPad Air에서 지원하는 최대 해상도는 무엇인가요?', date: '2024.06.22.', views: '2,450' },
   
   // 맥북 프로 (ID: 2)
   { id: 5, productId: 2, type: '동영상', typeColor: '#1a75ff', title: 'MacBook Pro 15인치 램 업그레이드 가이드', date: '2024.05.10.', views: '12,204' },
-  { id: 6, productId: 2, type: '다운로드', typeColor: '#ff761a', title: 'MacBook Pro용 최신 펌웨어 업데이트 (v2.4)', date: '2024.05.15.', views: '8,930' },
+  { id: 6, productId: 2, type: '다운로드', typeColor: '#0da160', title: 'MacBook Pro용 최신 펌웨어 업데이트 (v2.4)', date: '2024.05.15.', views: '8,930' },
   
   // 갤럭시 탭 (ID: 3)
   { id: 7, productId: 3, type: '동영상', typeColor: '#1a75ff', title: 'Galaxy Tab S7 S펜 설정 및 활용 팁', date: '2024.04.12.', views: '7,115' },
-  { id: 8, productId: 3, type: '다운로드', typeColor: '#ff761a', title: 'Galaxy Tab S7 사용 설명서 PDF', date: '2024.04.20.', views: '3,420' },
+  { id: 8, productId: 3, type: '다운로드', typeColor: '#0da160', title: 'Galaxy Tab S7 사용 설명서 PDF', date: '2024.04.20.', views: '3,420' },
 ]
 
 const NOTICES = [
