@@ -10,7 +10,7 @@ const COLORS = [
   '#1B5E20', // 다크 그린
 ]
 
-export default function Confetti({ count = 300 }: { count?: number }) {
+export default function Confetti({ count = 250 }: { count?: number }) {
   useEffect(() => {
     const timer = setTimeout(() => {
       confetti({
