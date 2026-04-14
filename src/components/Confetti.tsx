@@ -14,14 +14,14 @@ export default function Confetti({ count = 200 }: { count?: number }) {
   useEffect(() => {
     confetti({
       particleCount: count,
-      spread: 60, // 확산 범위를 좁게 조절 (기존 70 -> 60)
-      origin: { y: 0.6 }, // 화면 중앙 약간 아래에서 폭발
+      spread: 360, // 360도 전 방향으로 확산
+      startVelocity: 30, // 폭발 속도 증가
+      origin: { y: 0.5 }, // 화면 중앙(아이콘 위치)에서 시작
       colors: COLORS,
-      shapes: ['circle'], // 원형 조각만 사용
-      scalar: 0.7, // 크기를 조금 더 작고 귀엽게 조정
-      gravity: 1.1, // 중력 효과를 주어 자연스럽게 낙하
-      drift: 0,
-      ticks: 200, // 지속 시간 조절
+      shapes: ['circle'],
+      scalar: 0.7,
+      gravity: 0.8, // 사방으로 더 잘 퍼지게 중력 소폭 완화
+      ticks: 100,
     })
   }, [])
 
