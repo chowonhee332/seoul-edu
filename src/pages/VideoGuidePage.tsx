@@ -160,8 +160,6 @@ export default function VideoGuidePage() {
                 </div>
               </div>
 
-              {/* 테이블 */}
-              </div>
 
               {/* 데스크톱/태블릿 테이블 (CSS 미디어 쿼리에 의해 모바일에서 숨김) */}
               <div className={styles.table}>

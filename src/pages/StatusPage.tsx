@@ -190,9 +190,6 @@ export default function StatusPage() {
                     <div className={`${styles.thCell} ${styles.flex1}`}>관리번호</div>
                     <div className={`${styles.thCell} ${styles.flex1}`}>상태</div>
                     <div className={`${styles.actionCell} ${styles.tableHead}`} />
-                  </div>
-
-                </div>
 
                 <div className={styles.table}>
                   <div className={styles.tableHead}>
