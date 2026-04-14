@@ -394,12 +394,27 @@
   justify-content: space-between;
 }
 
-.totalCount {
+.totalCountArea {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  color: #171719;
+}
+
+.categoryNameDisplay {
   font-size: 16px;
+  font-weight: 600;
+}
+
+.countDivider {
+  font-size: 14px;
+  color: rgba(46,47,51,0.2);
+}
+
+.countValueDisplay {
+  font-size: 14px;
   font-weight: 500;
-  line-height: 1.6;
-  letter-spacing: -0.16px;
-  color: #23262a;
+  color: rgba(46,47,51,0.6);
 }
 
 .sortSelect {

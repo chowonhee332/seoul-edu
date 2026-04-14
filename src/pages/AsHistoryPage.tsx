@@ -234,7 +234,11 @@ export default function AsHistoryPage() {
                   {/* 결과 테이블 */}
                   <div className={styles.tableCard}>
                     <div className={styles.tableHeader}>
-                      <span className={styles.totalCount}>총 {SAMPLE_ROWS.length}건</span>
+                      <div className={styles.totalCountArea}>
+                        <span className={styles.categoryNameDisplay}>전체</span>
+                        <span className={styles.countDivider}>|</span>
+                        <span className={styles.countValueDisplay}>{SAMPLE_ROWS.length}건</span>
+                      </div>
                       <div className={styles.sortSelect}>
                         <span>이름순</span>
                         <MdKeyboardArrowDown size={16} color="#70737c" />
