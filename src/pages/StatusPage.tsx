@@ -170,27 +170,7 @@ export default function StatusPage() {
                   </div>
                 </div>
 
-                {/* 테이블 */}
-                <div className={styles.table}>
-                  <div className={styles.tableHead}>
-                    <div className={styles.checkCell}>
-                      <span
-                        className={`${styles.checkBox} ${allChecked ? styles.checked : ''}`}
-                        onClick={toggleAll}
-                        role="checkbox"
-                        aria-checked={allChecked}
-                      >
-                        {allChecked && <MdCheck size={10} color="white" />}
-                      </span>
-                    </div>
-                    <div className={styles.noCell}>No.</div>
-                    <div className={`${styles.thCell} ${styles.flex1}`}>제품명</div>
-                    <div className={`${styles.thCell} ${styles.flex1}`}>제조사</div>
-                    <div className={`${styles.thCell} ${styles.flex1}`}>일련번호</div>
-                    <div className={`${styles.thCell} ${styles.flex1}`}>관리번호</div>
-                    <div className={`${styles.thCell} ${styles.flex1}`}>상태</div>
-                    <div className={`${styles.actionCell} ${styles.tableHead}`} />
-
+                {/* 테이블 (데스크톱/태블릿) */}
                 <div className={styles.table}>
                   <div className={styles.tableHead}>
                     <div className={styles.checkCell}>
