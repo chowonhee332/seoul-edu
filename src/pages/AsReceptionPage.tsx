@@ -198,7 +198,7 @@ export default function AsReceptionPage() {
             damping: 20 
           }}
         >
-          <MdCheck size={28} color="#1a75ff" />
+          <MdCheck size={20} color="#1a75ff" />
         </motion.div>
         <h2 className={styles.completionTitle}>접수가 완료되었습니다.</h2>
         <p className={styles.completionDesc}>
