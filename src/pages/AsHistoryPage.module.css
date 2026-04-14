@@ -441,6 +441,12 @@
 
 .tr {
   border-bottom: 1px solid #e0e4eb;
+  transition: background 0.15s;
+}
+
+.tr:hover {
+  background: rgba(244, 246, 250, 0.7);
+  cursor: pointer;
 }
 
 .tr:last-child {

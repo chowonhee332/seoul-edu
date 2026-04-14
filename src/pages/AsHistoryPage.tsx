@@ -273,7 +273,7 @@ export default function AsHistoryPage() {
                         animate="visible"
                       >
                         {SAMPLE_ROWS.map((row) => (
-                          <motion.tr key={row.no} className={styles.tr} variants={rowVariants} whileHover={{ backgroundColor: '#fbfcfd' }}>
+                          <motion.tr key={row.no} className={styles.tr} variants={rowVariants}>
                             <td className={styles.td}>{row.no}</td>
                             <td className={styles.td}>{row.date}</td>
                             <td className={styles.td}>{row.productName}</td>
