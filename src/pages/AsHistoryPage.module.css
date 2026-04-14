@@ -349,7 +349,7 @@
 .btnSearch {
   height: 36px;
   padding: 0 24px;
-  border-radius: var(--radius-4);
+  border-radius: 6px;
   background: var(--color-primary-default);
   color: var(--color-white);
   font-size: 14px;
