@@ -6,6 +6,7 @@ import GNB from '../components/GNB'
 import Footer from '../components/Footer'
 import TransitionLayout from '../components/TransitionLayout'
 import Breadcrumb from '../components/Breadcrumb'
+import PageTitle from '../components/PageTitle'
 import styles from './StatusPage.module.css'
 
 
@@ -15,16 +16,15 @@ const SUMMARY = [
   { model: '기타 기기', total: 3, normal: 3, broken: 0, lost: 0 },
 ]
 
-const DEVICES = [
-  { id: 1, no: 1, name: 'iPad Air 5세대', maker: '애플', serial: 'R54T7023ELX', mgmt: 'GRD-01-001', status: '정상' },
-  { id: 2, no: 2, name: 'iPad Air 5세대', maker: '애플', serial: 'R54T7023EM1', mgmt: 'GRD-01-002', status: '정상' },
-  { id: 3, no: 3, name: 'iPad Air 5세대', maker: '애플', serial: 'R54T7024K92', mgmt: 'GRD-01-003', status: '고장' },
-  { id: 4, no: 4, name: 'Galaxy Tab S8', maker: '삼성', serial: 'S98F2021A1B', mgmt: 'GRD-02-001', status: '정상' },
-  { id: 5, no: 5, name: 'Galaxy Tab S8', maker: '삼성', serial: 'S98F2021A1C', mgmt: 'GRD-02-002', status: '정상' },
-]
-
-const PAGES = [1, 2, 3, 4, 5, 6, 7]
-
+const DEVICES = Array.from({ length: 20 }, (_, i) => ({
+  id: i + 1,
+  no: i + 1,
+  name: i < 10 ? 'iPad Air 5세대' : 'Galaxy Tab S8',
+  maker: i < 10 ? '애플' : '삼성',
+  serial: `SN-${Math.random().toString(36).substring(2, 10).toUpperCase()}`,
+  mgmt: `GRD-${(i < 10 ? '01' : '02')}-${(i + 1).toString().padStart(3, '0')}`,
+  status: i === 2 ? '고장' : '정상'
+}));
 
 // 애니메이션 변수
 const containerVariants: Variants = {
@@ -45,11 +45,16 @@ export default function StatusPage() {
   const [allChecked, setAllChecked] = useState(false)
   const [currentPage, setCurrentPage] = useState(1)
 
+  const ITEMS_PER_PAGE = 10;
+  const totalCount = DEVICES.length;
+  const totalPages = Math.ceil(totalCount / ITEMS_PER_PAGE);
+  const currentDevices = DEVICES.slice((currentPage - 1) * ITEMS_PER_PAGE, currentPage * ITEMS_PER_PAGE);
+
   const toggleAll = () => {
     if (allChecked) {
       setChecked([])
     } else {
-      setChecked(DEVICES.map((d) => d.id))
+      setChecked(currentDevices.map((d) => d.id))
     }
     setAllChecked(!allChecked)
   }
@@ -75,7 +80,7 @@ export default function StatusPage() {
             animate="visible"
             variants={containerVariants}
           >
-            <motion.h1 className={styles.title} variants={itemVariants}>스마트 기기 현황</motion.h1>
+            <PageTitle title="스마트 기기 현황" variants={itemVariants} />
 
             {/* 기기 요약 카드 */}
             <motion.div
@@ -138,7 +143,11 @@ export default function StatusPage() {
               <div className={styles.tableCard}>
                 {/* 툴바 */}
                 <div className={styles.tableToolbar}>
-                  <span className={styles.totalCount}>총 20건</span>
+                  <div className={styles.totalCountArea}>
+                    <span className={styles.categoryNameDisplay}>전체</span>
+                    <span className={styles.countDivider}>|</span>
+                    <span className={styles.countValueDisplay}>{totalCount}건</span>
+                  </div>
                   <div className={styles.tableFilters}>
                     <div className={styles.searchBox}>
                       <button className={styles.searchDropdown}>
@@ -184,7 +193,7 @@ export default function StatusPage() {
                   </div>
 
                   <motion.div variants={containerVariants} initial="hidden" animate="visible">
-                    {DEVICES.map((device) => (
+                    {currentDevices.map((device) => (
                       <motion.div key={device.id} className={styles.tableRow} variants={itemVariants}>
                         <div className={styles.checkCell}>
                           <span
@@ -235,7 +244,7 @@ export default function StatusPage() {
                   >
                     <MdChevronLeft size={16} />
                   </motion.button>
-                  {PAGES.map((p) => (
+                  {Array.from({ length: totalPages }, (_, i) => i + 1).map((p) => (
                     <motion.button
                       key={p}
                       className={`${styles.pageNumBtn} ${currentPage === p ? styles.pageActive : ''}`}
@@ -248,7 +257,7 @@ export default function StatusPage() {
                   ))}
                   <motion.button
                     className={styles.pageBtn}
-                    onClick={() => setCurrentPage(Math.min(7, currentPage + 1))}
+                    onClick={() => setCurrentPage(Math.min(totalPages, currentPage + 1))}
                     aria-label="다음 페이지"
                     whileTap={{ scale: 0.9 }}
                   >
@@ -256,7 +265,7 @@ export default function StatusPage() {
                   </motion.button>
                   <motion.button
                     className={styles.pageBtn}
-                    onClick={() => setCurrentPage(7)}
+                    onClick={() => setCurrentPage(totalPages)}
                     aria-label="마지막 페이지"
                     whileTap={{ scale: 0.9 }}
                   >

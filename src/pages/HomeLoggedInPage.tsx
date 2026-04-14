@@ -179,8 +179,12 @@ export default function HomeLoggedInPage() {
             <motion.div className={styles.selfHelpCard} variants={itemVariants}>
               <div className={styles.searchArea}>
                 <p className={styles.searchCardTitle}>
-                  <span className={styles.searchCardProduct}>{currentProduct.name}</span>
-                  <span className={styles.searchCardQuestion}> 문제에 대한 증상이나 궁금증을 검색해주세요.</span>
+                  {currentProduct.id !== 0 && (
+                    <span className={styles.searchCardProduct}>{currentProduct.name}</span>
+                  )}
+                  <span className={styles.searchCardQuestion}>
+                    {currentProduct.id === 0 ? '' : ' '}문제에 대한 증상이나 궁금증을 검색해주세요.
+                  </span>
                 </p>
                 <div className={styles.searchInputWrap}>
                   <input

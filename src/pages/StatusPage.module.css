@@ -26,15 +26,6 @@
   flex: 1;
 }
 
-.title {
-  font-size: 32px;
-  font-weight: 700;
-  line-height: 1.2;
-  letter-spacing: -0.64px;
-  color: #171719;
-  margin-top: 4px; /* 브레드크럼과 가깝게 배치 */
-  margin-bottom: 36px; /* 최종 요청사항: 타이틀 아래 간격을 36으로 */
-}
 
 /* Device Summary Card */
 .summaryCard {
@@ -232,12 +223,29 @@
   justify-content: space-between;
 }
 
-.totalCount {
+.totalCountArea {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  color: #171719;
+}
+
+.categoryNameDisplay {
   font-size: 16px;
-  font-weight: 500;
-  line-height: 1.6;
-  letter-spacing: -0.16px;
-  color: #23262a;
+  font-weight: 700;
+  line-height: 1.5;
+}
+
+.countDivider {
+  font-size: 14px;
+  line-height: 1;
+  color: #e5e7eb;
+}
+
+.countValueDisplay {
+  font-size: 14px;
+  font-weight: 400;
+  line-height: 1.5;
 }
 
 .tableFilters {

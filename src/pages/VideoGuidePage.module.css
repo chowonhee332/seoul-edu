@@ -26,16 +26,6 @@
   flex: 1;
 }
 
-.title {
-  font-size: 32px;
-  font-weight: 700;
-  line-height: 1.2;
-  letter-spacing: -0.64px;
-  color: #171719;
-  margin-top: 4px;
-  margin-bottom: 36px; /* 최종 요청사항: 타이틀 간격 36px */
-  text-align: left; /* 좌측 정렬 통일 */
-}
 
 /* Category Card */
 .categoryCard {
@@ -44,7 +34,18 @@
   padding: 0 28px;
   display: flex;
   align-items: center;
-  margin-bottom: 12px; /* 섹션 간 여백 12px 요청 적용 */
+  margin-bottom: 24px; /* 여백 소폭 확대 */
+  position: sticky;
+  top: 76px; /* GNB(68px) 아래로 8px 여백 확보 */
+  z-index: 100;
+  transition: all 0.2s ease;
+  border-bottom: 1px solid transparent;
+}
+
+.categoryCard.stickyActive {
+  border-bottom: 1px solid rgba(0, 0, 0, 0.08);
+  border-radius: 20px 20px 4px 4px; /* 고정 시 하단 라운드값 축소 */
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.02); /* 매우 은은한 그림자 재추가(선택사항) */
 }
 
 .categoryItem {
@@ -59,7 +60,7 @@
   flex-direction: column;
   align-items: center;
   gap: 8px;
-  padding: 24px 12px;
+  padding: 16px;
   background: none;
   border: none;
   cursor: pointer;
@@ -68,24 +69,32 @@
   color: rgba(46,47,51,0.5);
 }
 
-.categoryBtn:hover {
-  background: #f4f8ff;
-}
-
 .categoryBtn.categoryActive {
   color: var(--color-primary-default);
+  position: relative;
+}
+
+.categoryBtn.categoryActive::after {
+  content: '';
+  position: absolute;
+  bottom: 0;
+  left: 50%;
+  transform: translateX(-50%);
+  width: 40px;
+  height: 3px;
+  background: var(--color-primary-default);
+  border-radius: 3px 3px 0 0;
 }
 
 .categoryIcon {
-  width: 32px;
-  height: 32px;
-  opacity: 0.5;
+  width: 72px;
+  height: 72px;
+  opacity: 0.3;
   transition: opacity 0.15s;
 }
 
 .categoryBtn.categoryActive .categoryIcon {
   opacity: 1;
-  filter: hue-rotate(0deg);
 }
 
 .categoryLabel {
@@ -121,12 +130,27 @@
   justify-content: space-between;
 }
 
-.totalCount {
+.totalCountArea {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  color: #171719;
+}
+
+.categoryNameDisplay {
   font-size: 16px;
+  font-weight: 600;
+}
+
+.countDivider {
+  font-size: 14px;
+  color: rgba(46,47,51,0.2);
+}
+
+.countValueDisplay {
+  font-size: 14px;
   font-weight: 500;
-  line-height: 1.6;
-  letter-spacing: -0.16px;
-  color: #23262a;
+  color: rgba(46,47,51,0.6);
 }
 
 .tableFilters {
@@ -300,6 +324,15 @@
 
 .flex1 {
   flex: 1;
+}
+
+.justifyEnd {
+  justify-content: flex-end;
+}
+
+.dateCell {
+  width: 100px;
+  flex-shrink: 0;
 }
 
 .statusBadge {

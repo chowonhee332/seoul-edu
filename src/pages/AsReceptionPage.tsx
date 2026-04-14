@@ -7,6 +7,7 @@ import Footer from '../components/Footer'
 import TransitionLayout from '../components/TransitionLayout'
 import Confetti from '../components/Confetti'
 import Breadcrumb from '../components/Breadcrumb'
+import PageTitle from '../components/PageTitle'
 import styles from './AsReceptionPage.module.css'
 
 const STEPS = ['접수자 정보', '학교정보 입력', '제품/증상 선택', '접수 완료']
@@ -227,7 +228,7 @@ export default function AsReceptionPage() {
 
         <div className={styles.body}>
           <div className={styles.inner}>
-            <motion.h1 className={styles.title} initial={{ opacity: 0, x: -20 }} animate={{ opacity: 1, x: 0 }}>AS 접수하기</motion.h1>
+            <PageTitle title="AS 접수하기" />
 
             {/* 스텝 인디케이터 */}
             <motion.div className={styles.stepCard} initial={{ opacity: 0, y: 10 }} animate={{ opacity: 1, y: 0 }} transition={{ delay: 0.1 }}>

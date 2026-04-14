@@ -1,4 +1,4 @@
-import { useState } from 'react'
+import { useState, useEffect } from 'react'
 import { Link } from 'react-router-dom'
 import { motion, Variants } from 'framer-motion'
 import { MdHome, MdChevronRight, MdChevronLeft, MdFirstPage, MdLastPage, MdCheck } from 'react-icons/md'
@@ -6,29 +6,41 @@ import GNB from '../components/GNB'
 import Footer from '../components/Footer'
 import TransitionLayout from '../components/TransitionLayout'
 import Breadcrumb from '../components/Breadcrumb'
+import PageTitle from '../components/PageTitle'
 import styles from './VideoGuidePage.module.css'
 
-const laptopIcon = 'https://www.figma.com/api/mcp/asset/a846f534-4240-4403-b3eb-c4640ba35fbc'
-
 const CATEGORIES = [
-  { id: 1, label: '윈도우북' },
-  { id: 2, label: '윈도우북' },
-  { id: 3, label: '윈도우북' },
-  { id: 4, label: '윈도우북' },
-  { id: 5, label: '윈도우북' },
-  { id: 6, label: '윈도우북' },
+  { id: 1, label: '윈도우북', icon: '/resources/guide_1.png' },
+  { id: 2, label: '웨일북', icon: '/resources/guide_1.png' },
+  { id: 3, label: '아이패드', icon: '/resources/guide_2.png' },
+  { id: 4, label: '갤럭시탭', icon: '/resources/guide_2.png' },
+  { id: 5, label: '크롬북', icon: '/resources/guide_1.png' },
+  { id: 6, label: '애플스쿨매니저', icon: '/resources/guide_3.png' },
 ]
 
-const VIDEOS = [
-  { id: 1, no: 1, name: '윈도우북', maker: '삼성', serial: 'SN-001234', mgmt: 'GRD01', status: '정상' },
-  { id: 2, no: 2, name: '윈도우북', maker: '삼성', serial: 'SN-001235', mgmt: 'GRD02', status: '정상' },
-  { id: 3, no: 3, name: '윈도우북', maker: '삼성', serial: 'SN-001236', mgmt: 'GRD03', status: '정상' },
-]
+// 카테고리별 샘플 데이터 생성 함수
+const generateMockData = () => {
+  const data: any[] = [];
+  let globalId = 1;
 
-const PAGES = [1, 2, 3, 4, 5, 6, 7]
+  CATEGORIES.forEach(cat => {
+    for (let i = 1; i <= 20; i++) {
+      data.push({
+        id: globalId++,
+        categoryId: cat.id,
+        no: i,
+        name: `${cat.label} ${['사용자 가이드', '기초 설정 방법', '주요 기능 안내', '심화 활용 팁', '문제 해결 안내'][i % 5]} - ${i}편`,
+        date: `2024.03.${(31 - i).toString().padStart(2, '0')}`
+      });
+    }
+  });
+  return data;
+};
 
+const VIDEOS = generateMockData();
+const PAGES = [1, 2, 3, 4, 5];
 
-// 애니메이션 변수
+// 애니메이션 변수 복구
 const containerVariants: Variants = {
   hidden: { opacity: 0 },
   visible: { 
@@ -47,12 +59,47 @@ export default function VideoGuidePage() {
   const [allChecked, setAllChecked] = useState(false)
   const [currentPage, setCurrentPage] = useState(1)
   const [activeCategory, setActiveCategory] = useState(1)
+  const [isSticky, setIsSticky] = useState(false)
+
+  // 스크롤 감지를 통한 Sticky 상태 판단
+  useEffect(() => {
+    const handleScroll = () => {
+      // 카테고리 카드가 고정되는 위치(68px + 여백 등)를 고려하여 threshold 설정
+      if (window.scrollY > 120) {
+        setIsSticky(true);
+      } else {
+        setIsSticky(false);
+      }
+    };
+    window.addEventListener('scroll', handleScroll);
+    return () => window.removeEventListener('scroll', handleScroll);
+  }, []);
+
+  const ITEMS_PER_PAGE = 10;
+
+  // 선택된 카테고리에 맞는 영상들만 필터링
+  const filteredVideos = VIDEOS.filter(v => v.categoryId === activeCategory);
+  
+  // 현재 페이지에 해당하는 데이터만 추출
+  const currentVideos = filteredVideos.slice((currentPage - 1) * ITEMS_PER_PAGE, currentPage * ITEMS_PER_PAGE);
+
+  const activeCategoryName = CATEGORIES.find(c => c.id === activeCategory)?.label || ''
+  const totalCount = filteredVideos.length;
+  const totalPages = Math.ceil(totalCount / ITEMS_PER_PAGE);
+
+  // 카테고리 변경 시 현재 페이지 초기화
+  const handleCategoryChange = (id: number) => {
+    setActiveCategory(id);
+    setCurrentPage(1);
+    setChecked([]);
+    setAllChecked(false);
+  }
 
   const toggleAll = () => {
     if (allChecked) {
       setChecked([])
     } else {
-      setChecked(VIDEOS.map((v) => v.id))
+      setChecked(currentVideos.map((v) => v.id))
     }
     setAllChecked(!allChecked)
   }
@@ -78,19 +125,21 @@ export default function VideoGuidePage() {
             animate="visible"
             variants={containerVariants}
           >
-            <motion.h1 className={styles.title} variants={itemVariants}>동영상 가이드</motion.h1>
+            <PageTitle title="동영상 가이드" variants={itemVariants} />
 
             {/* 카테고리 카드 */}
-            <motion.div className={styles.categoryCard} variants={itemVariants}>
+            <motion.div 
+              className={`${styles.categoryCard} ${isSticky ? styles.stickyActive : ''}`} 
+              variants={itemVariants}
+            >
               {CATEGORIES.map((cat, i) => (
                 <div key={cat.id} className={styles.categoryItem}>
                   <motion.button
                     className={`${styles.categoryBtn} ${activeCategory === cat.id ? styles.categoryActive : ''}`}
-                    onClick={() => setActiveCategory(cat.id)}
-                    whileHover={{ backgroundColor: '#f4f6fa' }}
+                    onClick={() => handleCategoryChange(cat.id)}
                     whileTap={{ scale: 0.95 }}
                   >
-                    <img src={laptopIcon} alt="" width={32} height={32} className={styles.categoryIcon} />
+                    <img src={cat.icon} alt="" width={72} height={72} className={styles.categoryIcon} />
                     <span className={styles.categoryLabel}>{cat.label}</span>
                   </motion.button>
                   {i < CATEGORIES.length - 1 && <div className={styles.categoryDivider} />}
@@ -102,58 +151,29 @@ export default function VideoGuidePage() {
             <motion.div className={styles.tableCard} variants={itemVariants}>
               {/* 툴바 */}
               <div className={styles.tableToolbar}>
-                <span className={styles.totalCount}>총 20건</span>
+                <div className={styles.totalCountArea}>
+                  <span className={styles.categoryNameDisplay}>
+                    {activeCategoryName}
+                  </span>
+                  <span className={styles.countDivider}>|</span>
+                  <span className={styles.countValueDisplay}>{totalCount}건</span>
+                </div>
               </div>
 
               {/* 테이블 */}
               <div className={styles.table}>
                 <div className={styles.tableHead}>
-                  <div className={styles.checkCell}>
-                    <span
-                      className={`${styles.checkBox} ${allChecked ? styles.checked : ''}`}
-                      onClick={toggleAll}
-                      role="checkbox"
-                      aria-checked={allChecked}
-                    >
-                      {allChecked && <MdCheck size={10} color="white" />}
-                    </span>
-                  </div>
                   <div className={styles.noCell}>No.</div>
                   <div className={`${styles.thCell} ${styles.flex1}`}>제품명</div>
-                  <div className={`${styles.thCell} ${styles.flex1}`}>제조사</div>
-                  <div className={`${styles.thCell} ${styles.flex1}`}>일련번호</div>
-                  <div className={`${styles.thCell} ${styles.flex1}`}>관리번호</div>
-                  <div className={`${styles.thCell} ${styles.flex1}`}>상태</div>
-                  <div className={styles.actionCell} />
+                  <div className={`${styles.thCell} ${styles.dateCell}`}>등록일</div>
                 </div>
 
                 <motion.div variants={containerVariants} initial="hidden" animate="visible">
-                  {VIDEOS.map((video) => (
+                  {currentVideos.map((video) => (
                     <motion.div key={video.id} className={styles.tableRow} variants={itemVariants}>
-                      <div className={styles.checkCell}>
-                        <span
-                          className={`${styles.checkBox} ${checked.includes(video.id) ? styles.checked : ''}`}
-                          onClick={() => toggleOne(video.id)}
-                          role="checkbox"
-                          aria-checked={checked.includes(video.id)}
-                        >
-                          {checked.includes(video.id) && <MdCheck size={10} color="white" />}
-                        </span>
-                      </div>
                       <div className={styles.noCell}>{video.no}</div>
                       <div className={`${styles.tdCell} ${styles.flex1}`}>{video.name}</div>
-                      <div className={`${styles.tdCell} ${styles.flex1}`}>{video.maker}</div>
-                      <div className={`${styles.tdCell} ${styles.flex1}`}>{video.serial}</div>
-                      <div className={`${styles.tdCell} ${styles.flex1}`}>{video.mgmt}</div>
-                      <div className={`${styles.tdCell} ${styles.flex1}`}>
-                        <span className={styles.statusBadge}>{video.status}</span>
-                      </div>
-                      <div className={styles.actionCell}>
-                        <motion.button className={styles.detailBtn} whileHover={{ x: 3 }}>
-                          상세보기
-                          <MdChevronRight size={14} />
-                        </motion.button>
-                      </div>
+                      <div className={`${styles.tdCell} ${styles.dateCell}`}>{video.date}</div>
                     </motion.div>
                   ))}
                 </motion.div>
@@ -177,7 +197,7 @@ export default function VideoGuidePage() {
                 >
                   <MdChevronLeft size={16} />
                 </motion.button>
-                {PAGES.map((p) => (
+                {Array.from({ length: totalPages }, (_, i) => i + 1).map((p) => (
                   <motion.button
                     key={p}
                     className={`${styles.pageNumBtn} ${currentPage === p ? styles.pageActive : ''}`}
@@ -190,7 +210,7 @@ export default function VideoGuidePage() {
                 ))}
                 <motion.button
                   className={styles.pageBtn}
-                  onClick={() => setCurrentPage(Math.min(7, currentPage + 1))}
+                  onClick={() => setCurrentPage(Math.min(totalPages, currentPage + 1))}
                   aria-label="다음 페이지"
                   whileTap={{ scale: 0.9 }}
                 >
@@ -198,7 +218,7 @@ export default function VideoGuidePage() {
                 </motion.button>
                 <motion.button
                   className={styles.pageBtn}
-                  onClick={() => setCurrentPage(7)}
+                  onClick={() => setCurrentPage(totalPages)}
                   aria-label="마지막 페이지"
                   whileTap={{ scale: 0.9 }}
                 >

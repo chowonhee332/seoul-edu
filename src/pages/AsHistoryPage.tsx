@@ -6,6 +6,7 @@ import GNB from '../components/GNB'
 import Footer from '../components/Footer'
 import TransitionLayout from '../components/TransitionLayout'
 import Breadcrumb from '../components/Breadcrumb'
+import PageTitle from '../components/PageTitle'
 import styles from './AsHistoryPage.module.css'
 
 const PERIOD_TABS = ['1주일', '1개월', '3개월', '6개월']
@@ -77,13 +78,9 @@ export default function AsHistoryPage() {
 
         <div className={styles.body}>
           <div className={styles.inner}>
-            <motion.h1 
-              className={styles.title}
-              initial={{ opacity: 0, x: -20 }}
-              animate={{ opacity: 1, x: 0 }}
-            >
+            <PageTitle>
               {step === 0 ? 'AS 접수 조회 · 변경' : 'A/S 접수 조회 · 변경'}
-            </motion.h1>
+            </PageTitle>
 
             <AnimatePresence mode="wait">
               {step === 0 ? (
