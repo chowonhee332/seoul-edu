@@ -1,7 +1,14 @@
 import { motion } from 'framer-motion'
 import { useMemo } from 'react'
 
-const COLORS = ['#1A75FF', '#FF761A', '#00C853', '#FFD600', '#FF4242', '#E8F0FE']
+const COLORS = [
+  '#1A75FF', // 메인 블루
+  '#00C853', // 메인 그린
+  '#64B5F6', // 라이트 블루
+  '#81C784', // 라이트 그린
+  '#0D47A1', // 다크 블루
+  '#1B5E20', // 다크 그린
+]
 
 interface ConfettiPieceProps {
   delay: number
@@ -50,7 +57,7 @@ export default function Confetti({ count = 200 }) {
       delay: Math.random() * 0.2,
       color: COLORS[Math.floor(Math.random() * COLORS.length)],
       angle: Math.random() * 360,
-      distance: 150 + Math.random() * 250,
+      distance: 80 + Math.random() * 120,
     }))
   }, [count])
 
