@@ -17,7 +17,7 @@ const SAMPLE_ROWS = [
     date: '2026.04.10',
     productName: '갤럭시 탭 S9 FE',
     serialNumber: 'R3CWX1234567A',
-    symptom: 'SW > 부팅/초기화/백업 > APP/SW 일반',
+    symptom: '화면 불량 (줄 생김 현상)',
     status: '정상',
   },
   {
@@ -25,7 +25,7 @@ const SAMPLE_ROWS = [
     date: '2026.04.10',
     productName: '갤럭시 탭 S9 FE',
     serialNumber: 'R3CWX1234567A',
-    symptom: 'SW > 부팅/초기화/백업 > APP/SW 일반',
+    symptom: '화면 안나옴 (전원 불량 의심)',
     status: '정상',
   },
   {
@@ -33,7 +33,7 @@ const SAMPLE_ROWS = [
     date: '2026.04.10',
     productName: '갤럭시 탭 S9 FE',
     serialNumber: 'R3CWX1234567A',
-    symptom: 'SW > 부팅/초기화/백업 > APP/SW 일반',
+    symptom: '충전 불량 (충전기 인식 안됨)',
     status: '정상',
   },
 ]
