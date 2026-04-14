@@ -1,5 +1,5 @@
 import { Link } from 'react-router-dom'
-import { motion } from 'framer-motion'
+import { motion, Variants } from 'framer-motion'
 import { MdChevronRight, MdAccessTime, MdVisibility, MdSearch, MdArrowUpward } from 'react-icons/md'
 import GNB from '../components/GNB'
 import QuickServiceBar from '../components/QuickServiceBar'
@@ -26,7 +26,7 @@ const NOTICES = [
 
 
 // 애니메이션 변수 정의
-const containerVariants = {
+const containerVariants: Variants = {
   hidden: { opacity: 0 },
   visible: {
     opacity: 1,
@@ -36,7 +36,7 @@ const containerVariants = {
   },
 }
 
-const itemVariants = {
+const itemVariants: Variants = {
   hidden: { opacity: 0, y: 20 },
   visible: { opacity: 1, y: 0, transition: { duration: 0.5, ease: [0.22, 1, 0.36, 1] } },
 }

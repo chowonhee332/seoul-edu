@@ -1,6 +1,6 @@
 import { useState } from 'react'
 import { Link } from 'react-router-dom'
-import { motion } from 'framer-motion'
+import { motion, Variants } from 'framer-motion'
 import { MdHome, MdChevronRight, MdChevronLeft, MdFirstPage, MdLastPage, MdCheck } from 'react-icons/md'
 import GNB from '../components/GNB'
 import Footer from '../components/Footer'
@@ -29,7 +29,7 @@ const PAGES = [1, 2, 3, 4, 5, 6, 7]
 
 
 // 애니메이션 변수
-const containerVariants = {
+const containerVariants: Variants = {
   hidden: { opacity: 0 },
   visible: { 
     opacity: 1,
@@ -37,7 +37,7 @@ const containerVariants = {
   }
 }
 
-const itemVariants = {
+const itemVariants: Variants = {
   hidden: { opacity: 0, y: 10 },
   visible: { opacity: 1, y: 0 }
 }
