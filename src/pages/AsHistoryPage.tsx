@@ -277,30 +277,33 @@ export default function AsHistoryPage() {
                     </table>
 
                     {/* 페이지네이션 */}
-                    <div className={styles.pagination}>
-                      <motion.button className={styles.pageBtn} aria-label="첫 페이지" whileTap={{ scale: 0.9 }}>
-                        <MdFirstPage size={16} />
-                      </motion.button>
-                      <motion.button className={styles.pageBtn} aria-label="이전 페이지" whileTap={{ scale: 0.9 }}>
-                        <MdChevronLeft size={16} />
-                      </motion.button>
-                      {[1,2,3,4,5,6,7].map((p) => (
-                        <motion.button 
-                          key={p} 
-                          className={`${styles.pageNumBtn} ${p === 1 ? styles.pageActive : ''}`}
-                          whileHover={{ backgroundColor: '#f4f6fa' }}
-                          whileTap={{ scale: 0.9 }}
-                        >
-                          {p}
+                    {/* 페이지네이션 (10건 이상일 때만 노출) */}
+                    {SAMPLE_ROWS.length >= 10 && (
+                      <div className={styles.pagination}>
+                        <motion.button className={styles.pageBtn} aria-label="첫 페이지" whileTap={{ scale: 0.9 }}>
+                          <MdFirstPage size={16} />
                         </motion.button>
-                      ))}
-                      <motion.button className={styles.pageBtn} aria-label="다음 페이지" whileTap={{ scale: 0.9 }}>
-                        <MdChevronRight size={16} />
-                      </motion.button>
-                      <motion.button className={styles.pageBtn} aria-label="마지막 페이지" whileTap={{ scale: 0.9 }}>
-                        <MdLastPage size={16} />
-                      </motion.button>
-                    </div>
+                        <motion.button className={styles.pageBtn} aria-label="이전 페이지" whileTap={{ scale: 0.9 }}>
+                          <MdChevronLeft size={16} />
+                        </motion.button>
+                        {[1, 2, 3, 4, 5, 6, 7].map((p) => (
+                          <motion.button
+                            key={p}
+                            className={`${styles.pageNumBtn} ${p === 1 ? styles.pageActive : ''}`}
+                            whileHover={{ backgroundColor: '#f4f6fa' }}
+                            whileTap={{ scale: 0.9 }}
+                          >
+                            {p}
+                          </motion.button>
+                        ))}
+                        <motion.button className={styles.pageBtn} aria-label="다음 페이지" whileTap={{ scale: 0.9 }}>
+                          <MdChevronRight size={16} />
+                        </motion.button>
+                        <motion.button className={styles.pageBtn} aria-label="마지막 페이지" whileTap={{ scale: 0.9 }}>
+                          <MdLastPage size={16} />
+                        </motion.button>
+                      </div>
+                    )}
                   </div>
                 </motion.div>
               )}
