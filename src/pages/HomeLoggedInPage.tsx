@@ -1,6 +1,6 @@
 import { useState } from 'react'
 import { Link } from 'react-router-dom'
-import { motion, Variants } from 'framer-motion'
+import { motion, Variants, AnimatePresence } from 'framer-motion'
 import { MdNorthEast, MdChevronRight, MdAccessTime, MdVisibility, MdSearch, MdArrowUpward, MdSchool } from 'react-icons/md'
 import GNB from '../components/GNB'
 import QuickServiceBar from '../components/QuickServiceBar'
@@ -25,10 +25,19 @@ const PRODUCTS = [
 ]
 
 const SELF_HELP_ITEMS = [
-  { id: 1, type: '동영상', typeColor: '#1a75ff', title: '메모리를 분리하거나 장착할 수 있나요?', date: '2024.06.19.', views: '4,602' },
-  { id: 2, type: '동영상', typeColor: '#1a75ff', title: '이 제품은 방수 기능이 있나요?', date: '2024.06.20.', views: '3,781' },
-  { id: 3, type: '다운로드', typeColor: '#ff761a', title: '배터리 수명이 얼마나 되나요?', date: '2024.06.21.', views: '5,012' },
-  { id: 4, type: '다운로드', typeColor: '#ff761a', title: '지원하는 최대 해상도는 무엇인가요?', date: '2024.06.22.', views: '2,450' },
+  // 아이패드 Air (ID: 1)
+  { id: 1, productId: 1, type: '동영상', typeColor: '#1a75ff', title: 'iPad Air 5세대 메모리를 분리하거나 장착할 수 있나요?', date: '2024.06.19.', views: '4,602' },
+  { id: 2, productId: 1, type: '동영상', typeColor: '#1a75ff', title: 'iPad Air(5세대)는 방수 기능이 있나요?', date: '2024.06.20.', views: '3,781' },
+  { id: 3, productId: 1, type: '다운로드', typeColor: '#ff761a', title: 'iPad Air 배터리 소모가 너무 빨라요. 수명이 얼마나 되나요?', date: '2024.06.21.', views: '5,012' },
+  { id: 4, productId: 1, type: '다운로드', typeColor: '#ff761a', title: 'iPad Air에서 지원하는 최대 해상도는 무엇인가요?', date: '2024.06.22.', views: '2,450' },
+  
+  // 맥북 프로 (ID: 2)
+  { id: 5, productId: 2, type: '동영상', typeColor: '#1a75ff', title: 'MacBook Pro 15인치 램 업그레이드 가이드', date: '2024.05.10.', views: '12,204' },
+  { id: 6, productId: 2, type: '다운로드', typeColor: '#ff761a', title: 'MacBook Pro용 최신 펌웨어 업데이트 (v2.4)', date: '2024.05.15.', views: '8,930' },
+  
+  // 갤럭시 탭 (ID: 3)
+  { id: 7, productId: 3, type: '동영상', typeColor: '#1a75ff', title: 'Galaxy Tab S7 S펜 설정 및 활용 팁', date: '2024.04.12.', views: '7,115' },
+  { id: 8, productId: 3, type: '다운로드', typeColor: '#ff761a', title: 'Galaxy Tab S7 사용 설명서 PDF', date: '2024.04.20.', views: '3,420' },
 ]
 
 const NOTICES = [
@@ -57,6 +66,10 @@ export default function HomeLoggedInPage() {
   const [selectedProduct, setSelectedProduct] = useState(PRODUCTS[1].id)
 
   const currentProduct = PRODUCTS.find(p => p.id === selectedProduct) ?? PRODUCTS[1]
+
+  const filteredItems = selectedProduct === 0 
+    ? SELF_HELP_ITEMS 
+    : SELF_HELP_ITEMS.filter(item => item.productId === selectedProduct)
 
   return (
     <TransitionLayout>
@@ -196,30 +209,39 @@ export default function HomeLoggedInPage() {
                 </div>
               </div>
               <div className={styles.selfHelpList}>
-                {SELF_HELP_ITEMS.map((item) => (
-                  <motion.div key={item.id} className={styles.listRow} >
-                    <div className={styles.listRowLeft}>
-                      <span
-                        className={styles.tag}
-                        style={{ color: item.typeColor, background: `${item.typeColor}1a` }}
-                      >
-                        {item.type}
-                      </span>
-                      <span className={styles.listTitle}>{item.title}</span>
-                    </div>
-                    <div className={styles.listMeta}>
-                      <span className={styles.metaItem}>
-                        <MdAccessTime size={16} color="rgba(46,47,51,0.88)" />
-                        {item.date}
-                      </span>
-                      <span className={styles.metaDivider} />
-                      <span className={styles.metaItem}>
-                        <MdVisibility size={16} color="rgba(46,47,51,0.88)" />
-                        {item.views}
-                      </span>
-                    </div>
-                  </motion.div>
-                ))}
+                <AnimatePresence mode="popLayout">
+                  {filteredItems.map((item) => (
+                    <motion.div 
+                      key={item.id} 
+                      className={styles.listRow}
+                      initial={{ opacity: 0, x: -10 }}
+                      animate={{ opacity: 1, x: 0 }}
+                      exit={{ opacity: 0, x: 10 }}
+                      transition={{ duration: 0.2 }}
+                    >
+                      <div className={styles.listRowLeft}>
+                        <span
+                          className={styles.tag}
+                          style={{ color: item.typeColor, background: `${item.typeColor}1a` }}
+                        >
+                          {item.type}
+                        </span>
+                        <span className={styles.listTitle}>{item.title}</span>
+                      </div>
+                      <div className={styles.listMeta}>
+                        <span className={styles.metaItem}>
+                          <MdAccessTime size={16} color="rgba(46,47,51,0.88)" />
+                          {item.date}
+                        </span>
+                        <span className={styles.metaDivider} />
+                        <span className={styles.metaItem}>
+                          <MdVisibility size={16} color="rgba(46,47,51,0.88)" />
+                          {item.views}
+                        </span>
+                      </div>
+                    </motion.div>
+                  ))}
+                </AnimatePresence>
               </div>
             </motion.div>
 
