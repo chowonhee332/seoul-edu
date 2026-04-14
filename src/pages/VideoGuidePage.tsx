@@ -161,6 +161,9 @@ export default function VideoGuidePage() {
               </div>
 
               {/* 테이블 */}
+              </div>
+
+              {/* 데스크톱/태블릿 테이블 (CSS 미디어 쿼리에 의해 모바일에서 숨김) */}
               <div className={styles.table}>
                 <div className={styles.tableHead}>
                   <div className={styles.noCell}>No.</div>
@@ -177,6 +180,37 @@ export default function VideoGuidePage() {
                     </motion.div>
                   ))}
                 </motion.div>
+              </div>
+
+              {/* 모바일 카드 리스트 (CSS 미디어 쿼리에 의해 모바일에서만 노출) */}
+              <div className={styles.mobileCardList}>
+                {currentVideos.map((video) => (
+                  <motion.div key={video.id} className={styles.videoCard} variants={itemVariants}>
+                    <div className={styles.cardHeader}>
+                      <span className={styles.cardNo}>No.{video.no}</span>
+                      <span className={styles.statusBadge}>영상</span>
+                    </div>
+                    <h3 className={styles.cardTitle}>{video.name}</h3>
+                    <div className={styles.cardMeta}>
+                      <div className={styles.metaItem}>
+                        <span className={styles.metaLabel}>등록일</span>
+                        <span className={styles.metaValue}>{video.date}</span>
+                      </div>
+                      <div className={styles.metaItem}>
+                        <span className={styles.metaLabel}>분류</span>
+                        <span className={styles.metaValue}>
+                          {CATEGORIES.find((c) => c.id === activeCategory)?.label}
+                        </span>
+                      </div>
+                    </div>
+                    <div className={styles.cardFooter}>
+                      <motion.button className={styles.detailBtn} whileHover={{ x: 3 }}>
+                        상세보기
+                        <MdChevronRight size={14} />
+                      </motion.button>
+                    </div>
+                  </motion.div>
+                ))}
               </div>
 
               {/* 페이지네이션 */}

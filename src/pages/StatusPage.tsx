@@ -192,6 +192,31 @@ export default function StatusPage() {
                     <div className={`${styles.actionCell} ${styles.tableHead}`} />
                   </div>
 
+                </div>
+
+                <div className={styles.table}>
+                  <div className={styles.tableHead}>
+                    <div className={styles.checkCell}>
+                      <span
+                        className={`${styles.checkBox} ${checked.length === currentDevices.length && currentDevices.length > 0 ? styles.checked : ''}`}
+                        onClick={toggleAll}
+                        role="checkbox"
+                        aria-checked={checked.length === currentDevices.length}
+                      >
+                        {checked.length === currentDevices.length && currentDevices.length > 0 && (
+                          <MdCheck size={10} color="white" />
+                        )}
+                      </span>
+                    </div>
+                    <div className={styles.noCell}>No.</div>
+                    <div className={`${styles.thCell} ${styles.flex1}`}>제품명</div>
+                    <div className={`${styles.thCell} ${styles.flex1}`}>제조사</div>
+                    <div className={`${styles.thCell} ${styles.flex1}`}>시리얼번호</div>
+                    <div className={`${styles.thCell} ${styles.flex1}`}>관리번호</div>
+                    <div className={`${styles.thCell} ${styles.flex1}`}>상태</div>
+                    <div className={`${styles.actionCell} ${styles.tableHead}`} />
+                  </div>
+
                   <motion.div variants={containerVariants} initial="hidden" animate="visible">
                     {currentDevices.map((device) => (
                       <motion.div key={device.id} className={styles.tableRow} variants={itemVariants}>
@@ -224,6 +249,41 @@ export default function StatusPage() {
                       </motion.div>
                     ))}
                   </motion.div>
+                </div>
+
+                {/* 모바일 카드 리스트 (CSS 미디어 쿼리에 의해 모바일에서만 노출) */}
+                <div className={styles.mobileCardList}>
+                  {currentDevices.map((device) => (
+                    <motion.div key={device.id} className={styles.deviceCard} variants={itemVariants}>
+                      <div className={styles.cardHeader}>
+                        <span className={styles.cardId}>No.{device.no}</span>
+                        <span className={`${styles.statusBadge} ${device.status === '고장' ? styles.statusBadgeBroken : ''}`}>
+                          {device.status}
+                        </span>
+                      </div>
+                      <h3 className={styles.cardTitle}>{device.name}</h3>
+                      <div className={styles.cardGrid}>
+                        <div className={styles.cardMetaItem}>
+                          <span className={styles.metaLabel}>제조사</span>
+                          <span className={styles.metaValue}>{device.maker}</span>
+                        </div>
+                        <div className={styles.cardMetaItem}>
+                          <span className={styles.metaLabel}>시리얼번호</span>
+                          <span className={styles.metaValue}>{device.serial}</span>
+                        </div>
+                        <div className={styles.cardMetaItem}>
+                          <span className={styles.metaLabel}>관리번호</span>
+                          <span className={styles.metaValue}>{device.mgmt}</span>
+                        </div>
+                      </div>
+                      <div className={styles.cardFooter}>
+                        <motion.button className={styles.detailBtn} whileHover={{ x: 3 }}>
+                          상세보기
+                          <MdChevronRight size={14} />
+                        </motion.button>
+                      </div>
+                    </motion.div>
+                  ))}
                 </div>
 
                 {/* 페이지네이션 */}

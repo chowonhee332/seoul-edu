@@ -11,9 +11,22 @@
 /* Body */
 .body {
   flex: 1;
-  padding: 8px 48px 0; /* 하단 패딩 0으로 통일 */
+  padding: 8px 48px 0;
   display: flex;
   flex-direction: column;
+  transition: padding 0.2s;
+}
+
+@media (max-width: 1023px) {
+  .body {
+    padding: 8px 24px 0;
+  }
+}
+
+@media (max-width: 599px) {
+  .body {
+    padding: 8px 16px 0;
+  }
 }
 
 .inner {
@@ -26,7 +39,6 @@
   flex: 1;
 }
 
-
 /* Category Card */
 .categoryCard {
   background: var(--color-white);
@@ -34,24 +46,59 @@
   padding: 0 28px;
   display: flex;
   align-items: center;
-  margin-bottom: 24px; /* 여백 소폭 확대 */
+  margin-bottom: 24px;
   position: sticky;
-  top: 76px; /* GNB(68px) 아래로 8px 여백 확보 */
+  top: 76px;
   z-index: 100;
   transition: all 0.2s ease;
   border-bottom: 1px solid transparent;
 }
 
+@media (max-width: 1023px) {
+  .categoryCard {
+    top: 68px; /* 태블릿/모바일은 여백 축소 */
+    padding: 0 16px;
+    margin-bottom: 16px;
+  }
+}
+
+@media (max-width: 599px) {
+  .categoryCard {
+    border-radius: 12px;
+    padding: 0 8px;
+    overflow-x: auto;
+    white-space: nowrap;
+    -ms-overflow-style: none;
+    scrollbar-width: none;
+    justify-content: flex-start;
+  }
+  .categoryCard::-webkit-scrollbar {
+    display: none;
+  }
+}
+
 .categoryCard.stickyActive {
   border-bottom: 1px solid rgba(0, 0, 0, 0.08);
-  border-radius: 20px 20px 4px 4px; /* 고정 시 하단 라운드값 축소 */
-  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.02); /* 매우 은은한 그림자 재추가(선택사항) */
+  border-radius: 20px 20px 4px 4px;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.02);
+}
+
+@media (max-width: 599px) {
+  .categoryCard.stickyActive {
+    border-radius: 0;
+  }
 }
 
 .categoryItem {
   display: flex;
   align-items: center;
   flex: 1;
+}
+
+@media (max-width: 599px) {
+  .categoryItem {
+    flex: none;
+  }
 }
 
 .categoryBtn {
@@ -67,6 +114,20 @@
   border-radius: 12px;
   transition: background 0.15s;
   color: rgba(46,47,51,0.5);
+}
+
+@media (max-width: 1023px) {
+  .categoryBtn {
+    padding: 12px 8px;
+    gap: 4px;
+  }
+}
+
+@media (max-width: 599px) {
+  .categoryBtn {
+    min-width: 80px;
+    padding: 12px 10px;
+  }
 }
 
 .categoryBtn.categoryActive {
@@ -90,7 +151,21 @@
   width: 72px;
   height: 72px;
   opacity: 0.3;
-  transition: opacity 0.15s;
+  transition: opacity 0.15s, width 0.2s, height 0.2s;
+}
+
+@media (max-width: 1023px) {
+  .categoryIcon {
+    width: 48px;
+    height: 48px;
+  }
+}
+
+@media (max-width: 599px) {
+  .categoryIcon {
+    width: 40px;
+    height: 40px;
+  }
 }
 
 .categoryBtn.categoryActive .categoryIcon {
@@ -102,7 +177,13 @@
   font-weight: 500;
   letter-spacing: -0.07px;
   white-space: nowrap;
-  transition: color 0.15s;
+  transition: color 0.15s, font-size 0.2s;
+}
+
+@media (max-width: 599px) {
+  .categoryLabel {
+    font-size: 12px;
+  }
 }
 
 .categoryDivider {
@@ -112,15 +193,35 @@
   flex-shrink: 0;
 }
 
+@media (max-width: 599px) {
+  .categoryDivider {
+    height: 24px;
+  }
+}
+
 /* Table card */
 .tableCard {
   background: var(--color-white);
-  border-radius: 20px; /* 모든 모서리 20px 복구 */
+  border-radius: 20px;
   padding: 28px;
   display: flex;
   flex-direction: column;
   gap: 12px;
   flex: 1;
+  transition: padding 0.2s;
+}
+
+@media (max-width: 1023px) {
+  .tableCard {
+    padding: 24px;
+  }
+}
+
+@media (max-width: 599px) {
+  .tableCard {
+    padding: 16px;
+    border-radius: 12px;
+  }
 }
 
 /* Table toolbar */
@@ -128,6 +229,14 @@
   display: flex;
   align-items: center;
   justify-content: space-between;
+}
+
+@media (max-width: 599px) {
+  .tableToolbar {
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 16px;
+  }
 }
 
 .totalCountArea {
@@ -159,6 +268,13 @@
   gap: 8px;
 }
 
+@media (max-width: 599px) {
+  .tableFilters {
+    width: 100%;
+    justify-content: space-between;
+  }
+}
+
 .searchBox {
   display: flex;
   align-items: center;
@@ -166,6 +282,12 @@
   border-radius: 6px;
   overflow: hidden;
   height: 36px;
+}
+
+@media (max-width: 599px) {
+  .searchBox {
+    flex: 1;
+  }
 }
 
 .searchDropdown {
@@ -184,6 +306,12 @@
   height: 100%;
 }
 
+@media (max-width: 599px) {
+  .searchDropdown {
+    display: none; /* 모바일에서 드롭다운 숨김 고려 */
+  }
+}
+
 .searchInput {
   flex: 1;
   border: none;
@@ -194,6 +322,12 @@
   color: rgba(46,47,51,0.4);
   background: transparent;
   min-width: 180px;
+}
+
+@media (max-width: 599px) {
+  .searchInput {
+    min-width: 100px;
+  }
 }
 
 .searchBtn {
@@ -225,10 +359,16 @@
   white-space: nowrap;
 }
 
-/* Table */
+/* Table (Desktop/Tablet) */
 .table {
   display: flex;
   flex-direction: column;
+}
+
+@media (max-width: 599px) {
+  .table {
+    display: none; /* 모바일에서 테이블 숨김 */
+  }
 }
 
 .tableHead {
@@ -378,6 +518,81 @@
   color: var(--color-text-default);
 }
 
+/* Mobile Card List */
+.mobileCardList {
+  display: none;
+  flex-direction: column;
+  gap: 16px;
+}
+
+@media (max-width: 599px) {
+  .mobileCardList {
+    display: flex;
+  }
+}
+
+.videoCard {
+  background: #f8fafc;
+  border: 1px solid #e2e8f0;
+  border-radius: 12px;
+  padding: 16px;
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+}
+
+.cardHeader {
+  display: flex;
+  justify-content: space-between;
+  align-items: flex-start;
+}
+
+.cardNo {
+  font-size: 12px;
+  font-weight: 600;
+  color: var(--color-primary-default);
+  background: rgba(26, 117, 255, 0.1);
+  padding: 2px 8px;
+  border-radius: 4px;
+}
+
+.cardTitle {
+  font-size: 15px;
+  font-weight: 600;
+  color: #1e293b;
+  line-height: 1.4;
+  margin: 0;
+}
+
+.cardMeta {
+  display: flex;
+  flex-direction: column;
+  gap: 6px;
+}
+
+.metaItem {
+  display: flex;
+  font-size: 13px;
+  color: #64748b;
+}
+
+.metaLabel {
+  width: 70px;
+  flex-shrink: 0;
+}
+
+.metaValue {
+  color: #334155;
+  font-weight: 500;
+}
+
+.cardFooter {
+  display: flex;
+  justify-content: flex-end;
+  padding-top: 8px;
+  border-top: 1px solid #f1f5f9;
+}
+
 /* Pagination */
 .pagination {
   display: flex;
@@ -385,7 +600,13 @@
   justify-content: center;
   gap: 4px;
   padding: 8px 0 0;
-  margin-top: auto; /* 하단 고정 */
+  margin-top: auto;
+}
+
+@media (max-width: 599px) {
+  .pagination {
+    padding: 16px 0 0;
+  }
 }
 
 .pageBtn {
@@ -429,67 +650,4 @@
 .pageActive {
   background: var(--color-primary-default) !important;
   color: white !important;
-}
-
-/* ── Tablet (≤ 768px) ── */
-@media (max-width: 768px) {
-  .breadcrumb {
-    padding: 14px 24px;
-  }
-
-  .body {
-    padding: 28px 24px 60px;
-  }
-
-  .title {
-    font-size: 26px;
-  }
-
-  .categoryCard {
-    padding: 0 12px;
-    overflow-x: auto;
-    -webkit-overflow-scrolling: touch;
-    border-radius: 20px;
-  }
-
-  .categoryBtn {
-    padding: 16px 8px;
-    min-width: 80px;
-  }
-
-  .tableToolbar {
-    flex-direction: column;
-    align-items: flex-start;
-    gap: 12px;
-  }
-
-  .table {
-    overflow-x: auto;
-    -webkit-overflow-scrolling: touch;
-  }
-
-  .tableHead,
-  .tableRow {
-    min-width: 600px;
-  }
-}
-
-/* ── Mobile (≤ 480px) ── */
-@media (max-width: 480px) {
-  .breadcrumb {
-    padding: 12px 16px;
-  }
-
-  .body {
-    padding: 20px 16px 48px;
-  }
-
-  .title {
-    font-size: 22px;
-  }
-
-  .tableCard {
-    padding: 20px 16px;
-    border-radius: 20px;
-  }
 }

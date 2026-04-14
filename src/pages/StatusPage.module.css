@@ -11,9 +11,22 @@
 /* Body */
 .body {
   flex: 1;
-  padding: 8px 48px 0; /* 하단 패딩 0으로 통일 */
+  padding: 8px 48px 0;
   display: flex;
   flex-direction: column;
+  transition: padding 0.2s;
+}
+
+@media (max-width: 1023px) {
+  .body {
+    padding: 8px 24px 0;
+  }
+}
+
+@media (max-width: 599px) {
+  .body {
+    padding: 8px 16px 0;
+  }
 }
 
 .inner {
@@ -22,7 +35,7 @@
   margin: 0 auto;
   display: flex;
   flex-direction: column;
-  gap: 0; /* 개별 요소 margin으로 제어 */
+  gap: 0;
   flex: 1;
 }
 
@@ -35,7 +48,15 @@
   display: flex;
   flex-direction: column;
   gap: 0;
-  margin-bottom: 32px; /* 섹션 간 간격 48px -> 32px로 조정 */
+  margin-bottom: 32px;
+  transition: padding 0.2s;
+}
+
+@media (max-width: 599px) {
+  .summaryCard {
+    padding: 20px 16px;
+    border-radius: 12px;
+  }
 }
 
 /* School row */
@@ -44,6 +65,17 @@
   align-items: center;
   gap: 8px;
   padding-bottom: 20px;
+}
+
+@media (max-width: 599px) {
+  .schoolRow {
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 4px;
+  }
+  .schoolDivider {
+    display: none;
+  }
 }
 
 .schoolIcon {
@@ -78,6 +110,16 @@
 .summaryTable {
   display: flex;
   flex-direction: column;
+}
+
+@media (max-width: 599px) {
+  .summaryTable {
+    overflow-x: auto;
+    -webkit-overflow-scrolling: touch;
+  }
+  .summaryHeader, .summaryRow {
+    min-width: 500px;
+  }
 }
 
 .summaryHeader {
@@ -147,6 +189,14 @@
   padding: 0 12px;
 }
 
+@media (max-width: 599px) {
+  .sectionTop {
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 12px;
+  }
+}
+
 .sectionTitle {
   font-size: 20px;
   font-weight: 600;
@@ -159,6 +209,13 @@
   display: flex;
   align-items: center;
   gap: 6px;
+}
+
+@media (max-width: 599px) {
+  .actionBtns {
+    width: 100%;
+    flex-wrap: wrap;
+  }
 }
 
 .btnGhost {
@@ -207,13 +264,27 @@
 /* Table card */
 .tableCard {
   background: var(--color-white);
-  border-radius: 20px; /* 모든 모서리 20px 복구 */
+  border-radius: 20px;
   padding: 28px;
   display: flex;
   flex-direction: column;
   gap: 16px;
   flex: 1;
   margin-bottom: 0;
+  transition: padding 0.2s;
+}
+
+@media (max-width: 1023px) {
+  .tableCard {
+    padding: 24px;
+  }
+}
+
+@media (max-width: 599px) {
+  .tableCard {
+    padding: 16px;
+    border-radius: 12px;
+  }
 }
 
 /* Table toolbar */
@@ -221,6 +292,14 @@
   display: flex;
   align-items: center;
   justify-content: space-between;
+}
+
+@media (max-width: 599px) {
+  .tableToolbar {
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 16px;
+  }
 }
 
 .totalCountArea {
@@ -254,6 +333,13 @@
   gap: 8px;
 }
 
+@media (max-width: 599px) {
+  .tableFilters {
+    width: 100%;
+    justify-content: space-between;
+  }
+}
+
 .searchBox {
   display: flex;
   align-items: center;
@@ -261,6 +347,12 @@
   border-radius: 6px;
   overflow: hidden;
   height: 32px;
+}
+
+@media (max-width: 599px) {
+  .searchBox {
+    flex: 1;
+  }
 }
 
 .searchDropdown {
@@ -279,6 +371,12 @@
   height: 100%;
 }
 
+@media (max-width: 480px) {
+  .searchDropdown {
+    display: none;
+  }
+}
+
 .searchInput {
   flex: 1;
   border: none;
@@ -289,6 +387,12 @@
   color: #171719;
   background: transparent;
   min-width: 160px;
+}
+
+@media (max-width: 480px) {
+  .searchInput {
+    min-width: 100px;
+  }
 }
 
 .searchInput::placeholder {
@@ -325,10 +429,16 @@
   white-space: nowrap;
 }
 
-/* Table */
+/* Table (Desktop/Tablet) */
 .table {
   display: flex;
   flex-direction: column;
+}
+
+@media (max-width: 599px) {
+  .table {
+    display: none;
+  }
 }
 
 .tableHead {
@@ -476,6 +586,88 @@
   color: var(--color-text-default);
 }
 
+/* Mobile Card List */
+.mobileCardList {
+  display: none;
+  flex-direction: column;
+  gap: 16px;
+}
+
+@media (max-width: 599px) {
+  .mobileCardList {
+    display: flex;
+  }
+}
+
+.deviceCard {
+  background: #f8fafc;
+  border: 1px solid #e2e8f0;
+  border-radius: 12px;
+  padding: 16px;
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+}
+
+.cardHeader {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.cardId {
+  font-size: 14px;
+  font-weight: 700;
+  color: var(--color-primary-default);
+}
+
+.cardTitle {
+  font-size: 16px;
+  font-weight: 600;
+  color: #1e293b;
+  margin: 4px 0 0;
+}
+
+.cardGrid {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 12px;
+  padding: 12px 0;
+  border-top: 1px solid #f1f5f9;
+  border-bottom: 1px solid #f1f5f9;
+}
+
+.cardMetaItem {
+  display: flex;
+  flex-direction: column;
+  gap: 4px;
+}
+
+.metaLabel {
+  font-size: 12px;
+  color: #64748b;
+}
+
+.metaValue {
+  font-size: 13px;
+  font-weight: 500;
+  color: #334155;
+}
+
+.cardFooter {
+  display: flex;
+  justify-content: flex-end;
+}
+
+.detailLink {
+  font-size: 13px;
+  color: var(--color-primary-default);
+  text-decoration: none;
+  display: flex;
+  align-items: center;
+  gap: 2px;
+}
+
 /* Pagination */
 .pagination {
   display: flex;
@@ -483,7 +675,7 @@
   justify-content: center;
   gap: 4px;
   padding: 8px 0 0;
-  margin-top: auto; /* 하단 고정 */
+  margin-top: auto;
 }
 
 .pageBtn {
@@ -548,75 +740,15 @@
   z-index: 50;
 }
 
-.fab:hover {
-  box-shadow: 0px 12px 24px -4px rgba(0,0,0,0.15);
-}
-
-/* ── Tablet (≤ 768px) ── */
-@media (max-width: 768px) {
-  .breadcrumb {
-    padding: 14px 24px;
-  }
-
-  .body {
-    padding: 28px 24px 60px;
-  }
-
-  .title {
-    font-size: 26px;
-  }
-
-  .sectionTop {
-    flex-direction: column;
-    align-items: flex-start;
-    gap: 12px;
-  }
-
-  .actionBtns {
-    flex-wrap: wrap;
-  }
-
-  .tableToolbar {
-    flex-direction: column;
-    align-items: flex-start;
-    gap: 12px;
-  }
-
-  .table {
-    overflow-x: auto;
-    -webkit-overflow-scrolling: touch;
-  }
-
-  .tableHead,
-  .tableRow {
-    min-width: 600px;
-  }
-
+@media (max-width: 599px) {
   .fab {
     bottom: 24px;
-    right: 24px;
+    right: 20px;
     width: 52px;
     height: 52px;
   }
 }
 
-/* ── Mobile (≤ 480px) ── */
-@media (max-width: 480px) {
-  .breadcrumb {
-    padding: 12px 16px;
-  }
-
-  .body {
-    padding: 20px 16px 48px;
-  }
-
-  .title {
-    font-size: 22px;
-  }
-
-  .summaryCard,
-  .tableCard {
-    padding: 20px 16px;
-    border-radius: 20px;
-  }
+.fab:hover {
+  box-shadow: 0px 12px 24px -4px rgba(0,0,0,0.15);
 }
