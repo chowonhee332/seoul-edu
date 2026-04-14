@@ -12,18 +12,22 @@ const COLORS = [
 
 export default function Confetti({ count = 200 }: { count?: number }) {
   useEffect(() => {
-    confetti({
-      particleCount: count,
-      spread: 360, // 360도 전 방향으로 확산
-      startVelocity: 30, // 폭발 속도 증가
-      origin: { y: 0.5 }, // 화면 중앙(아이콘 위치)에서 시작
-      colors: COLORS,
-      shapes: ['circle'],
-      scalar: 0.7,
-      gravity: 0.8, // 사방으로 더 잘 퍼지게 중력 소폭 완화
-      ticks: 100,
-    })
-  }, [])
+    const timer = setTimeout(() => {
+      confetti({
+        particleCount: count,
+        spread: 360, // 360도 전 방향으로 확산
+        startVelocity: 30, // 폭발 속도 증가
+        origin: { y: 0.5 }, // 화면 중앙(아이콘 위치)에서 시작
+        colors: COLORS,
+        shapes: ['circle'],
+        scalar: 0.7,
+        gravity: 0.8, // 사방으로 더 잘 퍼지게 중력 소폭 완화
+        ticks: 100,
+      })
+    }, 500)
+
+    return () => clearTimeout(timer)
+  }, [count])
 
   // canvas-confetti는 기본적으로 body에 canvas를 생성하여 동작하므로
   // 컴포넌트 자체는 렌더링할 요소를 반환하지 않아도 됩니다.
