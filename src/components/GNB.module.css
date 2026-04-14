@@ -179,10 +179,14 @@
 .dropdownItem svg {
   flex-shrink: 0;
   color: #a0a0a1;
-  transition: color 0.12s;
+  opacity: 0;
+  transform: translateX(-4px);
+  transition: all 0.2s ease;
 }
 
 .dropdownItem:hover svg {
+  opacity: 1;
+  transform: translateX(0);
   color: var(--color-primary-default);
 }
 
