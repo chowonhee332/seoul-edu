@@ -21,7 +21,7 @@ const MENUS = [
     children: [
       { label: '동영상 가이드', path: '/video-guide' },
       { label: '문제해결 Q&A', path: '/faq' },
-      { label: '다운로드 센터', path: '/download' },
+      { label: '다운로드 센터', path: '/download-center' },
     ],
   },
   {
@@ -30,8 +30,8 @@ const MENUS = [
     children: [
       { label: 'A/S접수 예약', path: '/as-reception' },
       { label: 'A/S접수 조회/변경', path: '/as-history' },
-      { label: '작업 일정 접수', path: '/schedule' },
-      { label: '작업 일정 접수 내역', path: '/schedule-history' },
+      { label: '작업 일정 접수', path: '/work-reception' },
+      { label: '작업 일정 접수 내역', path: '/work-history' },
     ],
   },
   {

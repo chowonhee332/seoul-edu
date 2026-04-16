@@ -1,0 +1,267 @@
+/* ── 페이지 레이아웃 ──────────────────────────────────────
+   VideoGuidePage와 동일한 뼈대 사용
+─────────────────────────────────────────────────────── */
+.page {
+  padding-top: 68px;
+  display: flex;
+  flex-direction: column;
+  min-height: 100vh;
+  background: #f0f4f9;
+}
+
+.body {
+  flex: 1;
+  padding: 8px 48px 0;
+  display: flex;
+  flex-direction: column;
+  transition: padding 0.2s;
+}
+
+@media (max-width: 1023px) {
+  .body { padding: 8px 24px 0; }
+}
+@media (max-width: 599px) {
+  .body { padding: 8px 16px 0; }
+}
+
+.inner {
+  max-width: 1000px;
+  width: 100%;
+  margin: 0 auto;
+  display: flex;
+  flex-direction: column;
+  gap: 0;
+  flex: 1;
+}
+
+/* ── 메인 카드
+   VideoGuidePage .tableCard와 동일한 패딩·radius·gap
+─────────────────────────────────────────────────────── */
+.tableCard {
+  background: var(--color-white);
+  border-radius: 20px;
+  padding: 28px;
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+  flex: 1;
+  transition: padding 0.2s;
+}
+
+@media (max-width: 1023px) {
+  .tableCard { padding: 24px; }
+}
+@media (max-width: 599px) {
+  .tableCard { padding: 16px; border-radius: 12px; }
+}
+
+/* ── 툴바: 전체 N건 + 소팅 버튼
+   VideoGuidePage .tableToolbar와 동일
+─────────────────────────────────────────────────────── */
+.toolbar {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+
+.countArea {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  color: #171719;
+}
+
+/* VideoGuidePage .categoryNameDisplay 와 동일 */
+.countLabel {
+  font-size: 16px;
+  font-weight: 600;
+}
+
+/* VideoGuidePage .countDivider 와 동일 */
+.countDivider {
+  font-size: 14px;
+  color: rgba(46, 47, 51, 0.2);
+}
+
+/* VideoGuidePage .countValueDisplay 와 동일 */
+.countValue {
+  font-size: 14px;
+  font-weight: 500;
+  color: rgba(46, 47, 51, 0.6);
+}
+
+/* VideoGuidePage .sortBtn 과 동일 */
+.sortBtn {
+  display: flex;
+  align-items: center;
+  gap: 4px;
+  border: 1px solid rgba(112, 115, 124, 0.22);
+  border-radius: 6px;
+  padding: 0 10px;
+  height: 36px;
+  font-size: 13px;
+  font-family: inherit;
+  color: var(--color-text-default);
+  background: var(--color-white);
+  cursor: pointer;
+  white-space: nowrap;
+  transition: background 0.15s, border-color 0.15s;
+}
+
+.sortBtn:hover {
+  background: #f4f6fa;
+  border-color: rgba(112, 115, 124, 0.4);
+}
+
+/* ── 테이블
+   VideoGuidePage .table / .tableHead / .tableRow 와 동일
+─────────────────────────────────────────────────────── */
+.table {
+  display: flex;
+  flex-direction: column;
+}
+
+.tableHead {
+  display: flex;
+  align-items: center;
+  height: 40px; /* 표준 헤더 높이 */
+  width: 100%;
+  background: #f4f6fa;
+  border-radius: 4px; /* 살짝 굴림 */
+  padding: 0;
+}
+
+.tableRow {
+  display: flex;
+  align-items: center;
+  border-bottom: 1px solid #e0e4eb;
+  cursor: pointer;
+  transition: background 0.12s;
+}
+
+.tableRow:hover {
+  background: rgba(244, 246, 250, 0.7);
+}
+
+.tableRow:last-child {
+  border-bottom: none;
+}
+
+
+
+/* ── 셀 공통
+   VideoGuidePage .noCell / .thCell / .tdCell 과 완전히 동일
+─────────────────────────────────────────────────────── */
+.noCell {
+  width: 56px;
+  flex-shrink: 0;
+  font-size: 14px;
+  font-weight: 500;
+  color: rgba(46, 47, 51, 0.88);
+  padding: 8px 12px;
+  height: 36px;
+  display: flex;
+  align-items: center;
+}
+
+/* 데이터 행의 No. 셀 */
+.tableRow .noCell {
+  font-weight: 400;
+  height: 52px;
+}
+
+.thCell {
+  font-size: 14px;
+  font-weight: 500;
+  color: rgba(46, 47, 51, 0.88);
+  letter-spacing: -0.07px;
+  padding: 8px 12px;
+  height: 36px;
+  display: flex;
+  align-items: center;
+}
+
+.tdCell {
+  font-size: 14px;
+  font-weight: 400;
+  color: rgba(46, 47, 51, 0.88);
+  letter-spacing: -0.07px;
+  padding: 8px 12px;
+  height: 52px;
+  display: flex;
+  align-items: center;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+}
+
+.flex1 {
+  flex: 1;
+}
+
+/* 등록일: VideoGuidePage .dateCell 과 동일 */
+.dateCell {
+  width: 100px;
+  flex-shrink: 0;
+}
+
+/* 조회수: 공지사항 전용 추가 컬럼 */
+.viewsCell {
+  width: 72px;
+  flex-shrink: 0;
+}
+
+@media (max-width: 599px) {
+  .viewsCell { display: none; }
+}
+
+/* ── 페이지네이션
+   VideoGuidePage .pagination 과 동일
+─────────────────────────────────────────────────────── */
+.pagination {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 4px;
+  padding: 8px 0 0;
+  margin-top: auto;
+}
+
+.pageBtn {
+  width: 32px;
+  height: 32px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background: none;
+  border: none;
+  cursor: pointer;
+  color: rgba(46, 47, 51, 0.6);
+  border-radius: 6px;
+  transition: background 0.15s;
+}
+
+.pageBtn:hover { background: #f4f6fa; }
+
+.pageNumBtn {
+  width: 32px;
+  height: 32px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background: none;
+  border: none;
+  cursor: pointer;
+  font-size: 14px;
+  font-family: inherit;
+  color: rgba(46, 47, 51, 0.88);
+  border-radius: 6px;
+  transition: background 0.15s;
+}
+
+.pageNumBtn:hover { background: #f4f6fa; }
+
+.pageActive {
+  background: var(--color-primary-default) !important;
+  color: #fff !important;
+}

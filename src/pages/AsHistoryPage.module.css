@@ -263,7 +263,8 @@
 .resultsSection {
   display: flex;
   flex-direction: column;
-  flex: 1; /* 대지 가득 채우기 */
+  flex: 1;
+  gap: 12px;
 }
 
 /* ── Step 1: Filter card (single row) ── */
@@ -275,7 +276,7 @@
   align-items: center;
   gap: 12px;
   flex-wrap: wrap;
-  margin-bottom: 32px; /* 섹션 간 여백 48px -> 32px로 조정 */
+  margin-bottom: 0;
 }
 
 .filterLabel {
@@ -373,19 +374,20 @@
   line-height: 1.4;
   letter-spacing: -0.2px;
   color: var(--color-text-default);
-  margin-top: 0; /* 상단 마진 0으로 조정 */
-  margin-bottom: 20px; /* 타이틀과 하단 박스 사이 간격 20px 적용 */
+  margin-top: 0;
+  margin-bottom: 20px;
 }
 
 /* Table card */
 .tableCard {
   background: var(--color-white);
-  border-radius: 20px; /* 모든 모서리 20px 복구 */
+  border-radius: 20px;
   padding: 28px;
   display: flex;
   flex-direction: column;
   gap: 16px;
-  flex: 1; /* 가득 채우기 */
+  flex: 1;
+  border: 1px solid rgba(112, 115, 124, 0.08); /* 그림자 제거, 보더 추가 */
 }
 
 .tableHeader {
@@ -430,33 +432,35 @@
   height: 32px;
 }
 
-/* Table */
-.table {
-  width: 100%;
-  border-collapse: collapse;
-}
-
-.th {
-  padding: 8px 12px;
-  text-align: left;
-  font-size: 14px;
-  font-weight: 500;
-  color: rgba(46,47,51,0.88);
+.tableHeaderRow {
+  display: flex;
+  align-items: center;
   background: #f4f6fa;
-  white-space: nowrap;
+  border-radius: 8px;
+  height: 40px;
+  width: 100%;
 }
 
-.th:first-child {
-  border-radius: 8px 0 0 0;
-}
+.thNo { width: 60px; display: flex; align-items: center; padding: 0 12px; font-size: 14px; font-weight: 500; color: rgba(46,47,51,0.88); }
+.thDate { width: 120px; display: flex; align-items: center; padding: 0 12px; font-size: 14px; font-weight: 500; color: rgba(46,47,51,0.88); }
+.thProduct { width: 180px; display: flex; align-items: center; padding: 0 12px; font-size: 14px; font-weight: 500; color: rgba(46,47,51,0.88); }
+.thSerial { width: 160px; display: flex; align-items: center; padding: 0 12px; font-size: 14px; font-weight: 500; color: rgba(46,47,51,0.88); }
+.thSymptom { flex: 1; display: flex; align-items: center; padding: 0 12px; font-size: 14px; font-weight: 500; color: rgba(46,47,51,0.88); }
+.thStatus { width: 100px; display: flex; align-items: center; padding: 0 12px; font-size: 14px; font-weight: 500; color: rgba(46,47,51,0.88); }
 
-.th:last-child {
-  border-radius: 0 8px 0 0;
+.tableBody {
+  display: flex;
+  flex-direction: column;
 }
 
 .tr {
+  display: flex;
+  align-items: center;
   border-bottom: 1px solid #e0e4eb;
+  height: 52px;
+  background: white;
   transition: background 0.15s;
+  width: 100%;
 }
 
 .tr:hover {
@@ -464,24 +468,12 @@
   cursor: pointer;
 }
 
-.tr:last-child {
-  border-bottom: none;
-}
-
-.td {
-  padding: 14px 12px;
-  font-size: 14px;
-  color: rgba(46,47,51,0.88);
-  vertical-align: middle;
-  white-space: nowrap;
-}
-
-.tdContent {
-  white-space: nowrap;
-  overflow: hidden;
-  text-overflow: ellipsis;
-  max-width: 260px;
-}
+.tdNo { width: 60px; display: flex; align-items: center; padding: 0 12px; font-size: 14px; color: rgba(46,47,51,0.88); }
+.tdDate { width: 120px; display: flex; align-items: center; padding: 0 12px; font-size: 14px; color: rgba(46,47,51,0.88); }
+.tdProduct { width: 180px; display: flex; align-items: center; padding: 0 12px; font-size: 14px; color: rgba(46,47,51,0.88); overflow: hidden; text-overflow: ellipsis; white-space: nowrap; }
+.tdSerial { width: 160px; display: flex; align-items: center; padding: 0 12px; font-size: 14px; color: rgba(46,47,51,0.88); overflow: hidden; text-overflow: ellipsis; white-space: nowrap; }
+.tdSymptom { flex: 1; display: flex; align-items: center; padding: 0 12px; font-size: 14px; color: rgba(46,47,51,0.88); overflow: hidden; text-overflow: ellipsis; white-space: nowrap; }
+.tdStatus { width: 100px; display: flex; align-items: center; padding: 0 12px; font-size: 14px; color: rgba(46,47,51,0.88); }
 
 /* Status badge */
 .statusBadge {

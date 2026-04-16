@@ -1,0 +1,284 @@
+/* ── 페이지 레이아웃 ──────────────────────────────────── */
+.page {
+  padding-top: 68px;
+  display: flex;
+  flex-direction: column;
+  min-height: 100vh;
+  background: #f0f4f9;
+}
+
+.body {
+  flex: 1;
+  padding: 8px 48px 0;
+  display: flex;
+  flex-direction: column;
+}
+
+@media (max-width: 1023px) { .body { padding: 8px 24px 0; } }
+@media (max-width: 599px)  { .body { padding: 8px 16px 0; } }
+
+/* inner: 다른 페이지와 동일한 max-width 1000px */
+.inner {
+  max-width: 1000px;
+  width: 100%;
+  margin: 0 auto;
+  display: flex;
+  flex-direction: column;
+  flex: 1;
+  padding-bottom: 0;
+}
+
+/* ── 제목 행 ──────────────────────────────────────────── */
+.titleRow {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  margin-top: 4px;
+  margin-bottom: 12px;
+  flex-wrap: wrap;
+}
+
+.title {
+  font-size: 32px;
+  font-weight: 700;
+  line-height: 1.2;
+  letter-spacing: -0.64px;
+  color: #171719;
+  margin: 0;
+  transition: font-size 0.2s;
+}
+
+@media (max-width: 1023px) {
+  .title { font-size: 26px; }
+}
+
+@media (max-width: 599px) {
+  .title { font-size: 22px; }
+}
+
+/* 타입 뱃지 (동영상 재생 아이콘 등) */
+.typeBadge {
+  display: inline-flex;
+  align-items: center;
+  gap: 3px;
+  font-size: 12px;
+  font-weight: 500;
+  border-radius: 6px;
+  padding: 3px 8px;
+  flex-shrink: 0;
+}
+
+/* ── 메타: 날짜 | 조회수 ─────────────────────────────── */
+.metaRow {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  margin-top: 8px;
+  margin-bottom: 20px;
+}
+
+.metaItem {
+  display: flex;
+  align-items: center;
+  gap: 4px;
+  font-size: 13px;
+  color: rgba(46, 47, 51, 0.55);
+}
+
+.metaDivider {
+  width: 1px;
+  height: 12px;
+  background: rgba(112, 115, 124, 0.3);
+}
+
+/* ── 구분선 ───────────────────────────────────────────── */
+.divider {
+  width: 100%;
+  height: 1px;
+  background: rgba(112, 115, 124, 0.16);
+  margin: 0 0 32px;
+}
+
+/* ── 동영상 콘텐츠 박스 ───────────────────────────────── */
+.videoBox {
+  width: 100%;
+  margin-bottom: 24px;
+  border-radius: 16px;
+  overflow: hidden;
+}
+
+/* 16:9 aspect ratio */
+.videoPlaceholder {
+  width: 100%;
+  padding-top: 56.25%;
+  position: relative;
+  background: #eef1f6;
+  border-radius: 16px;
+}
+
+.playBtn {
+  position: absolute;
+  inset: 0;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.playBtn::before {
+  content: '';
+  width: 64px;
+  height: 64px;
+  border-radius: 50%;
+  background: rgba(46, 47, 51, 0.35);
+  position: absolute;
+}
+
+.playBtn > svg {
+  position: relative;
+  z-index: 1;
+  margin-left: 4px; /* 재생 아이콘 시각적 중앙 보정 */
+}
+
+/* ── 다운로드 콘텐츠 박스 ────────────────────────────── */
+.downloadBox {
+  width: 100%;
+  background: #f4f6fa;
+  border-radius: 16px;
+  padding: 48px 28px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 16px;
+  margin-bottom: 24px;
+}
+
+.downloadIcon {
+  color: var(--color-primary-default);
+  opacity: 0.7;
+}
+
+.downloadFileName {
+  font-size: 15px;
+  font-weight: 500;
+  color: rgba(46, 47, 51, 0.88);
+  margin: 0;
+}
+
+.downloadBtn {
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  height: 40px;
+  padding: 0 24px;
+  background: var(--color-primary-default);
+  color: #fff;
+  border-radius: var(--radius-4);
+  font-size: 14px;
+  font-weight: 500;
+  font-family: inherit;
+  text-decoration: none;
+  cursor: pointer;
+  transition: opacity 0.15s;
+}
+
+.downloadBtn:hover { opacity: 0.88; }
+
+/* ── 본문 카드 (흰색 컨테이너) ──────────────────────── */
+.contentCard {
+  background: var(--color-white);
+  border-radius: 20px;
+  padding: 28px;
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+}
+
+/* ── 텍스트 본문 박스 (공지/FAQ) ─────────────────────── */
+.textBox {
+  width: 100%;
+  flex: 1;
+}
+
+.textContent {
+  font-size: 15px;
+  line-height: 1.8;
+  color: rgba(46, 47, 51, 0.88);
+  margin: 0;
+  white-space: pre-wrap;
+}
+
+/* ── 이전글/다음글 네비게이션 ───────────────────────── */
+.postNav {
+  display: flex;
+  align-items: flex-start;
+  justify-content: space-between;
+  gap: 16px;
+  margin-bottom: 28px;
+}
+
+.navBtn {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  background: none;
+  border: none;
+  cursor: pointer;
+  padding: 0;
+  color: rgba(46, 47, 51, 0.7);
+  font-family: inherit;
+  max-width: 44%;
+  transition: color 0.15s;
+}
+
+.navBtn:hover { color: var(--color-primary-default); }
+
+.navBtnRight {
+  flex-direction: row-reverse;
+  text-align: right;
+}
+
+.navLabel {
+  font-size: 13px;
+  font-weight: 600;
+  color: rgba(46, 47, 51, 0.55);
+  white-space: nowrap;
+  flex-shrink: 0;
+}
+
+.navTitle {
+  font-size: 14px;
+  font-weight: 400;
+  color: rgba(46, 47, 51, 0.88);
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+}
+
+/* ── 목록보기 버튼 ───────────────────────────────────── */
+.listBtnWrap {
+  display: flex;
+  justify-content: flex-end;
+  padding: 8px 0 0;
+}
+
+.listBtn {
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  height: 40px;
+  padding: 0 28px;
+  background: none;
+  border: 1px solid rgba(112, 115, 124, 0.3);
+  border-radius: var(--radius-4);
+  font-size: 14px;
+  font-weight: 400;
+  font-family: inherit;
+  color: rgba(46, 47, 51, 0.88);
+  cursor: pointer;
+  transition: background 0.15s, border-color 0.15s;
+}
+
+.listBtn:hover {
+  background: #f4f6fa;
+  border-color: rgba(112, 115, 124, 0.5);
+}

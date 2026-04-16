@@ -1,7 +1,6 @@
 import { useState, useRef, useEffect } from 'react'
 import { Link, useNavigate } from 'react-router-dom'
 import { motion } from 'framer-motion'
-import GNB from '../components/GNB'
 import Footer from '../components/Footer'
 import TransitionLayout from '../components/TransitionLayout'
 import styles from './LoginPage.module.css'
@@ -76,7 +75,6 @@ export default function LoginPage() {
   return (
     <TransitionLayout>
       <div className={styles.page}>
-        <GNB variant="light" />
 
         {/* 로그인 카드 */}
         <div className={styles.cardWrap}>

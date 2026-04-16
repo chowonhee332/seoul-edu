@@ -1,11 +1,11 @@
-import { useState } from 'react'
+import { useState, useEffect } from 'react'
 import { Link } from 'react-router-dom'
 import { motion, Variants, AnimatePresence } from 'framer-motion'
-import { MdNorthEast, MdChevronRight, MdAccessTime, MdVisibility, MdSearch, MdArrowUpward, MdSchool } from 'react-icons/md'
-import GNB from '../components/GNB'
+import { MdNorthEast, MdChevronRight, MdAccessTime, MdVisibility, MdArrowUpward, MdSchool } from 'react-icons/md'
 import QuickServiceBar from '../components/QuickServiceBar'
 import Footer from '../components/Footer'
 import TransitionLayout from '../components/TransitionLayout'
+import SearchBox from '../components/SearchBox'
 import styles from './HomeLoggedInPage.module.css'
 
 
@@ -64,6 +64,15 @@ const itemVariants: Variants = {
 
 export default function HomeLoggedInPage() {
   const [selectedProduct, setSelectedProduct] = useState(PRODUCTS[1].id)
+  const [isScrolled, setIsScrolled] = useState(false)
+
+  useEffect(() => {
+    const handleScroll = () => {
+      setIsScrolled(window.scrollY > 10)
+    }
+    window.addEventListener('scroll', handleScroll)
+    return () => window.removeEventListener('scroll', handleScroll)
+  }, [])
 
   const currentProduct = PRODUCTS.find(p => p.id === selectedProduct) ?? PRODUCTS[1]
 
@@ -74,8 +83,9 @@ export default function HomeLoggedInPage() {
   return (
     <TransitionLayout>
       <div className={styles.page}>
+
         {/* 히어로 배너 영역 */}
-        <div className={styles.hero}>
+        <div className={`${styles.hero} ${isScrolled ? styles.heroScrolled : ''}`}>
           <video
             className={styles.heroBg}
             src="/resources/hero_banner.mp4"
@@ -85,13 +95,12 @@ export default function HomeLoggedInPage() {
             playsInline
           />
           <div className={styles.heroOverlay} />
-          <GNB variant="dark" />
 
           {/* 히어로 텍스트 */}
           <motion.div 
             className={styles.heroText}
-            initial={{ opacity: 0, y: 20 }}
-            animate={{ opacity: 1, y: 0 }}
+            initial={{ opacity: 0, x: -20 }}
+            animate={{ opacity: 1, x: 0 }}
             transition={{ duration: 0.6, delay: 0.2 }}
           >
             <p className={styles.heroName}>조원희님</p>
@@ -199,14 +208,7 @@ export default function HomeLoggedInPage() {
                     {currentProduct.id === 0 ? '' : ' '}문제에 대한 증상이나 궁금증을 검색해주세요.
                   </span>
                 </p>
-                <div className={styles.searchInputWrap}>
-                  <input
-                    type="text"
-                    className={styles.searchInput}
-                    placeholder="검색어를 입력해주세요"
-                  />
-                  <MdSearch size={24} color="#a0a0a1" />
-                </div>
+                <SearchBox />
               </div>
               <div className={styles.selfHelpList}>
                 <AnimatePresence mode="popLayout">

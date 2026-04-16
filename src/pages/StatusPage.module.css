@@ -50,6 +50,7 @@
   gap: 0;
   margin-bottom: 32px;
   transition: padding 0.2s;
+  border: 1px solid rgba(112, 115, 124, 0.08); /* 쉐도우 빼고 보더 추가 */
 }
 
 @media (max-width: 599px) {
@@ -272,6 +273,7 @@
   flex: 1;
   margin-bottom: 0;
   transition: padding 0.2s;
+  border: 1px solid rgba(112, 115, 124, 0.08); /* 쉐도우 빼고 보더 추가 */
 }
 
 @media (max-width: 1023px) {
@@ -445,13 +447,16 @@
   display: flex;
   align-items: center;
   background: #f4f6fa;
-  border-radius: 8px 8px 0 0;
+  border-radius: 8px;
+  height: 40px;
+  width: 100%;
 }
 
 .tableRow {
   display: flex;
   align-items: center;
   border-bottom: 1px solid #e0e4eb;
+  width: 100%;
 }
 
 .tableRow:hover {
@@ -464,7 +469,7 @@
 }
 
 .checkCell {
-  width: 52px;
+  width: 60px;
   flex-shrink: 0;
   display: flex;
   align-items: center;
@@ -491,7 +496,7 @@
 }
 
 .noCell {
-  width: 56px;
+  width: 60px;
   flex-shrink: 0;
   font-size: 14px;
   font-weight: 500;
@@ -554,7 +559,7 @@
 }
 
 .actionCell {
-  width: 90px;
+  width: 120px;
   flex-shrink: 0;
   display: flex;
   align-items: center;
@@ -751,4 +756,70 @@
 
 .fab:hover {
   box-shadow: 0px 12px 24px -4px rgba(0,0,0,0.15);
+}
+
+/* Board Right Tools (Restored) */
+.boardRightTools {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+}
+
+.searchSelectArea {
+  display: flex;
+  align-items: center;
+  border: 1px solid rgba(112, 115, 124, 0.2);
+  border-radius: 6px;
+  overflow: hidden;
+  height: 32px;
+  background: #fff;
+}
+
+.selectBtn {
+  display: flex;
+  align-items: center;
+  gap: 2px;
+  background: transparent;
+  border: none;
+  border-right: 1px solid rgba(112, 115, 124, 0.2);
+  padding: 0 8px 0 10px;
+  font-size: 13px;
+  color: #171719;
+  cursor: pointer;
+  height: 100%;
+}
+
+.searchInputWrapSmall {
+  display: flex;
+  align-items: center;
+  padding: 0 8px;
+  gap: 4px;
+  height: 100%;
+}
+
+.boardSearchInput {
+  border: none;
+  background: transparent;
+  outline: none;
+  font-size: 13px;
+  width: 140px;
+  color: #171719;
+}
+
+.boardSearchInput::placeholder {
+  color: #a0a0a1;
+}
+
+.boardSortBtn {
+  display: flex;
+  align-items: center;
+  gap: 4px;
+  border: 1px solid rgba(112, 115, 124, 0.2);
+  border-radius: 6px;
+  padding: 0 10px;
+  height: 32px;
+  font-size: 13px;
+  color: #171719;
+  background: #fff;
+  cursor: pointer;
 }

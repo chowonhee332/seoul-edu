@@ -1,0 +1,161 @@
+.card {
+  background: var(--color-white);
+  border-radius: 20px;
+  padding: 0 12px;
+  display: flex;
+  align-items: center;
+  border: 1px solid rgba(112, 115, 124, 0.08);
+  margin-bottom: 12px;
+  position: sticky;
+  top: 80px;
+  z-index: 100;
+  transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+/* 스크롤 시 GNB와 카드 사이 틈을 가리는 마스크 */
+.card::before {
+  content: '';
+  position: absolute;
+  top: -12px;
+  left: -20px;
+  right: -20px;
+  height: 12px;
+  background: #f0f4f9;
+  pointer-events: none;
+  opacity: 0;
+  transition: opacity 0.2s;
+}
+
+.card.stickyActive::before {
+  opacity: 1;
+}
+
+.card.stickyActive {
+  border-bottom: 1px solid rgba(0, 0, 0, 0.08);
+  border-radius: 20px 20px 0 0;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.02);
+}
+
+@media (max-width: 1023px) {
+  .card {
+    top: 68px;
+    padding: 0 16px;
+    margin-bottom: 16px;
+  }
+}
+
+@media (max-width: 599px) {
+  .card {
+    border-radius: 12px;
+    padding: 0 8px;
+    overflow-x: auto;
+    white-space: nowrap;
+    -ms-overflow-style: none;
+    scrollbar-width: none;
+    justify-content: flex-start;
+  }
+  .card::-webkit-scrollbar { display: none; }
+  .card.stickyActive { border-radius: 0; }
+}
+
+.item {
+  display: flex;
+  align-items: center;
+  flex: 1;
+}
+
+@media (max-width: 599px) {
+  .item { flex: none; }
+}
+
+.btn {
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 8px;
+  padding: 20px 16px;
+  background: none;
+  border: none;
+  cursor: pointer;
+  border-radius: 12px;
+  transition: background 0.15s;
+  color: rgba(46, 47, 51, 0.35);
+}
+
+@media (max-width: 1023px) {
+  .btn { padding: 14px 8px; gap: 4px; }
+}
+
+@media (max-width: 599px) {
+  .btn { min-width: 80px; padding: 12px 10px; }
+}
+
+.btnActive {
+  color: var(--color-primary-default);
+  position: relative;
+}
+
+.btnActive::after {
+  content: '';
+  position: absolute;
+  bottom: 0;
+  left: 50%;
+  transform: translateX(-50%);
+  width: 40px;
+  height: 3px;
+  background: var(--color-primary-default);
+  border-radius: 3px 3px 0 0;
+}
+
+/* 아이콘 래퍼 */
+.icon {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-shrink: 0;
+  transition: color 0.15s;
+}
+
+/* img 아이콘 (VideoGuidePage 등): opacity로 active 표현 */
+.btn:not(.btnActive) .icon img {
+  opacity: 0.3;
+  transition: opacity 0.15s;
+}
+
+.btn .icon img {
+  transition: opacity 0.15s;
+  width: 72px;
+  height: 72px;
+}
+
+@media (max-width: 1023px) {
+  .btn .icon img { width: 48px; height: 48px; }
+}
+
+@media (max-width: 599px) {
+  .btn .icon img { width: 40px; height: 40px; }
+}
+
+.label {
+  font-size: 14px;
+  font-weight: 500;
+  letter-spacing: -0.07px;
+  white-space: nowrap;
+  transition: color 0.15s, font-size 0.2s;
+}
+
+@media (max-width: 599px) {
+  .label { font-size: 12px; }
+}
+
+.divider {
+  width: 1px;
+  height: 40px;
+  background: rgba(112, 115, 124, 0.16);
+  flex-shrink: 0;
+}
+
+@media (max-width: 599px) {
+  .divider { height: 24px; }
+}

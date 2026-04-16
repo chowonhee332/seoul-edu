@@ -1,8 +1,8 @@
 import { useState, useRef, useEffect } from 'react'
 import { Link, useNavigate } from 'react-router-dom'
-import { motion, AnimatePresence, Variants } from 'framer-motion'
+import { motion, AnimatePresence } from 'framer-motion'
+import { stepVariants } from '../lib/animations'
 import { MdHome, MdChevronRight, MdCheck } from 'react-icons/md'
-import GNB from '../components/GNB'
 import Footer from '../components/Footer'
 import TransitionLayout from '../components/TransitionLayout'
 import Confetti from '../components/Confetti'
@@ -14,11 +14,6 @@ const STEPS = ['접수자 정보', '학교정보 입력', '제품/증상 선택'
 
 
 // 애니메이션 변수
-const stepVariants: Variants = {
-  initial: { opacity: 0, x: 20 },
-  animate: { opacity: 1, x: 0 },
-  exit: { opacity: 0, x: -20 },
-}
 
 export default function AsReceptionPage() {
   const navigate = useNavigate()
@@ -222,7 +217,6 @@ export default function AsReceptionPage() {
   return (
     <TransitionLayout>
       <div className={styles.page}>
-        <GNB variant="light" />
 
         <Breadcrumb currentLabel="AS 접수하기" />
 

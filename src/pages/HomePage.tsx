@@ -1,7 +1,9 @@
+import { useState, useEffect } from 'react'
 import { Link } from 'react-router-dom'
-import { motion, Variants } from 'framer-motion'
-import { MdChevronRight, MdAccessTime, MdVisibility, MdSearch, MdArrowUpward } from 'react-icons/md'
-import GNB from '../components/GNB'
+import { motion } from 'framer-motion'
+import { containerVariants, heroItemVariants } from '../lib/animations'
+import { MdChevronRight, MdAccessTime, MdVisibility, MdArrowUpward } from 'react-icons/md'
+import SearchBox from '../components/SearchBox'
 import QuickServiceBar from '../components/QuickServiceBar'
 import Footer from '../components/Footer'
 import TransitionLayout from '../components/TransitionLayout'
@@ -25,28 +27,24 @@ const NOTICES = [
 ]
 
 
-// 애니메이션 변수 정의
-const containerVariants: Variants = {
-  hidden: { opacity: 0 },
-  visible: {
-    opacity: 1,
-    transition: {
-      staggerChildren: 0.1,
-    },
-  },
-}
-
-const itemVariants: Variants = {
-  hidden: { opacity: 0, y: 20 },
-  visible: { opacity: 1, y: 0, transition: { duration: 0.5, ease: [0.22, 1, 0.36, 1] } },
-}
 
 export default function HomePage() {
+  const [isScrolled, setIsScrolled] = useState(false)
+
+  useEffect(() => {
+    const handleScroll = () => {
+      setIsScrolled(window.scrollY > 10)
+    }
+    window.addEventListener('scroll', handleScroll)
+    return () => window.removeEventListener('scroll', handleScroll)
+  }, [])
+
   return (
     <TransitionLayout>
       <div className={styles.page}>
+        
         {/* 히어로 배너 */}
-        <div className={styles.hero}>
+        <div className={`${styles.hero} ${isScrolled ? styles.heroScrolled : ''}`}>
           <video
             className={styles.heroBg}
             src="/resources/hero_banner.mp4"
@@ -56,11 +54,10 @@ export default function HomePage() {
             playsInline
           />
           <div className={styles.heroOverlay} />
-          <GNB variant="dark" />
           <motion.div 
             className={styles.heroText}
-            initial={{ opacity: 0, scale: 0.95 }}
-            animate={{ opacity: 1, scale: 1 }}
+            initial={{ opacity: 0, x: -20 }}
+            animate={{ opacity: 1, x: 0 }}
             transition={{ duration: 0.8, ease: "easeOut" }}
           >
             <p className={styles.heroTitle1}>안녕하세요,</p>
@@ -84,17 +81,15 @@ export default function HomePage() {
             {/* 로그인 유도 */}
             <motion.div 
               className={styles.loginSection}
-              variants={itemVariants}
-
+              variants={heroItemVariants}
             >
               <div className={styles.loginCardText}>
-                <p>로그인하고 보유기기의</p>
-                <p>맞춤 정보를 확인해보세요.</p>
+                <span>로그인하고 보유기기의</span>
+                <span>맞춤 정보를 확인해보세요.</span>
               </div>
               <motion.div whileTap={{ scale: 0.95 }}>
                 <Link to="/login" className={styles.loginCardBtn}>
-                  로그인
-                  <MdChevronRight size={20} />
+                  로그인 <MdChevronRight size={18} />
                 </Link>
               </motion.div>
             </motion.div>
@@ -102,36 +97,23 @@ export default function HomePage() {
             {/* 스스로 해결 카드 */}
             <motion.div 
               className={styles.selfHelpCard}
-              variants={itemVariants}
+              variants={heroItemVariants}
             >
               <div className={styles.searchContainer}>
                 <p className={styles.selfHelpQuestion}>
                   문제에 대한 증상이나 궁금증이 있으신가요?
                 </p>
-                <div className={styles.selfHelpSearchWrap}>
-                  <input
-                    type="text"
-                    className={styles.selfHelpSearchInput}
-                    placeholder="검색어를 입력해주세요"
-                  />
-                  <motion.button
-                    className={styles.selfHelpSearchBtn}
-                    aria-label="검색"
-                    whileTap={{ scale: 0.9 }}
-                  >
-                    <MdSearch size={24} color="rgba(46,47,51,0.5)" />
-                  </motion.button>
-                </div>
+                <SearchBox className={styles.selfHelpSearchBox} />
               </div>
               <div className={styles.selfHelpList}>
                 {SELF_HELP_ITEMS.map((item) => (
                   <motion.div 
                     key={item.id} 
                     className={styles.listRow}
-                                        transition={{ duration: 0.2 }}
+                    transition={{ duration: 0.2 }}
                   >
                     <div className={styles.listRowLeft}>
-                      <span className={styles.tag} style={{ color: item.typeColor, background: item.typeBg }}>
+                      <span className={styles.tag} style={{ color: item.typeColor, background: '#f8fafc' }}>
                         {item.type}
                       </span>
                       <span className={styles.listTitle}>{item.title}</span>
@@ -155,7 +137,7 @@ export default function HomePage() {
             {/* 공지사항 */}
             <motion.div 
               className={styles.noticeSection}
-              variants={itemVariants}
+              variants={heroItemVariants}
             >
               <div className={styles.noticeHeader}>
                 <h2 className={styles.noticeTitle}>공지사항</h2>

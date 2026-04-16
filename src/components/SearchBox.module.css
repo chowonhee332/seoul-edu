@@ -1,0 +1,25 @@
+.wrap {
+  width: 100%;
+  max-width: 500px;
+  height: 48px;
+  background: #f0f4f9;
+  border-radius: 100px;
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  padding: 0 20px;
+}
+
+.input {
+  flex: 1;
+  border: none;
+  outline: none;
+  background: transparent;
+  font-size: 15px;
+  font-family: inherit;
+  color: rgba(46, 47, 51, 0.88);
+}
+
+.input::placeholder {
+  color: rgba(46, 47, 51, 0.4);
+}

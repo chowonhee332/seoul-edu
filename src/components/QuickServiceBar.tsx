@@ -5,7 +5,7 @@ import styles from './QuickServiceBar.module.css'
 
 const QUICK_SERVICES = [
   { icon: MdAssignment, label: 'AS 접수', iconBg: '#1a75ff', path: '/as-reception' },
-  { icon: MdAssignmentTurnedIn, label: 'AS조회 변경', iconBg: '#4dc6e5', path: '/as-lookup' },
+  { icon: MdAssignmentTurnedIn, label: 'AS조회 변경', iconBg: '#4dc6e5', path: '/as-history' },
   { icon: MdTabletAndroid, label: '단말 현황', iconBg: '#00b4a0', path: '/status' },
   { icon: MdLocationOn, label: '서비스 센터안내', iconBg: '#272727', path: '/service-center' },
 ]

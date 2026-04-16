@@ -1,0 +1,292 @@
+.contentCard {
+  background: var(--color-white);
+  border-radius: 20px;
+  padding: 28px;
+  display: flex;
+  flex-direction: column;
+  border: 1px solid rgba(112, 115, 124, 0.08);
+}
+
+/* 검색 영역 */
+.searchArea {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 20px;
+  padding: 8px 0 40px;
+  /* border-bottom 제거됨 */
+}
+
+.searchTitle {
+  font-size: 20px;
+  font-weight: 400;
+  color: #171719;
+  margin: 0;
+}
+
+.searchHighlight {
+  font-weight: 700;
+  color: var(--color-primary-default);
+}
+
+
+/* 툴바 */
+.listToolbar {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 0;
+  margin-top: 0; /* 상단 마진 제거 */
+  margin-bottom: 16px;
+}
+
+.listToolbarRight {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+}
+
+.listCount {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+}
+
+.listCountName {
+  font-size: 16px;
+  font-weight: 600;
+  color: #171719;
+}
+
+.listCountDivider {
+  color: rgba(46, 47, 51, 0.2);
+}
+
+.listCountValue {
+  font-size: 14px;
+  color: rgba(46, 47, 51, 0.6);
+}
+
+.sortBtn {
+  display: flex;
+  align-items: center;
+  gap: 4px;
+  border: 1px solid rgba(112, 115, 124, 0.2);
+  border-radius: 8px;
+  padding: 0 10px;
+  height: 32px;
+  font-size: 13px;
+  font-weight: 500;
+  color: #171719;
+  background: #fff;
+  cursor: pointer;
+  transition: all 0.2s;
+}
+
+.sortBtnActive {
+  border-color: var(--color-primary-default);
+  background: #f0f7ff;
+}
+
+.sortBtn:hover {
+  background: #f8fafc;
+  border-color: rgba(112, 115, 124, 0.35);
+}
+
+.sortWrapper {
+  position: relative;
+}
+
+.sortDropdown {
+  position: absolute;
+  top: calc(100% + 4px);
+  right: 0;
+  width: 100px;
+  background: #fff;
+  border: 1px solid rgba(112, 115, 124, 0.15);
+  border-radius: 8px;
+  box-shadow: 0 10px 25px -5px rgba(0, 0, 0, 0.1);
+  padding: 4px;
+  z-index: 100;
+  overflow: hidden;
+}
+
+.sortItem {
+  width: 100%;
+  border: none;
+  background: transparent;
+  display: flex;
+  align-items: center;
+  padding: 8px 12px;
+  font-size: 13px;
+  font-weight: 400;
+  color: #4b4b4b;
+  cursor: pointer;
+  border-radius: 4px;
+  transition: background 0.2s;
+}
+
+.sortItem:hover {
+  background: #f4f6fa;
+  color: #171719;
+}
+
+.sortItemActive {
+  background: #f0f7ff;
+  color: var(--color-primary-default);
+  font-weight: 600;
+}
+
+/* 리스트 영역 */
+.listWrap {
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+  width: 100%;
+  border-bottom: 1px solid rgba(112, 115, 124, 0.1);
+}
+
+.headerArea {
+  height: 40px;
+  display: flex;
+  align-items: center;
+  flex-shrink: 0;
+  width: 100%;
+}
+
+.listBodyArea {
+  min-height: 520px; /* 아이템 10개 (52px * 10) */
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+  width: 100%;
+}
+
+/* ── 표준 리스트 아이템 스타일 (모든 페이지 공용) ── */
+.listRow {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  height: 52px;
+  padding: 0 8px;
+  border-bottom: 1px solid rgba(112, 115, 124, 0.12);
+  gap: 12px;
+  cursor: pointer;
+  transition: background 0.12s;
+}
+
+.listRow:hover {
+  background: rgba(244, 246, 250, 0.8);
+}
+
+.listRow:last-child {
+  border-bottom: none;
+}
+
+.listRowLeft {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  flex: 1;
+  min-width: 0;
+}
+
+.tag {
+  font-size: 12px;
+  font-weight: 500;
+  padding: 3px 8px;
+  border-radius: 4px;
+  white-space: nowrap;
+  flex-shrink: 0;
+}
+
+.listTitle {
+  font-size: 15px;
+  font-weight: 400;
+  color: #171719;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+}
+
+.listMeta {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  flex-shrink: 0;
+}
+
+.metaItem {
+  display: flex;
+  align-items: center;
+  gap: 4px;
+  font-size: 13px;
+  color: rgba(46, 47, 51, 0.6);
+}
+
+.metaDivider {
+  width: 1px;
+  height: 10px;
+  background: rgba(112, 115, 124, 0.2);
+}
+
+.emptyState {
+  flex: 1;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 15px;
+  color: rgba(46, 47, 51, 0.4);
+  padding: 60px 0;
+}
+
+/* 페이지네이션 */
+.pagination {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 12px;
+  margin-top: 16px; /* 32px -> 16px로 줄임 */
+  padding-top: 16px;
+}
+
+.pageNums {
+  display: flex;
+  align-items: center;
+  gap: 4px;
+}
+
+.pageBtn {
+  width: 32px;
+  height: 32px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background: none;
+  border: none;
+  cursor: pointer;
+  color: #a0a0a1;
+  border-radius: 6px;
+}
+
+.pageBtn:disabled {
+  opacity: 0.3;
+  cursor: default;
+}
+
+.pageNumBtn {
+  width: 32px;
+  height: 32px;
+  border: none;
+  background: none;
+  cursor: pointer;
+  font-size: 14px;
+  color: #4b4b4b;
+  border-radius: 6px;
+}
+
+.pageActive {
+  background: var(--color-primary-default);
+  color: #fff;
+  font-weight: 600;
+}

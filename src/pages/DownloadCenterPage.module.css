@@ -1,0 +1,213 @@
+/* ── 페이지 기본 레이아웃 ─────────────────────────────── */
+/* VideoGuidePage와 동일한 뼈대 사용 */
+.page {
+  padding-top: 68px;
+  display: flex;
+  flex-direction: column;
+  min-height: 100vh;
+  background: #f0f4f9;
+}
+
+.body {
+  flex: 1;
+  padding: 8px 48px 0;
+  display: flex;
+  flex-direction: column;
+  transition: padding 0.2s;
+}
+
+@media (max-width: 1023px) {
+  .body { padding: 8px 24px 0; }
+}
+@media (max-width: 599px) {
+  .body { padding: 8px 16px 0; }
+}
+
+.inner {
+  max-width: 1000px;
+  width: 100%;
+  margin: 0 auto;
+  display: flex;
+  flex-direction: column;
+  gap: 0;
+  flex: 1;
+}
+
+/* ── 검색 + 리스트 통합 카드 영역 ─────────────────────── */
+
+/* 각 행 */
+.listRow {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  height: 52px; /* 정확히 52px 고정 */
+  padding: 0 8px;
+  border-bottom: 1px solid rgba(112, 115, 124, 0.12);
+  gap: 12px;
+  cursor: pointer;
+  border-radius: 0;
+  transition: background 0.12s;
+  box-sizing: border-box;
+}
+
+.listRow:hover {
+  background: rgba(244, 246, 250, 0.8);
+}
+
+.listRow:last-child {
+  border-bottom: none;
+}
+
+.listRowLeft {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  flex: 1;
+  min-width: 0;
+}
+
+/* 동영상 / 다운로드 태그 */
+.tag {
+  font-size: 12px;
+  font-weight: 500;
+  line-height: 1.4;
+  padding: 3px 8px;
+  border-radius: 4px;
+  white-space: nowrap;
+  flex-shrink: 0;
+}
+
+.listTitle {
+  font-size: 15px;
+  font-weight: 400;
+  line-height: 1.5;
+  color: var(--color-text-default);
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+}
+
+/* 날짜·조회수 메타 */
+.listMeta {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  flex-shrink: 0;
+}
+
+@media (max-width: 599px) {
+  .listMeta { display: none; }
+}
+
+.metaItem {
+  display: flex;
+  align-items: center;
+  gap: 4px;
+  font-size: 13px;
+  color: rgba(46, 47, 51, 0.6);
+  white-space: nowrap;
+}
+
+.metaDivider {
+  width: 0;
+  height: 9px;
+  border-left: 1px solid rgba(112, 115, 124, 0.22);
+}
+
+/* 검색 결과 없음 */
+.emptyState {
+  flex: 1;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 15px;
+  color: rgba(46, 47, 51, 0.4);
+  padding: 60px 0;
+}
+
+/* ── 하단 바로가기 섹션 ───────────────────────────────── */
+.bottomSection {
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
+  margin-top: 32px; /* 상단 카드와의 간격 32px */
+  padding-bottom: 48px;
+}
+
+.bottomTitle {
+  font-size: 16px;
+  font-weight: 500;
+  color: var(--color-text-default);
+  margin: 0;
+  padding: 0 4px;
+}
+
+.bottomCards {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 12px;
+}
+
+@media (max-width: 599px) {
+  .bottomCards { grid-template-columns: 1fr; }
+}
+
+/* 각 바로가기 카드 */
+.bottomCard {
+  display: flex;
+  align-items: center;
+  gap: 16px;
+  background: var(--color-white);
+  border-radius: 20px;
+  padding: 28px;
+  text-decoration: none;
+  border: 1px solid rgba(112, 115, 124, 0.08); /* 그림자 제거, 보더 추가 */
+  transition: background 0.15s, transform 0.15s;
+}
+
+.bottomCard:hover {
+  box-shadow: 0 8px 24px rgba(0, 0, 0, 0.08);
+  transform: translateY(-2px);
+}
+
+.bottomCardIcon {
+  width: 44px;
+  height: 44px;
+  border-radius: 12px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-shrink: 0;
+}
+
+.bottomCardText {
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+  gap: 3px;
+}
+
+.bottomCardTitle {
+  font-size: 15px;
+  font-weight: 500;
+  color: var(--color-text-default);
+  line-height: 1.4;
+}
+
+.bottomCardDesc {
+  font-size: 13px;
+  font-weight: 400;
+  color: rgba(46, 47, 51, 0.55);
+  line-height: 1.4;
+}
+
+.bottomCardArrow {
+  color: rgba(46, 47, 51, 0.3);
+  flex-shrink: 0;
+  transition: transform 0.15s, color 0.15s;
+}
+
+.bottomCard:hover .bottomCardArrow {
+  transform: translateX(3px);
+  color: rgba(46, 47, 51, 0.7);
+}

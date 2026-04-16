@@ -1,0 +1,373 @@
+.page {
+  padding-top: 68px;
+  display: flex;
+  flex-direction: column;
+  min-height: 100vh;
+  background: #f0f4f9;
+}
+
+.body {
+  flex: 1;
+  padding: 8px 48px 0px; /* 하단 패딩 제거 */
+  display: flex;
+  flex-direction: column;
+}
+
+.inner {
+  max-width: 1000px;
+  width: 100%;
+  margin: 0 auto;
+  display: flex;
+  flex-direction: column;
+  flex: 1;
+}
+
+/* Step 0: Verification */
+.formCard {
+  background: white;
+  border-radius: 20px;
+  padding: 28px;
+  display: flex;
+  flex-direction: column;
+  min-height: 400px;
+  border: 1px solid rgba(112, 115, 124, 0.08);
+}
+
+.formInner {
+  width: 100%;
+  max-width: 440px;
+  margin: 0 auto;
+  display: flex;
+  flex-direction: column;
+}
+
+.formTitle {
+  font-size: 20px;
+  font-weight: 600;
+  margin-bottom: 20px;
+}
+
+.fields {
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+}
+
+.field {
+  display: flex;
+  flex-direction: column;
+  gap: 4px;
+}
+
+.label {
+  font-size: 14px;
+  font-weight: 500;
+  color: rgba(46,47,51,0.88);
+}
+
+.input {
+  height: 40px;
+  border: 1px solid rgba(112,115,124,0.16);
+  border-radius: 4px;
+  padding: 0 12px;
+  font-size: 14px;
+  outline: none;
+}
+
+.inputWithBtn {
+  display: flex;
+  gap: 8px;
+}
+
+.inputWithBtn .input {
+  flex: 1;
+}
+
+.btnVerify, .btnConfirm {
+  height: 40px;
+  width: 88px;
+  border-radius: 4px;
+  font-size: 14px;
+  cursor: pointer;
+  border: none;
+}
+
+.btnVerify {
+  background: rgba(112,115,124,0.08);
+  color: #171719;
+}
+
+.btnConfirm {
+  background: #1a75ff;
+  color: white;
+}
+
+.codeRow {
+  display: flex;
+  gap: 8px;
+  margin-top: 4px;
+}
+
+.inputTimerWrap {
+  position: relative;
+  flex: 1;
+}
+
+.inputTimer {
+  position: absolute;
+  right: 12px;
+  top: 50%;
+  transform: translateY(-50%);
+  font-size: 14px;
+  color: #1a75ff;
+}
+
+.consentRow {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  margin-top: 32px;
+  padding: 16px 20px;
+  background: #f6f8fc;
+  border-radius: 12px;
+}
+
+.consentLeft {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+}
+
+.checkbox {
+  width: 18px;
+  height: 18px;
+  accent-color: #1a75ff;
+}
+
+.consentLabel {
+  font-size: 14px;
+}
+
+.btnTextLink {
+  font-size: 14px;
+  background: none;
+  border: none;
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  gap: 2px;
+}
+
+.actions {
+  display: flex;
+  justify-content: flex-end;
+  margin-top: auto;
+  padding-top: 32px;
+}
+
+.btnNext {
+  height: 40px;
+  padding: 0 48px;
+  border-radius: 8px;
+  background: #1a75ff;
+  color: white;
+  border: none;
+  font-size: 16px;
+  cursor: pointer;
+}
+
+/* Step 1: Results */
+.resultsSection {
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+}
+
+.filterCard {
+  background: white;
+  border-radius: 20px;
+  padding: 20px 28px;
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  margin-bottom: 0;
+  border: 1px solid rgba(112, 115, 124, 0.08);
+}
+
+.filterLabel {
+  font-size: 14px;
+  font-weight: 500;
+}
+
+.periodTabs {
+  display: flex;
+  gap: 4px;
+}
+
+.periodTab {
+  height: 32px;
+  padding: 0 14px;
+  border-radius: 6px;
+  font-size: 14px;
+  background: rgba(112,115,124,0.08);
+  border: none;
+  cursor: pointer;
+}
+
+.periodTabActive {
+  background: #1a75ff;
+  color: white;
+}
+
+.dateInput {
+  height: 36px;
+  border: 1px solid rgba(112,115,124,0.16);
+  border-radius: 4px;
+  padding: 0 10px;
+  width: 160px;
+}
+
+.btnSearch {
+  height: 36px;
+  padding: 0 24px;
+  border-radius: 6px;
+  background: #1a75ff;
+  color: white;
+  border: none;
+  cursor: pointer;
+  margin-left: auto;
+}
+
+.sectionTitle {
+  font-size: 20px;
+  font-weight: 600;
+  margin-bottom: 20px;
+}
+
+.tableCard {
+  background: white;
+  border-radius: 20px;
+  padding: 28px;
+  display: flex;
+  flex-direction: column;
+  border: 1px solid rgba(112, 115, 124, 0.08);
+  flex: 1;
+}
+
+.tableHeader {
+  display: flex;
+  justify-content: space-between;
+  margin-bottom: 16px;
+}
+
+.totalCountArea {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+}
+
+.categoryNameDisplay {
+  font-size: 16px;
+  font-weight: 600;
+}
+
+.countDivider {
+  color: rgba(46,47,51,0.2);
+}
+
+.countValueDisplay {
+  font-size: 14px;
+  color: rgba(46,47,51,0.6);
+}
+
+.sortSelect {
+  display: flex;
+  align-items: center;
+  gap: 4px;
+  font-size: 13px;
+  border: 1px solid rgba(112,115,124,0.22);
+  border-radius: 6px;
+  padding: 0 10px;
+  height: 32px;
+}
+
+.tableHeaderRow {
+  display: flex;
+  align-items: center;
+  background: #f4f6fa;
+  border-radius: 8px;
+  height: 40px;
+  width: 100%;
+}
+
+.thNo { width: 60px; display: flex; align-items: center; padding: 0 12px; font-size: 14px; font-weight: 500; color: rgba(46,47,51,0.88); }
+.thManager { width: 100px; display: flex; align-items: center; padding: 0 12px; font-size: 14px; font-weight: 500; color: rgba(46,47,51,0.88); }
+.thVisit { width: 180px; display: flex; align-items: center; padding: 0 12px; font-size: 14px; font-weight: 500; color: rgba(46,47,51,0.88); }
+.thReception { width: 180px; display: flex; align-items: center; padding: 0 12px; font-size: 14px; font-weight: 500; color: rgba(46,47,51,0.88); }
+.thPhone { width: 140px; display: flex; align-items: center; padding: 0 12px; font-size: 14px; font-weight: 500; color: rgba(46,47,51,0.88); }
+.thCancel { flex: 1; display: flex; align-items: center; padding: 0 12px; font-size: 14px; font-weight: 500; color: rgba(46,47,51,0.88); }
+
+.tableBody {
+  display: flex;
+  flex-direction: column;
+}
+
+.tr {
+  display: flex;
+  align-items: center;
+  border-bottom: 1px solid #e0e4eb;
+  height: 52px;
+  background: white;
+  transition: background 0.15s;
+  width: 100%;
+}
+
+.tr:hover {
+  background: rgba(244, 246, 250, 0.7);
+  cursor: pointer;
+}
+
+.tdNo { width: 60px; display: flex; align-items: center; padding: 0 12px; font-size: 14px; color: rgba(46,47,51,0.88); }
+.tdManager { width: 100px; display: flex; align-items: center; padding: 0 12px; font-size: 14px; color: rgba(46,47,51,0.88); }
+.tdVisit { width: 180px; display: flex; align-items: center; padding: 0 12px; font-size: 14px; color: rgba(46,47,51,0.88); }
+.tdReception { width: 180px; display: flex; align-items: center; padding: 0 12px; font-size: 14px; color: rgba(46,47,51,0.88); }
+.tdPhone { width: 140px; display: flex; align-items: center; padding: 0 12px; font-size: 14px; color: rgba(46,47,51,0.88); }
+.tdCancel { flex: 1; display: flex; align-items: center; padding: 0 12px; font-size: 14px; color: rgba(46,47,51,0.88); }
+
+.statusBadge {
+  font-size: 12px;
+  color: #1a75ff;
+  border: 1px solid #1a75ff;
+  border-radius: 4px;
+  padding: 2px 8px;
+  white-space: nowrap;
+}
+
+.pagination {
+  display: flex;
+  justify-content: center;
+  gap: 4px;
+  margin-top: auto; /* 하단 고정 */
+  padding-top: 24px; /* 최소 상단 여백 확보 */
+}
+
+.pageBtn, .pageNumBtn {
+  width: 32px;
+  height: 32px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background: none;
+  border: none;
+  cursor: pointer;
+  border-radius: 6px;
+}
+
+.pageNumBtn {
+  font-size: 14px;
+}
+
+.pageActive {
+  background: #1a75ff;
+  color: white;
+}

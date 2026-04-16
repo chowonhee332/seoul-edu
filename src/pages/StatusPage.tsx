@@ -1,14 +1,13 @@
 import { useState } from 'react'
-import { Link } from 'react-router-dom'
-import { motion, Variants } from 'framer-motion'
-import { MdHome, MdChevronRight, MdChevronLeft, MdKeyboardArrowDown, MdFirstPage, MdLastPage, MdCheck, MdSearch, MdAccessTime, MdArrowForward, MdDownload, MdArrowUpward, MdSchool } from 'react-icons/md'
-import GNB from '../components/GNB'
+import { motion, AnimatePresence } from 'framer-motion'
+import { containerVariants, itemVariants } from '../lib/animations'
+import { MdChevronRight, MdKeyboardArrowDown, MdCheck, MdArrowUpward, MdSchool, MdAccessTime, MdArrowForward, MdDownload, MdSearch } from 'react-icons/md'
 import Footer from '../components/Footer'
 import TransitionLayout from '../components/TransitionLayout'
 import Breadcrumb from '../components/Breadcrumb'
 import PageTitle from '../components/PageTitle'
+import CommonBoard from '../components/CommonBoard'
 import styles from './StatusPage.module.css'
-
 
 const SUMMARY = [
   { model: '태블릿 (iOS/Android)', total: 125, normal: 122, broken: 2, lost: 1 },
@@ -26,19 +25,6 @@ const DEVICES = Array.from({ length: 20 }, (_, i) => ({
   status: i === 2 ? '고장' : '정상'
 }));
 
-// 애니메이션 변수
-const containerVariants: Variants = {
-  hidden: { opacity: 0 },
-  visible: { 
-    opacity: 1,
-    transition: { staggerChildren: 0.05 }
-  }
-}
-
-const itemVariants: Variants = {
-  hidden: { opacity: 0, y: 10 },
-  visible: { opacity: 1, y: 0 }
-}
 
 export default function StatusPage() {
   const [checked, setChecked] = useState<number[]>([])
@@ -68,26 +54,13 @@ export default function StatusPage() {
   return (
     <TransitionLayout>
       <div className={styles.page}>
-        <GNB variant="light" />
-
         <Breadcrumb currentLabel="스마트기기 현황" />
 
-        {/* 본문 */}
         <div className={styles.body}>
-          <motion.div 
-            className={styles.inner}
-            initial="hidden"
-            animate="visible"
-            variants={containerVariants}
-          >
+          <motion.div className={styles.inner} initial="hidden" animate="visible" variants={containerVariants}>
             <PageTitle title="스마트 기기 현황" variants={itemVariants} />
 
-            {/* 기기 요약 카드 */}
-            <motion.div
-              className={styles.summaryCard}
-              variants={itemVariants}
-            >
-              {/* 학교/학급 정보 */}
+            <motion.div className={styles.summaryCard} variants={itemVariants}>
               <div className={styles.schoolRow}>
                 <MdSchool size={24} color="#3d3f45" className={styles.schoolIcon} />
                 <span className={styles.schoolName}>가락고등학교</span>
@@ -95,7 +68,6 @@ export default function StatusPage() {
                 <span className={styles.schoolClass}>2학년 1반</span>
               </div>
 
-              {/* 자산 요약표 */}
               <div className={styles.summaryTable}>
                 <div className={styles.summaryHeader}>
                   <div className={`${styles.summaryHeaderCell} ${styles.colAsset}`}>자산</div>
@@ -116,73 +88,48 @@ export default function StatusPage() {
               </div>
             </motion.div>
 
-            {/* 보유제품 섹션 */}
             <motion.div className={styles.section} variants={itemVariants}>
               <div className={styles.sectionTop}>
                 <h2 className={styles.sectionTitle}>보유제품</h2>
                 <div className={styles.actionBtns}>
-                  <motion.button className={styles.btnGhost} whileTap={{ scale: 0.95 }}>
-                    임의모델 분실신고
-                    <MdAccessTime size={14} />
-                  </motion.button>
-                  <motion.button className={styles.btnGhost} whileTap={{ scale: 0.95 }}>
-                    단말 일괄변경
-                    <MdArrowForward size={14} />
-                  </motion.button>
-                  <motion.button className={styles.btnGhost} whileTap={{ scale: 0.95 }}>
-                    엑셀 다운
-                    <MdDownload size={14} />
-                  </motion.button>
-                  <motion.button className={styles.btnPrimary} whileHover={{ opacity: 0.9 }} whileTap={{ scale: 0.95 }}>AS 접수</motion.button>
-                  <motion.button className={styles.btnPrimary} whileHover={{ opacity: 0.9 }} whileTap={{ scale: 0.95 }}>분실신고</motion.button>
-                  <motion.button className={styles.btnPrimary} whileHover={{ opacity: 0.9 }} whileTap={{ scale: 0.95 }}>불용처리</motion.button>
+                  <button className={styles.btnGhost}>임의모델 분실신고 <MdAccessTime size={14} /></button>
+                  <button className={styles.btnGhost}>단말 일괄변경 <MdArrowForward size={14} /></button>
+                  <button className={styles.btnGhost}>엑셀 다운 <MdDownload size={14} /></button>
+                  <button className={styles.btnPrimary}>AS 접수</button>
+                  <button className={styles.btnPrimary}>분실신고</button>
+                  <button className={styles.btnPrimary}>불용처리</button>
                 </div>
               </div>
 
-              {/* 테이블 카드 */}
-              <div className={styles.tableCard}>
-                {/* 툴바 */}
-                <div className={styles.tableToolbar}>
-                  <div className={styles.totalCountArea}>
-                    <span className={styles.categoryNameDisplay}>전체</span>
-                    <span className={styles.countDivider}>|</span>
-                    <span className={styles.countValueDisplay}>{totalCount}건</span>
-                  </div>
-                  <div className={styles.tableFilters}>
-                    <div className={styles.searchBox}>
-                      <button className={styles.searchDropdown}>
-                        관리번호
-                        <MdKeyboardArrowDown size={14} />
+              <CommonBoard
+                title="전체"
+                totalCount={totalCount}
+                currentPage={currentPage}
+                totalPages={totalPages}
+                onPageChange={setCurrentPage}
+                itemsCount={currentDevices.length}
+                showSearch={false}
+                rightElement={
+                  <div className={styles.boardRightTools}>
+                    <div className={styles.searchSelectArea}>
+                      <button className={styles.selectBtn}>
+                        관리번호 <MdKeyboardArrowDown size={16} />
                       </button>
-                      <input
-                        type="text"
-                        className={styles.searchInput}
-                        placeholder="검색어를 입력해주세요."
-                      />
-                      <motion.button className={styles.searchBtn} aria-label="검색" whileTap={{ scale: 0.9 }}>
-                        <MdSearch size={16} color="#171719" />
-                      </motion.button>
+                      <div className={styles.searchInputWrapSmall}>
+                        <input type="text" placeholder="검색어를 입력해주세요" className={styles.boardSearchInput} />
+                        <MdSearch size={18} color="#a0a0a1" />
+                      </div>
                     </div>
-                    <button className={styles.sortBtn}>
-                      이름순
-                      <MdKeyboardArrowDown size={14} />
+                    <button className={styles.boardSortBtn}>
+                      이름순 <MdKeyboardArrowDown size={16} />
                     </button>
                   </div>
-                </div>
-
-                {/* 테이블 (데스크톱/태블릿) */}
-                <div className={styles.table}>
+                }
+                header={
                   <div className={styles.tableHead}>
                     <div className={styles.checkCell}>
-                      <span
-                        className={`${styles.checkBox} ${checked.length === currentDevices.length && currentDevices.length > 0 ? styles.checked : ''}`}
-                        onClick={toggleAll}
-                        role="checkbox"
-                        aria-checked={checked.length === currentDevices.length}
-                      >
-                        {checked.length === currentDevices.length && currentDevices.length > 0 && (
-                          <MdCheck size={10} color="white" />
-                        )}
+                      <span className={`${styles.checkBox} ${checked.length === currentDevices.length && currentDevices.length > 0 ? styles.checked : ''}`} onClick={toggleAll}>
+                        {checked.length === currentDevices.length && currentDevices.length > 0 && <MdCheck size={10} color="white" />}
                       </span>
                     </div>
                     <div className={styles.noCell}>No.</div>
@@ -191,19 +138,16 @@ export default function StatusPage() {
                     <div className={`${styles.thCell} ${styles.flex1}`}>시리얼번호</div>
                     <div className={`${styles.thCell} ${styles.flex1}`}>관리번호</div>
                     <div className={`${styles.thCell} ${styles.flex1}`}>상태</div>
-                    <div className={`${styles.actionCell} ${styles.tableHead}`} />
+                    <div className={styles.actionCell} />
                   </div>
-
-                  <motion.div variants={containerVariants} initial="hidden" animate="visible">
+                }
+              >
+                <div className={styles.tableBody}>
+                  <AnimatePresence mode="popLayout">
                     {currentDevices.map((device) => (
-                      <motion.div key={device.id} className={styles.tableRow} variants={itemVariants}>
+                      <motion.div key={device.id} className={styles.tableRow} initial={{ opacity: 0 }} animate={{ opacity: 1 }} exit={{ opacity: 0 }}>
                         <div className={styles.checkCell}>
-                          <span
-                            className={`${styles.checkBox} ${checked.includes(device.id) ? styles.checked : ''}`}
-                            onClick={() => toggleOne(device.id)}
-                            role="checkbox"
-                            aria-checked={checked.includes(device.id)}
-                          >
+                          <span className={`${styles.checkBox} ${checked.includes(device.id) ? styles.checked : ''}`} onClick={() => toggleOne(device.id)}>
                             {checked.includes(device.id) && <MdCheck size={10} color="white" />}
                           </span>
                         </div>
@@ -213,120 +157,24 @@ export default function StatusPage() {
                         <div className={`${styles.tdCell} ${styles.flex1}`}>{device.serial}</div>
                         <div className={`${styles.tdCell} ${styles.flex1}`}>{device.mgmt}</div>
                         <div className={`${styles.tdCell} ${styles.flex1}`}>
-                          <span className={`${styles.statusBadge} ${device.status === '고장' ? styles.statusBadgeBroken : ''}`}>
-                            {device.status}
-                          </span>
+                          <span className={`${styles.statusBadge} ${device.status === '고장' ? styles.statusBadgeBroken : ''}`}>{device.status}</span>
                         </div>
                         <div className={styles.actionCell}>
-                          <motion.button className={styles.detailBtn} whileHover={{ x: 3 }}>
-                            상세보기
-                            <MdChevronRight size={14} />
-                          </motion.button>
+                          <button className={styles.detailBtn}>상세보기 <MdChevronRight size={14} /></button>
                         </div>
                       </motion.div>
                     ))}
-                  </motion.div>
+                  </AnimatePresence>
                 </div>
-
-                {/* 모바일 카드 리스트 (CSS 미디어 쿼리에 의해 모바일에서만 노출) */}
-                <div className={styles.mobileCardList}>
-                  {currentDevices.map((device) => (
-                    <motion.div key={device.id} className={styles.deviceCard} variants={itemVariants}>
-                      <div className={styles.cardHeader}>
-                        <span className={styles.cardId}>No.{device.no}</span>
-                        <span className={`${styles.statusBadge} ${device.status === '고장' ? styles.statusBadgeBroken : ''}`}>
-                          {device.status}
-                        </span>
-                      </div>
-                      <h3 className={styles.cardTitle}>{device.name}</h3>
-                      <div className={styles.cardGrid}>
-                        <div className={styles.cardMetaItem}>
-                          <span className={styles.metaLabel}>제조사</span>
-                          <span className={styles.metaValue}>{device.maker}</span>
-                        </div>
-                        <div className={styles.cardMetaItem}>
-                          <span className={styles.metaLabel}>시리얼번호</span>
-                          <span className={styles.metaValue}>{device.serial}</span>
-                        </div>
-                        <div className={styles.cardMetaItem}>
-                          <span className={styles.metaLabel}>관리번호</span>
-                          <span className={styles.metaValue}>{device.mgmt}</span>
-                        </div>
-                      </div>
-                      <div className={styles.cardFooter}>
-                        <motion.button className={styles.detailBtn} whileHover={{ x: 3 }}>
-                          상세보기
-                          <MdChevronRight size={14} />
-                        </motion.button>
-                      </div>
-                    </motion.div>
-                  ))}
-                </div>
-
-                {/* 페이지네이션 */}
-                <div className={styles.pagination}>
-                  <motion.button
-                    className={styles.pageBtn}
-                    onClick={() => setCurrentPage(1)}
-                    aria-label="첫 페이지"
-                    whileTap={{ scale: 0.9 }}
-                  >
-                    <MdFirstPage size={16} />
-                  </motion.button>
-                  <motion.button
-                    className={styles.pageBtn}
-                    onClick={() => setCurrentPage(Math.max(1, currentPage - 1))}
-                    aria-label="이전 페이지"
-                    whileTap={{ scale: 0.9 }}
-                  >
-                    <MdChevronLeft size={16} />
-                  </motion.button>
-                  {Array.from({ length: totalPages }, (_, i) => i + 1).map((p) => (
-                    <motion.button
-                      key={p}
-                      className={`${styles.pageNumBtn} ${currentPage === p ? styles.pageActive : ''}`}
-                      onClick={() => setCurrentPage(p)}
-                      whileHover={{ backgroundColor: '#f4f6fa' }}
-                      whileTap={{ scale: 0.9 }}
-                    >
-                      {p}
-                    </motion.button>
-                  ))}
-                  <motion.button
-                    className={styles.pageBtn}
-                    onClick={() => setCurrentPage(Math.min(totalPages, currentPage + 1))}
-                    aria-label="다음 페이지"
-                    whileTap={{ scale: 0.9 }}
-                  >
-                    <MdChevronRight size={16} />
-                  </motion.button>
-                  <motion.button
-                    className={styles.pageBtn}
-                    onClick={() => setCurrentPage(totalPages)}
-                    aria-label="마지막 페이지"
-                    whileTap={{ scale: 0.9 }}
-                  >
-                    <MdLastPage size={16} />
-                  </motion.button>
-                </div>
-              </div>
+              </CommonBoard>
             </motion.div>
           </motion.div>
         </div>
 
         <Footer />
-
-        <motion.button
-          className={styles.fab}
-          aria-label="위로 이동"
-          onClick={() => window.scrollTo({ top: 0, behavior: 'smooth' })}
-          whileHover={{ scale: 1.1, boxShadow: '0 8px 30px rgba(0,0,0,0.15)' }}
-          whileTap={{ scale: 0.9 }}
-          initial={{ opacity: 0, y: 20 }}
-          animate={{ opacity: 1, y: 0 }}
-        >
+        <button className={styles.fab} onClick={() => window.scrollTo({ top: 0, behavior: 'smooth' })}>
           <MdArrowUpward size={24} color="#171719" />
-        </motion.button>
+        </button>
       </div>
     </TransitionLayout>
   )

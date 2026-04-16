@@ -1,0 +1,462 @@
+/* ── 페이지 레이아웃 ──────────────────────────────────── */
+.page {
+  padding-top: 68px;
+  display: flex;
+  flex-direction: column;
+  min-height: 100vh;
+  background: #f0f4f9;
+}
+
+.body {
+  flex: 1;
+  padding: 8px 48px 0;
+  display: flex;
+  flex-direction: column;
+}
+
+@media (max-width: 1023px) { .body { padding: 8px 24px 0; } }
+@media (max-width: 599px)  { .body { padding: 8px 16px 0; } }
+
+.inner {
+  max-width: 1000px;
+  width: 100%;
+  margin: 0 auto;
+  display: flex;
+  flex-direction: column;
+  flex: 1;
+}
+
+/* ── 좌우 레이아웃 ────────────────────────────────────── */
+.layout {
+  display: grid;
+  grid-template-columns: 360px 1fr;
+  gap: 20px;
+  flex: 1;
+  min-height: 600px;
+}
+
+@media (max-width: 1023px) {
+  .layout {
+    grid-template-columns: 1fr;
+  }
+}
+
+/* ── 좌측 패널 ────────────────────────────────────────── */
+.leftPanel {
+  background: var(--color-white);
+  border-radius: 20px;
+  display: flex;
+  flex-direction: column;
+  overflow: hidden;
+  /* 기존 페이지와 동일하게 box-shadow 없음 */
+}
+
+/* ── 탭: 지역 / 지역명 ────────────────────────────────── */
+.tabs {
+  display: flex;
+  border-bottom: 1px solid rgba(112, 115, 124, 0.16);
+}
+
+.tab {
+  flex: 1;
+  padding: 16px;
+  font-size: 15px;
+  font-weight: 500;
+  font-family: inherit;
+  color: rgba(46, 47, 51, 0.4);
+  background: none;
+  border: none;
+  cursor: pointer;
+  border-bottom: 2px solid transparent;
+  margin-bottom: -1px;
+  transition: color 0.15s;
+}
+
+.tab.tabActive {
+  color: var(--color-primary-default);
+  border-bottom-color: var(--color-primary-default);
+}
+
+/* ── 필터 영역 ────────────────────────────────────────── */
+.filterArea {
+  padding: 16px 20px;
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+  border-bottom: 1px solid rgba(112, 115, 124, 0.1);
+}
+
+/* 셀렉트 wrapper */
+.selectWrap {
+  position: relative;
+}
+
+.select {
+  width: 100%;
+  height: 40px;
+  padding: 0 36px 0 16px;
+  font-size: 14px;
+  font-family: inherit;
+  color: var(--color-text-default);
+  background: var(--color-white);
+  border: 1px solid rgba(112, 115, 124, 0.16);
+  border-radius: var(--radius-4);
+  appearance: none;
+  cursor: pointer;
+  outline: none;
+  transition: border-color 0.15s;
+}
+
+.select:disabled {
+  color: rgba(46, 47, 51, 0.3);
+  cursor: not-allowed;
+}
+
+.select:focus {
+  border-color: var(--color-primary-default);
+}
+
+/* 시/군/구 + 검색 가로 배치 */
+.districtRow {
+  display: flex;
+  gap: 8px;
+  align-items: center;
+}
+
+.flex1 { flex: 1; }
+
+/* 지역명 검색 행 */
+.nameSearchRow {
+  display: flex;
+  gap: 8px;
+  align-items: center;
+}
+
+.nameInputWrap {
+  flex: 1;
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  height: 40px;
+  background: var(--color-white);
+  border: 1px solid rgba(112, 115, 124, 0.16);
+  border-radius: var(--radius-4);
+  padding: 0 12px 0 16px;
+  transition: border-color 0.15s;
+}
+
+.nameInputWrap:focus-within {
+  border-color: var(--color-primary-default);
+}
+
+.nameInput {
+  flex: 1;
+  border: none;
+  outline: none;
+  background: transparent;
+  font-size: 14px;
+  font-family: inherit;
+  color: var(--color-text-default);
+}
+
+.nameInput::placeholder { color: rgba(46, 47, 51, 0.4); }
+
+/* 검색 버튼 */
+.searchBtn {
+  height: 40px;
+  padding: 0 20px;
+  font-size: 14px;
+  font-family: inherit;
+  font-weight: 500;
+  color: #fff;
+  background: var(--color-primary-default);
+  border: none;
+  border-radius: var(--radius-4);
+  cursor: pointer;
+  white-space: nowrap;
+  flex-shrink: 0;
+  transition: opacity 0.15s;
+}
+
+.searchBtn:hover { opacity: 0.88; }
+
+/* ── 결과 수 ──────────────────────────────────────────── */
+.resultCount {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  padding: 12px 20px 8px;
+}
+
+.resultLabel {
+  font-size: 15px;
+  font-weight: 600;
+  color: #171719;
+}
+
+.resultValue {
+  font-size: 14px;
+  font-weight: 500;
+  color: rgba(46, 47, 51, 0.6);
+}
+
+/* ── 센터 리스트 ──────────────────────────────────────── */
+.centerList {
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+  overflow-y: auto;
+}
+
+/* 개별 센터 아이템 */
+.centerItem {
+  display: flex;
+  align-items: flex-start;
+  gap: 12px;
+  padding: 16px 20px;
+  cursor: pointer;
+  border-bottom: 1px solid rgba(112, 115, 124, 0.1);
+  transition: background 0.12s;
+}
+
+.centerItem:last-child { border-bottom: none; }
+
+.centerItem.centerItemActive {
+  background: rgba(26, 117, 255, 0.04);
+}
+
+/* 번호 뱃지 */
+.badge {
+  width: 24px;
+  height: 24px;
+  border-radius: 50%;
+  background: rgba(46, 47, 51, 0.55);
+  color: #fff;
+  font-size: 12px;
+  font-weight: 600;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-shrink: 0;
+  margin-top: 2px;
+  transition: background 0.15s;
+}
+
+.badge.badgeActive {
+  background: var(--color-primary-default);
+}
+
+/* 센터 정보 */
+.centerInfo {
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+  gap: 4px;
+  min-width: 0;
+}
+
+.centerTopRow {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 8px;
+}
+
+.centerName {
+  font-size: 14px;
+  font-weight: 600;
+  color: #171719;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+
+.centerPhone {
+  display: flex;
+  align-items: center;
+  gap: 3px;
+  font-size: 13px;
+  font-weight: 400;
+  color: rgba(46, 47, 51, 0.7);
+  white-space: nowrap;
+  flex-shrink: 0;
+}
+
+.centerAddress {
+  font-size: 13px;
+  color: rgba(46, 47, 51, 0.65);
+  margin: 0;
+  line-height: 1.4;
+}
+
+.centerHours {
+  display: flex;
+  align-items: center;
+  gap: 6px;
+  font-size: 12px;
+  color: rgba(46, 47, 51, 0.5);
+}
+
+.hoursItem {
+  display: flex;
+  align-items: center;
+  gap: 3px;
+}
+
+.hoursDivider {
+  color: rgba(112, 115, 124, 0.3);
+}
+
+/* ── 페이지네이션 ─────────────────────────────────────── */
+.pagination {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 4px;
+  padding: 12px 0;
+  border-top: 1px solid rgba(112, 115, 124, 0.1);
+}
+
+.pageBtn {
+  width: 32px;
+  height: 32px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background: none;
+  border: none;
+  cursor: pointer;
+  color: rgba(46, 47, 51, 0.6);
+  border-radius: 6px;
+  transition: background 0.15s;
+}
+
+.pageBtn:hover { background: #f4f6fa; }
+
+.pageNumBtn {
+  width: 32px;
+  height: 32px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background: none;
+  border: none;
+  cursor: pointer;
+  font-size: 14px;
+  font-family: inherit;
+  color: rgba(46, 47, 51, 0.88);
+  border-radius: 6px;
+  transition: background 0.15s;
+}
+
+.pageNumBtn:hover { background: #f4f6fa; }
+
+.pageActive {
+  background: var(--color-primary-default) !important;
+  color: #fff !important;
+}
+
+/* ── 우측 지도 패널 (Leaflet) ─────────────────────────── */
+.mapPanel {
+  position: relative;
+  border-radius: 20px;
+  overflow: hidden;
+  background: #e8e8e8;
+  min-height: 600px;
+}
+
+@media (max-width: 1023px) {
+  .mapPanel { min-height: 400px; }
+}
+
+/* Leaflet MapContainer가 부모를 꽉 채우도록 */
+.map {
+  width: 100%;
+  height: 100%;
+  position: absolute;
+  inset: 0;
+  z-index: 0;
+}
+
+/* Leaflet Popup 내부 커스텀 스타일 */
+.leafletPopup {
+  display: flex;
+  flex-direction: column;
+  gap: 3px;
+  font-size: 13px;
+  line-height: 1.5;
+  min-width: 200px;
+}
+
+.leafletPopup strong {
+  font-size: 14px;
+  font-weight: 700;
+  color: #171719;
+}
+
+/* ── 지도 팝업 오버레이 ───────────────────────────────── */
+.mapPopup {
+  position: absolute;
+  top: 20px;
+  left: 20px;
+  width: 280px;
+  background: #fff;
+  border-radius: 12px;
+  padding: 16px 18px;
+  box-shadow: 0 4px 20px rgba(0, 0, 0, 0.15);
+  z-index: 10;
+  display: flex;
+  flex-direction: column;
+  gap: 6px;
+}
+
+.popupHeader {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 8px;
+}
+
+.popupName {
+  font-size: 15px;
+  font-weight: 700;
+  color: #171719;
+  line-height: 1.4;
+}
+
+.popupClose {
+  background: none;
+  border: none;
+  cursor: pointer;
+  color: rgba(46, 47, 51, 0.4);
+  display: flex;
+  align-items: center;
+  flex-shrink: 0;
+  padding: 2px;
+  transition: color 0.15s;
+}
+
+.popupClose:hover { color: #171719; }
+
+.popupAddress {
+  font-size: 13px;
+  color: rgba(46, 47, 51, 0.75);
+  margin: 0;
+  line-height: 1.5;
+}
+
+.popupPhone {
+  font-size: 13px;
+  color: var(--color-primary-default);
+  font-weight: 500;
+  margin: 0;
+}
+
+.popupHours {
+  display: flex;
+  align-items: center;
+  gap: 6px;
+  font-size: 12px;
+  color: rgba(46, 47, 51, 0.55);
+  flex-wrap: wrap;
+}
