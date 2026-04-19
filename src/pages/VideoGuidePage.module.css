@@ -1,42 +1,13 @@
 .page {
-  padding-top: 68px;
-  display: flex;
-  flex-direction: column;
-  min-height: 100vh;
-  background: #f0f4f9;
+  composes: page from '../styles/pageLayout.module.css';
 }
 
-/* Breadcrumb (Removed - handled by common component) */
-
-/* Body */
 .body {
-  flex: 1;
-  padding: 8px 48px 0;
-  display: flex;
-  flex-direction: column;
-  transition: padding 0.2s;
-}
-
-@media (max-width: 1023px) {
-  .body {
-    padding: 8px 24px 0;
-  }
-}
-
-@media (max-width: 599px) {
-  .body {
-    padding: 8px 16px 0;
-  }
+  composes: body from '../styles/pageLayout.module.css';
 }
 
 .inner {
-  max-width: 1000px;
-  width: 100%;
-  margin: 0 auto;
-  display: flex;
-  flex-direction: column;
-  gap: 0;
-  flex: 1;
+  composes: inner from '../styles/pageLayout.module.css';
 }
 
 .tableHead {
@@ -44,20 +15,20 @@
   align-items: center;
   height: 40px; /* 표준 높이 40px */
   width: 100%;
-  background: #f4f6fa;
+  background: var(--color-bg-surface);
   border-radius: 4px;
 }
 
 .tableRow {
   display: flex;
   align-items: center;
-  border-bottom: 1px solid rgba(112, 115, 124, 0.16);
+  border-bottom: 1px solid var(--color-border-subtle);
   height: 52px; /* 행 높이 52px 고정 */
   border-radius: 0;
 }
 
 .tableRow:hover {
-  background: rgba(244, 246, 250, 0.7);
+  background: var(--color-bg-surface);
   transition: background 0.15s;
 }
 
@@ -70,9 +41,9 @@
 .noCell {
   width: 56px;
   flex-shrink: 0;
-  font-size: 14px;
-  font-weight: 500;
-  color: rgba(46,47,51,0.88);
+  font-size: var(--font-size-body-sm);
+  font-weight: var(--font-weight-medium);
+  color: var(--color-text-secondary);
   padding: 0 12px;
   height: 48px; /* 헤더와 일치 */
   display: flex;
@@ -80,16 +51,16 @@
 }
 
 .tableRow .noCell {
-  font-weight: 400;
+  font-weight: var(--font-weight-regular);
   height: 52px;
   padding: 0 12px;
 }
 
 .thCell {
-  font-size: 14px;
-  font-weight: 500;
-  color: rgba(46,47,51,0.88);
-  letter-spacing: -0.07px;
+  font-size: var(--font-size-body-sm);
+  font-weight: var(--font-weight-medium);
+  color: var(--color-text-secondary);
+  letter-spacing: var(--letter-spacing-body);
   padding: 0 12px;
   height: 48px; /* 헤더 셀 높이 일치 */
   display: flex;
@@ -97,10 +68,10 @@
 }
 
 .tdCell {
-  font-size: 14px;
-  font-weight: 400;
-  color: rgba(46,47,51,0.88);
-  letter-spacing: -0.07px;
+  font-size: var(--font-size-body-sm);
+  font-weight: var(--font-weight-regular);
+  color: var(--color-text-secondary);
+  letter-spacing: var(--letter-spacing-body);
   padding: 0 12px; /* 상하 패딩 제거 */
   height: 52px;
   display: flex;
@@ -117,5 +88,10 @@
 .dateCell {
   width: 100px;
   flex-shrink: 0;
+}
+
+/* 번호: 모바일 숨김 */
+@media (max-width: 768px) {
+  .noCell { display: none; }
 }
 

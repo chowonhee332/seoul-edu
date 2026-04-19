@@ -11,10 +11,10 @@ import styles from './HomePage.module.css'
 
 
 const SELF_HELP_ITEMS = [
-  { id: 1, type: '동영상', typeColor: '#1a75ff', typeBg: 'rgba(26,117,255,0.1)', title: '메모리를 분리하거나 장착할 수 있나요?', date: '2024.06.19.', views: '4,602' },
-  { id: 2, type: '동영상', typeColor: '#1a75ff', typeBg: 'rgba(26,117,255,0.1)', title: '이 제품은 방수 기능이 있나요?', date: '2024.06.20.', views: '3,781' },
-  { id: 3, type: '다운로드', typeColor: '#41bb18', typeBg: 'rgba(65,187,24,0.1)', title: '배터리 수명이 얼마나 되나요?', date: '2024.06.21.', views: '5,012' },
-  { id: 4, type: '다운로드', typeColor: '#41bb18', typeBg: 'rgba(65,187,24,0.1)', title: '지원하는 최대 해상도는 무엇인가요?', date: '2024.06.22.', views: '2,450' },
+  { id: 1, type: '동영상', typeColor: 'var(--color-tag-video)', typeBg: 'var(--color-tag-video-bg)', title: '메모리를 분리하거나 장착할 수 있나요?', date: '2024.06.19.', views: '4,602' },
+  { id: 2, type: '동영상', typeColor: 'var(--color-tag-video)', typeBg: 'var(--color-tag-video-bg)', title: '이 제품은 방수 기능이 있나요?', date: '2024.06.20.', views: '3,781' },
+  { id: 3, type: '다운로드', typeColor: 'var(--color-tag-download)', typeBg: 'var(--color-tag-download-bg)', title: '배터리 수명이 얼마나 되나요?', date: '2024.06.21.', views: '5,012' },
+  { id: 4, type: '다운로드', typeColor: 'var(--color-tag-download)', typeBg: 'var(--color-tag-download-bg)', title: '지원하는 최대 해상도는 무엇인가요?', date: '2024.06.22.', views: '2,450' },
 ]
 
 const NOTICES = [
@@ -123,10 +123,12 @@ export default function HomePage() {
                         <MdAccessTime size={16} color="rgba(46,47,51,0.88)" />
                         {item.date}
                       </span>
-                      <span className={styles.metaDivider} />
-                      <span className={styles.metaItem}>
-                        <MdVisibility size={16} color="rgba(46,47,51,0.88)" />
-                        {item.views}
+                      <span className={styles.viewsMeta}>
+                        <span className={styles.metaDivider} />
+                        <span className={styles.metaItem}>
+                          <MdVisibility size={16} color="rgba(46,47,51,0.88)" />
+                          {item.views}
+                        </span>
                       </span>
                     </div>
                   </motion.div>

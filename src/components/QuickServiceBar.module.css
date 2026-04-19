@@ -41,7 +41,7 @@
   transform: translateY(-50%);
   width: 1px;
   height: 32px;
-  background: rgba(112, 115, 124, 0.2);
+  background: var(--color-border-subtle);
 }
 
 .quickServiceIconWrap {
@@ -73,10 +73,70 @@
 }
 
 .quickServiceLabel {
-  font-size: 16px;
-  font-weight: 600;
-  line-height: 1.5;
-  letter-spacing: -0.16px;
-  color: var(--color-text-default);
+  font-size: var(--font-size-body-lg);
+  font-weight: var(--font-weight-semibold);
+  line-height: var(--line-height-normal);
+  letter-spacing: var(--letter-spacing-title);
+  color: var(--color-text-primary);
   white-space: nowrap;
+}
+
+/* ── Tablet (≤ 1024px) ── */
+@media (max-width: 1024px) {
+  .quickBar {
+    padding: 0 24px;
+    margin-top: -36px;
+  }
+
+  .quickBarInner {
+    width: 100%;
+  }
+}
+
+/* ── Mobile (≤ 768px) ── */
+@media (max-width: 768px) {
+  .quickBar {
+    padding: 0 16px;
+    margin-top: -20px;
+  }
+
+  .quickBarInner {
+    width: 100%;
+    height: auto;
+    flex-wrap: wrap;
+    padding: 0;
+    border-radius: 16px;
+    overflow: hidden;
+  }
+
+  .quickService {
+    flex: 1 1 50%;
+    padding: 14px 16px;
+    gap: 10px;
+    box-sizing: border-box;
+  }
+
+  .quickServiceDivider::after {
+    display: none;
+  }
+
+  /* 1·2번 항목 하단 구분선 */
+  .quickService:nth-child(-n+2) {
+    border-bottom: 1px solid var(--color-border-subtle);
+  }
+
+  /* 1·3번 항목 우측 구분선 */
+  .quickService:nth-child(odd) {
+    border-right: 1px solid var(--color-border-subtle);
+  }
+
+  .quickServiceArrow {
+    display: none;
+  }
+
+  .quickServiceLabel {
+    font-size: var(--font-size-caption);
+    white-space: normal;
+    word-break: keep-all;
+  }
 }

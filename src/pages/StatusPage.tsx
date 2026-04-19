@@ -92,9 +92,9 @@ export default function StatusPage() {
               <div className={styles.sectionTop}>
                 <h2 className={styles.sectionTitle}>보유제품</h2>
                 <div className={styles.actionBtns}>
-                  <button className={styles.btnGhost}>임의모델 분실신고 <MdAccessTime size={14} /></button>
-                  <button className={styles.btnGhost}>단말 일괄변경 <MdArrowForward size={14} /></button>
-                  <button className={styles.btnGhost}>엑셀 다운 <MdDownload size={14} /></button>
+                  <button className={styles.btnGhost}>임의모델 분실신고</button>
+                  <button className={styles.btnGhost}>단말 일괄변경</button>
+                  <button className={styles.btnGhost}>엑셀 다운</button>
                   <button className={styles.btnPrimary}>AS 접수</button>
                   <button className={styles.btnPrimary}>분실신고</button>
                   <button className={styles.btnPrimary}>불용처리</button>
@@ -125,7 +125,8 @@ export default function StatusPage() {
                     </button>
                   </div>
                 }
-                header={
+              >
+                <div className={styles.tableScroll}>
                   <div className={styles.tableHead}>
                     <div className={styles.checkCell}>
                       <span className={`${styles.checkBox} ${checked.length === currentDevices.length && currentDevices.length > 0 ? styles.checked : ''}`} onClick={toggleAll}>
@@ -140,8 +141,6 @@ export default function StatusPage() {
                     <div className={`${styles.thCell} ${styles.flex1}`}>상태</div>
                     <div className={styles.actionCell} />
                   </div>
-                }
-              >
                 <div className={styles.tableBody}>
                   <AnimatePresence mode="popLayout">
                     {currentDevices.map((device) => (
@@ -165,6 +164,7 @@ export default function StatusPage() {
                       </motion.div>
                     ))}
                   </AnimatePresence>
+                </div>
                 </div>
               </CommonBoard>
             </motion.div>

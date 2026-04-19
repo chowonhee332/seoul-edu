@@ -19,8 +19,7 @@ import PageTitle from '../components/PageTitle'
 import CommonBoard from '../components/CommonBoard'
 import CategoryTabs from '../components/CategoryTabs'
 
-// 스타일 임포트
-import styles from './DownloadCenterPage.module.css'
+import styles from './FaqPage.module.css'
 import boardStyles from '../components/CommonBoard.module.css'
 
 const CATEGORIES = [
@@ -107,7 +106,7 @@ export default function FaqPage() {
               searchQuery={searchQuery}
               onSearch={(q) => { setSearchQuery(q); setCurrentPage(1); }}
               sortBy={sortBy}
-              onSortToggle={() => { setSortBy(prev => prev === 'latest' ? 'views' : 'latest'); setCurrentPage(1); }}
+              onSortChange={(sort) => { setSortBy(sort); setCurrentPage(1); }}
               currentPage={currentPage}
               totalPages={totalPages}
               onPageChange={setCurrentPage}
@@ -133,8 +132,10 @@ export default function FaqPage() {
                       </div>
                       <div className={boardStyles.listMeta}>
                         <span className={boardStyles.metaItem}><MdAccessTime size={15} />{item.date}</span>
-                        <span className={boardStyles.metaDivider} />
-                        <span className={boardStyles.metaItem}><MdVisibility size={15} />{item.views}</span>
+                        <span className={boardStyles.viewsMeta}>
+                          <span className={boardStyles.metaDivider} />
+                          <span className={boardStyles.metaItem}><MdVisibility size={15} />{item.views}</span>
+                        </span>
                       </div>
                     </motion.div>
                   ))

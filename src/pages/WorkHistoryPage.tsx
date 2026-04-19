@@ -43,20 +43,25 @@ export default function WorkHistoryPage() {
 
         <div className={styles.body}>
           <div className={styles.inner}>
+            <h1 className={styles.sectionTitle}>작업 일정 접수 내역</h1>
             <div className={styles.resultsSection}>
               <div className={styles.filterCard}>
-                <label className={styles.filterLabel}>조회기간</label>
-                <div className={styles.periodTabs}>
-                  {PERIOD_TABS.map((tab, i) => (
-                    <button key={tab} className={`${styles.periodTab} ${i === activePeriod ? styles.periodTabActive : ''}`} onClick={() => setActivePeriod(i)}>{tab}</button>
-                  ))}
+                <div className={styles.filterRow}>
+                  <label className={styles.filterLabel}>조회기간</label>
+                  <div className={styles.periodTabs}>
+                    {PERIOD_TABS.map((tab, i) => (
+                      <button key={tab} className={`${styles.periodTab} ${i === activePeriod ? styles.periodTabActive : ''}`} onClick={() => setActivePeriod(i)}>{tab}</button>
+                    ))}
+                  </div>
                 </div>
-                <div style={{ display: 'flex', alignItems: 'center', gap: '8px', marginLeft: '12px' }}>
+                <div className={styles.dateRow}>
                   <input type="text" className={styles.dateInput} placeholder="YYYY / MM / DD" value={startDate} onChange={(e) => setStartDate(e.target.value)} />
                   <span className={styles.dateSep}>-</span>
                   <input type="text" className={styles.dateInput} placeholder="YYYY / MM / DD" value={endDate} onChange={(e) => setEndDate(e.target.value)} />
                 </div>
-                <button type="button" className={styles.btnSearch}>조회</button>
+                <div className={styles.filterActions}>
+                  <button type="button" className={styles.btnSearch}>조회</button>
+                </div>
               </div>
 
               <CommonBoard
@@ -67,8 +72,9 @@ export default function WorkHistoryPage() {
                 onPageChange={setCurrentPage}
                 itemsCount={displayedRows.length}
                 showSearch={false}
-                header={
-                  <div className={styles.tableHeaderRow}>
+              >
+                <div className={styles.tableScroll}>
+                <div className={styles.tableHeaderRow}>
                     <div className={styles.thNo}>No.</div>
                     <div className={styles.thManager}>담당자</div>
                     <div className={styles.thVisit}>방문 일시</div>
@@ -77,8 +83,6 @@ export default function WorkHistoryPage() {
                     <div className={styles.thPhone}>연락처2</div>
                     <div className={styles.thCancel}>취소</div>
                   </div>
-                }
-              >
                 <div className={styles.tableBody}>
                   <AnimatePresence mode="popLayout">
                     {displayedRows.map((row) => (
@@ -97,6 +101,7 @@ export default function WorkHistoryPage() {
                       </motion.div>
                     ))}
                   </AnimatePresence>
+                </div>
                 </div>
               </CommonBoard>
             </div>

@@ -22,30 +22,30 @@
 }
 
 .link {
-  font-size: 13px;
-  font-weight: 400;
-  line-height: 1.4;
-  letter-spacing: -0.065px;
-  color: rgba(55, 56, 60, 0.61);
+  font-size: var(--font-size-caption);
+  font-weight: var(--font-weight-regular);
+  line-height: var(--line-height-medium);
+  letter-spacing: var(--letter-spacing-body);
+  color: var(--color-text-tertiary);
   white-space: nowrap;
   text-decoration: none;
 }
 
 .link:hover {
-  color: var(--color-text-neutral);
+  color: var(--color-text-secondary);
 }
 
 .divider {
   width: 0;
   height: 11px;
-  border-left: 1px solid rgba(112, 115, 124, 0.35);
+  border-left: 1px solid var(--color-border-default);
 }
 
 .copyright {
-  font-size: 13px;
-  font-weight: 400;
-  line-height: 1.4;
-  letter-spacing: -0.065px;
-  color: #2e2f33;
+  font-size: var(--font-size-caption);
+  font-weight: var(--font-weight-regular);
+  line-height: var(--line-height-medium);
+  letter-spacing: var(--letter-spacing-body);
+  color: var(--color-text-secondary);
   white-space: nowrap;
 }

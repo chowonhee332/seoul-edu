@@ -112,42 +112,41 @@ export default function ContentDetailPage() {
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.3 }}
           >
-            {/* ── 헤더: 제목 + 타입 뱃지 ── */}
-            <div className={styles.titleRow}>
-              <h1 className={styles.title}>{currentItem.title}</h1>
-              {currentItem.typeColor && (
-                <span
-                  className={styles.typeBadge}
-                  style={{
-                    color: currentItem.typeColor,
-                    background: `${currentItem.typeColor}22`,
-                  }}
-                >
-                  {currentItem.type === '동영상' ? (
-                    <MdPlayArrow size={14} />
-                  ) : (
-                    <MdFileDownload size={14} />
-                  )}
-                  {currentItem.type}
-                </span>
-              )}
-            </div>
-
-            {/* ── 메타: 날짜 | 조회수 ── */}
-            <div className={styles.metaRow}>
-              <span className={styles.metaItem}>
-                <MdAccessTime size={14} />
-                {currentItem.date}
-              </span>
-              <span className={styles.metaDivider} />
-              <span className={styles.metaItem}>
-                <MdVisibility size={14} />
-                {currentItem.views}
-              </span>
-            </div>
-
             {/* ── 본문 카드 ── */}
             <div className={styles.contentCard}>
+              {/* ── 헤더: 제목 + 타입 뱃지 ── */}
+              <div className={styles.titleRow}>
+                <h1 className={styles.title}>{currentItem.title}</h1>
+                {currentItem.typeColor && (
+                  <span
+                    className={styles.typeBadge}
+                    style={{
+                      color: currentItem.typeColor,
+                      background: `${currentItem.typeColor}22`,
+                    }}
+                  >
+                    {currentItem.type === '동영상' ? (
+                      <MdPlayArrow size={14} />
+                    ) : (
+                      <MdFileDownload size={14} />
+                    )}
+                    {currentItem.type}
+                  </span>
+                )}
+              </div>
+              {/* ── 메타: 날짜 | 조회수 ── */}
+              <div className={styles.metaRow}>
+                <span className={styles.metaItem}>
+                  <MdAccessTime size={14} />
+                  {currentItem.date}
+                </span>
+                <span className={styles.metaDivider} />
+                <span className={styles.metaItem}>
+                  <MdVisibility size={14} />
+                  {currentItem.views}
+                </span>
+              </div>
+              <div className={styles.divider} />
               {renderContent()}
 
               {/* ── 목록보기 버튼 ── */}

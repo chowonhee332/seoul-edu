@@ -4,7 +4,7 @@
   padding: 0 12px;
   display: flex;
   align-items: center;
-  border: 1px solid rgba(112, 115, 124, 0.08);
+  border: 1px solid var(--color-bg-hover);
   margin-bottom: 12px;
   position: sticky;
   top: 80px;
@@ -20,7 +20,7 @@
   left: -20px;
   right: -20px;
   height: 12px;
-  background: #f0f4f9;
+  background: var(--color-bg-page);
   pointer-events: none;
   opacity: 0;
   transition: opacity 0.2s;
@@ -36,18 +36,12 @@
   box-shadow: 0 4px 12px rgba(0, 0, 0, 0.02);
 }
 
-@media (max-width: 1023px) {
+@media (max-width: 1024px) {
   .card {
     top: 68px;
     padding: 0 16px;
     margin-bottom: 16px;
-  }
-}
-
-@media (max-width: 599px) {
-  .card {
-    border-radius: 12px;
-    padding: 0 8px;
+    /* 타블릿(1024px)부터 가로 스크롤 허용 */
     overflow-x: auto;
     white-space: nowrap;
     -ms-overflow-style: none;
@@ -55,6 +49,13 @@
     justify-content: flex-start;
   }
   .card::-webkit-scrollbar { display: none; }
+}
+
+@media (max-width: 768px) {
+  .card {
+    border-radius: 12px;
+    padding: 0 8px;
+  }
   .card.stickyActive { border-radius: 0; }
 }
 
@@ -64,8 +65,9 @@
   flex: 1;
 }
 
-@media (max-width: 599px) {
-  .item { flex: none; }
+@media (max-width: 1024px) {
+  /* 내용물 이하로 찌그러지지 않게 방어하되, 공간이 남으면 가득 채우도록(Fill) 변경 */
+  .item { flex: 1 0 auto; } 
 }
 
 .btn {
@@ -80,14 +82,14 @@
   cursor: pointer;
   border-radius: 12px;
   transition: background 0.15s;
-  color: rgba(46, 47, 51, 0.35);
+  color: var(--color-text-tertiary);
 }
 
-@media (max-width: 1023px) {
+@media (max-width: 1024px) {
   .btn { padding: 14px 8px; gap: 4px; }
 }
 
-@media (max-width: 599px) {
+@media (max-width: 768px) {
   .btn { min-width: 80px; padding: 12px 10px; }
 }
 
@@ -129,33 +131,33 @@
   height: 72px;
 }
 
-@media (max-width: 1023px) {
+@media (max-width: 1024px) {
   .btn .icon img { width: 48px; height: 48px; }
 }
 
-@media (max-width: 599px) {
+@media (max-width: 768px) {
   .btn .icon img { width: 40px; height: 40px; }
 }
 
 .label {
-  font-size: 14px;
-  font-weight: 500;
-  letter-spacing: -0.07px;
+  font-size: var(--font-size-body-sm);
+  font-weight: var(--font-weight-medium);
+  letter-spacing: var(--letter-spacing-body);
   white-space: nowrap;
   transition: color 0.15s, font-size 0.2s;
 }
 
-@media (max-width: 599px) {
-  .label { font-size: 12px; }
+@media (max-width: 768px) {
+  .label { font-size: var(--font-size-micro); }
 }
 
 .divider {
   width: 1px;
   height: 40px;
-  background: rgba(112, 115, 124, 0.16);
+  background: var(--color-border-subtle);
   flex-shrink: 0;
 }
 
-@media (max-width: 599px) {
-  .divider { height: 24px; }
+@media (max-width: 1024px) {
+  .divider { display: none; } /* 화면 좁아지면 구분선 완벽 숨김 */
 }

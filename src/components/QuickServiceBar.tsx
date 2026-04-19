@@ -1,5 +1,4 @@
 import { Link } from 'react-router-dom'
-import { motion } from 'framer-motion'
 import { MdNorthEast, MdAssignment, MdAssignmentTurnedIn, MdTabletAndroid, MdLocationOn } from 'react-icons/md'
 import styles from './QuickServiceBar.module.css'
 
@@ -12,12 +11,7 @@ const QUICK_SERVICES = [
 
 export default function QuickServiceBar() {
   return (
-    <motion.div
-      className={styles.quickBar}
-      initial={{ opacity: 0, y: 20 }}
-      animate={{ opacity: 1, y: 0 }}
-      transition={{ duration: 0.5, delay: 0.4 }}
-    >
+    <div className={styles.quickBar}>
       <div className={styles.quickBarInner}>
         {QUICK_SERVICES.map((item, idx) => (
           <Link
@@ -40,6 +34,6 @@ export default function QuickServiceBar() {
           </Link>
         ))}
       </div>
-    </motion.div>
+    </div>
   )
 }

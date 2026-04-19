@@ -1,32 +1,23 @@
-.page {
-  padding-top: 68px;
-  display: flex;
-  flex-direction: column;
-  min-height: 100vh;
-  background: #f0f4f9;
-}
+.page { composes: page from '../styles/pageLayout.module.css'; }
 
 /* Breadcrumb (Removed - handled by common component) */
 
 .breadcrumbHome {
   display: flex;
   align-items: center;
-  color: var(--color-text-default);
+  color: var(--color-text-primary);
 }
 
 .breadcrumbCurrent {
-  font-size: 14px;
-  line-height: 1.5;
-  letter-spacing: -0.07px;
-  color: var(--color-text-default);
+  font-size: var(--font-size-body-sm);
+  line-height: var(--line-height-normal);
+  letter-spacing: var(--letter-spacing-body);
+  color: var(--color-text-primary);
 }
 
 /* Body */
 .body {
-  flex: 1;
-  padding: 8px 48px 0; /* 하단 패딩 0으로 통일 */
-  display: flex;
-  flex-direction: column;
+  composes: body from '../styles/pageLayout.module.css';
 }
 
 .inner {
@@ -43,7 +34,7 @@
 /* Step indicator card */
 .stepCard {
   background: var(--color-white);
-  border-radius: 20px;
+  border-radius: var(--radius-20);
   padding: 20px 28px; /* 상하 패딩 20px로 조정 */
   margin-bottom: 12px; /* 섹션 간 간격 12px 요청 적용 */
 }
@@ -68,21 +59,21 @@
   flex: 1;
   max-width: 80px;
   height: 2px; /* 사이 라인 두께 3px -> 2px로 조정 */
-  background: #F6F8FC; /* 기본 라인 색상 */
+  background: var(--color-bg-input); /* 기본 라인 색상 */
   margin: 0 20px;
   border-radius: 99px; /* 선이 두꺼워져서 둥글게 처리 */
   transition: background 0.3s ease;
 }
 
 .stepLineDone {
-  background: var(--color-primary-default); /* 지나갔을 때 파란색 */
+  background: var(--color-secondary-default);
 }
 
 .completionIcon {
   width: 48px;
   height: 48px;
   border-radius: 50%;
-  background: #e8f0fe; /* 원래의 블루 배경색으로 복구 */
+  background: var(--color-primary-bg); /* 원래의 블루 배경색으로 복구 */
   display: flex;
   align-items: center;
   justify-content: center;
@@ -93,48 +84,49 @@
   width: 34px;
   height: 34px;
   border-radius: 999px;
-  background: #f6f8fc; /* 원래의 그레이 배경색으로 복구 */
+  background: var(--color-bg-input);
   display: flex;
   align-items: center;
   justify-content: center;
-  font-size: 14px;
-  font-weight: 600; /* 숫자 두께 600으로 변경 */
-  line-height: 1.5;
-  letter-spacing: -0.07px;
-  color: rgba(55,56,60,0.28);
+  font-size: var(--font-size-body-sm);
+  font-weight: var(--font-weight-semibold); /* 숫자 두께 600으로 변경 */
+  line-height: var(--line-height-normal);
+  letter-spacing: var(--letter-spacing-body);
+  color: var(--color-text-tertiary);
   flex-shrink: 0;
 }
 
 .stepCircle.stepActive {
-  background: var(--color-primary-default);
+  background: var(--color-secondary-default);
   color: var(--color-white);
 }
 
 .stepLabel {
-  font-size: 15px; /* 텍스트 사이즈 14 -> 15 상향 조정 */
-  font-weight: 400;
-  line-height: 1.5;
-  letter-spacing: -0.07px;
-  color: #a0a0a1; /* 피그마에 맞춰 비활성 색상 조정 */
+  font-size: var(--font-size-body); /* 텍스트 사이즈 14 -> 15 상향 조정 */
+  font-weight: var(--font-weight-regular);
+  line-height: var(--line-height-normal);
+  letter-spacing: var(--letter-spacing-body);
+  color: var(--color-text-disabled);
   text-align: center;
   white-space: nowrap;
 }
 
 .stepLabel.stepLabelActive,
 .stepLabel.stepLabelDone {
-  color: #171719; /* 활성 및 완료된 텍스트 색상 */
-  font-weight: 500;
+  color: var(--color-text-primary); /* 활성 및 완료된 텍스트 색상 */
+  font-weight: var(--font-weight-medium);
 }
 
 /* Form card */
 .formCard {
   background: var(--color-white);
-  border-radius: 20px; /* 모든 모서리 20px 복구 */
+  border-radius: var(--radius-20); /* 모든 모서리 20px 복구 */
   padding: 28px; /* 상하좌우 패딩 28px로 조정 */
   display: flex;
   flex-direction: column;
   gap: 0;
   flex: 1;
+  min-height: 500px; /* 흰색 박스의 최소 여백 확보 */
   margin-bottom: 0;
 }
 
@@ -144,16 +136,15 @@
   margin: 0 auto;
   display: flex;
   flex-direction: column;
-  gap: 12px;
   flex: 1; /* 카드 전체 높이를 채우도록 설정 */
 }
 
 .formTitle {
-  font-size: 20px; /* 요청사항: 타이틀 20px */
-  font-weight: 600; /* 요청사항: 폰트 두께 600 */
-  line-height: 1.4;
-  letter-spacing: -0.2px;
-  color: #171719;
+  font-size: var(--font-size-title1); /* 요청사항: 타이틀 20px */
+  font-weight: var(--font-weight-semibold); /* 요청사항: 폰트 두께 600 */
+  line-height: var(--line-height-medium);
+  letter-spacing: var(--letter-spacing-title);
+  color: var(--color-text-primary);
   margin-bottom: 20px; /* 요청사항: 간격 20px */
   text-align: left;
 }
@@ -187,29 +178,29 @@
 }
 
 .label {
-  font-size: 14px;
-  font-weight: 500;
-  line-height: 1.5;
-  letter-spacing: -0.07px;
-  color: rgba(46,47,51,0.88);
+  font-size: var(--font-size-body-sm);
+  font-weight: var(--font-weight-medium);
+  line-height: var(--line-height-normal);
+  letter-spacing: var(--letter-spacing-body);
+  color: var(--color-text-secondary);
 }
 
 .dot {
   width: 5px;
   height: 5px;
   border-radius: 50%;
-  background: var(--color-status-negative);
+  background: var(--color-status-error);
   flex-shrink: 0;
 }
 
 .input {
   height: 40px;
-  border: 1px solid rgba(112,115,124,0.16);
+  border: 1px solid var(--color-border-subtle);
   border-radius: var(--radius-4);
   padding: 0 12px 0 16px;
-  font-size: 14px;
+  font-size: var(--font-size-body-sm);
   font-family: inherit;
-  color: var(--color-text-default);
+  color: var(--color-text-primary);
   background: var(--color-white);
   outline: none;
   transition: border-color 0.15s;
@@ -218,12 +209,12 @@
 }
 
 .input::placeholder {
-  color: #989ba2;
+  color: var(--color-text-muted);
 }
 
 .input:focus {
   border-color: var(--color-primary-default);
-  background: #fcfdfe;
+  background: var(--color-bg-page);
 }
 
 .addressRow {
@@ -241,18 +232,18 @@
   height: 40px;
   width: 80px;
   flex-shrink: 0;
-  background: rgba(112,115,124,0.08);
+  background: var(--color-bg-hover);
   border-radius: var(--radius-4);
-  font-size: 16px;
+  font-size: var(--font-size-body-lg);
   font-family: inherit;
-  color: var(--color-text-default);
+  color: var(--color-text-primary);
   cursor: pointer;
   transition: background 0.15s;
   white-space: nowrap;
 }
 
 .addressSearchBtn:hover {
-  background: rgba(112,115,124,0.15);
+  background: var(--color-border-subtle);
 }
 
 /* Privacy notice */
@@ -260,14 +251,14 @@
   display: flex;
   flex-direction: column;
   gap: 0;
-  font-size: 12px;
-  line-height: 1.3;
-  color: rgba(55,56,60,0.61);
+  font-size: var(--font-size-micro);
+  line-height: var(--line-height-tight);
+  color: var(--color-text-tertiary);
   margin-top: 4px;
 }
 
 .bullet {
-  color: rgba(55,56,60,0.61);
+  color: var(--color-text-tertiary);
 }
 
 /* Input with timer */
@@ -287,7 +278,7 @@
   right: 12px;
   top: 50%;
   transform: translateY(-50%);
-  font-size: 14px;
+  font-size: var(--font-size-body-sm);
   color: var(--color-primary-default);
   font-variant-numeric: tabular-nums;
   pointer-events: none;
@@ -318,7 +309,7 @@
 }
 
 .timer {
-  font-size: 14px;
+  font-size: var(--font-size-body-sm);
   color: var(--color-primary-default);
   font-variant-numeric: tabular-nums;
   white-space: nowrap;
@@ -330,10 +321,10 @@
   width: 88px; /* 버튼 너비 88px 고정 */
   padding: 0;
   border-radius: var(--radius-4);
-  background: rgba(112,115,124,0.08);
-  font-size: 14px;
+  background: var(--color-bg-hover);
+  font-size: var(--font-size-body-sm);
   font-family: inherit;
-  color: var(--color-text-default);
+  color: var(--color-text-primary);
   cursor: pointer;
   white-space: nowrap;
   flex-shrink: 0;
@@ -341,7 +332,7 @@
 }
 
 .btnVerify:hover {
-  background: rgba(112,115,124,0.16);
+  background: var(--color-border-subtle);
 }
 
 .btnVerify:disabled,
@@ -354,10 +345,10 @@
   height: 40px;
   padding: 0 12px;
   border-radius: var(--radius-4);
-  background: rgba(112,115,124,0.08);
-  font-size: 14px;
+  background: var(--color-bg-hover);
+  font-size: var(--font-size-body-sm);
   font-family: inherit;
-  color: var(--color-text-default);
+  color: var(--color-text-primary);
   cursor: pointer;
   white-space: nowrap;
   flex-shrink: 0;
@@ -365,7 +356,7 @@
 }
 
 .btnResend:hover {
-  background: rgba(112,115,124,0.16);
+  background: var(--color-border-subtle);
 }
 
 .btnConfirm {
@@ -375,7 +366,7 @@
   border-radius: var(--radius-4);
   background: var(--color-primary-default);
   color: var(--color-white);
-  font-size: 14px;
+  font-size: var(--font-size-body-sm);
   font-family: inherit;
   cursor: pointer;
   white-space: nowrap;
@@ -395,7 +386,7 @@
   gap: 8px;
   margin-top: 32px;
   padding: 16px 20px;
-  background: #f6f8fc; /* 연한 그레이 배경색 추가 */
+  background: var(--color-bg-input);
   border-radius: 12px;
 }
 
@@ -414,15 +405,15 @@
 }
 
 .consentLabel {
-  font-size: 14px;
-  line-height: 1.5;
-  color: var(--color-text-default);
+  font-size: var(--font-size-body-sm);
+  line-height: var(--line-height-normal);
+  color: var(--color-text-primary);
   cursor: pointer;
 }
 
 .btnTextLink {
-  font-size: 14px;
-  color: #2e2f33; /* 텍스트 색상을 다크 그레이로 변경 */
+  font-size: var(--font-size-body-sm);
+  color: var(--color-text-body);
   background: none;
   font-family: inherit;
   cursor: pointer;
@@ -449,16 +440,16 @@
 }
 
 .completionTitle {
-  font-size: 20px; /* 요청사항: 타이틀 20px */
-  font-weight: 600; /* 요청사항: 폰트 두께 600 */
-  color: var(--color-text-default);
-  letter-spacing: -0.2px;
+  font-size: var(--font-size-title1); /* 요청사항: 타이틀 20px */
+  font-weight: var(--font-weight-semibold); /* 요청사항: 폰트 두께 600 */
+  color: var(--color-text-primary);
+  letter-spacing: var(--letter-spacing-title);
 }
 
 .completionDesc {
-  font-size: 15px;
+  font-size: var(--font-size-body);
   line-height: 1.6;
-  color: rgba(55,56,60,0.61);
+  color: var(--color-text-tertiary);
 }
 
 /* Placeholder for step 3 */
@@ -467,14 +458,14 @@
   display: flex;
   align-items: center;
   justify-content: center;
-  background: rgba(112,115,124,0.05);
+  background: var(--color-bg-hover);
   border-radius: 12px;
   margin-top: 16px;
 }
 
 .placeholderText {
-  font-size: 15px;
-  color: rgba(55,56,60,0.4);
+  font-size: var(--font-size-body);
+  color: var(--color-text-tertiary);
 }
 
 /* Actions */
@@ -495,18 +486,18 @@
   height: 40px;
   padding: 0 48px;
   border-radius: 8px;
-  background: rgba(112,115,124,0.08);
-  color: var(--color-text-default);
-  font-size: 16px;
-  font-weight: 400;
+  background: var(--color-bg-hover);
+  color: var(--color-text-primary);
+  font-size: var(--font-size-body-lg);
+  font-weight: var(--font-weight-regular);
   font-family: inherit;
   cursor: pointer;
   transition: background 0.15s;
-  letter-spacing: -0.16px;
+  letter-spacing: var(--letter-spacing-title);
 }
 
 .btnPrev:hover {
-  background: rgba(112,115,124,0.16);
+  background: var(--color-border-subtle);
 }
 
 .btnNext {
@@ -515,12 +506,12 @@
   border-radius: 8px;
   background: var(--color-primary-default);
   color: var(--color-white);
-  font-size: 16px;
-  font-weight: 400;
+  font-size: var(--font-size-body-lg);
+  font-weight: var(--font-weight-regular);
   font-family: inherit;
   cursor: pointer;
   transition: opacity 0.15s;
-  letter-spacing: -0.16px;
+  letter-spacing: var(--letter-spacing-title);
 }
 
 .btnNext:hover {
@@ -529,18 +520,43 @@
 
 /* Step done */
 .stepCircle.stepDone {
-  background: var(--color-primary-default);
+  background: var(--color-secondary-default);
   color: var(--color-white);
 }
 
 /* ── Responsive ── */
-@media (max-width: 1280px) {
+@media (max-width: 1024px) {
   .breadcrumb {
     padding: 13px 48px;
   }
 
   .body {
     padding: 0 48px 0; /* 하단 패딩 0으로 수정 */
+  }
+
+  /* 타블릿 이하 Stepper: 원 아래로 텍스트 분리 */
+  .stepList {
+    align-items: flex-start;
+    justify-content: center;
+  }
+  .stepItem {
+    flex-direction: column;
+    gap: 8px;
+    flex: 1;       /* 각 스텝 아이템이 동일 너비를 가짐 */
+    min-width: 0;  /* 텍스트 넘침 방지 */
+  }
+  .stepLine {
+    flex: 1;
+    margin: 16px 4px 0; /* 아이콘 수직중앙 (원 높이 34px 절반부근) 유지 */
+    max-width: none;
+    min-width: 12px;
+  }
+  .stepLabel {
+    white-space: normal;
+    word-break: keep-all;
+    text-align: center;
+    font-size: var(--font-size-caption); /* 13px */
+    line-height: var(--line-height-tight);
   }
 }
 
@@ -565,17 +581,16 @@
     padding: 0 24px;
   }
 
-  .stepList {
-    flex-wrap: wrap;
-    gap: 16px 0;
-  }
-
   .stepLine {
-    display: none;
+    margin: 16px 2px 0; /* 선 여백 더 타이트하게 */
+    min-width: 4px;
+  }
+  .stepLabel {
+    font-size: var(--font-size-micro); /* 더 작은 폰트 적용 (12px) */
   }
 }
 
-@media (max-width: 375px) {
+@media (max-width: 768px) {
   .breadcrumb {
     padding: 12px 16px;
   }
@@ -590,10 +605,7 @@
 
   .actions {
     padding: 0;
-    justify-content: stretch;
-  }
-
-  .btnNext {
-    width: 100%;
+    /* 다른 페이지들과 동일하게 우측 정렬 적용 (stretch 제거) */
+    justify-content: flex-end;
   }
 }

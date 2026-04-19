@@ -3,7 +3,7 @@
   display: flex;
   flex-direction: column;
   min-height: 100vh;
-  background: #f0f4f9;
+  background: var(--color-bg-page);
 }
 
 /* ── Hero ── */
@@ -19,7 +19,7 @@
   align-items: center;
   justify-content: center;
   padding: 0 20px;
-  background: #000;
+  background: var(--color-black);
   flex-shrink: 0;
   transition: all 0.3s ease-out;
 }
@@ -62,12 +62,12 @@
 }
 
 .heroName, .heroSubtitle {
-  font-size: 34px;
-  font-weight: 600;
-  line-height: 1.3;
+  font-size: var(--font-size-hero);
+  font-weight: var(--font-weight-semibold);
+  line-height: var(--line-height-tight);
   margin: 0;
-  letter-spacing: -0.5px;
-  color: #fff;
+  letter-spacing: var(--letter-spacing-hero);
+  color: var(--color-white);
 }
 
 /* ── Quick service bar (floating card overlapping hero bottom) ── */
@@ -87,7 +87,7 @@
   width: 1000px;
   height: 88px;
   background: var(--color-white);
-  border-radius: 20px;
+  border-radius: var(--radius-20);
   padding: 0 20px;
   overflow: hidden;
 }
@@ -118,7 +118,7 @@
   transform: translateY(-50%);
   width: 1px;
   height: 32px;
-  background: rgba(112, 115, 124, 0.2);
+  background: var(--color-border-subtle);
 }
 
 .quickServiceIconWrap {
@@ -154,11 +154,11 @@
 }
 
 .quickServiceLabel {
-  font-size: 16px;
-  font-weight: 600;
-  line-height: 1.5;
-  letter-spacing: -0.16px;
-  color: var(--color-text-default);
+  font-size: var(--font-size-body-lg);
+  font-weight: var(--font-weight-semibold);
+  line-height: var(--line-height-normal);
+  letter-spacing: var(--letter-spacing-title);
+  color: var(--color-text-primary);
   white-space: nowrap;
 }
 
@@ -190,19 +190,19 @@
 }
 
 .sectionTitle {
-  font-size: 20px;
-  font-weight: 600;
-  line-height: 1.4;
-  letter-spacing: -0.2px;
-  color: var(--color-text-default);
+  font-size: var(--font-size-title1);
+  font-weight: var(--font-weight-semibold);
+  line-height: var(--line-height-medium);
+  letter-spacing: var(--letter-spacing-title);
+  color: var(--color-text-primary);
 }
 
 .infoHint {
-  font-size: 13px;
-  font-weight: 400;
-  line-height: 1.4;
-  letter-spacing: -0.065px;
-  color: var(--color-text-alternative);
+  font-size: var(--font-size-caption);
+  font-weight: var(--font-weight-regular);
+  line-height: var(--line-height-medium);
+  letter-spacing: var(--letter-spacing-body);
+  color: var(--color-text-tertiary);
 }
 
 .activityHeader {
@@ -213,27 +213,27 @@
 }
 
 .activityTitle {
-  font-size: 20px;
-  font-weight: 600;
-  line-height: 1.4;
-  letter-spacing: -0.2px;
-  color: var(--color-text-default);
+  font-size: var(--font-size-title1);
+  font-weight: var(--font-weight-semibold);
+  line-height: var(--line-height-medium);
+  letter-spacing: var(--letter-spacing-title);
+  color: var(--color-text-primary);
 }
 
 .activityPeriod {
-  font-size: 12px;
-  font-weight: 400;
-  line-height: 1.4;
-  letter-spacing: -0.06px;
-  color: var(--color-text-alternative);
+  font-size: var(--font-size-micro);
+  font-weight: var(--font-weight-regular);
+  line-height: var(--line-height-medium);
+  letter-spacing: var(--letter-spacing-none);
+  color: var(--color-text-tertiary);
 }
 
 .moreBtn {
   display: flex;
   align-items: center;
   gap: 2px;
-  font-size: 14px;
-  color: var(--color-text-default);
+  font-size: var(--font-size-body-sm);
+  color: var(--color-text-primary);
   text-decoration: none;
   height: 32px;
   padding: 4px 12px;
@@ -241,13 +241,13 @@
 }
 
 .moreBtn:hover {
-  background: var(--color-border-alternative);
+  background: var(--color-border-subtle);
 }
 
 /* ── 최근활동 outer card (school row + AS card) ── */
 .asCardOuter {
   background: var(--color-white);
-  border-radius: 20px;
+  border-radius: var(--radius-20);
   box-shadow: 10px 20px 30px 0 rgba(0, 0, 0, 0.02);
   padding: 12px;
   display: flex;
@@ -270,11 +270,11 @@
 }
 
 .asSchoolName {
-  font-size: 18px;
-  font-weight: 600;
-  line-height: 1.5;
-  letter-spacing: -0.18px;
-  color: var(--color-text-default);
+  font-size: var(--font-size-title2);
+  font-weight: var(--font-weight-semibold);
+  line-height: var(--line-height-normal);
+  letter-spacing: var(--letter-spacing-title);
+  color: var(--color-text-primary);
 }
 
 .asSchoolDivider {
@@ -285,11 +285,11 @@
 }
 
 .asSchoolClass {
-  font-size: 16px;
-  font-weight: 500;
-  line-height: 1.5;
-  letter-spacing: -0.16px;
-  color: var(--color-text-default);
+  font-size: var(--font-size-body-lg);
+  font-weight: var(--font-weight-medium);
+  line-height: var(--line-height-normal);
+  letter-spacing: var(--letter-spacing-title);
+  color: var(--color-text-primary);
 }
 
 /* ── AS 예약 카드 ── */
@@ -301,7 +301,7 @@
 
 .asCardLeft {
   background: linear-gradient(to left, #609fff, #1a75ff);
-  border-radius: 20px;
+  border-radius: var(--radius-20);
   padding: 16px 20px;
   width: 240px;
   flex-shrink: 0;
@@ -333,11 +333,11 @@
 }
 
 .asCardLabel {
-  font-size: 16px;
-  font-weight: 400;
-  color: rgba(255, 255, 255, 0.8);
-  line-height: 1.5;
-  letter-spacing: -0.08px;
+  font-size: var(--font-size-body-lg);
+  font-weight: var(--font-weight-regular);
+  color: var(--color-text-inverse-muted);
+  line-height: var(--line-height-normal);
+  letter-spacing: var(--letter-spacing-body);
 }
 
 .asCardCount {
@@ -347,25 +347,25 @@
 }
 
 .asCardNum {
-  font-size: 44px;
-  font-weight: 500;
-  color: #fff;
-  line-height: 1;
-  letter-spacing: -0.44px;
+  font-size: var(--font-size-stat);
+  font-weight: var(--font-weight-medium);
+  color: var(--color-white);
+  line-height: var(--line-height-tight);
+  letter-spacing: var(--letter-spacing-title);
 }
 
 .asCardUnit {
-  font-size: 18px;
-  font-weight: 400;
-  color: rgba(255, 255, 255, 0.8);
-  line-height: 1.5;
-  letter-spacing: -0.18px;
+  font-size: var(--font-size-title2);
+  font-weight: var(--font-weight-regular);
+  color: var(--color-text-inverse-muted);
+  line-height: var(--line-height-normal);
+  letter-spacing: var(--letter-spacing-title);
 }
 
 /* 오른쪽 상태 영역 */
 .asStatusArea {
   flex: 1;
-  background: #f6f8fc;
+  background: var(--color-bg-input);
   border-radius: 16px;
   display: flex;
   align-items: stretch;
@@ -382,7 +382,7 @@
   gap: 20px;
   padding: 16px 20px;
   text-decoration: none;
-  border-radius: 20px;
+  border-radius: var(--radius-20);
   transition: background 0.15s;
 }
 
@@ -408,7 +408,7 @@
   transform: translateY(-50%);
   width: 1px;
   height: 95px;
-  background: var(--color-border-alternative);
+  background: var(--color-border-subtle);
 }
 
 .asStatusLabelRow {
@@ -419,11 +419,11 @@
 }
 
 .asStatusLabel {
-  font-size: 16px;
-  font-weight: 400;
-  color: var(--color-text-default);
-  line-height: 1.5;
-  letter-spacing: -0.08px;
+  font-size: var(--font-size-body-lg);
+  font-weight: var(--font-weight-regular);
+  color: var(--color-text-primary);
+  line-height: var(--line-height-normal);
+  letter-spacing: var(--letter-spacing-body);
 }
 
 .asStatusCount {
@@ -433,19 +433,19 @@
 }
 
 .asStatusNum {
-  font-size: 44px;
-  font-weight: 500;
-  line-height: 1.1;
-  letter-spacing: -0.44px;
-  color: var(--color-text-default);
+  font-size: var(--font-size-stat);
+  font-weight: var(--font-weight-medium);
+  line-height: var(--line-height-tight);
+  letter-spacing: var(--letter-spacing-title);
+  color: var(--color-text-primary);
 }
 
 .asStatusUnit {
-  font-size: 14px;
-  font-weight: 400;
-  color: rgba(46,47,51,0.88);
-  line-height: 1.5;
-  letter-spacing: -0.14px;
+  font-size: var(--font-size-body-sm);
+  font-weight: var(--font-weight-regular);
+  color: var(--color-text-secondary);
+  line-height: var(--line-height-normal);
+  letter-spacing: var(--letter-spacing-title);
 }
 
 /* ── 보유 제품 칩 ── */
@@ -474,16 +474,16 @@
 }
 
 .chipName {
-  font-size: 15px;
-  font-weight: 500;
-  color: var(--color-text-default);
+  font-size: var(--font-size-body);
+  font-weight: var(--font-weight-medium);
+  color: var(--color-text-primary);
   white-space: nowrap;
-  line-height: 1.5;
-  letter-spacing: -0.16px;
+  line-height: var(--line-height-normal);
+  letter-spacing: var(--letter-spacing-title);
 }
 
 .chipActive .chipName {
-  color: #fff;
+  color: var(--color-white);
 }
 
 .chipBadge {
@@ -493,24 +493,24 @@
   border-radius: var(--radius-full);
   background: rgba(0, 105, 186, 0.1);
   color: var(--color-primary-default);
-  font-size: 15px;
-  font-weight: 600;
-  line-height: 1.5;
-  letter-spacing: -0.08px;
+  font-size: var(--font-size-body);
+  font-weight: var(--font-weight-semibold);
+  line-height: var(--line-height-normal);
+  letter-spacing: var(--letter-spacing-body);
   display: flex;
   align-items: center;
   justify-content: center;
 }
 
 .chipBadgeActive {
-  background: rgba(255, 255, 255, 0.25);
-  color: #fff;
+  background: var(--color-text-inverse-muted);
+  color: var(--color-white);
 }
 
 /* ── 스스로 해결 통합 카드 (검색 + 목록) ── */
 .selfHelpCard {
   background: var(--color-white);
-  border-radius: 20px;
+  border-radius: var(--radius-20);
   box-shadow: 10px 20px 30px 0 rgba(0, 0, 0, 0.02);
   display: flex;
   flex-direction: column;
@@ -526,11 +526,11 @@
 }
 
 .searchCardTitle {
-  font-size: 20px;
-  font-weight: 400;
-  line-height: 1.4;
-  color: var(--color-text-default);
-  letter-spacing: -0.2px;
+  font-size: var(--font-size-title1);
+  font-weight: var(--font-weight-regular);
+  line-height: var(--line-height-medium);
+  color: var(--color-text-primary);
+  letter-spacing: var(--letter-spacing-title);
   display: flex;
   align-items: center;
   gap: 4px;
@@ -540,13 +540,13 @@
 }
 
 .searchCardProduct {
-  font-weight: 700;
+  font-weight: var(--font-weight-bold);
   color: var(--color-primary-default);
 }
 
 .searchCardQuestion {
-  font-weight: 400;
-  color: var(--color-text-default);
+  font-weight: var(--font-weight-regular);
+  color: var(--color-text-primary);
 }
 
 
@@ -559,7 +559,7 @@
 /* ── 공지사항 카드 ── */
 .card {
   background: var(--color-white);
-  border-radius: 20px;
+  border-radius: var(--radius-20);
   box-shadow: 10px 20px 30px 0 rgba(0, 0, 0, 0.02);
   padding: 24px 32px;
 }
@@ -569,12 +569,12 @@
   align-items: center;
   justify-content: space-between;
   padding: 14px 8px;
-  border-bottom: 1px solid rgba(112,115,124,0.12);
+  border-bottom: 1px solid var(--color-border-subtle);
   gap: 12px;
 }
 
 .listRow:hover {
-  background: rgba(244, 246, 250, 0.7);
+  background: var(--color-bg-surface);
   transition: background 0.15s;
 }
 
@@ -591,9 +591,9 @@
 }
 
 .tag {
-  font-size: 12px;
-  font-weight: 500;
-  line-height: 1.4;
+  font-size: var(--font-size-micro);
+  font-weight: var(--font-weight-medium);
+  line-height: var(--line-height-medium);
   padding: 3px 8px;
   border-radius: 4px;
   white-space: nowrap;
@@ -601,10 +601,10 @@
 }
 
 .listTitle {
-  font-size: 15px;
-  font-weight: 400;
-  line-height: 1.5;
-  color: var(--color-text-default);
+  font-size: var(--font-size-body);
+  font-weight: var(--font-weight-regular);
+  line-height: var(--line-height-normal);
+  color: var(--color-text-primary);
   overflow: hidden;
   text-overflow: ellipsis;
   white-space: nowrap;
@@ -621,9 +621,9 @@
   display: flex;
   align-items: center;
   gap: 5px;
-  font-size: 13px;
-  line-height: 1.4;
-  color: rgba(46,47,51,0.7);
+  font-size: var(--font-size-caption);
+  line-height: var(--line-height-medium);
+  color: var(--color-text-tertiary);
   white-space: nowrap;
 }
 
@@ -639,11 +639,11 @@
   justify-content: space-between;
   gap: 16px;
   padding: 14px 8px;
-  border-bottom: 1px solid rgba(112,115,124,0.12);
+  border-bottom: 1px solid var(--color-border-subtle);
 }
 
 .noticeRow:hover {
-  background: rgba(244, 246, 250, 0.7);
+  background: var(--color-bg-surface);
   transition: background 0.15s;
 }
 
@@ -660,23 +660,23 @@
 }
 
 .noticeTitleText {
-  font-size: 15px;
-  line-height: 1.5;
-  color: var(--color-text-default);
+  font-size: var(--font-size-body);
+  line-height: var(--line-height-normal);
+  color: var(--color-text-primary);
   overflow: hidden;
   text-overflow: ellipsis;
   white-space: nowrap;
 }
 
 .badge {
-  background: var(--color-status-negative);
+  background: var(--color-status-error);
   color: var(--color-text-inverse);
-  font-size: 11px;
-  font-weight: 600;
-  line-height: 1.3;
+  font-size: var(--font-size-caption2);
+  font-weight: var(--font-weight-semibold);
+  line-height: var(--line-height-tight);
   width: 16px;
   height: 16px;
-  border-radius: 20px;
+  border-radius: var(--radius-20);
   display: flex;
   align-items: center;
   justify-content: center;
@@ -684,9 +684,9 @@
 }
 
 .noticeDate {
-  font-size: 13px;
-  line-height: 1.4;
-  color: rgba(46,47,51,0.7);
+  font-size: var(--font-size-caption);
+  line-height: var(--line-height-medium);
+  color: var(--color-text-tertiary);
   white-space: nowrap;
   flex-shrink: 0;
 }
@@ -699,7 +699,7 @@
   width: 60px;
   height: 60px;
   border-radius: 50%;
-  background: #ffffff;
+  background: var(--color-white);
   display: flex;
   align-items: center;
   justify-content: center;
@@ -714,46 +714,25 @@
   box-shadow: 0px 12px 24px -4px rgba(0, 0, 0, 0.15);
 }
 
-/* ── Tablet (≤ 768px) ── */
+/* ── Mobile (merged) ── */
 @media (max-width: 768px) {
   .hero {
-    height: 300px;
+    height: 260px;
+    align-items: flex-start;
+    padding: 32px 16px 0;
   }
 
   .heroText {
-    top: 100px;
-    left: 24px;
-  }
-
-  .heroName {
-    font-size: 28px;
-  }
-
-  .heroSubtitle {
-    font-size: 28px;
-  }
-
-  .quickBar {
-    padding: 0 24px;
-    margin-top: -36px;
-  }
-
-  .quickBarInner {
-    height: 72px;
-    border-radius: 20px;
-  }
-
-  .quickService {
-    padding: 0 12px;
-    gap: 8px;
-  }
-
-  .quickServiceLabel {
-    font-size: 14px;
+    top: 0;
+    left: 0;
   }
 
   .main {
-    padding: 24px 24px 48px;
+    padding: 20px 16px 40px;
+  }
+
+  .card {
+    padding: 16px 20px;
   }
 
   .asCardOuter {
@@ -777,15 +756,15 @@
   }
 
   .asCardNum {
-    font-size: 36px;
+    font-size: var(--font-size-h2);
   }
 
   .asStatusNum {
-    font-size: 32px;
+    font-size: var(--font-size-h2);
   }
 
-  .sectionTitle {
-    font-size: 17px;
+  .listMeta {
+    display: none;
   }
 
   .fab {
@@ -793,51 +772,5 @@
     right: 24px;
     width: 52px;
     height: 52px;
-  }
-}
-
-/* ── Mobile (≤ 480px) ── */
-@media (max-width: 480px) {
-  .quickBar {
-    padding: 0 16px;
-    margin-top: -28px;
-  }
-
-  .quickBarInner {
-    height: auto;
-    flex-wrap: wrap;
-    border-radius: 16px;
-  }
-
-  .quickService {
-    flex: 0 0 50%;
-    height: 56px;
-    padding: 0 16px;
-    box-sizing: border-box;
-  }
-
-  .quickServiceDivider {
-    border-right: none;
-    border-bottom: 1px solid var(--color-border-alternative);
-  }
-
-  .main {
-    padding: 20px 16px 40px;
-  }
-
-  .card {
-    padding: 16px 20px;
-  }
-
-  .listMeta {
-    display: none;
-  }
-
-  .asCardNum {
-    font-size: 28px;
-  }
-
-  .asStatusNum {
-    font-size: 28px;
   }
 }

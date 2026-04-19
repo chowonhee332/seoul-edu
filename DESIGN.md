@@ -1,146 +1,197 @@
-# Design System Inspiration of Intercom
+# 서울특별시교육청 디자인 시스템
 
-## 1. Visual Theme & Atmosphere
+> **Source of Truth**: `src/styles/tokens.css`  
+> 토큰 네이밍 규칙: `카테고리/역할`
 
-Intercom's website is a warm, confident customer service platform that communicates "AI-first helpdesk" through a clean, editorial design language. The page operates on a warm off-white canvas (`#faf9f6`) with off-black (`#111111`) text, creating an intimate, magazine-like reading experience. The signature Fin Orange (`#ff5600`) — named after Intercom's AI agent — serves as the singular vibrant accent against the warm neutral palette.
+---
 
-The typography uses Saans — a custom geometric sans-serif with aggressive negative letter-spacing (-2.4px at 80px, -0.48px at 24px) and a consistent 1.00 line-height across all heading sizes. This creates ultra-compressed, billboard-like headlines that feel engineered and precise. Serrif provides the serif companion for editorial moments, and SaansMono handles code and uppercase technical labels. MediumLL and LLMedium appear for specific UI contexts, creating a rich five-font ecosystem.
+## 1. Color
 
-What distinguishes Intercom is its remarkably sharp geometry — 4px border-radius on buttons creates near-rectangular interactive elements that feel industrial and precise, contrasting with the warm surface colors. Button hover states use `scale(1.1)` expansion, creating a physical "growing" interaction. The border system uses warm oat tones (`#dedbd6`) and oklab-based opacity values for sophisticated color management.
+### Brand
 
-**Key Characteristics:**
-- Warm off-white canvas (`#faf9f6`) with oat-toned borders (`#dedbd6`)
-- Saans font with extreme negative tracking (-2.4px at 80px) and 1.00 line-height
-- Fin Orange (`#ff5600`) as singular brand accent
-- Sharp 4px border-radius — near-rectangular buttons and elements
-- Scale(1.1) hover with scale(0.85) active — physical button interaction
-- SaansMono uppercase labels with wide tracking (0.6px–1.2px)
-- Rich multi-color report palette (blue, green, red, pink, lime, orange)
-- oklab color values for sophisticated opacity management
+| Token | CSS Variable | Value | 사용처 |
+|-------|-------------|-------|--------|
+| `primary/default` | `--color-primary-default` | `#1A75FF` | 주 버튼, 링크, 강조 |
+| `primary/bg` | `--color-primary-bg` | `#F0F4FF` | 파란 계열 배경 |
+| `primary/subtle` | `--color-primary-subtle` | `#F5F8FF` | 동의 영역 배경 |
+| `secondary/default` | `--color-secondary-default` | `#26B7BC` | 서브 강조, 태그 |
+| `secondary/bg` | `--color-secondary-bg` | `#E8F9FA` | 초록 계열 배경 |
 
-## 2. Color Palette & Roles
+---
 
-### Primary
-- **Off Black** (`#111111`): `--color-off-black`, primary text, button backgrounds
-- **Pure White** (`#ffffff`): `--wsc-color-content-primary`, primary surface
-- **Warm Cream** (`#faf9f6`): Button backgrounds, card surfaces
-- **Fin Orange** (`#ff5600`): `--color-fin`, primary brand accent
-- **Report Orange** (`#fe4c02`): `--color-report-orange`, data visualization
+### Text
 
-### Report Palette
-- **Report Blue** (`#65b5ff`): `--color-report-blue`
-- **Report Green** (`#0bdf50`): `--color-report-green`
-- **Report Red** (`#c41c1c`): `--color-report-red`
-- **Report Pink** (`#ff2067`): `--color-report-pink`
-- **Report Lime** (`#b3e01c`): `--color-report-lime-300`
-- **Green** (`#00da00`): `--color-green`
-- **Deep Blue** (`#0007cb`): Deep blue accent
+| Token | CSS Variable | Value | 사용처 |
+|-------|-------------|-------|--------|
+| `text/primary` | `--color-text-primary` | `#171719` | 제목, 본문 핵심 텍스트 |
+| `text/secondary` | `--color-text-secondary` | `#2E2F33` 88% | 부제목, 설명 |
+| `text/tertiary` | `--color-text-tertiary` | `#37383C` 61% | 날짜, 메타정보 |
+| `text/muted` | `--color-text-muted` | `#989BA2` | placeholder |
+| `text/disabled` | `--color-text-disabled` | `#A0A0A1` | 비활성 텍스트 |
+| `text/inverse` | `--color-text-inverse` | `#F7F7F8` | 어두운 배경 위 텍스트 |
 
-### Neutral Scale (Warm)
-- **Black 80** (`#313130`): `--wsc-color-black-80`, dark neutral
-- **Black 60** (`#626260`): `--wsc-color-black-60`, mid neutral
-- **Black 50** (`#7b7b78`): `--wsc-color-black-50`, muted text
-- **Content Tertiary** (`#9c9fa5`): `--wsc-color-content-tertiary`
-- **Oat Border** (`#dedbd6`): Warm border color
-- **Warm Sand** (`#d3cec6`): Light warm neutral
+> 아이콘 색상은 같은 레벨의 text 토큰을 사용 (icon/primary = text/primary 값)
 
-## 3. Typography Rules
+---
 
-### Font Families
-- **Primary**: `Saans`, fallbacks: `Saans Fallback, ui-sans-serif, system-ui`
-- **Serif**: `Serrif`, fallbacks: `Serrif Fallback, ui-serif, Georgia`
-- **Monospace**: `SaansMono`, fallbacks: `SaansMono Fallback, ui-monospace`
-- **UI**: `MediumLL` / `LLMedium`, fallbacks: `system-ui, -apple-system`
+### Background
 
-### Hierarchy
+| Token | CSS Variable | Value | 사용처 |
+|-------|-------------|-------|--------|
+| `bg/page` | `--color-bg-page` | `#F0F4F9` | 페이지 전체 배경 |
+| `bg/surface` | `--color-bg-surface` | `#F4F6FA` | 카드 내부, 테이블 헤더 |
+| `bg/input` | `--color-bg-input` | `#F6F8FC` | 인풋, 비활성 영역 |
+| `bg/white` | `--color-white` | `#FFFFFF` | 카드, 팝업 배경 |
 
-| Role | Font | Size | Weight | Line Height | Letter Spacing |
-|------|------|------|--------|-------------|----------------|
-| Display Hero | Saans | 80px | 400 | 1.00 (tight) | -2.4px |
-| Section Heading | Saans | 54px | 400 | 1.00 | -1.6px |
-| Sub-heading | Saans | 40px | 400 | 1.00 | -1.2px |
-| Card Title | Saans | 32px | 400 | 1.00 | -0.96px |
-| Feature Title | Saans | 24px | 400 | 1.00 | -0.48px |
-| Body Emphasis | Saans | 20px | 400 | 0.95 | -0.2px |
-| Nav / UI | Saans | 18px | 400 | 1.00 | normal |
-| Body | Saans | 16px | 400 | 1.50 | normal |
-| Body Light | Saans | 14px | 300 | 1.40 | normal |
-| Button | Saans | 16px / 14px | 400 | 1.50 / 1.43 | normal |
-| Button Bold | LLMedium | 16px | 700 | 1.20 | 0.16px |
-| Serif Body | Serrif | 16px | 300 | 1.40 | -0.16px |
-| Mono Label | SaansMono | 12px | 400–500 | 1.00–1.30 | 0.6px–1.2px uppercase |
+---
 
-## 4. Component Stylings
+### Border
 
-### Buttons
+| Token | CSS Variable | Value | 사용처 |
+|-------|-------------|-------|--------|
+| `border/default` | `--color-border-default` | `#70737C` 35% | 카드 테두리 |
+| `border/subtle` | `--color-border-subtle` | `#70737C` 16% | 인풋 테두리 |
+| `border/light` | `--color-border-light` | `#E0E4EB` | 테이블 행 구분선 |
 
-**Primary Dark**
-- Background: `#111111`
-- Text: `#ffffff`
-- Padding: 0px 14px
-- Radius: 4px
-- Hover: white background, dark text, scale(1.1)
-- Active: green background (`#2c6415`), scale(0.85)
+---
 
-**Outlined**
-- Background: transparent
-- Text: `#111111`
-- Border: `1px solid #111111`
-- Radius: 4px
-- Same scale hover/active behavior
+### Status
 
-**Warm Card Button**
-- Background: `#faf9f6`
-- Text: `#111111`
-- Padding: 16px
-- Border: `1px solid oklab(... / 0.1)`
+| Token | CSS Variable | Value | 사용처 |
+|-------|-------------|-------|--------|
+| `status/error` | `--color-status-error` | `#FF4242` | 필수 입력 dot, 에러 |
+| `status/active` | `--color-status-active` | `#3186FF` | 활성 상태 표시 |
 
-### Cards & Containers
-- Background: `#faf9f6` (warm cream)
-- Border: `1px solid #dedbd6` (warm oat)
-- Radius: 8px
-- No visible shadows
+---
 
-### Navigation
-- Saans 16px for links
-- Off-black text on white
-- Small 4px–6px radius buttons
-- Orange Fin accent for AI features
+## 2. Typography
 
-## 5. Layout Principles
+**Font Family**: `Pretendard`
 
-### Spacing: 8px, 10px, 12px, 14px, 16px, 20px, 24px, 32px, 40px, 48px, 60px, 64px, 80px, 96px
-### Border Radius: 4px (buttons), 6px (nav items), 8px (cards, containers)
+| Token | Size | Weight | Line Height | Letter Spacing | 사용처 |
+|-------|------|--------|-------------|----------------|--------|
+| `font/size/3xl` | 32px | 700 | 1.2 | -0.64px | 페이지 섹션 제목 |
+| `font/size/2xl` | 28px | 700 | 1.2 | -0.56px | 콘텐츠 상세 제목 |
+| `font/size/xl` | 20px | 400 | 1.4 | — | 섹션 소제목 |
+| `font/size/lg` | 18px | 600 | 1.4 | — | 동의 제목 |
+| `font/size/base` | 16px | 400–600 | 1.5 | -0.16px | GNB, 본문, 버튼 |
+| `font/size/md` | 15px | 400–500 | 1.5–1.8 | — | 리스트 제목, 본문 |
+| `font/size/sm` | 14px | 400–500 | 1.4 | -0.07px | 테이블 셀, 작은 버튼 |
+| `font/size/xs` | 13px | 400–500 | 1.4 | -0.065px | 메타정보, 푸터 |
+| `font/size/2xs` | 12px | 500 | 1.4 | — | 태그/배지 |
 
-## 6. Depth & Elevation
-Minimal shadows. Depth through warm border colors and surface tints.
+---
 
-## 7. Do's and Don'ts
+## 3. Spacing
 
-### Do
-- Use Saans with 1.00 line-height and negative tracking on all headings
-- Apply 4px radius on buttons — sharp geometry is the identity
-- Use Fin Orange (#ff5600) for AI/brand accent only
-- Apply scale(1.1) hover on buttons
-- Use warm neutrals (#faf9f6, #dedbd6)
+| Token | CSS Variable | Value |
+|-------|-------------|-------|
+| `spacing/2` | `--spacing-2` | 2px |
+| `spacing/4` | `--spacing-4` | 4px |
+| `spacing/8` | `--spacing-8` | 8px |
+| `spacing/12` | `--spacing-12` | 12px |
+| `spacing/16` | `--spacing-16` | 16px |
+| `spacing/20` | `--spacing-20` | 20px |
+| `spacing/24` | `--spacing-24` | 24px |
+| `spacing/32` | `--spacing-32` | 32px |
+| `spacing/40` | `--spacing-40` | 40px |
+| `spacing/48` | `--spacing-48` | 48px |
+| `spacing/60` | `--spacing-60` | 60px |
 
-### Don't
-- Don't round buttons beyond 4px
-- Don't use Fin Orange decoratively
-- Don't use cool gray borders — always warm oat tones
-- Don't skip the negative tracking on headings
+---
 
-## 8. Responsive Behavior
-Breakpoints: 425px, 530px, 600px, 640px, 768px, 896px
+## 4. Border Radius
 
-## 9. Agent Prompt Guide
+| Token | CSS Variable | Value |
+|-------|-------------|-------|
+| `radius/none` | `--radius-none` | 0px |
+| `radius/sm` | `--radius-4` | 4px |
+| `radius/md` | `--radius-8` | 8px |
+| `radius/lg` | `--radius-12` | 12px |
+| `radius/xl` | `--radius-16` | 16px |
+| `radius/2xl` | `--radius-20` | 20px |
+| `radius/3xl` | `--radius-32` | 32px |
+| `radius/full` | `--radius-full` | 999px |
 
-### Quick Color Reference
-- Text: Off Black (`#111111`)
-- Background: Warm Cream (`#faf9f6`)
-- Accent: Fin Orange (`#ff5600`)
-- Border: Oat (`#dedbd6`)
-- Muted: `#7b7b78`
+---
 
-### Example Component Prompts
-- "Create hero: warm cream (#faf9f6) background. Saans 80px weight 400, line-height 1.00, letter-spacing -2.4px, #111111. Dark button (#111111, 4px radius). Hover: scale(1.1), white bg."
+## 5. Shadow
+
+| Token | CSS Variable | Value |
+|-------|-------------|-------|
+| `shadow/card` | `--shadow-card` | `10px 20px 30px 0px #00000005` |
+| `shadow/float` | `--shadow-float` | `0 8px 20px -4px #0000001A` |
+
+---
+
+## 6. Layout & Breakpoints
+
+| Token | Value | 사용처 |
+|-------|-------|--------|
+| GNB height | 68px (desktop) / 60px (tablet) | 고정 상단 내비 |
+| Content max-width | 1000px | 모든 페이지 inner |
+| Body padding | 48px (desktop) / 24px (tablet) / 16px (mobile) | 좌우 여백 |
+| Card padding | 28px | 콘텐츠 카드 |
+| List row height | 52px | 모든 리스트 행 |
+| Table header height | 40px | 테이블 헤더 |
+
+| Breakpoint | 기준 |
+|------------|------|
+| Desktop | > 1023px |
+| Tablet | ≤ 1023px |
+| Mobile | ≤ 599px |
+
+---
+
+## 7. Components
+
+### Card
+```
+bg/white  |  radius/2xl (20px)  |  padding: 28px  |  border: 1px solid #70737C14
+```
+
+### Button / Primary
+```
+bg: primary/default (#1A75FF)  |  color: text/inverse  |  radius/sm (4px)
+height: 40px (small) / 52px (large)  |  font/size/sm, weight 500
+```
+
+### Button / Ghost
+```
+border: 1px solid #70737C4C  |  radius/sm (4px)
+height: 40px  |  font/size/sm, weight 400
+```
+
+### List Row
+```
+height: 52px  |  border-bottom: border/light (#E0E4EB)
+hover: bg/surface (#F4F6FA)
+```
+
+### Tag / Badge
+```
+font/size/2xs (12px, 500)  |  padding: 3px 8px  |  radius/sm (4px)
+primary → primary/default  |  secondary → secondary/default
+```
+
+### GNB
+```
+height: 68px (desktop) / 60px (tablet)  |  position: fixed
+bg: transparent → bg/white (scrolled)
+```
+
+---
+
+## 8. 색상 사용 규칙
+
+| 상황 | 토큰 |
+|------|------|
+| 제목, 핵심 본문 | `text/primary` |
+| 부제목, 설명 | `text/secondary` |
+| 날짜, 메타, 아이콘 | `text/tertiary` |
+| 페이지 배경 | `bg/page` |
+| 카드 배경 | `bg/white` |
+| 테이블 헤더 | `bg/surface` |
+| 주 액션 | `primary/default` |
+| 보조 강조 | `secondary/default` |
+| 필수 입력 표시 | `status/error` |

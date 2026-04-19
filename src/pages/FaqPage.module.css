@@ -1,0 +1,97 @@
+.page {
+  composes: page from '../styles/pageLayout.module.css';
+}
+
+.body {
+  composes: body from '../styles/pageLayout.module.css';
+}
+
+.inner {
+  composes: inner from '../styles/pageLayout.module.css';
+}
+
+/* ── 하단 바로가기 섹션 ───────────────────────────────── */
+.bottomSection {
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
+  margin-top: 32px;
+  padding-bottom: 48px;
+}
+
+.bottomTitle {
+  font-size: var(--font-size-body-lg);
+  font-weight: var(--font-weight-medium);
+  color: var(--color-text-primary);
+  margin: 0;
+  padding: 0 4px;
+}
+
+.bottomCards {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 12px;
+}
+
+@media (max-width: 768px) {
+  .bottomCards { grid-template-columns: 1fr; }
+}
+
+.bottomCard {
+  display: flex;
+  align-items: center;
+  gap: 16px;
+  background: var(--color-white);
+  border-radius: var(--radius-20);
+  padding: 28px;
+  text-decoration: none;
+  border: 1px solid var(--color-bg-hover);
+  transition: background 0.15s, transform 0.15s;
+}
+
+.bottomCard:hover {
+  box-shadow: 0 8px 24px rgba(0, 0, 0, 0.08);
+  transform: translateY(-2px);
+}
+
+.bottomCardIcon {
+  width: 44px;
+  height: 44px;
+  border-radius: var(--radius-12);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-shrink: 0;
+}
+
+.bottomCardText {
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+  gap: 3px;
+}
+
+.bottomCardTitle {
+  font-size: var(--font-size-body);
+  font-weight: var(--font-weight-medium);
+  color: var(--color-text-primary);
+  line-height: var(--line-height-medium);
+}
+
+.bottomCardDesc {
+  font-size: var(--font-size-caption);
+  font-weight: var(--font-weight-regular);
+  color: var(--color-text-tertiary);
+  line-height: var(--line-height-medium);
+}
+
+.bottomCardArrow {
+  color: var(--color-text-tertiary);
+  flex-shrink: 0;
+  transition: transform 0.15s, color 0.15s;
+}
+
+.bottomCard:hover .bottomCardArrow {
+  transform: translateX(3px);
+  color: var(--color-text-tertiary);
+}

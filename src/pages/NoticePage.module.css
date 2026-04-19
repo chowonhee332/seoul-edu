@@ -1,45 +1,13 @@
-/* ── 페이지 레이아웃 ──────────────────────────────────────
-   VideoGuidePage와 동일한 뼈대 사용
-─────────────────────────────────────────────────────── */
-.page {
-  padding-top: 68px;
-  display: flex;
-  flex-direction: column;
-  min-height: 100vh;
-  background: #f0f4f9;
-}
-
-.body {
-  flex: 1;
-  padding: 8px 48px 0;
-  display: flex;
-  flex-direction: column;
-  transition: padding 0.2s;
-}
-
-@media (max-width: 1023px) {
-  .body { padding: 8px 24px 0; }
-}
-@media (max-width: 599px) {
-  .body { padding: 8px 16px 0; }
-}
-
-.inner {
-  max-width: 1000px;
-  width: 100%;
-  margin: 0 auto;
-  display: flex;
-  flex-direction: column;
-  gap: 0;
-  flex: 1;
-}
+.page  { composes: page  from '../styles/pageLayout.module.css'; }
+.body  { composes: body  from '../styles/pageLayout.module.css'; }
+.inner { composes: inner from '../styles/pageLayout.module.css'; }
 
 /* ── 메인 카드
    VideoGuidePage .tableCard와 동일한 패딩·radius·gap
 ─────────────────────────────────────────────────────── */
 .tableCard {
   background: var(--color-white);
-  border-radius: 20px;
+  border-radius: var(--radius-20);
   padding: 28px;
   display: flex;
   flex-direction: column;
@@ -48,10 +16,10 @@
   transition: padding 0.2s;
 }
 
-@media (max-width: 1023px) {
+@media (max-width: 1024px) {
   .tableCard { padding: 24px; }
 }
-@media (max-width: 599px) {
+@media (max-width: 768px) {
   .tableCard { padding: 16px; border-radius: 12px; }
 }
 
@@ -68,25 +36,25 @@
   display: flex;
   align-items: center;
   gap: 8px;
-  color: #171719;
+  color: var(--color-text-primary);
 }
 
 /* VideoGuidePage .categoryNameDisplay 와 동일 */
 .countLabel {
-  font-size: 16px;
-  font-weight: 600;
+  font-size: var(--font-size-body-lg);
+  font-weight: var(--font-weight-semibold);
 }
 
 /* VideoGuidePage .countDivider 와 동일 */
 .countDivider {
-  font-size: 14px;
-  color: rgba(46, 47, 51, 0.2);
+  font-size: var(--font-size-body-sm);
+  color: var(--color-text-tertiary);
 }
 
 /* VideoGuidePage .countValueDisplay 와 동일 */
 .countValue {
-  font-size: 14px;
-  font-weight: 500;
+  font-size: var(--font-size-body-sm);
+  font-weight: var(--font-weight-medium);
   color: rgba(46, 47, 51, 0.6);
 }
 
@@ -95,13 +63,13 @@
   display: flex;
   align-items: center;
   gap: 4px;
-  border: 1px solid rgba(112, 115, 124, 0.22);
+  border: 1px solid var(--color-border-subtle);
   border-radius: 6px;
   padding: 0 10px;
   height: 36px;
-  font-size: 13px;
+  font-size: var(--font-size-caption);
   font-family: inherit;
-  color: var(--color-text-default);
+  color: var(--color-text-primary);
   background: var(--color-white);
   cursor: pointer;
   white-space: nowrap;
@@ -109,7 +77,7 @@
 }
 
 .sortBtn:hover {
-  background: #f4f6fa;
+  background: var(--color-bg-surface);
   border-color: rgba(112, 115, 124, 0.4);
 }
 
@@ -126,7 +94,7 @@
   align-items: center;
   height: 40px; /* 표준 헤더 높이 */
   width: 100%;
-  background: #f4f6fa;
+  background: var(--color-bg-surface);
   border-radius: 4px; /* 살짝 굴림 */
   padding: 0;
 }
@@ -134,13 +102,13 @@
 .tableRow {
   display: flex;
   align-items: center;
-  border-bottom: 1px solid #e0e4eb;
+  border-bottom: 1px solid var(--color-border-light);
   cursor: pointer;
   transition: background 0.12s;
 }
 
 .tableRow:hover {
-  background: rgba(244, 246, 250, 0.7);
+  background: var(--color-bg-surface);
 }
 
 .tableRow:last-child {
@@ -155,9 +123,9 @@
 .noCell {
   width: 56px;
   flex-shrink: 0;
-  font-size: 14px;
-  font-weight: 500;
-  color: rgba(46, 47, 51, 0.88);
+  font-size: var(--font-size-body-sm);
+  font-weight: var(--font-weight-medium);
+  color: var(--color-text-secondary);
   padding: 8px 12px;
   height: 36px;
   display: flex;
@@ -166,15 +134,15 @@
 
 /* 데이터 행의 No. 셀 */
 .tableRow .noCell {
-  font-weight: 400;
+  font-weight: var(--font-weight-regular);
   height: 52px;
 }
 
 .thCell {
-  font-size: 14px;
-  font-weight: 500;
-  color: rgba(46, 47, 51, 0.88);
-  letter-spacing: -0.07px;
+  font-size: var(--font-size-body-sm);
+  font-weight: var(--font-weight-medium);
+  color: var(--color-text-secondary);
+  letter-spacing: var(--letter-spacing-body);
   padding: 8px 12px;
   height: 36px;
   display: flex;
@@ -182,10 +150,10 @@
 }
 
 .tdCell {
-  font-size: 14px;
-  font-weight: 400;
-  color: rgba(46, 47, 51, 0.88);
-  letter-spacing: -0.07px;
+  font-size: var(--font-size-body-sm);
+  font-weight: var(--font-weight-regular);
+  color: var(--color-text-secondary);
+  letter-spacing: var(--letter-spacing-body);
   padding: 8px 12px;
   height: 52px;
   display: flex;
@@ -211,8 +179,14 @@
   flex-shrink: 0;
 }
 
-@media (max-width: 599px) {
+/* 조회수: 태블릿 이하 숨김 */
+@media (max-width: 1024px) {
   .viewsCell { display: none; }
+}
+
+/* 번호: 모바일 숨김 */
+@media (max-width: 768px) {
+  .noCell { display: none; }
 }
 
 /* ── 페이지네이션
@@ -241,7 +215,7 @@
   transition: background 0.15s;
 }
 
-.pageBtn:hover { background: #f4f6fa; }
+.pageBtn:hover { background: var(--color-bg-surface); }
 
 .pageNumBtn {
   width: 32px;
@@ -252,16 +226,16 @@
   background: none;
   border: none;
   cursor: pointer;
-  font-size: 14px;
+  font-size: var(--font-size-body-sm);
   font-family: inherit;
-  color: rgba(46, 47, 51, 0.88);
+  color: var(--color-text-secondary);
   border-radius: 6px;
   transition: background 0.15s;
 }
 
-.pageNumBtn:hover { background: #f4f6fa; }
+.pageNumBtn:hover { background: var(--color-bg-surface); }
 
 .pageActive {
   background: var(--color-primary-default) !important;
-  color: #fff !important;
+  color: var(--color-white) !important;
 }

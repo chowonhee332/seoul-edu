@@ -99,16 +99,22 @@ export default function AsHistoryPage() {
                   animate="animate"
                 >
                   <div className={styles.filterCard}>
-                    <label className={styles.filterLabel}>조회기간</label>
-                    <div className={styles.periodTabs}>
-                      {PERIOD_TABS.map((tab, i) => (
-                        <button key={tab} className={`${styles.periodTab} ${i === activePeriod ? styles.periodTabActive : ''}`} onClick={() => setActivePeriod(i)}>{tab}</button>
-                      ))}
+                    <div className={styles.filterRow}>
+                      <label className={styles.filterLabel}>조회기간</label>
+                      <div className={styles.periodTabs}>
+                        {PERIOD_TABS.map((tab, i) => (
+                          <button key={tab} className={`${styles.periodTab} ${i === activePeriod ? styles.periodTabActive : ''}`} onClick={() => setActivePeriod(i)}>{tab}</button>
+                        ))}
+                      </div>
                     </div>
-                    <input type="date" className={styles.dateInput} value={startDate} onChange={(e) => setStartDate(e.target.value)} />
-                    <span className={styles.dateSep}>-</span>
-                    <input type="date" className={styles.dateInput} value={endDate} onChange={(e) => setEndDate(e.target.value)} />
-                    <button type="button" className={styles.btnSearch}>조회</button>
+                    <div className={styles.dateRow}>
+                      <input type="text" className={styles.dateInput} placeholder="YYYY / MM / DD" value={startDate} onChange={(e) => setStartDate(e.target.value)} />
+                      <span className={styles.dateSep}>-</span>
+                      <input type="text" className={styles.dateInput} placeholder="YYYY / MM / DD" value={endDate} onChange={(e) => setEndDate(e.target.value)} />
+                    </div>
+                    <div className={styles.filterActions}>
+                      <button type="button" className={styles.btnSearch}>조회</button>
+                    </div>
                   </div>
 
                   <CommonBoard
@@ -119,7 +125,8 @@ export default function AsHistoryPage() {
                     onPageChange={setCurrentPage}
                     itemsCount={currentPage === 1 ? 10 : 7}
                     showSearch={false}
-                    header={
+                  >
+                    <div className={styles.tableScroll}>
                       <div className={styles.tableHeaderRow}>
                         <div className={styles.thNo}>No.</div>
                         <div className={styles.thDate}>접수일</div>
@@ -128,36 +135,35 @@ export default function AsHistoryPage() {
                         <div className={styles.thSymptom}>증상</div>
                         <div className={styles.thStatus}>처리현황</div>
                       </div>
-                    }
-                  >
-                    <div className={styles.tableBody}>
-                      <AnimatePresence mode="popLayout">
-                        {Array.from({ length: 17 }).map((_, idx) => {
-                          const no = 17 - idx;
-                          const pageStart = (currentPage - 1) * 10;
-                          const pageEnd = currentPage * 10;
-                          if (idx < pageStart || idx >= pageEnd) return null;
+                      <div className={styles.tableBody}>
+                        <AnimatePresence mode="popLayout">
+                          {Array.from({ length: 17 }).map((_, idx) => {
+                            const no = 17 - idx;
+                            const pageStart = (currentPage - 1) * 10;
+                            const pageEnd = currentPage * 10;
+                            if (idx < pageStart || idx >= pageEnd) return null;
 
-                          return (
-                            <motion.div 
-                              key={no} 
-                              className={styles.tr} 
-                              variants={rowVariants}
-                              initial="hidden"
-                              animate="visible"
-                            >
-                              <div className={styles.tdNo}>{no}</div>
-                              <div className={styles.tdDate}>2026.04.10</div>
-                              <div className={styles.tdProduct}>LG 노트북 Gram</div>
-                              <div className={styles.tdSerial}>ABC123456789</div>
-                              <div className={styles.tdSymptom}>부팅 속도가 너무 느리고 가끔 멈춤 현상이 발생합니다.</div>
-                              <div className={styles.tdStatus}>
-                                <span className={styles.statusBadge}>정상</span>
-                              </div>
-                            </motion.div>
-                          );
-                        })}
-                      </AnimatePresence>
+                            return (
+                              <motion.div
+                                key={no}
+                                className={styles.tr}
+                                variants={rowVariants}
+                                initial="hidden"
+                                animate="visible"
+                              >
+                                <div className={styles.tdNo}>{no}</div>
+                                <div className={styles.tdDate}>2026.04.10</div>
+                                <div className={styles.tdProduct}>LG 노트북 Gram</div>
+                                <div className={styles.tdSerial}>ABC123456789</div>
+                                <div className={styles.tdSymptom}>부팅 속도가 너무 느리고 가끔 멈춤 현상이 발생합니다.</div>
+                                <div className={styles.tdStatus}>
+                                  <span className={styles.statusBadge}>정상</span>
+                                </div>
+                              </motion.div>
+                            );
+                          })}
+                        </AnimatePresence>
+                      </div>
                     </div>
                   </CommonBoard>
                 </motion.div>

@@ -1,10 +1,4 @@
-.page {
-  padding-top: 68px;
-  display: flex;
-  flex-direction: column;
-  min-height: 100vh;
-  background: #f0f4f9;
-}
+.page { composes: page from '../styles/pageLayout.module.css'; }
 
 /* ── 히어로 배너 ── */
 .hero {
@@ -19,7 +13,7 @@
   align-items: center;
   justify-content: center;
   padding: 0 20px;
-  background: #000;
+  background: var(--color-black);
   flex-shrink: 0;
   transition: all 0.3s ease-out;
 }
@@ -55,18 +49,18 @@
   z-index: 10;
   width: 100%;
   max-width: 1000px;
-  color: #fff;
+  color: var(--color-white);
   display: flex;
   flex-direction: column;
   gap: 8px;
 }
 
 .heroTitle1, .heroTitle2 {
-  font-size: 34px;
-  font-weight: 600;
-  line-height: 1.3;
+  font-size: var(--font-size-hero);
+  font-weight: var(--font-weight-semibold);
+  line-height: var(--line-height-tight);
   margin: 0;
-  letter-spacing: -0.5px;
+  letter-spacing: var(--letter-spacing-hero);
 }
 
 /* ── Quick service bar ── */
@@ -86,7 +80,7 @@
   max-width: 1000px;
   height: 80px;
   background: var(--color-white);
-  border-radius: 20px;
+  border-radius: var(--radius-20);
   padding: 0 20px;
   overflow: hidden;
 }
@@ -117,7 +111,7 @@
   transform: translateY(-50%);
   width: 1px;
   height: 32px;
-  background: rgba(112, 115, 124, 0.2);
+  background: var(--color-border-subtle);
 }
 
 .quickServiceIconWrap {
@@ -153,11 +147,11 @@
 }
 
 .quickServiceLabel {
-  font-size: 16px;
-  font-weight: 600;
-  line-height: 1.5;
-  letter-spacing: -0.16px;
-  color: var(--color-text-default);
+  font-size: var(--font-size-body-lg);
+  font-weight: var(--font-weight-semibold);
+  line-height: var(--line-height-normal);
+  letter-spacing: var(--letter-spacing-title);
+  color: var(--color-text-primary);
   white-space: nowrap;
 }
 
@@ -186,11 +180,11 @@
   display: flex;
   flex-direction: column;
   gap: 4px;
-  font-size: 24px;
-  font-weight: 600;
-  color: #171719;
-  line-height: 1.4;
-  letter-spacing: -0.4px;
+  font-size: var(--font-size-h3);
+  font-weight: var(--font-weight-semibold);
+  color: var(--color-text-primary);
+  line-height: var(--line-height-medium);
+  letter-spacing: var(--letter-spacing-heading);
 }
 
 .loginCardBtn {
@@ -198,13 +192,13 @@
   align-items: center;
   justify-content: center;
   gap: 4px;
-  background: #171719;
-  color: #fff;
+  background: var(--color-text-primary);
+  color: var(--color-white);
   height: 44px;
   padding: 0 24px;
   border-radius: 100px;
-  font-size: 16px;
-  font-weight: 600;
+  font-size: var(--font-size-body-lg);
+  font-weight: var(--font-weight-semibold);
   text-decoration: none;
   transition: opacity 0.2s;
 }
@@ -228,19 +222,19 @@
 }
 
 .sectionTitle {
-  font-size: 20px;
-  font-weight: 600;
-  line-height: 1.4;
-  letter-spacing: -0.2px;
-  color: var(--color-text-default);
+  font-size: var(--font-size-title1);
+  font-weight: var(--font-weight-semibold);
+  line-height: var(--line-height-medium);
+  letter-spacing: var(--letter-spacing-title);
+  color: var(--color-text-primary);
 }
 
 .moreBtn {
   display: flex;
   align-items: center;
   gap: 2px;
-  font-size: 14px;
-  color: rgba(46,47,51,0.6);
+  font-size: var(--font-size-body-sm);
+  color: var(--color-text-secondary);
   text-decoration: none;
   padding: 4px 8px;
   border-radius: 8px;
@@ -248,13 +242,13 @@
 }
 
 .moreBtn:hover {
-  background: rgba(112,115,124,0.1);
+  background: var(--color-border-subtle);
 }
 
 /* ── Card ── */
 .card {
   background: var(--color-white);
-  border-radius: 20px;
+  border-radius: var(--radius-20);
   padding: 28px;
 
 }
@@ -262,7 +256,7 @@
 /* ── Self-help card ── */
 .selfHelpCard {
   background: var(--color-white);
-  border-radius: 20px;
+  border-radius: var(--radius-20);
   padding: 28px;
 
 }
@@ -275,11 +269,11 @@
 
 /* ── Self-help ── */
 .selfHelpQuestion {
-  font-size: 20px;
-  font-weight: 500;
-  line-height: 1.5;
-  letter-spacing: -0.2px;
-  color: var(--color-text-default);
+  font-size: var(--font-size-title1);
+  font-weight: var(--font-weight-medium);
+  line-height: var(--line-height-normal);
+  letter-spacing: var(--letter-spacing-title);
+  color: var(--color-text-primary);
   text-align: center;
   margin-bottom: 24px;
 }
@@ -291,7 +285,7 @@
 .selfHelpList {
   display: flex;
   flex-direction: column;
-  border-top: 1px solid rgba(112,115,124,0.12);
+  border-top: 1px solid var(--color-border-subtle);
 }
 
 .listRow {
@@ -299,12 +293,12 @@
   align-items: center;
   justify-content: space-between;
   padding: 14px 8px;
-  border-bottom: 1px solid rgba(112,115,124,0.12);
+  border-bottom: 1px solid var(--color-border-subtle);
   gap: 12px;
 }
 
 .listRow:hover {
-  background: rgba(244, 246, 250, 0.7);
+  background: var(--color-bg-surface);
   transition: background 0.15s;
 }
 
@@ -321,9 +315,9 @@
 }
 
 .tag {
-  font-size: 12px;
-  font-weight: 500;
-  line-height: 1.4;
+  font-size: var(--font-size-micro);
+  font-weight: var(--font-weight-medium);
+  line-height: var(--line-height-medium);
   padding: 3px 8px;
   border-radius: 4px;
   white-space: nowrap;
@@ -331,10 +325,10 @@
 }
 
 .listTitle {
-  font-size: 15px;
-  font-weight: 400;
-  line-height: 1.5;
-  color: var(--color-text-default);
+  font-size: var(--font-size-body);
+  font-weight: var(--font-weight-regular);
+  line-height: var(--line-height-normal);
+  color: var(--color-text-primary);
   overflow: hidden;
   text-overflow: ellipsis;
   white-space: nowrap;
@@ -351,16 +345,24 @@
   display: flex;
   align-items: center;
   gap: 5px;
-  font-size: 13px;
-  line-height: 1.4;
-  color: rgba(46,47,51,0.5);
+  font-size: var(--font-size-caption);
+  line-height: var(--line-height-medium);
+  color: var(--color-text-secondary);
   white-space: nowrap;
 }
 
 .metaDivider {
   width: 0;
   height: 10px;
-  border-left: 1px solid rgba(112,115,124,0.22);
+  border-left: 1px solid var(--color-border-subtle);
+}
+
+.viewsMeta {
+  display: contents;
+}
+
+@media (max-width: 1024px) {
+  .viewsMeta { display: none; }
 }
 
 /* ── Notice section ── */
@@ -378,16 +380,16 @@
 }
 
 .noticeTitle {
-  font-size: 20px;
-  font-weight: 600;
-  line-height: 1.4;
-  letter-spacing: -0.2px;
-  color: var(--color-text-default);
+  font-size: var(--font-size-title1);
+  font-weight: var(--font-weight-semibold);
+  line-height: var(--line-height-medium);
+  letter-spacing: var(--letter-spacing-title);
+  color: var(--color-text-primary);
 }
 
 .noticeCard {
   background: var(--color-white);
-  border-radius: 20px;
+  border-radius: var(--radius-20);
   padding: 28px;
 
 }
@@ -399,11 +401,11 @@
   justify-content: space-between;
   gap: 16px;
   padding: 14px 8px;
-  border-bottom: 1px solid rgba(112,115,124,0.12);
+  border-bottom: 1px solid var(--color-border-subtle);
 }
 
 .noticeRow:hover {
-  background: rgba(244, 246, 250, 0.7);
+  background: var(--color-bg-surface);
   transition: background 0.15s;
 }
 
@@ -420,19 +422,19 @@
 }
 
 .noticeTitleText {
-  font-size: 15px;
-  line-height: 1.5;
-  color: var(--color-text-default);
+  font-size: var(--font-size-body);
+  line-height: var(--line-height-normal);
+  color: var(--color-text-primary);
   overflow: hidden;
   text-overflow: ellipsis;
   white-space: nowrap;
 }
 
 .badge {
-  background: #ff4242;
-  color: #ffffff;
-  font-size: 10px;
-  font-weight: 700;
+  background: var(--color-status-error);
+  color: var(--color-white);
+  font-size: var(--font-size-caption2);
+  font-weight: var(--font-weight-bold);
   width: 16px;
   height: 16px;
   border-radius: 50%;
@@ -446,9 +448,9 @@
   display: flex;
   align-items: center;
   gap: 5px;
-  font-size: 13px;
-  line-height: 1.4;
-  color: rgba(46,47,51,0.5);
+  font-size: var(--font-size-caption);
+  line-height: var(--line-height-medium);
+  color: var(--color-text-secondary);
   white-space: nowrap;
   flex-shrink: 0;
 }
@@ -457,17 +459,17 @@
   display: flex;
   align-items: center;
   gap: 5px;
-  font-size: 13px;
-  line-height: 1.4;
-  color: rgba(46,47,51,0.5);
+  font-size: var(--font-size-caption);
+  line-height: var(--line-height-medium);
+  color: var(--color-text-secondary);
   white-space: nowrap;
   flex-shrink: 0;
 }
 
 .noticeDateText {
-  font-size: 13px;
-  line-height: 1.4;
-  color: rgba(46,47,51,0.5);
+  font-size: var(--font-size-caption);
+  line-height: var(--line-height-medium);
+  color: var(--color-text-secondary);
 }
 
 /* ── FAB ── */
@@ -493,51 +495,30 @@
   background: rgba(23,23,25,0.9);
 }
 
-/* ── Tablet (≤ 768px) ── */
+/* ── Mobile (≤ 768px) ── */
 @media (max-width: 768px) {
   .hero {
-    height: 280px;
+    width: 100%;
+    height: 240px;
+    border-radius: 0;
+    margin: 0;
+    align-items: flex-start;
+    padding: 32px 16px 0;
   }
 
   .heroText {
-    left: 24px;
-    top: 100px;
+    top: 0;
+    left: 0;
   }
 
   .heroTitle1,
   .heroTitle2 {
-    font-size: 26px;
-    letter-spacing: -0.6px;
+    font-size: var(--font-size-h3);
+    letter-spacing: var(--letter-spacing-heading);
   }
 
   .main {
-    padding: 24px 24px 60px;
-  }
-
-  .quickBar {
-    padding: 0 24px;
-    margin-top: -20px;
-  }
-
-  .quickBarInner {
-    height: auto;
-    flex-wrap: wrap;
-    border-radius: 20px;
-  }
-
-  .quickService {
-    flex: 1 1 50%;
-    padding: 16px 20px;
-    gap: 8px;
-  }
-
-  .quickServiceDivider {
-    border-right: none;
-    border-bottom: 1px solid var(--color-border-alternative);
-  }
-
-  .quickServiceLabel {
-    font-size: 15px;
+    padding: 16px 16px 48px;
   }
 
   .loginSection {
@@ -549,11 +530,7 @@
   }
 
   .loginCardText {
-    font-size: 20px;
-  }
-
-  .selfHelpQuestion {
-    font-size: 17px;
+    font-size: var(--font-size-title1);
   }
 
   .selfHelpSearchBox {
@@ -561,11 +538,11 @@
   }
 
   .sectionTitle {
-    font-size: 18px;
+    font-size: var(--font-size-title2);
   }
 
   .noticeTitle {
-    font-size: 18px;
+    font-size: var(--font-size-title2);
   }
 
   .selfHelpCard {
@@ -573,7 +550,11 @@
   }
 
   .noticeCard {
-    padding: 0 24px;
+    padding: 24px;
+  }
+
+  .viewsMeta {
+    display: none;
   }
 
   .fab {
@@ -581,45 +562,5 @@
     right: 24px;
     width: 48px;
     height: 48px;
-  }
-}
-
-/* ── Mobile (≤ 480px) ── */
-@media (max-width: 480px) {
-  .hero {
-    height: 220px;
-  }
-
-  .heroText {
-    left: 16px;
-    top: 72px;
-  }
-
-  .heroTitle1,
-  .heroTitle2 {
-    font-size: 22px;
-  }
-
-  .main {
-    padding: 16px 16px 48px;
-  }
-
-  .card {
-    padding: 28px;
-    border-radius: 24px;
-  }
-
-  .selfHelpCard {
-    padding: 28px;
-    border-radius: 24px;
-  }
-
-  .noticeCard {
-    padding: 28px;
-    border-radius: 24px;
-  }
-
-  .listMeta {
-    display: none;
   }
 }

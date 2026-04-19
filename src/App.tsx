@@ -14,7 +14,6 @@ import FaqPage from './pages/FaqPage'
 import NoticePage from './pages/NoticePage'
 import ServiceCenterPage from './pages/ServiceCenterPage'
 import ContentDetailPage from './pages/ContentDetailPage'
-import WorkReceptionPage from './pages/WorkReceptionPage'
 import WorkHistoryPage from './pages/WorkHistoryPage'
 
 
@@ -39,9 +38,7 @@ export default function App() {
         <Route path="/notice" element={<NoticePage />} />
         <Route path="/service-center" element={<ServiceCenterPage />} />
         <Route path="/content-detail" element={<ContentDetailPage />} />
-        <Route path="/work-reception" element={<WorkReceptionPage />} />
         <Route path="/work-history" element={<WorkHistoryPage />} />
-
       </Routes>
     </AnimatePresence>
     </>
