@@ -11,12 +11,14 @@ import styles from './CommonBoard.module.css'
 import SearchBox from './SearchBox'
 
 interface CommonBoardProps {
+  title?: string
   activeCategoryLabel?: string
   totalCount: number
-  searchQuery: string
-  onSearch: (query: string) => void
+  searchQuery?: string
+  onSearch?: (query: string) => void
   sortBy?: 'latest' | 'views'
   onSortChange?: (sort: 'latest' | 'views') => void
+  onSortToggle?: () => void
   currentPage: number
   totalPages: number
   onPageChange: (page: number) => void
@@ -28,12 +30,14 @@ interface CommonBoardProps {
 }
 
 export default function CommonBoard({
+  title,
   activeCategoryLabel,
   totalCount,
-  searchQuery,
+  searchQuery = '',
   onSearch,
   sortBy,
   onSortChange,
+  onSortToggle,
   currentPage,
   totalPages,
   onPageChange,
