@@ -132,7 +132,7 @@
 
 .formInner {
   width: 100%;
-  max-width: 440px; /* 구글 권장 스타일인 440px로 조정 */
+  max-width: 480px;
   margin: 0 auto;
   display: flex;
   flex-direction: column;

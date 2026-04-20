@@ -14,12 +14,12 @@ import styles from './VideoGuidePage.module.css'
 import boardStyles from '../components/CommonBoard.module.css'
 
 const CATEGORIES = [
-  { id: 1, label: '윈도우북', icon: <img src="/resources/guide_1.png" alt="" /> },
-  { id: 2, label: '웨일북', icon: <img src="/resources/guide_1.png" alt="" /> },
-  { id: 3, label: '아이패드', icon: <img src="/resources/guide_2.png" alt="" /> },
-  { id: 4, label: '갤럭시탭', icon: <img src="/resources/guide_2.png" alt="" /> },
-  { id: 5, label: '크롬북', icon: <img src="/resources/guide_1.png" alt="" /> },
-  { id: 6, label: '애플스쿨매니저', icon: <img src="/resources/guide_3.png" alt="" /> },
+  { id: 1, label: '윈도우북', icon: <img src="/resources/img_guide_12t50q.png" alt="윈도우북" /> },
+  { id: 2, label: '웨일북', icon: <img src="/resources/img_guide_14tw30q.png" alt="웨일북" /> },
+  { id: 3, label: '아이패드', icon: <img src="/resources/img_guide_ipad.png" alt="아이패드" /> },
+  { id: 4, label: '갤럭시탭', icon: <img src="/resources/img_guide_s7.png" alt="갤럭시탭" /> },
+  { id: 5, label: '크롬북', icon: <img src="/resources/img_guide_xq520qea.png" alt="크롬북" /> },
+  { id: 6, label: '애플스쿨매니저', icon: <img src="/resources/img_guide_school.png" alt="애플스쿨매니저" /> },
 ]
 
 // 카테고리별 샘플 데이터 생성 함수

@@ -7,55 +7,72 @@ CSS 변수는 `src/styles/tokens.css`에 정의되어 있다.
 
 ## 1. 컬러
 
+> CSS 변수는 `src/styles/tokens.css`에 정의. 하드코딩 금지 — 반드시 토큰 사용.  
+> 아이콘 색상은 같은 레벨의 text 토큰을 사용 (icon/primary = text/primary 값).
+
 ### Brand
-| 토큰 | 값 | 용도 |
-|------|----|------|
-| `--color-primary-default` | `#1A75FF` | 주요 버튼, 링크, 강조 |
-| `--color-primary-bg` | `#F0F4FF` | 선택된 항목 배경 |
-| `--color-primary-subtle` | `#F5F8FF` | 연한 강조 배경 |
-| `--color-secondary-default` | `#26B7BC` | 보조 강조색 |
-| `--color-secondary-bg` | `#E8F9FA` | 보조 강조 배경 |
+| 시맨틱 토큰 | CSS 변수 | 값 | 용도 |
+|------------|----------|----|------|
+| `primary/default` | `--color-primary-default` | `#1A75FF` | 주요 버튼, 링크, 강조 |
+| `primary/bg` | `--color-primary-bg` | `#F0F4FF` | 선택된 항목 배경 |
+| `primary/subtle` | `--color-primary-subtle` | `#F5F8FF` | 연한 강조 배경 |
+| `secondary/default` | `--color-secondary-default` | `#26B7BC` | 보조 강조색 |
+| `secondary/bg` | `--color-secondary-bg` | `#E8F9FA` | 보조 강조 배경 |
 
 ### Text
-| 토큰 | 값 | 용도 |
-|------|----|------|
-| `--color-text-primary` | `#171719` | 제목, 본문 강조 |
-| `--color-text-secondary` | `rgba(46,47,51,0.88)` | 일반 본문 |
-| `--color-text-tertiary` | `rgba(55,56,60,0.61)` | 부가 정보, placeholder |
-| `--color-text-muted` | `#989BA2` | 비활성 텍스트 |
-| `--color-text-disabled` | `#A0A0A1` | 비활성 상태 |
-| `--color-text-inverse` | `#F7F7F8` | 어두운 배경 위 텍스트 |
-| `--color-text-inverse-muted` | `rgba(255, 255, 255, 0.8)` | 어두운 배경 위 보조 텍스트 |
-| `--color-text-body` | `#2E2F33` | 긴 본문 텍스트 |
+| 시맨틱 토큰 | CSS 변수 | 값 | 용도 |
+|------------|----------|----|------|
+| `text/primary` | `--color-text-primary` | `#171719` | 제목, 본문 강조 |
+| `text/secondary` | `--color-text-secondary` | `rgba(46,47,51,0.88)` | 일반 본문 |
+| `text/tertiary` | `--color-text-tertiary` | `rgba(55,56,60,0.61)` | 부가 정보, 날짜, 메타 |
+| `text/muted` | `--color-text-muted` | `#989BA2` | placeholder |
+| `text/disabled` | `--color-text-disabled` | `#A0A0A1` | 비활성 상태 |
+| `text/inverse` | `--color-text-inverse` | `#F7F7F8` | 어두운 배경 위 텍스트 |
+| `text/inverse-muted` | `--color-text-inverse-muted` | `rgba(255,255,255,0.8)` | 어두운 배경 위 보조 텍스트 |
+| `text/body` | `--color-text-body` | `#2E2F33` | 긴 본문 텍스트 |
 
 ### Background
-| 토큰 | 값 | 용도 |
-|------|----|------|
-| `--color-bg-page` | `#F0F4F9` | 전체 페이지 배경 |
-| `--color-bg-surface` | `#F4F6FA` | 카드, 팝업 배경 |
-| `--color-bg-input` | `#F6F8FC` | 인풋 필드 기본 배경 |
-| `--color-bg-dark` | `#111111` | 다크 테마 섹션 배경 |
-| `--color-bg-hover` | `rgba(112, 115, 124, 0.08)` | 리스트/버튼 호버 스페이스 |
-| `--color-bg-hover-strong` | `rgba(112, 115, 124, 0.16)` | 진한 음영 타겟 |
-| `--color-white` | `#FFFFFF` | 카드, 모달 퓨어 화이트 |
-| `--color-black` | `#000000` | 완전한 검은색 |
+| 시맨틱 토큰 | CSS 변수 | 값 | 용도 |
+|------------|----------|----|------|
+| `bg/page` | `--color-bg-page` | `#F0F4F9` | 전체 페이지 배경 |
+| `bg/surface` | `--color-bg-surface` | `#F4F6FA` | 카드, 팝업 배경 |
+| `bg/input` | `--color-bg-input` | `#F6F8FC` | 인풋 필드 기본 배경 |
+| `bg/dark` | `--color-bg-dark` | `#111111` | 다크 테마 섹션 배경 |
+| `bg/hover` | `--color-bg-hover` | `rgba(112,115,124,0.08)` | 리스트/버튼 호버 |
+| `bg/hover-strong` | `--color-bg-hover-strong` | `rgba(112,115,124,0.16)` | 진한 호버 |
+| `bg/white` | `--color-white` | `#FFFFFF` | 카드, 모달 배경 |
+| `bg/black` | `--color-black` | `#000000` | 완전한 검은색 |
 
 ### Border
-| 토큰 | 값 | 용도 |
-|------|----|------|
-| `--color-border-default` | `rgba(112,115,124,0.35)` | 기본 테두리 |
-| `--color-border-subtle` | `rgba(112,115,124,0.16)` | 연한 테두리 |
-| `--color-border-light` | `#E0E4EB` | 구분선 |
+| 시맨틱 토큰 | CSS 변수 | 값 | 용도 |
+|------------|----------|----|------|
+| `border/default` | `--color-border-default` | `rgba(112,115,124,0.35)` | 기본 테두리 |
+| `border/subtle` | `--color-border-subtle` | `rgba(112,115,124,0.16)` | 연한 테두리, 인풋 |
+| `border/light` | `--color-border-light` | `#E0E4EB` | 테이블 행 구분선 |
 
 ### Status
-| 토큰 | 값 | 용도 |
-|------|----|------|
-| `--color-status-error` | `#FF4242` | 오류, 삭제 |
-| `--color-status-active` | `#3186FF` | 진행 중, 활성 상태 |
-| `--color-status-success` | `#00B493` | 완료, 성공 |
-| `--color-status-warning` | `#FF8C00` | 경고, 주의 |
+| 시맨틱 토큰 | CSS 변수 | 값 | 용도 |
+|------------|----------|----|------|
+| `status/error` | `--color-status-error` | `#FF4242` | 필수 입력 dot, 오류 |
+| `status/active` | `--color-status-active` | `#3186FF` | 진행 중, 활성 상태 |
+| `status/success` | `--color-status-success` | `#00B493` | 완료, 성공 |
+| `status/warning` | `--color-status-warning` | `#FF8C00` | 경고, 주의 |
 
-> **규칙:** 하드코딩 금지. 반드시 토큰 사용. 토큰에 없는 색이 필요하면 `tokens.css`에 추가 후 사용.
+### 색상 사용 규칙
+
+| 상황 | 사용 토큰 |
+|------|----------|
+| 제목, 핵심 본문 | `text/primary` |
+| 부제목, 설명 | `text/secondary` |
+| 날짜, 메타, 아이콘 | `text/tertiary` |
+| 페이지 배경 | `bg/page` |
+| 카드 배경 | `bg/white` |
+| 테이블 헤더 | `bg/surface` |
+| 주 액션 버튼 | `primary/default` |
+| 보조 강조 | `secondary/default` |
+| 필수 입력 표시 | `status/error` |
+
+> **규칙:** 하드코딩 금지. 토큰에 없는 색이 필요하면 `tokens.css`에 추가 후 사용.
 
 ---
 
@@ -111,36 +128,17 @@ CSS 변수는 `src/styles/tokens.css`에 정의되어 있다.
 
 ---
 
-## 3. 스페이싱
+## 3. Border Radius
 
-| 토큰 | 값 |
-|------|----|
-| `--spacing-none` | `0px` |
-| `--spacing-2` | `2px` |
-| `--spacing-4` | `4px` |
-| `--spacing-8` | `8px` |
-| `--spacing-12` | `12px` |
-| `--spacing-16` | `16px` |
-| `--spacing-20` | `20px` |
-| `--spacing-24` | `24px` |
-| `--spacing-32` | `32px` |
-| `--spacing-40` | `40px` |
-| `--spacing-48` | `48px` |
-| `--spacing-60` | `60px` |
-
-> **규칙:** padding, margin, gap은 토큰 사용 원칙. 토큰에 없는 값(예: 28px)은 예외적으로 허용하되 최소화.
-
----
-
-## 4. Border Radius
+카드/버튼/인풋 등 주요 구조 요소는 토큰 기준으로 사용. 아이콘 원형(`50%`) 등 세부 UI는 예외 허용.
 
 | 토큰 | 값 | 용도 |
 |------|----|------|
-| `--radius-none` | `0px` | |
-| `--radius-4` | `4px` | 태그, 뱃지, 소형 버튼 |
-| `--radius-8` | `8px` | 버튼, 인풋, 드롭다운 |
+| `--radius-none` | `0px` | 모바일 전체폭 요소 |
+| `--radius-4` | `4px` | 태그, 뱃지, 인풋, 소형 버튼 |
+| `--radius-8` | `8px` | 버튼, 드롭다운 |
 | `--radius-12` | `12px` | 작은 카드 |
-| `--radius-16` | `16px` | 중간 카드 |
+| `--radius-16` | `16px` | 중간 카드, 모바일 배너 |
 | `--radius-20` | `20px` | 메인 카드 |
 | `--radius-32` | `32px` | 대형 카드, 모달 |
 | `--radius-full` | `999px` | 알약형 버튼, 칩 |
@@ -160,11 +158,11 @@ CSS 변수는 `src/styles/tokens.css`에 정의되어 있다.
 
 3단계 반응형을 기준으로 한다.
 
-| 이름 | CSS 변수 | 범위 | 용도 |
-|------|----------|------|------|
-| desktop | `--bp-desktop` | 1025px ~ | PC 기본 레이아웃 |
-| tablet | `--bp-tablet` | 769px ~ 1024px | 태블릿 |
-| mobile | `--bp-mobile` | ~ 768px | 스마트폰 |
+| 이름 | 범위 | 용도 |
+|------|------|------|
+| Desktop | 1025px ~ | PC 기본 레이아웃 |
+| Tablet | 769px ~ 1024px | 태블릿 |
+| Mobile | ~ 768px | 스마트폰 |
 
 ### 미디어쿼리 사용법
 ```css
@@ -181,6 +179,25 @@ CSS 변수는 `src/styles/tokens.css`에 정의되어 있다.
 | Desktop | `0 48px` |
 | Tablet | `0 24px` |
 | Mobile | `0 16px` |
+
+### GNB 높이
+| 브레이크포인트 | 높이 |
+|---------------|------|
+| Desktop | `68px` |
+| Tablet / Mobile | `60px` |
+
+### 카드 패딩
+| 브레이크포인트 | 패딩 |
+|---------------|------|
+| Desktop | `28px` |
+| Tablet | `28px` |
+| Mobile | `20px ~ 24px` (콘텐츠 밀도에 따라 조정) |
+
+### 폼 레이아웃
+| 항목 | 값 |
+|------|----|
+| 폼 인풋 최대 가로폭 | `480px` |
+| 적용 페이지 | 로그인, AS접수, 접수조회 등 단일 폼 페이지 |
 
 ---
 
@@ -267,12 +284,3 @@ CSS 변수는 `src/styles/tokens.css`에 정의되어 있다.
 
 공통 레이아웃은 `src/styles/pageLayout.module.css`를 `composes:`로 재사용.
 
----
-
-## 10. 트랜지션
-
-| 용도 | 값 |
-|------|----|
-| 버튼/링크 hover | `all 0.15s ease` |
-| 레이아웃 변화 | `padding 0.2s ease` |
-| 드롭다운/모달 | `all 0.2s ease` |

@@ -6,9 +6,6 @@ import {
   MdChevronRight,
   MdAccessTime,
   MdVisibility,
-  MdElectricalServices,
-  MdPhoneAndroid,
-  MdLaptopWindows,
   MdHeadsetMic,
   MdBuild,
 } from 'react-icons/md'
@@ -23,9 +20,9 @@ import styles from './FaqPage.module.css'
 import boardStyles from '../components/CommonBoard.module.css'
 
 const CATEGORIES = [
-  { id: 1, label: '충전함', icon: <MdElectricalServices size={32} /> },
-  { id: 2, label: 'Android', icon: <MdPhoneAndroid size={32} /> },
-  { id: 3, label: 'Windows', icon: <MdLaptopWindows size={32} /> },
+  { id: 1, label: '충전함', icon: <img src="/resources/img_charge.png" alt="충전함" /> },
+  { id: 2, label: 'Android', icon: <img src="/resources/img_android.png" alt="Android" /> },
+  { id: 3, label: 'Windows', icon: <img src="/resources/img_window.png" alt="Windows" /> },
 ]
 
 const ALL_ITEMS = [

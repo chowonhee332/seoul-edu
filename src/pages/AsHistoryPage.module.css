@@ -33,7 +33,7 @@
 
 .formInner {
   width: 100%;
-  max-width: 440px; /* 구글 권장 스타일인 440px로 통일 */
+  max-width: 480px;
   margin: 0 auto;
   display: flex;
   flex-direction: column;
@@ -265,15 +265,18 @@
   border-radius: var(--radius-20);
   padding: 20px 28px;
   display: flex;
-  flex-direction: column;
-  gap: 12px;
+  flex-direction: row;
+  align-items: center;
+  gap: 16px;
   margin-bottom: 0;
+  flex-wrap: wrap;
 }
 
 .filterRow {
   display: flex;
   align-items: center;
   gap: 12px;
+  flex-shrink: 0;
 }
 
 .filterLabel {
@@ -323,6 +326,7 @@
   display: flex;
   align-items: center;
   gap: 8px;
+  flex-shrink: 0;
 }
 
 .dateInput {
@@ -337,7 +341,7 @@
   outline: none;
   box-sizing: border-box;
   transition: border-color 0.15s;
-  width: 160px;
+  width: 140px;
 }
 
 .dateInput:focus {
@@ -353,6 +357,7 @@
 .filterActions {
   display: flex;
   justify-content: flex-end;
+  flex: 1;
 }
 
 .btnSearch {

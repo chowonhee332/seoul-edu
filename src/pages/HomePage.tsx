@@ -84,7 +84,7 @@ export default function HomePage() {
               variants={heroItemVariants}
             >
               <div className={styles.loginCardText}>
-                <span>로그인하고 보유기기의</span>
+                <span><strong>로그인</strong>하고 보유기기의</span>
                 <span>맞춤 정보를 확인해보세요.</span>
               </div>
               <motion.div whileTap={{ scale: 0.95 }}>
