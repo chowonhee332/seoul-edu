@@ -71,54 +71,6 @@ src/
     └── pageLayout.module.css     # 페이지 공통 레이아웃 (.page / .body / .inner)
 ```
 
-## 스타일 가이드
-
-### 디자인 토큰
-
-모든 색상, 반경, 간격은 `src/styles/tokens.css`의 CSS 변수를 사용합니다.
-
-```css
-/* 주요 토큰 예시 */
-var(--color-primary-default)   /* 브랜드 블루 #1A75FF */
-var(--color-text-primary)      /* 본문 텍스트 */
-var(--color-bg-page)           /* 페이지 배경 */
-var(--radius-20)               /* 카드 모서리 20px */
-```
-
-전체 토큰 목록은 [designsystem.md](./designsystem.md)를 참고하세요.
-
-### 반응형 브레이크포인트
-
-| 구분 | 범위 |
-|------|------|
-| Mobile | ≤ 768px |
-| Tablet | ≤ 1024px |
-| Desktop | 1025px 이상 |
-
-```css
-@media (max-width: 1024px) { /* 태블릿 이하 */ }
-@media (max-width: 768px)  { /* 모바일 이하 */ }
-```
-
-### 페이지 레이아웃 패턴
-
-모든 페이지는 `pageLayout.module.css`의 공통 클래스를 `composes:`로 재사용합니다.
-
-```css
-/* 페이지 CSS 파일 */
-.page  { composes: page  from '../styles/pageLayout.module.css'; }
-.body  { composes: body  from '../styles/pageLayout.module.css'; }
-.inner { composes: inner from '../styles/pageLayout.module.css'; }
-```
-
-### 테이블 컬럼 표시 규칙
-
-| 컬럼 | 데스크탑 | 태블릿 | 모바일 |
-|------|----------|--------|--------|
-| 제목, 날짜, 상태 | O | O | O |
-| 번호, 카테고리 | O | O | 숨김 |
-| 조회수, 첨부파일 | O | 숨김 | 숨김 |
-
 ## 라우팅
 
 `src/App.tsx`에서 React Router v7로 관리합니다.
@@ -142,4 +94,3 @@ var(--radius-20)               /* 카드 모서리 20px */
 ## 참고 문서
 
 - [designsystem.md](./designsystem.md) — 색상, 타이포, 간격, 컴포넌트 규격 등 디자인 시스템 전체 명세
-- [FIGMA_VARIABLES.md](./FIGMA_VARIABLES.md) — Figma 변수 매핑 테이블
